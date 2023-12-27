@@ -34,18 +34,17 @@ public class Chef : MonoBehaviour
     /// <todo> get the mouse that is furthest alon </todo>
     private GameObject GetFurthestMouseInRange()
     {
-        return GameObject.FindGameObjectWithTag("Mouse");
-        // var mice = GameObject.FindGameObjectsWithTag("Mouse");
-        // foreach (var mouse in mice)
-        // {
-        //     float distance = (mouse.transform.position - transform.position).magnitude;
-        //     if (distance <= range)
-        //     {
-        //         return mouse;
-        //     }
-        // }
-        //
-        // return null;
+        var mice = GameObject.FindGameObjectsWithTag("Mouse");
+        foreach (var mouse in mice)
+        {
+            float distance = (mouse.transform.position - transform.position).magnitude;
+            if (distance <= range)
+            {
+                return mouse;
+            }
+        }
+        
+        return null;
     }
 
 }
