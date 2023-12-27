@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class SpriteMove : MonoBehaviour
@@ -35,7 +34,7 @@ public class SpriteMove : MonoBehaviour
     }
 
     void FixedUpdate(){
-        Vector3 direction = target.position - transform.position;
-        transform.position = transform.position + direction * moveSpeed * Time.deltaTime;
+        Vector3 direction = Vector3.Normalize(target.position - transform.position); 
+        transform.position += direction * moveSpeed * Time.deltaTime;
     }
 }
