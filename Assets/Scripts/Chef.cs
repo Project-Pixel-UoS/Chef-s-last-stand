@@ -1,11 +1,10 @@
-
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Chef : MonoBehaviour
 {
-
-    [SerializeField] private float range;
+    [SerializeField] private float range; // range at which chef can attack mice
 
     void Update()
     {
@@ -13,7 +12,7 @@ public class Chef : MonoBehaviour
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
     }
-    
+
 
     /// <summary> Spins chef so that he is facing the mouse </summary>
     /// <param name = "furthestMouse"> mouse which chef will point towards</param>
@@ -28,23 +27,36 @@ public class Chef : MonoBehaviour
     }
 
 
-
     /// <returns> find an arbitrary mouse that is in range </returns>
     /// <remarks>Maintained by: Antosh </remarks>
-    /// <todo> get the mouse that is furthest alon </todo>
     private GameObject GetFurthestMouseInRange()
     {
+        List<GameObject> mice = GetMiceInRange();
+        if (mice.Count > 0)
+        {
+            mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved);
+            return mice[0];
+        }
+        return null;
+    }
+
+    /// <returns>
+    /// mice in range of the chef
+    /// </returns>
+    /// <remarks> maintained by: Antosh </remarks>
+    private List<GameObject> GetMiceInRange()
+    {
         var mice = GameObject.FindGameObjectsWithTag("Mouse");
+        var miceInRange = new List<GameObject>();
         foreach (var mouse in mice)
         {
             float distance = (mouse.transform.position - transform.position).magnitude;
             if (distance <= range)
             {
-                return mouse;
+                miceInRange.Add(mouse);
             }
         }
-        
-        return null;
-    }
 
+        return miceInRange;
+    }
 }

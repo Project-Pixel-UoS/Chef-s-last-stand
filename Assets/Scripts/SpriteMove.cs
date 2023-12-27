@@ -9,6 +9,8 @@ public class SpriteMove : MonoBehaviour
     private Transform target;
     private int index = 0;
 
+    public float totalDistanceMoved;
+
     void Start()
     {
         // endPoint = LevelManager.LM.endPoint;
@@ -32,11 +34,12 @@ public class SpriteMove : MonoBehaviour
         //     Destroy(gameObject);
         // }
         //
-        //test commit
     }
 
     void FixedUpdate(){
-        Vector3 direction = Vector3.Normalize(target.position - transform.position); 
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        var direction = Vector3.Normalize(target.position - transform.position);
+        var movement = direction * moveSpeed * Time.deltaTime;
+        transform.position += movement;
+        totalDistanceMoved += movement.magnitude;
     }
 }

@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af0882-a414-479d-9fd1-75c037209b5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chef's Last Stand/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chef's Last Stand/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mouse.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mouse.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chef.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpriteMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpriteMove.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

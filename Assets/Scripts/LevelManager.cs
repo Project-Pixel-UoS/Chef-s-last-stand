@@ -16,10 +16,11 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         LM = this;
-        if (enermy != null)
-        {
-            enermy.AddComponent<SpriteMove>(); 
-        }
+        InvokeRepeating("spawnMouse", 0, 5);
+    }
+
+    private void spawnMouse()
+    {
         Instantiate(enermy, TurningPoints[0].position, transform.rotation);
     }
 }
