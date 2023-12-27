@@ -20,8 +20,8 @@ public class Chef : MonoBehaviour
     /// <remarks>Maintained by: Antosh Nikolak</remarks>
     private void Rotate(GameObject furthestMouse)
     {
-        Vector3 direction = transform.position - furthestMouse.transform.position;
-        float radians = Mathf.Atan2(direction.x, direction.y);
+        Vector3 direction = furthestMouse.transform.position - transform.position;
+        float radians = Mathf.Atan2(direction.x, direction.y) * -1;
         float degrees = radians * Mathf.Rad2Deg;
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
