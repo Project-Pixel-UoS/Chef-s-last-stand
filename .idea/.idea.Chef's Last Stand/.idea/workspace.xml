@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af0882-a414-479d-9fd1-75c037209b5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/TempAssets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/TempAssets/001-WizardProjectile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/TempAssets/001-WizardProjectile.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/TempAssets/SuperMonkey2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/TempAssets/SuperMonkey2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Circle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Circle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LevelManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LevelManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpriteMove.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpriteMove.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chef's Last Stand/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chef's Last Stand/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chef.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1703288752370</updated>
-      <workItem from="1703288755235" duration="14035000" />
+      <workItem from="1703288755235" duration="14492000" />
     </task>
     <servers />
   </component>

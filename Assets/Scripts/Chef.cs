@@ -5,12 +5,15 @@ using UnityEngine;
 public class Chef : MonoBehaviour
 {
 
+    [SerializeField] private float range;
+
     void Update()
     {
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
     }
+    
 
     /// <summary> Spins chef so that he is facing the mouse </summary>
     /// <param name = "furthestMouse"> mouse which chef will point towards</param>
@@ -25,11 +28,24 @@ public class Chef : MonoBehaviour
     }
 
 
-    /// <returns> mouse that is furthest along route, and in range of the chef </returns>
+
+    /// <returns> find an arbitrary mouse that is in range </returns>
     /// <remarks>Maintained by: Antosh </remarks>
-    /// <todo> Verify that the mouse is in range of the current chef </todo>
+    /// <todo> get the mouse that is furthest alon </todo>
     private GameObject GetFurthestMouseInRange()
     {
         return GameObject.FindGameObjectWithTag("Mouse");
+        // var mice = GameObject.FindGameObjectsWithTag("Mouse");
+        // foreach (var mouse in mice)
+        // {
+        //     float distance = (mouse.transform.position - transform.position).magnitude;
+        //     if (distance <= range)
+        //     {
+        //         return mouse;
+        //     }
+        // }
+        //
+        // return null;
     }
+
 }
