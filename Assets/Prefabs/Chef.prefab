@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 6
+  Projectile: {fileID: 6520961873034949681, guid: 47b76cd4b51073742b3434446e6350ae, type: 3}
+  cooldown: 1
