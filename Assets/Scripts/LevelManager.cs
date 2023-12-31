@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     // public Transform endPoint;
     public Transform[] TurningPoints;
     
-    public float moveSpeed = 2f;
+    public float moveSpeed = 10f;
 
     public GameObject enermy;
 
