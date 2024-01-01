@@ -1,4 +1,4 @@
-
+using UnityEditor;
 using UnityEngine;
 
 public class SpriteMove : MonoBehaviour
@@ -10,13 +10,19 @@ public class SpriteMove : MonoBehaviour
     private int index = 0;
 
     public float totalDistanceMoved;
+    private float mouseDamage=10; //The amount of damage that particular mouse causes to the player
+    public HealthManager health;
+
+    
 
     void Start()
     {
         // endPoint = LevelManager.LM.endPoint;
+        health= GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>(); //finds the health manager
         moveSpeed = LevelManager.LM.moveSpeed;
         targets = LevelManager.LM.TurningPoints;
         target = targets[index];
+        
     }
 
     void Update()
@@ -25,6 +31,7 @@ public class SpriteMove : MonoBehaviour
             index++;
             if (index==targets.Length){
                 Destroy(gameObject);
+                health.TakeDamage(mouseDamage);//the player taking damage as the mouse reaches the end
             }else{
                 target = targets[index];
             }
