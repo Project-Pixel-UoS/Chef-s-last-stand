@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Chef : MonoBehaviour
+public class AbilityProjectile : MonoBehaviour
 {
     [SerializeField] private float range; // range at which chef can attack mice
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
@@ -39,8 +39,7 @@ public class Chef : MonoBehaviour
         List<GameObject> mice = GetMiceInRange();
         if (mice.Count > 0)
         {
-            mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved);
-            return mice[0];
+           return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
         }
         return null;
     }

@@ -3,23 +3,21 @@ using UnityEngine;
 
 public class SpriteMove : MonoBehaviour
 {
-    // private Transform endPoint;
-    private float moveSpeed;
+    [SerializeField] public float moveSpeed;
     private Transform[] targets;
     private Transform target;
     private int index = 0;
 
     public float totalDistanceMoved;
-    private float mouseDamage=10; //The amount of damage that particular mouse causes to the player
+    private float mouseDamage= 10; //The amount of damage that particular mouse causes to the player
     public HealthManager health;
 
     
 
     void Start()
     {
-        // endPoint = LevelManager.LM.endPoint;
         health= GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>(); //finds the health manager
-        moveSpeed = LevelManager.LM.moveSpeed;
+        moveSpeed = 10;
         targets = LevelManager.LM.TurningPoints;
         target = targets[index];
         
@@ -36,11 +34,6 @@ public class SpriteMove : MonoBehaviour
                 target = targets[index];
             }
         }
-        // Vector3 direction = endPoint.position - transform.position;
-        // if (Vector2.Distance(endPoint.position, transform.position) <= 0.1f){
-        //     Destroy(gameObject);
-        // }
-        //
     }
 
     void FixedUpdate(){
