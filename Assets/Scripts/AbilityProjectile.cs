@@ -5,12 +5,17 @@ using UnityEngine;
 public class Chef : MonoBehaviour
 {
     [SerializeField] private float range; // range at which chef can attack mice
+    [SerializeField] private GameObject Projectile; // projectile for chef to shoot
+    [SerializeField] private float cooldown; // time in between chef shooting (seconds)
+    private float cooldownTimer; // timer for cooldown in between shots
 
     void Update()
     {
+        if (Projectile == null) return;
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
+        Shoot();
     }
 
 
@@ -58,5 +63,15 @@ public class Chef : MonoBehaviour
         }
 
         return miceInRange;
+    }
+
+    /// <summary> Shoot projectile in direction facing </summary>
+    /// <remarks>Maintained by: Ben Brixton </remarks>
+    private void Shoot()
+    {
+        cooldownTimer -= Time.deltaTime;
+        if (cooldownTimer > 0) return;
+        cooldownTimer = cooldown;
+        Instantiate(Projectile, transform.position, transform.rotation);
     }
 }
