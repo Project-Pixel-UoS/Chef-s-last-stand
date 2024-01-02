@@ -48,6 +48,7 @@ public class SlownessHandler : MonoBehaviour
         GameObject otherGameObject = other.gameObject;
 
         SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
+
         if (slownessProjectile != null)
         {
             SlowMouse(slownessProjectile);
