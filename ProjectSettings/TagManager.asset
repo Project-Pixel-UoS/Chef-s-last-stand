@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mouse
   - Health
+  - Range
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Range
+    uniqueID: 4120240553
+    locked: 0
+  - name: Chefs
+    uniqueID: 4150771635
     locked: 0

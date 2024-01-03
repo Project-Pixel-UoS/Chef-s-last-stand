@@ -5,12 +5,13 @@ using UnityEngine;
 public class Chef : MonoBehaviour
 {
     [SerializeField] private float range; // range at which chef can attack mice
-
+    public GameObject rangeObject;
     void Update()
     {
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
+        rangeObject.transform.localScale= new Vector3(range,range,1); 
     }
 
 
