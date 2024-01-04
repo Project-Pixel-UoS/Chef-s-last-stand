@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     /// <todo>
     /// Detect the chef is already existed.
     /// </todo>
-    private Vector3[] allPos;
+    [HideInInspector] public Vector3[] allPos;
     [HideInInspector] public Vector3 targetMapPos;
 
     /// <summary> Instantiate map tiles by using list of coordinates and stored in list.</summary>

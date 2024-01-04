@@ -29,7 +29,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         MapManager MM = MapManager.MM;
         targetMapPos = MM.targetMapPos;
-        allPos = MM.targetMapPos;
+        allPos = MM.allPos;
         transform.position = Input.mousePosition;
     }
 
