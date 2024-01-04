@@ -5,6 +5,9 @@ using UnityEngine;
 public class TargetMap : MonoBehaviour
 {
     private bool overlap = false;
+    /// <summary> Check whether the mouse is over this map tile.</summary>
+    /// <param name = "overlap"> detect whether the mouse is overlapped the map tile</param>
+    /// <remarks>Maintained by: Lishan Xu</remarks>
     void OnMouseOver()
     {
         // if (!Input.GetMouseButtonUp(0)){
@@ -13,6 +16,8 @@ public class TargetMap : MonoBehaviour
         overlap = true;
     }
 
+    /// <summary> Check whether the mouse is not over this map tile.</summary>
+    /// <remarks>Maintained by: Lishan Xu</remarks>
     void OnMouseExit()
     {
         overlap = false;

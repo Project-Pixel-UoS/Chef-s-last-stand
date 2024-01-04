@@ -23,7 +23,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
 
     /// <summary> Make the item follow the mouse.</summary>
-    /// <param name = "targetMapPos"> is the position that mouse is pointing at.</param>
+    /// <param name = "targetMapPos"> is the position of map that mouse is pointing at.</param>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnDrag(PointerEventData eventData)
     {

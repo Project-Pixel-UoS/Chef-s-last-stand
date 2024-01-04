@@ -9,7 +9,7 @@ public class MapManager : MonoBehaviour
     private GameObject[] allMap;
     private Vector3 pos = new Vector3(-10,-15,0);
     /// <todo>
-    /// Detect the chef is already existed.
+    /// Detect if the chef is already existed.
     /// </todo>
     [HideInInspector] public Vector3[] allPos;
     [HideInInspector] public Vector3 targetMapPos;
