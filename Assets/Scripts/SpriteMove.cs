@@ -10,6 +10,7 @@ public class SpriteMove : MonoBehaviour
 
     public float totalDistanceMoved;
     private float mouseDamage= 10; //The amount of damage that particular mouse causes to the player
+
     public HealthManager health;
 
     
@@ -17,10 +18,8 @@ public class SpriteMove : MonoBehaviour
     void Start()
     {
         health= GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>(); //finds the health manager
-        moveSpeed = 10;
         targets = LevelManager.LM.TurningPoints;
         target = targets[index];
-        
     }
 
     void Update()
