@@ -12,10 +12,16 @@ public class DamageHandler : MonoBehaviour
 {
     [SerializeField] private int health;
 
+    private Coroutine damageCoroutine;
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         DamageFactor damageFactor = other.gameObject.GetComponent<DamageFactor>();
-        StartCoroutine(TakeDamage(damageFactor));
+        if (damageCoroutine != null) //check mouse still taking poisonous damage
+        {
+            StopCoroutine(damageCoroutine);
+        }
+        damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
     }
 
     //REMME+EMBER TO ADD BALLOONS FOR BEN

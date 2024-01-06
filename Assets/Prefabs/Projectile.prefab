@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   damageRate: 1
-  damageDuration: 5
+  damageDuration: 1
 --- !u!1 &8736687152942431436
 GameObject:
   m_ObjectHideFlags: 0
