@@ -9,7 +9,7 @@ public class AbilityProjectile : MonoBehaviour
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
 
-    public GameObject rangeObject;
+    // public GameObject rangeObject;
     void Update()
     {
         if (Projectile == null) return;
@@ -17,7 +17,7 @@ public class AbilityProjectile : MonoBehaviour
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
         Shoot();
-        rangeObject.transform.localScale= new Vector3(range,range,1); 
+        // rangeObject.transform.localScale= new Vector3(range,range,1); 
     }
 
 
