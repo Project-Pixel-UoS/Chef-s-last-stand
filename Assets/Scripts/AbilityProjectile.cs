@@ -12,8 +12,9 @@ public class AbilityProjectile : MonoBehaviour
     // public GameObject rangeObject;
     void Update()
     {
-        if (Projectile == null) return;
         GameObject furthestMouse = GetFurthestMouseInRange();
+        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
+
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
         Shoot();
@@ -41,8 +42,9 @@ public class AbilityProjectile : MonoBehaviour
         List<GameObject> mice = GetMiceInRange();
         if (mice.Count > 0)
         {
-           return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
+            return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
         }
+
         return null;
     }
 
@@ -70,7 +72,7 @@ public class AbilityProjectile : MonoBehaviour
     /// <remarks>Maintained by: Ben Brixton </remarks>
     private void Shoot()
     {
-        cooldownTimer -= Time.deltaTime;
+        // cooldownTimer -= Time.deltaTime;
         if (cooldownTimer > 0) return;
         cooldownTimer = cooldown;
         Instantiate(Projectile, transform.position, transform.rotation);
