@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
-    public GameObject enermy;
+    public GameObject enemy;
 
 
     void Start()
@@ -17,6 +17,6 @@ public class LevelManager : MonoBehaviour
 
     private void spawnMouse()
     {
-        Instantiate(enermy, TurningPoints[0].position, transform.rotation);
+        Instantiate(enemy, TurningPoints[0].position, transform.rotation);
     }
 }
