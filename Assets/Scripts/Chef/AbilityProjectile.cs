@@ -72,7 +72,6 @@ public class AbilityProjectile : MonoBehaviour
     /// <remarks>Maintained by: Ben Brixton </remarks>
     private void Shoot()
     {
-        // cooldownTimer -= Time.deltaTime;
         if (cooldownTimer > 0) return;
         cooldownTimer = cooldown;
         Instantiate(Projectile, transform.position, transform.rotation);

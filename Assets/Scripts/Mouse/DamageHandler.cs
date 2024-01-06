@@ -23,9 +23,7 @@ public class DamageHandler : MonoBehaviour
         }
         damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
     }
-
-    //REMME+EMBER TO ADD BALLOONS FOR BEN
-    //NOTICED BUG WITH COOLDOWN, when chef hits mouse, and then another mouse comes, it still takes 2 seconds
+    
 
     /// <summary>
     /// Deal damage, instantaneously or over time if in bound projectile has long lasting effects
