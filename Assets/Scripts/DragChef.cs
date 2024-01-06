@@ -7,12 +7,9 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
+    public Camera mainCamera;
     [HideInInspector] public Transform parentAfterDrag;
-
-    public RectTransform m_transform;
-    void Start () {
-        m_transform = GetComponent<RectTransform>();
-    }
+    private Vector3 dropPosition;
 
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
@@ -29,10 +26,19 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-        Vector3 vec = Camera.main.WorldToScreenPoint(m_transform.position);
-        vec.x += eventData.delta.x;
-        vec.y += eventData.delta.y;
-        m_transform.position = Camera.main.ScreenToWorldPoint(vec);
+
+        // Convert mouse position to viewport coordinates
+        Vector3 viewportPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+        Debug.Log(viewportPos);
+
+        // Ensure the position remains within the camera's viewport
+        viewportPos.x = Mathf.Clamp01(viewportPos.x);
+        viewportPos.y = Mathf.Clamp01(viewportPos.y);
+        viewportPos.z = Mathf.Clamp(viewportPos.z, 0, mainCamera.farClipPlane);
+
+        // Convert back from viewport to world space
+        dropPosition = mainCamera.ViewportToWorldPoint(viewportPos);
+        dropPosition.z = 0;
     }
 
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
@@ -40,6 +46,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
-        Instantiate(chef, m_transform.position, transform.rotation);
+        Instantiate(chef, dropPosition, transform.rotation);
     }
 }
