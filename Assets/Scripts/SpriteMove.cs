@@ -12,7 +12,13 @@ public class SpriteMove : MonoBehaviour
     private float mouseDamage= 10; //The amount of damage that particular mouse causes to the player
     public HealthManager health;
 
-    
+    // Temporary mouse stats
+    private string mouseName;
+    private float speed;
+    private float mouseHealth;
+    private float size;
+    private Sprite sprite;
+    private bool canGhost;
 
     void Start()
     {
@@ -41,5 +47,19 @@ public class SpriteMove : MonoBehaviour
         var movement = direction * moveSpeed * Time.deltaTime;
         transform.position += movement;
         totalDistanceMoved += movement.magnitude;
+    }
+
+    /// <summary> Puts stats into relevant variables from a given ScriptableObject </summary>
+    /// <param name = "mouseStats"> MiceScriptableObject containing stats for that mouse type </param>
+    /// <remarks>Maintained by: Ben Brixton </remarks>
+    public void loadStats(MiceScriptableObject mouseStats){
+        mouseName = mouseStats.mouseName;
+        speed = mouseStats.speed;
+        mouseHealth = mouseStats.health;
+        size = mouseStats.size;
+        sprite = mouseStats.sprite;
+        canGhost = mouseStats.canGhost;
+
+        Debug.Log(mouseName);       // TEMPORARY: used to check different mouse types are being spawned, with relevant stats
     }
 }
