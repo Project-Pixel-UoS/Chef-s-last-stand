@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+
+/// <summary>
+/// Responsible for moving projectile, and destruction
+/// </summary>
+/// <remarks>Author: Ben</remarks>
+public class ProjectileMover : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed; // speed of projectile
     [SerializeField] private float destroyTime; // time until projectile is destroyed (seconds)
-
 
     void Update()
     {
