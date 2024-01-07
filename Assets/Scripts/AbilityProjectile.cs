@@ -2,15 +2,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Chef : MonoBehaviour
+public class AbilityProjectile : MonoBehaviour
 {
     [SerializeField] private float range; // range at which chef can attack mice
+    [SerializeField] private GameObject Projectile; // projectile for chef to shoot
+    [SerializeField] private float cooldown; // time in between chef shooting (seconds)
+    private float cooldownTimer; // timer for cooldown in between shots
 
+    public GameObject rangeObject;
     void Update()
     {
+        if (Projectile == null) return;
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
+        Shoot();
+        rangeObject.transform.localScale= new Vector3(range,range,1); 
     }
 
 
@@ -34,8 +41,7 @@ public class Chef : MonoBehaviour
         List<GameObject> mice = GetMiceInRange();
         if (mice.Count > 0)
         {
-            mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved);
-            return mice[0];
+           return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
         }
         return null;
     }
@@ -58,5 +64,15 @@ public class Chef : MonoBehaviour
         }
 
         return miceInRange;
+    }
+
+    /// <summary> Shoot projectile in direction facing </summary>
+    /// <remarks>Maintained by: Ben Brixton </remarks>
+    private void Shoot()
+    {
+        cooldownTimer -= Time.deltaTime;
+        if (cooldownTimer > 0) return;
+        cooldownTimer = cooldown;
+        Instantiate(Projectile, transform.position, transform.rotation);
     }
 }

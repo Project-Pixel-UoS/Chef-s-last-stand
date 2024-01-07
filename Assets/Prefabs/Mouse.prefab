@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5123174453720965023}
   - component: {fileID: 4181688277928253522}
   - component: {fileID: 5508047057535583039}
+  - component: {fileID: 5917657897216018609}
+  - component: {fileID: 5778720935922254239}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Mouse
@@ -98,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f4670172de7348b73f045fea9c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
   totalDistanceMoved: 0
+  health: {fileID: 0}
 --- !u!114 &5508047057535583039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,5 +113,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f35fe906f60b4a449bc1dc98786ca2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &5917657897216018609
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551363394588081444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &5778720935922254239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551363394588081444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7594817f4c12412e8e9942dab69606a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
