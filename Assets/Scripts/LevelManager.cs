@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
+
     public GameObject enermy;
 
     void Start()

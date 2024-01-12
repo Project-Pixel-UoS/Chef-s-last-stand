@@ -9,11 +9,13 @@ public class HealthManager : MonoBehaviour
     public float healthAmount = 100f; // The total health amount
 
     /// <summary> Reduces the health bar's health </summary>
-    /// <param name = "damage"> The amound of health the health bar will lose</param>
+    /// <param name = "damage"> The amount of health the health bar will lose</param>
     /// <remarks> Maintained by: Emily Johnston</remarks>
     public void TakeDamage(float damage)
     {
-        healthAmount -= damage; //
+        healthAmount -= damage;
         healthBar.fillAmount = healthAmount / 100f;
     }
+
+
 }
