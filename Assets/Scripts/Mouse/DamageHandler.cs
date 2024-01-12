@@ -11,8 +11,16 @@ using UnityEngine;
 public class DamageHandler : MonoBehaviour
 {
     [SerializeField] private int health;
-
+    [SerializeField] private int currencyAmount;
     private Coroutine damageCoroutine;
+    private GameObject credits;
+    private CreditManager creditsManager;
+
+    private void Start()
+    {
+        credits = GameObject.FindGameObjectWithTag("Credits");
+        creditsManager = credits.GetComponent<CreditManager>();
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -39,7 +47,12 @@ public class DamageHandler : MonoBehaviour
             durationRemaining -= damageFactor.damageRate;
 
 
-            if (health <= 0) Destroy(gameObject); //check for death
+            if (health <= 0)
+            {
+                Destroy(gameObject); //check for death
+                //get money per kill
+                creditsManager.IncreaseMoney(currencyAmount);
+            }
 
             yield return new WaitForSeconds(damageFactor.damageRate);
         }

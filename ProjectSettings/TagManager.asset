@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mouse
   - Health
+  - Credits
   layers:
   - Default
   - TransparentFX

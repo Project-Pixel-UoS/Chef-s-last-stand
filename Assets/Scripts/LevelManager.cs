@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
 
     public GameObject enermy;
 
-
     void Start()
     {
         LM = this;
@@ -20,4 +19,6 @@ public class LevelManager : MonoBehaviour
     {
         Instantiate(enermy, TurningPoints[0].position, transform.rotation);
     }
+
+    
 }
