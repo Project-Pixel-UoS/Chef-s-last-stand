@@ -6,21 +6,21 @@ using UnityEngine;
 
 public class SpriteMove : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 2;
+    private MouseStats stats;
     private Transform[] targets;
     private Transform target;
     private int index = 0;
 
     public float totalDistanceMoved;
-    private float mouseDamage= 10; //The amount of damage that particular mouse causes to the player
+    private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
     public HealthManager health;
 
 
 
     void Start()
     {
-        health= GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>(); //finds the health manager
-
+        health = GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>(); //finds the health manager
+        stats = gameObject.GetComponent<MouseStats>();
         targets = LevelManager.LM.TurningPoints;
         target = targets[index];
     }
@@ -45,7 +45,7 @@ public class SpriteMove : MonoBehaviour
     void FixedUpdate()
     {
         var direction = Vector3.Normalize(target.position - transform.position);
-        var movement = direction * moveSpeed * Time.deltaTime;
+        var movement = direction * stats.speed * Time.deltaTime;
         transform.position += movement;
         totalDistanceMoved += movement.magnitude;
     }

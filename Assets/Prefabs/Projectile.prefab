@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 2702345613451733894}
   - component: {fileID: 1419975945382885}
   m_Layer: 0
-  m_Name: 001-WizardProjectile
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
