@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
     public Camera mainCamera;
+    public Image range; 
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
@@ -16,6 +18,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Debug.Log("Begin drag");
+       
+        range.enabled=true;// makes the range visible
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -45,7 +49,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
+
         transform.SetParent(parentAfterDrag);
         Instantiate(chef, dropPosition, transform.rotation);
+        range.enabled=false;
     }
 }
