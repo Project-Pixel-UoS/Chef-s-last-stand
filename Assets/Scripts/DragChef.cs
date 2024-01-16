@@ -5,13 +5,22 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
+
+
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
     public Camera mainCamera;
-    public Image range; 
+    public Image range; //range that appears when chef is dragged
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
+
+    void Start(){
+        float rangeNumber= chef.GetComponent<AbilityProjectile>().range;
+        range.enabled=false;//hides the range at the beginning
+        range.transform.localScale= new Vector3(rangeNumber*130,rangeNumber*130,1); //makes the image of the range, scaling is different because its an image
+
+    }
 
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>

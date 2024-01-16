@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AbilityProjectile : MonoBehaviour
 {
-    [SerializeField] private float range; // range at which chef can attack mice
+    public float range; // range at which chef can attack mice
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private GameObject rangeObject;//imports the chefs range.
@@ -15,7 +15,7 @@ public class AbilityProjectile : MonoBehaviour
     void Update()
     {
         rangeObject.transform.localScale= new Vector3(range*2,range*2,1); //makes the range the same size as chosen 
-        //rangeImage.transform.localScale= new Vector3(range*150,range*150,1); //makes the image of the range, scaling is different because its an image
+        
         if (Projectile == null) return;
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
