@@ -15,7 +15,6 @@ public class AbilityProjectile : MonoBehaviour
     void Start(){
         rangeObject.transform.localScale= new Vector3(range*2,range*2,1); //makes the range the same size as chosen
         rangeAppear.enabled=false; 
-
     }
 
     void Update()
