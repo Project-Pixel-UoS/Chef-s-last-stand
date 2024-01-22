@@ -10,12 +10,17 @@ public class AbilityProjectile : MonoBehaviour
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private GameObject rangeObject;//imports the chefs range.
     private float cooldownTimer; // timer for cooldown in between shots
-    
+    public SpriteRenderer rangeAppear;
+    private int clicked=0;//Used to see if you are clicking on or off the chef
+    void Start(){
+        rangeObject.transform.localScale= new Vector3(range*2,range*2,1); //makes the range the same size as chosen
+        rangeAppear.enabled=false; 
+
+    }
 
     void Update()
     {
-        rangeObject.transform.localScale= new Vector3(range*2,range*2,1); //makes the range the same size as chosen 
-        
+    
         if (Projectile == null) return;
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
@@ -79,5 +84,18 @@ public class AbilityProjectile : MonoBehaviour
         if (cooldownTimer > 0) return;
         cooldownTimer = cooldown;
         Instantiate(Projectile, transform.position, transform.rotation);
+    }
+
+    /// <summary> Activates when the Tower is pressed </summary>
+    /// <remarks>Maintained by: Emily Johnston </remarks>
+    void OnMouseDown(){
+        if (clicked == 0){ 
+        rangeAppear.enabled=true;
+        clicked =1;
+        }
+        else{
+            rangeAppear.enabled=false;
+            clicked=0;
+        }
     }
 }

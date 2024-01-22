@@ -280,7 +280,6 @@ MonoBehaviour:
   - {fileID: 873934009}
   - {fileID: 1939896807}
   enermy: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
-  range: {fileID: 2003922305}
 --- !u!1 &364758163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1177,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
   m_PrefabInstance: {fileID: 1715210136}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1360991286 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6481162193426815749, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
+  m_PrefabInstance: {fileID: 224407657398534534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1461651185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,11 +1929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253889757223716204, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.3399997
+      value: -6.64
       objectReference: {fileID: 0}
     - target: {fileID: 3253889757223716204, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.7699995
+      value: -14.4
       objectReference: {fileID: 0}
     - target: {fileID: 3253889757223716204, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1965,12 +1969,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6481162193426815749, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481162193426815749, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7844631125563630560, guid: 49e827e430ebdaf478655a699f348b27, type: 3}
-      propertyPath: rangeImage
+      propertyPath: rangeAppear
       value: 
-      objectReference: {fileID: 2003922305}
+      objectReference: {fileID: 1360991286}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
