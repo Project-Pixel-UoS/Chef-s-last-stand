@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -9,10 +11,20 @@ public class LevelManager : MonoBehaviour
     public GameObject enemy;
     public MiceScriptableObject[] mouseTypesList;
 
+    private List<Wave> waves = new List<>();
+
     void Start()
     {
         LM = this;
-        InvokeRepeating("spawnMouse", 0, 5);
+        LoadLevel();
+        // InvokeRepeating("spawnMouse", 0, 5);
+    }
+
+    /// <summary>fills the waves list with data from JSON file</summary>
+    /// <remarks>Maintained by: Antosh</remarks>
+    private void LoadLevel()
+    {
+
     }
 
     private void spawnMouse()
