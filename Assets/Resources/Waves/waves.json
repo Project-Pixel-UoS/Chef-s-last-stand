@@ -2,12 +2,20 @@
   "waves": [
     {
       "waveId": 1,
-      "mice": [
+      "randomMouseUnits": [
+        {
+          "difficulty": "high",
+          "amount": 10,
+          "timeOfWave": 10,
+          "frequency": 0.5
+        }
+      ],
+      "mouseUnits": [
         {
           "type": "ghost",
           "amount": 3,
           "timeOfWave": 4,
-          "frequency": 1
+          "frequency": 1 
         },
         {
           "type": "pinkie",
@@ -21,20 +29,21 @@
           "timeOfWave": 8,
           "frequency": 0.5
         }
-      ],
-      "random mice": [
-        {
-          "difficulty": "high",
-          "amount": 10,
-          "timeOfWave": 10,
-          "frequency": 0.5
-        }
       ]
+
     },
 
     {
       "waveId": 2,
-      "mice": [
+      "randomMouseUnits": [
+        {
+          "difficulty": "high",
+          "amount": 10,
+          "timeOfWave": 10,
+          "frequency": 0.5
+        }
+      ],
+      "mouseUnits": [
         {
           "type": "ghost",
           "amount": 3,
@@ -51,14 +60,6 @@
           "type": "woody",
           "amount": 3,
           "timeOfWave": 8,
-          "frequency": 0.5
-        }
-      ],
-      "random mice": [
-        {
-          "difficulty": "high",
-          "amount": 10,
-          "timeOfWave": 10,
           "frequency": 0.5
         }
       ]
