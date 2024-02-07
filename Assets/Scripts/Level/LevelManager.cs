@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     private Waves waves;
 
     private int currentWave = 0;
-    private int amountOfTypesOfMice=3;//this needs to be changed when more mice are added!! Remeber to minus one
+    private int amountOfTypesOfMice=3;//this needs to be changed when more mice are added! Remeber to minus one.
 
 
 
@@ -23,8 +23,8 @@ public class LevelManager : MonoBehaviour
         LM = this;
         LoadLevel();
         //InvokeRepeating("spawnMouse", 0, 5);
-        int[] amountOfEachMouse={0,0,0,0};// when more mice are added need to add more zeros to this as well
-        wave(amountOfEachMouse,currentWave);
+        int[] amountOfEachMouse={0,0,0};// when more mice are added need to add more zeros to this as well
+        wave(amountOfEachMouse);
     }
 
     /// <summary>fills the waves list with data from JSON file</summary>
@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load("Waves/waves") as TextAsset;
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
-        Debug.Log(waves.waves[1].randomMouseUnits[1].amount);
+        Debug.Log(waves.waves[1].mouseUnits[0].amount);
     }
 
     private void spawnMouse()
@@ -51,24 +51,26 @@ public class LevelManager : MonoBehaviour
     private void chooseRandom(int amount,int[] amountOfEachMouse)
     {
         int typeOfMouse;
-        for(int i=0;i<amount;i++ ){
+        for(int i=0;i<amountOfTypesOfMice;i++){
+            amountOfEachMouse[i]= waves.waves[currentWave].mouseUnits[i].amount;  
+        }
+        for(int i=0;i<amount;i++ ){//this will have to be changed to depend on difficulty of random mice.
             typeOfMouse=Random.Range(0,amountOfTypesOfMice);
             amountOfEachMouse[typeOfMouse]++;
         }
-
     }
 
      /// <summary>The process of one wave</summary>
     /// <remarks>Maintained by: Emily</remarks>
 
-    private void wave(int[] amountOfEachMouse,int currentWave)
+    private void wave(int[] amountOfEachMouse)
     {
         chooseRandom(waves.waves[currentWave].randomMouseUnits[0].amount,amountOfEachMouse);
+        //Debug.Log()
 
 
         Debug.Log(amountOfEachMouse[0]);
         Debug.Log(amountOfEachMouse[1]);
         Debug.Log(amountOfEachMouse[2]);
-        Debug.Log(amountOfEachMouse[3]);
     }
 }
