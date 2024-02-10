@@ -12,6 +12,7 @@ using UnityEngine;
 public class Wave
 {
     public int waveId;
+    public int totalMice;
     public MouseUnitUnit[] mouseUnits;
     public RandomMouseUnitUnit [] randomMouseUnits;
 

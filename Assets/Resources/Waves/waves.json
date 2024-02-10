@@ -2,9 +2,10 @@
   "waves": [
     {
       "waveId": 1,
+      "totalMice":21,
       "randomMouseUnits": [
         {
-          "difficulty": "high",
+          "difficulty": "low",
           "amount": 10,
           "timeOfWave": 10,
           "frequency": 0.5
@@ -35,6 +36,7 @@
 
     {
       "waveId": 2,
+      "totalMice":21,
       "randomMouseUnits": [
         {
           "difficulty": "high",
