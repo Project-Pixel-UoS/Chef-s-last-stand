@@ -81,6 +81,7 @@ public class LevelManager : MonoBehaviour
         bool[] started={false,false,false};//needs to be as long as the type of mice there are! MMA:4
 
         chooseRandom(waves.waves[currentWave].randomMouseUnits[0].amount);
+        //Debug.Log("Amount of each mouse: "+amountOfEachMouse[0]+amountOfEachMouse[1]+amountOfEachMouse[2]);
 
         while(miceSpawned<miceInWave){
             for(int i=0;i<amountOfTypesOfMice;i++){
