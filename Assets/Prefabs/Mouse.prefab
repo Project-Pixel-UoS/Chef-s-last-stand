@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7551363394588081444
+--- !u!1 &4431191003120649881
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3355831885711504110}
-  - component: {fileID: 5123174453720965023}
-  - component: {fileID: 4181688277928253522}
-  - component: {fileID: 5508047057535583039}
-  - component: {fileID: 5917657897216018609}
-  - component: {fileID: 5778720935922254239}
-  - component: {fileID: 6240845577142486429}
+  - component: {fileID: 7854702822569694468}
+  - component: {fileID: 2933561763335887968}
   m_Layer: 0
-  m_Name: Mouse
-  m_TagString: Mouse
+  m_Name: Visual
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3355831885711504110
+--- !u!4 &7854702822569694468
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7551363394588081444}
+  m_GameObject: {fileID: 4431191003120649881}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.6858835, y: -3.111882, z: -0.020749088}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3355831885711504110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5123174453720965023
+--- !u!212 &2933561763335887968
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7551363394588081444}
+  m_GameObject: {fileID: 4431191003120649881}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,17 +73,54 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29892a1b08ff4de4eb966d92dc5e3ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.24, y: 5.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7551363394588081444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3355831885711504110}
+  - component: {fileID: 4181688277928253522}
+  - component: {fileID: 5508047057535583039}
+  - component: {fileID: 5917657897216018609}
+  - component: {fileID: 5778720935922254239}
+  - component: {fileID: 6240845577142486429}
+  m_Layer: 0
+  m_Name: Mouse
+  m_TagString: Mouse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3355831885711504110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551363394588081444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.6858835, y: -3.111882, z: -0.020749088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7854702822569694468}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4181688277928253522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f4670172de7348b73f045fea9c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
   totalDistanceMoved: 0
   health: {fileID: 0}
 --- !u!114 &5508047057535583039
@@ -116,6 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35fe906f60b4a449bc1dc98786ca2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseName: 
+  speed: 0
+  health: 0
+  size: 0
+  sprite: {fileID: 0}
+  canGhost: 0
 --- !u!58 &5917657897216018609
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -175,5 +212,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed50593f168a2a41af264fcb83d94e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
   currencyAmount: 10

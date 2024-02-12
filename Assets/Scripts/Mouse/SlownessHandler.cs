@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlownessHandler : MonoBehaviour
 {
+    private MouseStats stats;
     private bool isSlowed;
     private SpriteMove spriteMove;
     private Coroutine speedRestoreCoroutine;
@@ -11,6 +12,7 @@ public class SlownessHandler : MonoBehaviour
 
     private void Start()
     {
+        stats = gameObject.GetComponent<MouseStats>();
         spriteMove = GetComponent<SpriteMove>();
     }
 
@@ -28,7 +30,7 @@ public class SlownessHandler : MonoBehaviour
         else
         {
             isSlowed = true;
-            spriteMove.moveSpeed /= slownessProjectile.slownessFactor;
+            stats.speed /= slownessProjectile.slownessFactor;
             speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile)); //runs with delay
         }
     }
@@ -39,7 +41,7 @@ public class SlownessHandler : MonoBehaviour
     private IEnumerator RestoreSpeed(SlownessProjectile slownessProjectile)
     {
         yield return new WaitForSeconds(slownessProjectile.duration);
-        spriteMove.moveSpeed *= slownessProjectile.slownessFactor;
+        stats.speed *= slownessProjectile.slownessFactor;
         isSlowed = false;
     }
 
