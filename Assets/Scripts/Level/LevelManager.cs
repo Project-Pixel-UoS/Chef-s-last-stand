@@ -14,9 +14,9 @@ public class LevelManager : MonoBehaviour
     private Waves waves;
 
     private int currentWave = 0;
-    private int amountOfTypesOfMice=3;//this needs to be changed when more mice are added!
-    private int[] amountOfEachMouse={0,0,0};// when more mice are added need to add more zeros to this as well
-    private float[] timeDelayOfEachMouse={0,0,0};//same with this one
+    private int amountOfTypesOfMice=3;//this needs to be changed when more mice are added! MMA: 1- search MMA to find all of them
+    private int[] amountOfEachMouse={0,0,0};// when more mice are added need to add more zeros to this as well MMA:2
+    private float[] timeDelayOfEachMouse={0,0,0};//same with this one MMA:3
     private int miceSpawned;
 
   
@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
     {
         LM = this;
         LoadLevel();
-        //InvokeRepeating("spawnMouse", 0, 5);
         StartCoroutine(wave());
     }
    
@@ -41,6 +40,9 @@ public class LevelManager : MonoBehaviour
         Debug.Log(waves.waves[currentWave].mouseUnits[0].timeOfWave);
     }
 
+    /// <summary>Spawns a mouse of indicated mouse type</summary>
+    /// <param>'mouseType' a number representing a mouse in the list in the same order as mouseTypesList</param>
+    /// <remarks>Maintained by: Emily</remarks>
     private void spawnMouse(int mouseType)
     {
         
@@ -50,13 +52,13 @@ public class LevelManager : MonoBehaviour
     }
 
     
-    /// <summary>Puts the extra mice in random catogaries and sorts out amountOfEachMouse to be correct</summary>
+    /// <summary>Puts the extra random mice into catogaries and sorts out amountOfEachMouse to be correct</summary>
     /// <remarks>Maintained by: Emily</remarks>
 
     private void chooseRandom(int amount)
     {
         int typeOfMouse;
-        for(int i=0;i<amountOfTypesOfMice;i++){
+        for(int i=0;i<amountOfTypesOfMice;i++){//loads the correct values into relevant arrays
             amountOfEachMouse[i]= waves.waves[currentWave].mouseUnits[i].amount;
             timeDelayOfEachMouse[i]=waves.waves[currentWave].mouseUnits[i].timeOfWave; 
 
@@ -76,10 +78,10 @@ public class LevelManager : MonoBehaviour
         miceSpawned=0;
         float startTime=Time.time;//Time the wave begins
         int miceInWave= waves.waves[currentWave].totalMice;//number of mice that will be spawned in the wave
-        bool[] started={false,false,false};//needs to be as long as the type of mice there are! 
+        bool[] started={false,false,false};//needs to be as long as the type of mice there are! MMA:4
 
         chooseRandom(waves.waves[currentWave].randomMouseUnits[0].amount);
-        //Debug.Log(miceSpawned);  
+
         while(miceSpawned<miceInWave){
             for(int i=0;i<amountOfTypesOfMice;i++){
                 float timeNow=Time.time;
