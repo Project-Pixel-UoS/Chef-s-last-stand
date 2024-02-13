@@ -7,24 +7,24 @@ public class LevelMenu : MonoBehaviour
 {
     public void MainMenu()
     {
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(0);
     }
     public void LevelSelect()
     {
-        SceneManager.LoadSceneAsync(0);
-    }
-    public void PlayLevel1()
-    {
         SceneManager.LoadSceneAsync(1);
     }
-
-    public void PlayLevel2()
+    public void PlayLevel1()
     {
         SceneManager.LoadSceneAsync(2);
     }
 
-    public void PlayLevel3()
+    public void PlayLevel2()
     {
         SceneManager.LoadSceneAsync(3);
+    }
+
+    public void PlayLevel3()
+    {
+        SceneManager.LoadSceneAsync(4);
     }
 }
