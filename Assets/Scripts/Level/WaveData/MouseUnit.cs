@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 /// <remarks>Antosh</remarks>
 [Serializable]
-public class MouseUnitUnit : SerializableMouseUnit
+public class MouseUnit : SerializableMouseUnit
 {
     public string type;
 }

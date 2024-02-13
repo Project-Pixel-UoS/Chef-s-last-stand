@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class LevelManager : MonoBehaviour
@@ -12,25 +13,14 @@ public class LevelManager : MonoBehaviour
     public GameObject enemy;
     public MiceScriptableObject[] mouseTypesList;
     private Waves waves;
+    
 
     private int currentWave = 0;
-
-    private int
-        amountOfTypesOfMice =
-            3; //this needs to be changed when more mice are added! MMA: 1- search MMA to find all of them
-
-    private int[]
-        amountOfEachMouse = { 0, 0, 0 }; // when more mice are added need to add more zeros to this as well MMA:2
-
-    private float[] timeDelayOfEachMouse = { 0, 0, 0 }; //same with this one MMA:3
-    private int miceSpawned;
-
-
     void Start()
     {
         LM = this;
         LoadLevel();
-        StartCoroutine(wave());
+        StartWave();
     }
 
 
@@ -43,13 +33,25 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>Spawns a mouse of indicated mouse type</summary>
-    /// <param>'mouseType' a number representing a mouse in the list in the same order as mouseTypesList</param>
+    /// <param name="mouseType"> type of mouse that will be spawned in</param>
     /// <remarks>Maintained by: Emily</remarks>
-    private void spawnMouse(int mouseType)
+    private void SpawnMouse(MiceScriptableObject mouseType)
     {
         GameObject newMouse =
             Instantiate(enemy, TurningPoints[0].position, transform.rotation); // Instantiate mouse prefab
-        newMouse.GetComponent<MouseStats>().loadStats(mouseTypesList[mouseType]);
+        newMouse.GetComponent<MouseStats>().loadStats(mouseType);
+    }
+
+    private MiceScriptableObject GetMouseType(string mouseName)
+    {
+        foreach (var mouseType in mouseTypesList)
+        {
+            if (mouseType.mouseName == mouseName)
+            {
+                return mouseType;
+            }
+        }
+        throw new ArgumentException("The mouse that your provided doesnt exist!");
     }
 
 
@@ -57,59 +59,81 @@ public class LevelManager : MonoBehaviour
     /// <remarks>Maintained by: Emily</remarks>
     private void chooseRandom(int amount)
     {
-        for (int i = 0; i < amountOfTypesOfMice; i++)
-        {
-            //loads the correct values into relevant arrays
-            amountOfEachMouse[i] = waves.waves[currentWave].mouseUnits[i].amount;
-            timeDelayOfEachMouse[i] = waves.waves[currentWave].mouseUnits[i].timeOfWave;
-        }
+        // for (int i = 0; i < amountOfTypesOfMice; i++)
+        // {
+        //     //loads the correct values into relevant arrays
+        //     amountOfEachMouse[i] = waves.waves[currentWave].mouseUnits[i].amount;
+        //     timeDelayOfEachMouse[i] = waves.waves[currentWave].mouseUnits[i].timeOfWave;
+        // }
 
-        for (int i = 0; i < amount; i++)
-        {
-            //this will have to be changed to depend on difficulty of random mice.
-            int typeOfMouse = Random.Range(0, amountOfTypesOfMice);
-            amountOfEachMouse[typeOfMouse]++;
-        }
+        // for (int i = 0; i < amount; i++)
+        // {
+        //     //this will have to be changed to depend on difficulty of random mice.
+        //     int typeOfMouse = Random.Range(0, amountOfTypesOfMice);
+        //     amountOfEachMouse[typeOfMouse]++;
+        // }
     }
 
     /// <summary>The process of one wave</summary>
     /// <remarks>Maintained by: Emily</remarks>
-    IEnumerator wave()
+    void StartWave()
     {
-        miceSpawned = 0;
-        float startTime = Time.time; //Time the wave begins
-        int miceInWave = waves.waves[currentWave].totalMice; //number of mice that will be spawned in the wave
-        bool[] started = { false, false, false }; //needs to be as long as the type of mice there are! MMA:4
-
-        chooseRandom(waves.waves[currentWave].randomMouseUnits[0].amount);
-
-        while (miceSpawned < miceInWave)
+        foreach (var mouseUnit in waves.waves[currentWave].mouseUnits)
         {
-            for (int mouseType = 0; mouseType < amountOfTypesOfMice; mouseType++) // for each mouse type
-            {
-                float timeNow = Time.time;
-                if ((timeNow - startTime) > timeDelayOfEachMouse[mouseType] && started[mouseType] == false)
-                {
-                    StartCoroutine(spawnMouseUnit(amountOfEachMouse[mouseType], mouseType));
-                    started[mouseType] = true;
-                }
-
-                yield return null;
-            }
+            StartCoroutine(SpawnMouseUnitWithDelay(mouseUnit));
         }
-
-        Debug.Log("All Mice have been Spawned Wave: " + currentWave);
+        
+        foreach (var randomMouseUnit in waves.waves[currentWave].randomMouseUnits)
+        {
+            StartCoroutine(SpawnRandomMouseUnitWithDelay(randomMouseUnit));
+        }
     }
+    
 
     /// <summary>Spawning one type of mouse, uses the Json to know the spaces between each mouse</summary>
     /// <remarks>Maintained by: Emily</remarks>
-    IEnumerator spawnMouseUnit(int amountOfOneMouse, int whichMouse)
+    IEnumerator SpawnMouseUnitWithDelay(MouseUnit mouseUnit)
     {
-        for (int i = 0; i < amountOfOneMouse; i++)
+        yield return new WaitForSeconds(mouseUnit.timeOfWave);
+        for (int i = 0; i < mouseUnit.amount; i++)
         {
-            spawnMouse(whichMouse);
-            miceSpawned++;
-            yield return new WaitForSeconds(waves.waves[currentWave].mouseUnits[whichMouse].frequency);
+            SpawnMouse(GetMouseType(mouseUnit.type));
+            yield return new WaitForSeconds(mouseUnit.frequency);
         }
+    }
+    
+    /// <summary>Spawns mouse mouse unit using parameters specified in JSON</summary>
+    /// <remarks>Maintained by: Antosh</remarks>
+    IEnumerator SpawnRandomMouseUnitWithDelay(RandomMouseUnit mouseUnit)
+    {
+        yield return new WaitForSeconds(mouseUnit.timeOfWave);
+        for (int i = 0; i < mouseUnit.amount; i++)
+        {
+            SpawnMouse(GetRandomMouse(mouseUnit.difficulty));
+            yield return new WaitForSeconds(mouseUnit.frequency);
+        }
+    }
+
+    private MiceScriptableObject GetRandomMouse(string mouseUnitDifficulty)
+    {
+        List<MiceScriptableObject> sameDifficultyMice = GetAllMice(mouseUnitDifficulty);
+        return sameDifficultyMice[Random.Range(0, sameDifficultyMice.Count)];
+    }
+
+    
+    private List<MiceScriptableObject> GetAllMice(string mouseUnitDifficulty)
+    {
+        List<MiceScriptableObject> sameDifficultyMice = new List<MiceScriptableObject>();
+        foreach (var mouseType in mouseTypesList)
+        {
+            if (String.Equals(mouseType.difficulty.ToString(), mouseUnitDifficulty,
+                    StringComparison.CurrentCultureIgnoreCase)) 
+            {
+                sameDifficultyMice.Add(mouseType);
+            }
+        }
+        
+        return sameDifficultyMice;
+
     }
 }

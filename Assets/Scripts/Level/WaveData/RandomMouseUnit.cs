@@ -7,7 +7,7 @@ using System;
 /// </summary>
 /// <remarks>Antosh</remarks>
 [Serializable]
-public class RandomMouseUnitUnit : SerializableMouseUnit
+public class RandomMouseUnit : SerializableMouseUnit
 {
     public string difficulty;
 }
