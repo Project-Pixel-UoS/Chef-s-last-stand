@@ -10,7 +10,7 @@ using UnityEngine;
 /// <remarks>Author: Antosh</remarks>
 public class DamageHandler : MonoBehaviour
 {
-    [SerializeField] private int health;
+    private MouseStats stats;
     [SerializeField] private int currencyAmount;
     private Coroutine damageCoroutine;
     private GameObject credits;
@@ -18,6 +18,7 @@ public class DamageHandler : MonoBehaviour
 
     private void Start()
     {
+        stats = gameObject.GetComponent<MouseStats>();
         credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
     }
@@ -43,11 +44,11 @@ public class DamageHandler : MonoBehaviour
         float durationRemaining = damageFactor.damageDuration;
         while (durationRemaining > 0) //take damage until long lasting effect runs out
         {
-            health -= damageFactor.damage;
+            stats.health -= damageFactor.damage;
             durationRemaining -= damageFactor.damageRate;
 
 
-            if (health <= 0)
+            if (stats.health <= 0)
             {
                 Destroy(gameObject); //check for death
                 //get money per kill

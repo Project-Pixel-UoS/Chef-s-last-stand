@@ -425,7 +425,12 @@ MonoBehaviour:
   - {fileID: 1676120464}
   - {fileID: 873934009}
   - {fileID: 1939896807}
-  enermy: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
+  enemy: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
+  mouseTypesList:
+  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
+  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
+  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
+  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
 --- !u!1 &364758163
 GameObject:
   m_ObjectHideFlags: 0

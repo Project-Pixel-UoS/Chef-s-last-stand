@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51864824627feb49a2332e49a61f527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 30
+  projectileSpeed: 8
   destroyTime: 1
 --- !u!50 &5110289829332149551
 Rigidbody2D:
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 2702345613451733894}
   - component: {fileID: 1419975945382885}
   m_Layer: 0
-  m_Name: 001-WizardProjectile
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
