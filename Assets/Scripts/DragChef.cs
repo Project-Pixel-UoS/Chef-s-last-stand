@@ -10,6 +10,33 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Camera mainCamera;
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
+    [SerializeField] private int chefCost;
+    private GameObject credits;
+    private CreditManager creditsManager;
+    private Image image;
+    private Image slot;
+
+    private void Start()
+    {
+        credits = GameObject.FindGameObjectWithTag("Credits");
+        creditsManager = credits.GetComponent<CreditManager>();
+        image = GetComponent<Image>();
+        slot = transform.parent.GetComponent<Image>();
+    }
+
+    private void Update()
+    {
+        if (chefCost > creditsManager.GetCredits())
+        {
+            image.color = Color.red;
+            slot.color = Color.red;
+        }
+        else
+        {
+            image.color = Color.white;
+            slot.color = new Color(0.86f, 0.61f, 0.21f);
+        }
+    }
 
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
@@ -24,7 +51,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <summary> Make the item follow the mouse.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnDrag(PointerEventData eventData)
-    {
+    { 
         transform.position = Input.mousePosition;
 
         // Convert mouse position to viewport coordinates
@@ -46,6 +73,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
-        Instantiate(chef, dropPosition, transform.rotation);
+        if(creditsManager.SpendCredits(chefCost))
+        {
+            Instantiate(chef, dropPosition, transform.rotation);
+        }
+        
     }
 }
