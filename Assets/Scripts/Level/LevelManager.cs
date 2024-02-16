@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Level.WaveData;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,17 +15,16 @@ public class LevelManager : MonoBehaviour
     public Transform[] TurningPoints;
     public GameObject enemy;
     public MiceScriptableObject[] mouseTypesList;
-    private Waves waves;
     
+    private Waves waves;
     private int currentWave = 0;
     private int miceToBeReleased = 0;
 
-    [SerializeField] private Text waveText;
+    [SerializeField] private WaveTextManager waveTextManager;
 
     void Start()
     {
         LM = this;
-        waveText.enabled = false;
         LoadLevel();
         StartWave();
     }
@@ -103,44 +103,20 @@ public class LevelManager : MonoBehaviour
     
     IEnumerator TransitionIntoNextWave()
     {
-        yield return DisplayFinishedWaveText();
+        yield return waveTextManager.DisplayFinishedWaveText();
+
         currentWave++;
         if (currentWave == waves.waves.Length) //check that the final wave has just happened
         {
-            yield return DisplayLevelComplete();
+            yield return waveTextManager.DisplayLevelComplete();
         }
         else
         {
-            yield return DisplayStartingWaveText();
+            yield return waveTextManager.DisplayStartingWaveText(currentWave);
+            StartWave();
         }
     }
     
-    IEnumerator  DisplayLevelComplete()
-    {
-        yield return new WaitForSeconds(1);
-        waveText.enabled = true;
-        waveText.text = "Level Complete!";
-    }
-
-    IEnumerator  DisplayFinishedWaveText()
-    {
-        yield return new WaitForSeconds(1);
-        waveText.text = "Wave Finished";
-        waveText.enabled = true;
-        yield return new WaitForSeconds(3);
-        waveText.enabled = false;
-        yield return new WaitForSeconds(1);
-    }
-
-    IEnumerator DisplayStartingWaveText()
-    {
-        waveText.text = "Wave " + (currentWave + 1) + " Starting";
-        waveText.enabled = true;
-        yield return new WaitForSeconds(3);
-        waveText.enabled = false;
-        yield return new WaitForSeconds(1);
-        StartWave();
-    }
 
 
     /// <summary>Spawning one type of mouse, uses the Json to know the spaces between each mouse</summary>
