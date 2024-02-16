@@ -370,6 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266574282}
   - component: {fileID: 266574283}
+  - component: {fileID: 266574284}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -415,6 +416,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
   - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
   - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
+  waveTextManager: {fileID: 0}
+--- !u!114 &266574284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266574280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b637e560b164407d82262efd4447d018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   waveText: {fileID: 707689015}
 --- !u!1 &364758163
 GameObject:

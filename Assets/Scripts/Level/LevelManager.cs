@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Level.WaveData;
+using Level.WaveData.WaveData;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -18,15 +19,16 @@ public class LevelManager : MonoBehaviour
     
     private Waves waves;
     private int currentWave = 0;
-    private int miceToBeReleased = 0;
+    private int miceToBeReleased = -1; //set to -1 so that game doesnt automatically transition into next wave
 
-    [SerializeField] private WaveTextManager waveTextManager;
+    private WaveTextManager waveTextManager;
 
     void Start()
     {
         LM = this;
+        waveTextManager = GetComponent<WaveTextManager>();
         LoadLevel();
-        StartWave();
+        StartCoroutine(StartWaveWithText());
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour
         //check that all balloons to be spawned have been spawned, and there are no mice on the map
         if (miceToBeReleased == 0 && !GameObject.FindWithTag("Mouse"))
         {
+            Debug.Log("mice to be released  is 0");
             miceToBeReleased--; //decrement mice to be released so that OnWaveFinished() is not triggered again
             StartCoroutine(TransitionIntoNextWave());
         }
@@ -47,7 +50,6 @@ public class LevelManager : MonoBehaviour
     {
         TextAsset jsonFile = Resources.Load("Waves/waves") as TextAsset;
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
-        // GetBalloonsToBeReleased();
     }
 
 
@@ -66,6 +68,7 @@ public class LevelManager : MonoBehaviour
     /// returns mice scriptable object that corresponds to the mouseName provided
     /// </summary>
     /// <exception cref="ArgumentException"> thrown if mouseName does not correspond to any type of mouse</exception>
+    /// <remarks>Maintained by Antosh</remarks>
     private MiceScriptableObject GetMouseType(string mouseName)
     {
         foreach (var mouseType in mouseTypesList)
@@ -84,6 +87,7 @@ public class LevelManager : MonoBehaviour
     /// <remarks>Maintained by: Emily</remarks>
     private void StartWave()
     {
+
         miceToBeReleased = 0;
 
         //prepare deployment of standard mouse units
@@ -101,7 +105,11 @@ public class LevelManager : MonoBehaviour
         }
     }
     
-    IEnumerator TransitionIntoNextWave()
+    /// <summary>
+    /// Displays necessary text and then starts next wave
+    /// </summary>
+    /// <remarks>maintained by Antosh</remarks>
+    private IEnumerator TransitionIntoNextWave()
     {
         yield return waveTextManager.DisplayFinishedWaveText();
 
@@ -112,16 +120,21 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            yield return waveTextManager.DisplayStartingWaveText(currentWave);
-            StartWave();
+            yield return StartWaveWithText();
         }
+    }
+
+    private IEnumerator StartWaveWithText()
+    {
+        yield return waveTextManager.DisplayStartingWaveText(currentWave);
+        StartWave();
     }
     
 
 
     /// <summary>Spawning one type of mouse, uses the Json to know the spaces between each mouse</summary>
     /// <remarks>Maintained by: Emily</remarks>
-    IEnumerator SpawnMouseUnitWithDelay(MouseUnit mouseUnit)
+    private IEnumerator SpawnMouseUnitWithDelay(MouseUnit mouseUnit)
     {
         yield return new WaitForSeconds(mouseUnit.timeOfWave);
         for (int i = 0; i < mouseUnit.amount; i++)
@@ -133,30 +146,37 @@ public class LevelManager : MonoBehaviour
 
     /// <summary>Spawns mouse mouse unit using parameters specified in JSON</summary>
     /// <remarks>Maintained by: Antosh</remarks>
-    IEnumerator SpawnRandomMouseUnitWithDelay(RandomMouseUnit mouseUnit)
+    private IEnumerator SpawnRandomMouseUnitWithDelay(RandomMouseUnit mouseUnit)
     {
         yield return new WaitForSeconds(mouseUnit.timeOfWave);
         for (int i = 0; i < mouseUnit.amount; i++)
         {
-            SpawnMouse(GetRandomMouse(mouseUnit.difficulty));
+            SpawnMouse(GetRandomMouseType(mouseUnit.difficulty));
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
     }
 
-    private MiceScriptableObject GetRandomMouse(string mouseUnitDifficulty)
+    
+    private MiceScriptableObject GetRandomMouseType(MouseDifficulty mouseUnitDifficulty)
     {
-        List<MiceScriptableObject> sameDifficultyMice = GetAllMice(mouseUnitDifficulty);
+        List<MiceScriptableObject> sameDifficultyMice = GetAllMouseTypes(mouseUnitDifficulty);
         return sameDifficultyMice[Random.Range(0, sameDifficultyMice.Count)];
     }
 
 
-    private List<MiceScriptableObject> GetAllMice(string mouseUnitDifficulty)
+    /// <summary>
+    /// Returns a list of all the mouse types corresponding to the mouse unity difficulty
+    /// </summary>
+    /// <param name="mouseUnitDifficulty"></param>
+    /// <returns></returns>
+    private List<MiceScriptableObject> GetAllMouseTypes(MouseDifficulty mouseUnitDifficulty)
     {
         List<MiceScriptableObject> sameDifficultyMice = new List<MiceScriptableObject>();
         foreach (var mouseType in mouseTypesList)
         {
-            if (String.Equals(mouseType.difficulty.ToString(), mouseUnitDifficulty,
-                    StringComparison.CurrentCultureIgnoreCase))
+            // if (String.Equals(mouseType.difficulty.ToString(), mouseUnitDifficulty,
+            //         StringComparison.CurrentCultureIgnoreCase))
+            if (mouseType.difficulty == mouseUnitDifficulty)
             {
                 sameDifficultyMice.Add(mouseType);
             }

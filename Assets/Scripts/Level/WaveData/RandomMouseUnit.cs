@@ -1,5 +1,5 @@
 using System;
-
+using Level.WaveData.WaveData;
 
 
 /// <summary>
@@ -9,5 +9,11 @@ using System;
 [Serializable]
 public class RandomMouseUnit : SerializableMouseUnit
 {
-    public string difficulty;
+    public RandomMouseUnit(string difficulty)
+    {
+        Enum.TryParse(difficulty, out this.difficulty);
+    }
+
+    public MouseDifficulty difficulty;
+
 }

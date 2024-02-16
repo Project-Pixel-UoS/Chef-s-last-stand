@@ -11,4 +11,6 @@ public abstract class SerializableMouseUnit
     public int amount; // num of mice in the pack
     public float frequency; // time between release of each mouse
     public float timeOfWave; // num of secs since beginning of wave, for this mouse unit to be released
+    
+    
 }

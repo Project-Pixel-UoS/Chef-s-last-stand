@@ -1,3 +1,4 @@
+using Level.WaveData.WaveData;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Mouse_", menuName = "ScriptableObjects/MiceScriptableObject", order = 1)]
@@ -12,11 +13,11 @@ public class MiceScriptableObject : ScriptableObject
 
     public MouseDifficulty difficulty;
 
-    public enum MouseDifficulty
-    {
-        Low,
-        Medium,
-        High
-    }
+    // public enum MouseDifficulty
+    // {
+    //     Low,
+    //     Medium,
+    //     High
+    // }
 
 }
