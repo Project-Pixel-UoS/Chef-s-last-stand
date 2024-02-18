@@ -19,9 +19,9 @@
         },
         {
           "type": "Pinkie",
-          "amount": 1,
+          "amount": 20,
           "timeOfWave": 0,
-          "frequency": 2
+          "frequency": 0.2
         },
         {
           "type": "Woody",

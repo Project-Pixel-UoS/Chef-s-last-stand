@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
     private WaveTextManager waveTextManager;
 
+    [SerializeField] private HealthManager healthManager;
+
     void Start()
     {
         LM = this;
@@ -36,9 +38,12 @@ public class LevelManager : MonoBehaviour
         //check that all balloons to be spawned have been spawned, and there are no mice on the map
         if (miceToBeReleased == 0 && !GameObject.FindWithTag("Mouse"))
         {
-            Debug.Log("mice to be released  is 0");
             miceToBeReleased--; //decrement mice to be released so that OnWaveFinished() is not triggered again
-            StartCoroutine(TransitionIntoNextWave());
+            if (!healthManager.IsGameOver()) // when game over, the wave continues instead of freezing 
+            {
+                StartCoroutine(TransitionIntoNextWave());
+            }
+      
         }
     }
 
