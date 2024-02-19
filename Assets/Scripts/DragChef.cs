@@ -74,12 +74,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
-        // if ()
-        // {
-        //     transform.SetParent(parentAfterDrag);
-        //     Instantiate(chef, dropPosition, transform.rotation);
-        // }
-
         transform.SetParent(parentAfterDrag);
         if(!healthManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
         {
