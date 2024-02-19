@@ -18,3 +18,4 @@ MonoBehaviour:
   size: 1
   sprite: {fileID: 21300000, guid: 6da9bfec22cc93d4d8d03c3290fe35eb, type: 3}
   canGhost: 0
+  difficulty: 1
