@@ -75,6 +75,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
+        // dont allow player to place a chef on game over screen, or if has too little credits
         if(!healthManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
         {
             Instantiate(chef, dropPosition, transform.rotation);
