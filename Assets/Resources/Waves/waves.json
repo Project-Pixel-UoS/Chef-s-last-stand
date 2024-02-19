@@ -1,0 +1,68 @@
+{
+  "waves": [
+    {
+      "waveId": 1,
+      "randomMouseUnits": [
+        {
+          "difficulty": "medium",
+          "amount": 0,
+          "timeOfWave": 10,
+          "frequency": 0.5
+        }
+      ],
+      "mouseUnits": [
+        {
+          "type": "Ghost",
+          "amount": 1,
+          "timeOfWave": 0,
+          "frequency": 1 
+        },
+        {
+          "type": "Pinkie",
+          "amount": 20,
+          "timeOfWave": 0,
+          "frequency": 0.2
+        },
+        {
+          "type": "Woody",
+          "amount": 1,
+          "timeOfWave": 0,
+          "frequency": 0.5
+        }
+      ]
+
+    },
+
+    {
+      "waveId": 2,
+      "randomMouseUnits": [
+        {
+          "difficulty": "high",
+          "amount": 0,
+          "timeOfWave": 10,
+          "frequency": 0.5
+        }
+      ],
+      "mouseUnits": [
+        {
+          "type": "Ghost",
+          "amount": 3,
+          "timeOfWave": 4,
+          "frequency": 1
+        },
+        {
+          "type": "Pinkie",
+          "amount": 0,
+          "timeOfWave": 0,
+          "frequency": 2
+        },
+        {
+          "type": "Woody",
+          "amount": 0,
+          "timeOfWave": 8,
+          "frequency": 0.5
+        }
+      ]
+    }
+  ]
+}

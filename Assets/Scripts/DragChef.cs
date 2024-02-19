@@ -38,6 +38,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
     }
 
+    [SerializeField] private HealthManager healthManager;
+    
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
@@ -72,8 +74,14 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
+        // if ()
+        // {
+        //     transform.SetParent(parentAfterDrag);
+        //     Instantiate(chef, dropPosition, transform.rotation);
+        // }
+
         transform.SetParent(parentAfterDrag);
-        if(creditsManager.SpendCredits(chefCost))
+        if(!healthManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }

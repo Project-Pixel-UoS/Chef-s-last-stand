@@ -95,9 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7959511219884087178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513987d7d4c17e24b9c99b9d9af81048, type: 3}
+  m_Script: {fileID: 11500000, guid: f5f5bc0732e33934080a77260dba56f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TurningPoints: []
+  enemy: {fileID: 0}
+  mouseTypesList: []
 --- !u!61 &1417656450141633329
 BoxCollider2D:
   m_ObjectHideFlags: 0

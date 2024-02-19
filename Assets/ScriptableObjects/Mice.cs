@@ -1,3 +1,5 @@
+using Level.WaveData.WaveData;
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Mouse_", menuName = "ScriptableObjects/MiceScriptableObject", order = 1)]
@@ -9,4 +11,5 @@ public class MiceScriptableObject : ScriptableObject
     public float size;
     public Sprite sprite;
     public bool canGhost;
+    public MouseDifficulty difficulty;
 }
