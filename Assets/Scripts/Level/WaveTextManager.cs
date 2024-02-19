@@ -7,37 +7,45 @@ namespace Level.WaveData
 {
     public class WaveTextManager : MonoBehaviour
     {
-        [SerializeField] private Text waveText;
+        [SerializeField] private GameObject waveText;
+        private Text text;
 
-        private void Start()
+        private void Awake()
         {
-            this.waveText.enabled = false;
+            text = waveText.GetComponent<Text>();
+            print("text: " + text);
+            print(" contents: " + text.text);
+
         }
 
 
         public IEnumerator  DisplayLevelComplete()
         {
             yield return new WaitForSeconds(1);
-            waveText.enabled = true;
-            waveText.text = "Level Complete!";
+            waveText.SetActive(true); 
+            text.text = "Level Complete!";
         }
 
         public IEnumerator  DisplayFinishedWaveText()
         {
             yield return new WaitForSeconds(1);
-            waveText.text = "Wave Finished";
-            waveText.enabled = true;
+            text.text = "Wave Finished";
+            waveText.SetActive(true); 
+
             yield return new WaitForSeconds(3);
-            waveText.enabled = false;
+            waveText.SetActive(false); 
+
             yield return new WaitForSeconds(1);
         }
 
         public IEnumerator DisplayStartingWaveText(int currentWave)
         {
-            waveText.text = "Wave " + (currentWave + 1) + " Starting";
-            waveText.enabled = true;
+            text.text = "Wave " + (currentWave + 1) + " Starting";
+            waveText.SetActive(true); 
+
             yield return new WaitForSeconds(3);
-            waveText.enabled = false;
+            waveText.SetActive(false); 
+
             yield return new WaitForSeconds(1);
         }
 

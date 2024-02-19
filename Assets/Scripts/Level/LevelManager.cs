@@ -25,10 +25,14 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private HealthManager healthManager;
 
+    private void Awake()
+    {
+        waveTextManager = GetComponent<WaveTextManager>();
+    }
+
     void Start()
     {
         LM = this;
-        waveTextManager = GetComponent<WaveTextManager>();
         LoadLevel();
         StartCoroutine(StartWaveWithText());
     }
@@ -131,6 +135,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator StartWaveWithText()
     {
+        yield return new WaitForSeconds(1.5f);
         yield return waveTextManager.DisplayStartingWaveText(currentWave);
         StartWave();
     }

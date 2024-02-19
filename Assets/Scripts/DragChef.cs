@@ -11,6 +11,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
+    [SerializeField] private HealthManager healthManager;
+    
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
@@ -45,7 +47,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(parentAfterDrag);
-        Instantiate(chef, dropPosition, transform.rotation);
+        if (!healthManager.IsGameOver())
+        {
+            transform.SetParent(parentAfterDrag);
+            Instantiate(chef, dropPosition, transform.rotation);
+        }
+
     }
 }
