@@ -54,4 +54,6 @@ public class CreditManager : MonoBehaviour
             return false;
         }
     }
+
+    public int GetCredits() {  return credits; }
 }
