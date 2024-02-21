@@ -18,7 +18,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     void Start(){
         float rangeNumber= chef.GetComponent<AbilityProjectile>().range;
         range.enabled=false;//hides the range at the beginning
-        range.transform.localScale= new Vector3(rangeNumber*130,rangeNumber*130,1); //makes the image of the range, scaling is different because its an image
+        range.transform.localScale= new Vector3(rangeNumber*134,rangeNumber*134,1); //makes the image of the range, scaling is different because its an image
 
     }
 
@@ -42,7 +42,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         // Convert mouse position to viewport coordinates
         Vector3 viewportPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
-        Debug.Log(viewportPos);
+        //Debug.Log(viewportPos);
 
         // Ensure the position remains within the camera's viewport
         viewportPos.x = Mathf.Clamp01(viewportPos.x);
