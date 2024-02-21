@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chef: {fileID: 1109480781222891229, guid: 55419eca279b9814495f809058b61743, type: 3}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 519420031}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &738460587
 MonoBehaviour:
