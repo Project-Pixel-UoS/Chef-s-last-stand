@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -44,6 +45,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(GameManager.isPaused){
+            return;
+        }
         // Debug.Log("Begin drag");
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
@@ -54,6 +58,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnDrag(PointerEventData eventData)
     { 
+        if(GameManager.isPaused){
+            return;
+        }
         transform.position = Input.mousePosition;
 
         // Convert mouse position to viewport coordinates
@@ -74,9 +81,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
+        if(GameManager.isPaused){
+            return;
+        }
         transform.SetParent(parentAfterDrag);
         // dont allow player to place a chef on game over screen, or if has too little credits
-        if(!healthManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
+        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }

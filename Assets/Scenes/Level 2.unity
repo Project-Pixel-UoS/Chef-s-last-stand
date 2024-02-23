@@ -1149,6 +1149,8 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: 55419eca279b9814495f809058b61743, type: 3}
   mainCamera: {fileID: 1326936696}
   parentAfterDrag: {fileID: 0}
+  chefCost: 0
+  healthManager: {fileID: 0}
 --- !u!114 &1082943027
 MonoBehaviour:
   m_ObjectHideFlags: 0
