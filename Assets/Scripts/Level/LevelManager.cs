@@ -75,11 +75,12 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
-    private void SpawnMouse(MiceScriptableObject mouseType, Vector3 position)
+    private void SpawnMouse(MiceScriptableObject mouseType, Vector3 position, int index)
     {
         GameObject newMouse =
             Instantiate(enemy, position, transform.rotation); // Instantiate mouse prefab
         newMouse.GetComponent<MouseStats>().loadStats(mouseType);
+        newMouse.GetComponent<SpriteMove>().SetIndex(index);
         miceToBeReleased--;
     }
     /// <summary>
@@ -208,10 +209,10 @@ public class LevelManager : MonoBehaviour
     /// spawns 2 mice at the trenchcoat mouse's death position.
     /// </summary>
     /// <param name="position">the positions to spawn the mice on.</param>
-    public void SplitMouse(Vector3 position)
+    public void SplitMouse(Vector3 position, int index)
     {
         Debug.Log("spawned mouse prob");
-        SpawnMouse(GetMouseType("Woody"), position);
-        SpawnMouse(GetMouseType("Woody"), new Vector3(position.x - 1, position.y));
+        SpawnMouse(GetMouseType("Woody"), position, index);
+        SpawnMouse(GetMouseType("Woody"), new Vector3(position.x - 1, position.y), index);
     }
 }
