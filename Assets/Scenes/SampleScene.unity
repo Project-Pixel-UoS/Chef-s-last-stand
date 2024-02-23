@@ -1070,7 +1070,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   parentAfterDrag: {fileID: 0}
   chefCost: 0
-  healthManager: {fileID: 0}
+  healthManager: {fileID: 1311076896}
 --- !u!114 &738460587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,7 +1870,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 552947300}
   healthAmount: 100
-  gameOverScreen: {fileID: 2098125653}
 --- !u!4 &1311076897
 Transform:
   m_ObjectHideFlags: 0

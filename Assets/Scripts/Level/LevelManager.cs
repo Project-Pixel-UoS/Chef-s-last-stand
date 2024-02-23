@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using GameManagement;
 using Level.WaveData;
 using Level.WaveData.WaveData;
 using UnityEngine;
@@ -43,7 +44,7 @@ public class LevelManager : MonoBehaviour
         if (miceToBeReleased == 0 && !GameObject.FindWithTag("Mouse"))
         {
             miceToBeReleased--; //decrement mice to be released so that OnWaveFinished() is not triggered again
-            if (!healthManager.IsGameOver()) // when game over, the wave continues instead of freezing 
+            if (!GameManager.gameManager.IsGameOver()) // when game over, the wave continues instead of freezing 
             {
                 StartCoroutine(TransitionIntoNextWave());
             }
