@@ -18,11 +18,6 @@ public class CreditManager : MonoBehaviour
         text.text = "Credits: " + credits;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     /// <summary>
     /// Increases the credit amount.
