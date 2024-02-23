@@ -15,11 +15,14 @@ public class DamageHandler : MonoBehaviour
     private Coroutine damageCoroutine;
     private GameObject credits;
     private CreditManager creditsManager;
+    private LevelManager levelManager;
+    private Vector3 mousePosition;
 
     private void Start()
     {
         stats = gameObject.GetComponent<MouseStats>();
         credits = GameObject.FindGameObjectWithTag("Credits");
+        levelManager = GameObject.Find("Level").GetComponent<LevelManager>();
         creditsManager = credits.GetComponent<CreditManager>();
     }
 
@@ -50,6 +53,12 @@ public class DamageHandler : MonoBehaviour
 
             if (stats.health <= 0)
             {
+                //if the mouse that died was trenchcoat, spawn more mice.
+                if (stats.canSplit)
+                {
+                    mousePosition = transform.position;
+                    levelManager.SplitMouse(mousePosition);
+                }
                 Destroy(gameObject); //check for death
                 //get money per kill
                 creditsManager.IncreaseMoney(currencyAmount);
