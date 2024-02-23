@@ -416,6 +416,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
   - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
   - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
+  - {fileID: 11400000, guid: 532d65b96bbe93e40a201d2a0a528c2e, type: 2}
   healthManager: {fileID: 1311076896}
 --- !u!114 &266574284
 MonoBehaviour:
