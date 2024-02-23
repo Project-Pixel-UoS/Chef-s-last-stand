@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -85,7 +86,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         transform.SetParent(parentAfterDrag);
         // dont allow player to place a chef on game over screen, or if has too little credits
-        if(!healthManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
+        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }

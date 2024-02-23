@@ -1981,8 +1981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1189845459}
-  - component: {fileID: 1189845458}
-  - component: {fileID: 1189845457}
+  - component: {fileID: 1189845460}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1990,30 +1989,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1189845457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189845456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941c63240e41a2046963fa8b6f24df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1189845458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189845456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941c63240e41a2046963fa8b6f24df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1189845459
 Transform:
   m_ObjectHideFlags: 0
@@ -2029,6 +2004,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189845460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189845456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47aba01687bc31649bcbf4730815c855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 2098125653}
 --- !u!1 &1311076895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,7 +2048,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 552947300}
   healthAmount: 100
-  gameOverScreen: {fileID: 2098125653}
 --- !u!4 &1311076897
 Transform:
   m_ObjectHideFlags: 0
@@ -2671,9 +2658,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HealthManager, Assembly-CSharp
-        m_MethodName: StartAgain
+      - m_Target: {fileID: 1189845460}
+        m_TargetAssemblyTypeName: GameManagement.GameManager, Assembly-CSharp
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
