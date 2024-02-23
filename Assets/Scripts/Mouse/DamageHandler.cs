@@ -16,7 +16,6 @@ public class DamageHandler : MonoBehaviour
     private GameObject credits;
     private CreditManager creditsManager;
     private LevelManager levelManager;
-    private SpriteMove moveManager;
     private Vector3 mousePosition;
 
     private void Start()
@@ -54,7 +53,7 @@ public class DamageHandler : MonoBehaviour
 
             if (stats.health <= 0)
             {
-                //if the mouse that died was trenchcoat, spawn more mice.
+                //if the mouse that died was trenchcoat, grab its death position and spawn more mice.
                 if (stats.canSplit)
                 {
                     int index = GetComponent<SpriteMove>().GetIndex();
@@ -62,8 +61,7 @@ public class DamageHandler : MonoBehaviour
                     levelManager.SplitMouse(mousePosition, index);
                 }
                 Destroy(gameObject); //check for death
-                //get money per kill
-                creditsManager.IncreaseMoney(currencyAmount);
+                creditsManager.IncreaseMoney(currencyAmount); //get money per kill
             }
 
             yield return new WaitForSeconds(damageFactor.damageRate);
