@@ -13,18 +13,24 @@
       "mouseUnits": [
         {
           "type": "Ghost",
-          "amount": 1,
+          "amount": 0,
           "timeOfWave": 0,
           "frequency": 1 
         },
         {
           "type": "Pinkie",
-          "amount": 20,
+          "amount": 0,
           "timeOfWave": 0,
           "frequency": 0.2
         },
         {
           "type": "Woody",
+          "amount": 0,
+          "timeOfWave": 0,
+          "frequency": 0.5
+        },
+        {
+          "type": "Trenchcoat",
           "amount": 1,
           "timeOfWave": 0,
           "frequency": 0.5
