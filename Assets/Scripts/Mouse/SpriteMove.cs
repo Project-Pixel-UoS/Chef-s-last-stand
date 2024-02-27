@@ -50,6 +50,8 @@ public class SpriteMove : MonoBehaviour
         totalDistanceMoved += movement.magnitude;
     }
 
+    public int GetIndex() {  return index; }
 
+    public void SetIndex(int i) { index = i; }
 
 }
