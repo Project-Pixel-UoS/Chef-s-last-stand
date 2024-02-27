@@ -15,14 +15,12 @@ public class DamageHandler : MonoBehaviour
     private Coroutine damageCoroutine;
     private GameObject credits;
     private CreditManager creditsManager;
-    private LevelManager levelManager;
     private Vector3 mousePosition;
 
     private void Start()
     {
         stats = gameObject.GetComponent<MouseStats>();
         credits = GameObject.FindGameObjectWithTag("Credits");
-        levelManager = GameObject.Find("Level").GetComponent<LevelManager>();
         creditsManager = credits.GetComponent<CreditManager>();
     }
 
@@ -58,7 +56,7 @@ public class DamageHandler : MonoBehaviour
                 {
                     int index = GetComponent<SpriteMove>().GetIndex();
                     mousePosition = transform.position;
-                    levelManager.SplitMouse(mousePosition, index);
+                    LevelManager.LM.SplitMouse(mousePosition, index);
                 }
                 Destroy(gameObject); //check for death
                 creditsManager.IncreaseMoney(currencyAmount); //get money per kill
