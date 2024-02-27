@@ -19,7 +19,7 @@
         },
         {
           "type": "Pinkie",
-          "amount": 0,
+          "amount": 20,
           "timeOfWave": 0,
           "frequency": 0.2
         },
@@ -31,7 +31,7 @@
         },
         {
           "type": "Trenchcoat",
-          "amount": 1,
+          "amount": 0,
           "timeOfWave": 0,
           "frequency": 0.5
         }
