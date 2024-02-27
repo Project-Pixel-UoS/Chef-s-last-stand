@@ -71,7 +71,6 @@ public class LevelManager : MonoBehaviour
         GameObject newMouse =
             Instantiate(enemy, TurningPoints[0].position, transform.rotation); // Instantiate mouse prefab
         newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-        miceToBeReleased--;
     }
 
     /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
@@ -81,7 +80,6 @@ public class LevelManager : MonoBehaviour
             Instantiate(enemy, position, transform.rotation); // Instantiate mouse prefab
         newMouse.GetComponent<MouseStats>().loadStats(mouseType);
         newMouse.GetComponent<SpriteMove>().SetIndex(index);
-        miceToBeReleased--;
     }
     /// <summary>
     /// returns mice scriptable object that corresponds to the mouseName provided
@@ -160,6 +158,7 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < mouseUnit.amount; i++)
         {
             SpawnMouse(GetMouseType(mouseUnit.type));
+            miceToBeReleased--;
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
     }
@@ -172,6 +171,7 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < mouseUnit.amount; i++)
         {
             SpawnMouse(GetRandomMouseType(mouseUnit.difficulty));
+            miceToBeReleased--;
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
     }
