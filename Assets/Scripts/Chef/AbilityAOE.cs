@@ -10,12 +10,12 @@ public class AbilityAOE : MonoBehaviour
     private DamageFactor damageFactor; // damage factor
 
     void Start(){
-        damageFactor = GetComponent<DamageFactor>();
+        damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
     }
 
-        void Update(){
-        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
-        AOE();
+    void Update(){
+        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;     // Decrease cooldown
+        AOE();      // Deal AOE damage
     }
 
 
@@ -39,8 +39,8 @@ public class AbilityAOE : MonoBehaviour
         return miceInRange;
     }
 
-    /// <summary> Hits all mice in range </summary>
-    /// <remarks> maintained by: Antosh </remarks>
+    /// <summary> Hits all mice in range, using DamageFactor component </summary>
+    /// <remarks> Maintained by: Ben Brixton </remarks>
     private void AOE(){
         if(cooldownTimer > 0) return;
 
