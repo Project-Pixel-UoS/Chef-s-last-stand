@@ -68,13 +68,32 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Debug.Log(viewportPos);
 
         // Ensure the position remains within the camera's viewport
-        viewportPos.x = Mathf.Clamp01(viewportPos.x);
-        viewportPos.y = Mathf.Clamp01(viewportPos.y);
+        viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
+        viewportPos.y = Mathf.Clamp(viewportPos.y, 0, 1);
         viewportPos.z = Mathf.Clamp(viewportPos.z, 0, mainCamera.farClipPlane);
+
+        if (CheckOutOfBounds(viewportPos))
+        {
+            Debug.Log("OUT OF BOUNDS");
+        }
 
         // Convert back from viewport to world space
         dropPosition = mainCamera.ViewportToWorldPoint(viewportPos);
         dropPosition.z = 0;
+    }
+
+    private bool CheckOutOfBounds(Vector3 viewportPos)
+    {
+        if (viewportPos.x <= 0.02 || viewportPos.x >= 0.85 )
+        {
+            return true;
+        }
+        if (viewportPos.y <= 0.05 || viewportPos.y >= 0.95)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
@@ -86,7 +105,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         transform.SetParent(parentAfterDrag);
         // dont allow player to place a chef on game over screen, or if has too little credits
-        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
+        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost) && 
+           !CheckOutOfBounds(mainCamera.ScreenToViewportPoint(Input.mousePosition)))
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }
