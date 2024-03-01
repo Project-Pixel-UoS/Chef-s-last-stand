@@ -12,6 +12,9 @@ public class AbilityProjectile : MonoBehaviour
     private float cooldownTimer; // timer for cooldown in between shots
     public SpriteRenderer rangeAppear;
     private int clicked=0;//Used to see if you are clicking on or off the chef
+
+
+
     void Start(){
         rangeObject.transform.localScale= new Vector3(range*2,range*2,1); //makes the range the same size as chosen
         rangeAppear.enabled=false; 
@@ -21,11 +24,14 @@ public class AbilityProjectile : MonoBehaviour
     {
     
         if (Projectile == null) return;
+        ClickManager();
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
         Shoot();
         
+
+       
 
     }
 
@@ -85,16 +91,42 @@ public class AbilityProjectile : MonoBehaviour
         Instantiate(Projectile, transform.position, transform.rotation);
     }
 
-    /// <summary> Activates when the Tower is pressed </summary>
+    /// <summary> Activates when the Chef is pressed </summary>
     /// <remarks>Maintained by: Emily Johnston </remarks>
-    void OnMouseDown(){
+        void OnMouseDown(){
         if (clicked == 0){ 
-        rangeAppear.enabled=true;
-        clicked =1;
+            rangeAppear.enabled=true;
+            clicked =1;
         }
         else{
             rangeAppear.enabled=false;
             clicked=0;
         }
-    }
+            
+        }
+     /// <summary> Checks what is being clicked </summary>
+/// <remarks>Maintained by: Emily Johnston </remarks>
+
+void ClickManager(){
+    if (Input.GetMouseButtonDown(0)) {
+			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null) {
+                if(hit.collider.gameObject.layer==6){
+                    Debug.Log("Hit Chef"); 
+                }
+            }
+            else{
+                if(clicked == 1){
+                    rangeAppear.enabled=false;
+                    clicked=0;
+
+                }
+            }
+
+		}
+
+}
 }
