@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,11 @@ public class AbilityAOE : MonoBehaviour
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
+    private ParticleSystem fireParticles; // fire particles 
 
     void Start(){
         damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
+        fireParticles = GetComponent<ParticleSystem>();     // Get fire particles component
     }
 
     void Update(){
@@ -33,6 +36,10 @@ public class AbilityAOE : MonoBehaviour
             if (distance <= range)
             {
                 miceInRange.Add(mouse);
+                //play particle effects
+                var particleEmission = fireParticles.emission;
+                particleEmission.enabled = true;
+                fireParticles.Play();
             }
         }
 
