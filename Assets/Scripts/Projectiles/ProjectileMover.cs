@@ -14,7 +14,7 @@ public class ProjectileMover : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.up * Time.deltaTime * projectileSpeed;      // update position
+        transform.position += transform.up * -1 * Time.deltaTime * projectileSpeed;      // update position
 
         // destroy game object when timer reaches zero
         destroyTime -= Time.deltaTime;
