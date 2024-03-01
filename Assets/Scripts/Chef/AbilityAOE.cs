@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class AbilityAOE : MonoBehaviour
 {
@@ -13,14 +16,41 @@ public class AbilityAOE : MonoBehaviour
 
     void Start(){
         damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
-        fireParticles = GetComponent<ParticleSystem>();     // Get fire particles component
+        fireParticles = GetComponent<ParticleSystem>();     // Get fire particles 
     }
 
     void Update(){
+        GameObject furthestMouse = GetFurthestMouseInRange();
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;     // Decrease cooldown
+        if (furthestMouse == null) return;
+        Rotate(furthestMouse);
         AOE();      // Deal AOE damage
     }
 
+    /// <summary> Spins chef so that he is facing the mouse </summary>
+    /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+    /// <remarks>Maintained by: Antosh Nikolak</remarks>
+    private void Rotate(GameObject furthestMouse)
+    {
+        Vector3 direction = furthestMouse.transform.position - transform.position;
+        float radians = Mathf.Atan2(direction.x, direction.y) * -1;
+        float degrees = radians * Mathf.Rad2Deg;
+        Quaternion target = Quaternion.Euler(0, 0, degrees);
+        transform.rotation = target;
+    }
+
+    /// <returns> find an arbitrary mouse that is in range </returns>
+    /// <remarks>Maintained by: Antosh </remarks>
+    private GameObject GetFurthestMouseInRange()
+    {
+        List<GameObject> mice = GetMiceInRange();
+        if (mice.Count > 0)
+        {
+            return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
+        }
+
+        return null;
+    }
 
     /// <returns>
     /// mice in range of the chef
@@ -31,15 +61,11 @@ public class AbilityAOE : MonoBehaviour
         var mice = GameObject.FindGameObjectsWithTag("Mouse");
         var miceInRange = new List<GameObject>();
         foreach (var mouse in mice)
-        {
+        { 
             float distance = (mouse.transform.position - transform.position).magnitude;
             if (distance <= range)
             {
                 miceInRange.Add(mouse);
-                //play particle effects
-                var particleEmission = fireParticles.emission;
-                particleEmission.enabled = true;
-                fireParticles.Play();
             }
         }
 
@@ -52,9 +78,18 @@ public class AbilityAOE : MonoBehaviour
         if(cooldownTimer > 0) return;
 
         foreach(GameObject mouse in GetMiceInRange()){
-            StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
+            Vector3 spriteDirection = transform.up;     //  forward vector of the sprite
+            Vector3 distance = (mouse.transform.position - transform.position);
+            double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+            if(mouseAngle < 120)
+            {
+                //play particle effects and damage mouse
+                var particleEmission = fireParticles.emission;
+                particleEmission.enabled = true;
+                fireParticles.Play();
+                StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
+            }
         }
-
         cooldownTimer = cooldown;
     }
 
