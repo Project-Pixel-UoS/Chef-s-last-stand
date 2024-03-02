@@ -82,19 +82,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         dropPosition.z = 0;
     }
 
-    private bool CheckOutOfBounds(Vector3 viewportPos)
-    {
-        if (viewportPos.x <= 0.02 || viewportPos.x >= 0.85 )
-        {
-            return true;
-        }
-        if (viewportPos.y <= 0.05 || viewportPos.y >= 0.95)
-        {
-            return true;
-        }
 
-        return false;
-    }
 
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
@@ -105,8 +93,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         transform.SetParent(parentAfterDrag);
         // dont allow player to place a chef on game over screen, or if has too little credits
-        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost) && 
-           !CheckOutOfBounds(mainCamera.ScreenToViewportPoint(Input.mousePosition)))
+        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }
