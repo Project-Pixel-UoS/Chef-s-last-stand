@@ -40,14 +40,16 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
 
     [SerializeField] private HealthManager healthManager;
-    
+
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(GameManager.isPaused){
+        if (GameManager.isPaused)
+        {
             return;
         }
+
         // Debug.Log("Begin drag");
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
@@ -57,10 +59,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <summary> Make the item follow the mouse.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnDrag(PointerEventData eventData)
-    { 
-        if(GameManager.isPaused){
+    {
+        if (GameManager.isPaused)
+        {
             return;
         }
+
         transform.position = Input.mousePosition;
 
         // Convert mouse position to viewport coordinates
@@ -83,20 +87,37 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
 
 
+    private bool CheckOutOfBounds(Vector3 viewportPos)
+    {
+        if (viewportPos.x <= 0.02 || viewportPos.x >= 0.85)
+        {
+            return true;
+        }
+
+        if (viewportPos.y <= 0.05 || viewportPos.y >= 0.95)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(GameManager.isPaused){
+        if (GameManager.isPaused)
+        {
             return;
         }
+
         transform.SetParent(parentAfterDrag);
         // dont allow player to place a chef on game over screen, or if has too little credits
-        if(!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost))
+        if (!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost) &&
+            !CheckOutOfBounds(mainCamera.ScreenToViewportPoint(Input.mousePosition)))
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }
-        
     }
 }
