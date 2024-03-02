@@ -5,10 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+
+
+
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
     public Camera mainCamera;
+    public Image range; //range that appears when chef is dragged
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
     [SerializeField] private int chefCost;
@@ -19,6 +23,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Start()
     {
+        float rangeNumber= chef.GetComponent<AbilityProjectile>().range;
+        range.enabled=false;//hides the range at the beginning
+        range.transform.localScale= new Vector3(rangeNumber*134,rangeNumber*134,1); //makes the image of the range, scaling is different because its an image
+        
         credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
         image = GetComponent<Image>();
@@ -41,6 +49,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     [SerializeField] private HealthManager healthManager;
 
+
+
     /// <summary> Pin the item while dragging.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
@@ -51,6 +61,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         // Debug.Log("Begin drag");
+       
+        range.enabled=true;// makes the range visible
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -69,7 +81,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         // Convert mouse position to viewport coordinates
         Vector3 viewportPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
-        Debug.Log(viewportPos);
+        //Debug.Log(viewportPos);
 
         // Ensure the position remains within the camera's viewport
         viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
@@ -119,5 +131,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             Instantiate(chef, dropPosition, transform.rotation);
         }
+
+        range.enabled=false;
     }
 }

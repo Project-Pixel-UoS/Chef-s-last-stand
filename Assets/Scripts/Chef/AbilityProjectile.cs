@@ -1,19 +1,31 @@
-
-
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityProjectile : MonoBehaviour
 {
-    [SerializeField] private float range; // range at which chef can attack mice
+    public float range; // range at which chef can attack mice
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
+    [SerializeField] private GameObject rangeObject; //imports the chefs range.
     private float cooldownTimer; // timer for cooldown in between shots
+    public SpriteRenderer rangeAppear;
+    private int clicked = 0; //Used to see if you are clicking on or off the chef
 
-    // public GameObject rangeObject;
+
+    void Start()
+    {
+        rangeObject.transform.localScale =
+            new Vector3(range * 2, range * 2, 1); //makes the range the same size as chosen
+        rangeAppear.enabled = false;
+    }
+
+
     void Update()
     {
+        if (Projectile == null) return;
+        ClickManager();
         GameObject furthestMouse = GetFurthestMouseInRange();
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
 
@@ -77,5 +89,49 @@ public class AbilityProjectile : MonoBehaviour
         if (cooldownTimer > 0) return;
         cooldownTimer = cooldown;
         Instantiate(Projectile, transform.position, transform.rotation);
+    }
+
+    /// <summary> Activates when the Chef is pressed </summary>
+    /// <remarks>Maintained by: Emily Johnston </remarks>
+    void OnMouseDown()
+    {
+        if (clicked == 0)
+        {
+            rangeAppear.enabled = true;
+            clicked = 1;
+        }
+        else
+        {
+            rangeAppear.enabled = false;
+            clicked = 0;
+        }
+    }
+
+    /// <summary> Checks what is being clicked </summary>
+    /// <remarks>Maintained by: Emily Johnston </remarks>
+    void ClickManager()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.layer == 6)
+                {
+                    Debug.Log("Hit Chef");
+                }
+            }
+            else
+            {
+                if (clicked == 1)
+                {
+                    rangeAppear.enabled = false;
+                    clicked = 0;
+                }
+            }
+        }
     }
 }
