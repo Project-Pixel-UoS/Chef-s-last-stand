@@ -111,7 +111,6 @@ public class AbilityProjectile : MonoBehaviour
     /// <remarks>Maintained by: Emily Johnston </remarks>
     void ClickManager()
     {
-        Debug.Log("CLICK DETECTED");
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
