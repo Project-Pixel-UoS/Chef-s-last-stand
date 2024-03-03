@@ -27,9 +27,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         float rangeNumber = chef.GetComponent<AbilityProjectile>().range;
         range.enabled = false; //hides the range at the beginning
-        range.transform.localScale =
-            new Vector3(rangeNumber * 134, rangeNumber * 134,
-                1); //makes the image of the range, scaling is different because its an image
+        // range.transform.localScale =
+        //     new Vector3(rangeNumber * 134, rangeNumber * 134,
+        //         1); //makes the image of the range, scaling is different because its an image
         GameObject credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
         image = GetComponent<Image>();
@@ -79,7 +79,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             return;
         }
-
 
         // canvas is in world screen mode so we need to convert to world units
         transform.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
