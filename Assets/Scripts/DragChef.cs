@@ -30,6 +30,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         // range.transform.localScale =
         //     new Vector3(rangeNumber * 134, rangeNumber * 134,
         //         1); //makes the image of the range, scaling is different because its an image
+
+        Vector3 rangeSize = Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0));
+        Debug.Log("range size: " + rangeSize);
+        range.transform.localScale = new Vector3(rangeSize.x, rangeSize.y, 0);
+        
+        
         GameObject credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
         image = GetComponent<Image>();
@@ -104,7 +110,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         // Convert back from viewport to world space
         dropPosition = mainCamera.ViewportToWorldPoint(viewportPos);
         dropPosition.z = 0;
-        Debug.Log("chef position: "+ transform.position);
     }
 
 
