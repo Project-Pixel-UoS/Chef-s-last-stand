@@ -80,14 +80,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             return;
         }
 
-        transform.position = (Input.mousePosition);
 
-        // transform.position = m
-        // ainCamera.ScreenToWorldPoint(Input.mousePosition);
+        // canvas is in world screen mode so we need to convert to world units
+        transform.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0); //z must be 0 to be visible
 
         // Convert mouse position to viewport coordinates
         Vector3 viewportPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
-        //Debug.Log(viewportPos);
 
         // Ensure the position remains within the camera's viewport
         viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
