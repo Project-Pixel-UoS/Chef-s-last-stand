@@ -92,8 +92,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (CheckOutOfBounds(viewportPos))
         {
             Debug.Log("OUT OF BOUNDS");
+            range.color = new Color32(238, 68, 56, 135);
         }
-
+        else
+        {
+            range.color = new Color32(0, 220, 255, 135);
+                
+        }
         // Convert back from viewport to world space
         dropPosition = mainCamera.ViewportToWorldPoint(viewportPos);
         dropPosition.z = 0;
