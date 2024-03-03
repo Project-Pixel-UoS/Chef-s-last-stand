@@ -100,3 +100,5 @@ MonoBehaviour:
   range: 10
   Projectile: {fileID: 2041573966325760781, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
   cooldown: 2
+  rangeObject: {fileID: 0}
+  rangeAppear: {fileID: 5626353833218958137}

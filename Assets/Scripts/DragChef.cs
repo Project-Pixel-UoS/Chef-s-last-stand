@@ -16,7 +16,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
     [SerializeField] private int chefCost;
-    private GameObject credits;
+   
     private CreditManager creditsManager;
     private Image image;
     private Image slot;
@@ -26,9 +26,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         float rangeNumber= chef.GetComponent<AbilityProjectile>().range;
         range.enabled=false;//hides the range at the beginning
         range.transform.localScale= new Vector3(rangeNumber*134,rangeNumber*134,1); //makes the image of the range, scaling is different because its an image
-        
-        credits = GameObject.FindGameObjectWithTag("Credits");
+        GameObject credits = GameObject.FindGameObjectWithTag("Credits");
+        Debug.Log("credits: " + credits);
         creditsManager = credits.GetComponent<CreditManager>();
+        Debug.Log("credit manager: "+ creditsManager);
         image = GetComponent<Image>();
         slot = transform.parent.GetComponent<Image>();
     }
