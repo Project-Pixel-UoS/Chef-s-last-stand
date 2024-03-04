@@ -25,22 +25,30 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Start()
     {
+        
+        GameObject credits = GameObject.FindGameObjectWithTag("Credits");
+        Debug.Log("credits: " + credits);
+        creditsManager = credits.GetComponent<CreditManager>();
+        Debug.Log("credits manager: " + creditsManager);
+        
+        
+        rectTransform = GetComponent<RectTransform>();
         float rangeNumber = chef.GetComponent<AbilityProjectile>().range;
         range.enabled = false; //hides the range at the beginning
         // range.transform.localScale =
         //     new Vector3(rangeNumber * 134, rangeNumber * 134,
         //         1); //makes the image of the range, scaling is different because its an image
 
-        Vector3 rangeSize = Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0));
+        Vector3 rangeSize = Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0)) - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
         Debug.Log("range size: " + rangeSize);
-        range.transform.localScale = new Vector3(rangeSize.x, rangeSize.y, 0);
+        // range.transform.localScale = new Vector3(rangeSize.x, rangeSize.y , 0);
+        range.rectTransform.sizeDelta = new Vector2(rangeSize.x * 2, rangeSize.y * 2);
         
         
-        GameObject credits = GameObject.FindGameObjectWithTag("Credits");
-        creditsManager = credits.GetComponent<CreditManager>();
+
+
         image = GetComponent<Image>();
         slot = transform.parent.GetComponent<Image>();
-        rectTransform = GetComponent<RectTransform>();
     }
 
     private void Update()
