@@ -10,6 +10,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
     public GameObject chef;
     [SerializeField] private GameObject chefParent;//empty parent object that contains all the chefs
+    private BoxCollider2D chefCollider2D;
     
     public Camera mainCamera;
     public Image range; //range that appears when chef is dragged
@@ -27,28 +28,22 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         
         GameObject credits = GameObject.FindGameObjectWithTag("Credits");
-        Debug.Log("credits: " + credits);
         creditsManager = credits.GetComponent<CreditManager>();
-        Debug.Log("credits manager: " + creditsManager);
-        
         
         rectTransform = GetComponent<RectTransform>();
         float rangeNumber = chef.GetComponent<AbilityProjectile>().range;
         range.enabled = false; //hides the range at the beginning
-        // range.transform.localScale =
-        //     new Vector3(rangeNumber * 134, rangeNumber * 134,
-        //         1); //makes the image of the range, scaling is different because its an image
 
-        Vector3 rangeSize = Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0)) - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
-        Debug.Log("range size: " + rangeSize);
-        // range.transform.localScale = new Vector3(rangeSize.x, rangeSize.y , 0);
-        range.rectTransform.sizeDelta = new Vector2(rangeSize.x * 2, rangeSize.y * 2);
+        Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0)) 
+                            - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
+        range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
         
-        
-
-
         image = GetComponent<Image>();
         slot = transform.parent.GetComponent<Image>();
+
+        chefCollider2D = GetComponent<BoxCollider2D>();
+
+
     }
 
     private void Update()
@@ -124,13 +119,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private bool CheckOutOfBounds(Vector3 viewportPos)
     {
 
-        float canvasWidth = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>().scaleFactor;
-        Vector2 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
-        var sizeDelta = rectTransform.sizeDelta / canvasWidth;
-        Vector2 topRight = worldPos + sizeDelta / 2;
-        Vector2 topLeft = worldPos + new Vector2(-1, 1) * sizeDelta / 2;
-        Vector2 bottomLeft = worldPos + new Vector2(-1, -1) * sizeDelta / 2;
-        Vector2 bottomRight = worldPos + new Vector2(1, -1) * sizeDelta / 2;
+        // float canvasWidth = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>().scaleFactor;
+        // Vector2 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
+        // var sizeDelta = rectTransform.sizeDelta / canvasWidth;
+        // Vector2 topRight = worldPos + sizeDelta / 2;
+        // Vector2 topLeft = worldPos + new Vector2(-1, 1) * sizeDelta / 2;
+        // Vector2 bottomLeft = worldPos + new Vector2(-1, -1) * sizeDelta / 2;
+        // Vector2 bottomRight = worldPos + new Vector2(1, -1) * sizeDelta / 2;
         
         // Debug.Log("SIZE DELTA: " + sizeDelta);
         // print("TOP LEFT: " + topLeft);
@@ -143,38 +138,47 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         
 
-        foreach (var collider2D in GetAllChefColliders())
+        print("chef collider 2d x: " + chefCollider2D.bounds.center.x);
+        print("chef collider 2d y: " + chefCollider2D.bounds.center.y);
+
+        foreach (var _collider2D in GetAllChefColliders())
         {
-            if (collider2D.bounds.Contains(topRight))
-            {
-                return true;
-            }
             
-            if (collider2D.bounds.Contains(topLeft))
+            Debug.Log("placed chef collider: " + chefCollider2D.bounds.Intersects(_collider2D.bounds));
+            if (chefCollider2D.bounds.Intersects(_collider2D.bounds))
             {
                 return true;
             }
-            
-            if (collider2D.bounds.Contains(bottomLeft))
-            {
-                return true;
-            }
-            
-            if (collider2D.bounds.Contains(bottomRight))
-            {
-                return true;
-            }
+            // if (collider2D.bounds.Contains(topRight))
+            // {
+            //     return true;
+            // }
+            //
+            // if (collider2D.bounds.Contains(topLeft))
+            // {
+            //     return true;
+            // }
+            //
+            // if (collider2D.bounds.Contains(bottomLeft))
+            // {
+            //     return true;
+            // }
+            //
+            // if (collider2D.bounds.Contains(bottomRight))
+            // {
+            //     return true;
+            // }
         }
 
         return CheckOutsideScreen(viewportPos);
     }
 
-    private List<Collider2D> GetAllChefColliders()
+    private List<BoxCollider2D> GetAllChefColliders()
     {
-        var colliders = new List<Collider2D>();
+        var colliders = new List<BoxCollider2D>();
         foreach (var chef in GetAllChefs())
         {
-            colliders.Add(chef.GetComponent<Collider2D>());
+            colliders.Add(chef.GetComponent<BoxCollider2D>());
         }
 
         return colliders;
