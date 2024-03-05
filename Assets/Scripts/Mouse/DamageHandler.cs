@@ -51,18 +51,24 @@ public class DamageHandler : MonoBehaviour
 
             if (stats.health <= 0)
             {
-                //if the mouse that died was trenchcoat, grab its death position and spawn more mice.
-                if (stats.canSplit)
-                {
-                    int index = GetComponent<SpriteMove>().GetIndex();
-                    mousePosition = transform.position;
-                    LevelManager.LM.SplitMouse(mousePosition, index);
-                }
+               
+                HandleTrenchCoatMouse();
                 Destroy(gameObject); //check for death
                 creditsManager.IncreaseMoney(currencyAmount); //get money per kill
             }
 
             yield return new WaitForSeconds(damageFactor.damageRate);
+        }
+    }
+
+    //if the mouse that died was trench coat, grab its death position and spawn more mice.
+    private void HandleTrenchCoatMouse()
+    {
+        if (stats.canSplit)
+        {
+            int index = GetComponent<SpriteMove>().GetIndex();
+            mousePosition = transform.position;
+            LevelManager.LM.SplitMouse(mousePosition, index);
         }
     }
 }
