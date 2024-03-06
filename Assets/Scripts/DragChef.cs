@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Chef;
 using GameManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         creditsManager = credits.GetComponent<CreditManager>();
         
         rectTransform = GetComponent<RectTransform>();
-        float rangeNumber = chef.GetComponent<AbilityProjectile>().range;
+        float rangeNumber = chef.GetComponent<Range>().radius;
         range.enabled = false; //hides the range at the beginning
 
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0)) 

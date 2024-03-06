@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5626353833218958137}
   - component: {fileID: -9203637450718709653}
   - component: {fileID: 8671269348040182556}
+  - component: {fileID: 3444711398865588162}
   m_Layer: 0
   m_Name: Chef
   m_TagString: Untagged
@@ -99,11 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c6c95ed36def641846b80463322dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
   Projectile: {fileID: 2041573966325760781, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
   cooldown: 2
-  rangeObject: {fileID: 1399777073905315121}
-  rangeAppear: {fileID: 3003728892296554146}
 --- !u!61 &8671269348040182556
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,6 +147,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8466383, y: 0.89058244}
   m_EdgeRadius: 0
+--- !u!114 &3444711398865588162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48653809b5f441879642bbae15aa0f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  rangeObject: {fileID: 1399777073905315121}
 --- !u!1 &1399777073905315121
 GameObject:
   m_ObjectHideFlags: 0
