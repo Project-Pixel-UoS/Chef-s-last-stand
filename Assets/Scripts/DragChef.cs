@@ -19,7 +19,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Vector3 dropPosition;
     [SerializeField] private int chefCost;
 
-    private RectTransform rectTransform;
 
     private CreditManager creditsManager;
     private Image image;
@@ -28,14 +27,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private void Start()
     {
         
-        GameObject credits = GameObject.FindGameObjectWithTag("Credits");
-        creditsManager = credits.GetComponent<CreditManager>();
-        
-        rectTransform = GetComponent<RectTransform>();
-        float rangeNumber = chef.GetComponent<Range>().radius;
+        creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+        float rangeRadius = chef.GetComponent<Range>().radius;//get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
 
-        Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeNumber, rangeNumber, 0)) 
+        Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0)) 
                             - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
         range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
         
@@ -61,7 +57,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
     }
 
-    [SerializeField] private HealthManager healthManager;
 
 
     /// <summary> Pin the item while dragging.</summary>
@@ -73,10 +68,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             return;
         }
 
-        // Debug.Log("Begin drag");
-
         range.enabled = true; // makes the range visible
-        parentAfterDrag = transform.parent;//
+        parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
     }
@@ -90,19 +83,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             return;
         }
 
-        // canvas is in world screen mode so we need to convert to world units
-        transform.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0); //z must be 0 to be visible
+        PositionChefOntoCursor();
 
-        // Convert mouse position to viewport coordinates
-        Vector3 viewportPos = mainCamera.ScreenToViewportPoint(Input.mousePosition);
-
-        // Ensure the position remains within the camera's viewport
-        viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
-        viewportPos.y = Mathf.Clamp(viewportPos.y, 0, 1);
-        viewportPos.z = Mathf.Clamp(viewportPos.z, 0, mainCamera.farClipPlane);
-
-        if (CheckOutOfBounds(viewportPos))
+        if (CheckOutOfBounds())
         {
             range.color = new Color32(238, 68, 56, 135);
         }
@@ -112,68 +95,46 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         // Convert back from viewport to world space
-        dropPosition = mainCamera.ViewportToWorldPoint(viewportPos);
+        dropPosition = transform.position;
         dropPosition.z = 0;
     }
 
-
-    private bool CheckOutOfBounds(Vector3 viewportPos)
+    private void PositionChefOntoCursor()
     {
-
-        // float canvasWidth = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>().scaleFactor;
-        // Vector2 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
-        // var sizeDelta = rectTransform.sizeDelta / canvasWidth;
-        // Vector2 topRight = worldPos + sizeDelta / 2;
-        // Vector2 topLeft = worldPos + new Vector2(-1, 1) * sizeDelta / 2;
-        // Vector2 bottomLeft = worldPos + new Vector2(-1, -1) * sizeDelta / 2;
-        // Vector2 bottomRight = worldPos + new Vector2(1, -1) * sizeDelta / 2;
-        
-        // Debug.Log("SIZE DELTA: " + sizeDelta);
-        // print("TOP LEFT: " + topLeft);
-        // print("TOP RIGHT: " + topRight);
-        // print("BOTTOM LEFT: " + bottomLeft);
-        // print("BOTTOM RIGHT: " + bottomRight);
-        // print("POS: "+ worldPos);
-        // print("----------------------------------------");
+        // canvas is in world screen mode so we need to convert to world units
+        Vector3 worldCursorPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        worldCursorPos.z = 0;
+        transform.position = worldCursorPos;
+    }
 
 
-        
+    private bool CheckOutOfBounds()
+    {
+        return CheckIntersectingExistingChef() || CheckOutsideScreen();
+    }
 
-        print("chef collider 2d x: " + chefCollider2D.bounds.center.x);
-        print("chef collider 2d y: " + chefCollider2D.bounds.center.y);
-
+    /// <summary>
+    /// Checks if the chef that is being dragged is touch a chef that is already placed
+    /// </summary>
+    /// <returns>true if chefs are intersecting</returns>
+    /// <remarks>Maintainer: Antosh</remarks>
+    private bool CheckIntersectingExistingChef()
+    {
         foreach (var _collider2D in GetAllChefColliders())
         {
-            
-            Debug.Log("placed chef collider: " + chefCollider2D.bounds.Intersects(_collider2D.bounds));
             if (chefCollider2D.bounds.Intersects(_collider2D.bounds))
             {
                 return true;
             }
-            // if (collider2D.bounds.Contains(topRight))
-            // {
-            //     return true;
-            // }
-            //
-            // if (collider2D.bounds.Contains(topLeft))
-            // {
-            //     return true;
-            // }
-            //
-            // if (collider2D.bounds.Contains(bottomLeft))
-            // {
-            //     return true;
-            // }
-            //
-            // if (collider2D.bounds.Contains(bottomRight))
-            // {
-            //     return true;
-            // }
         }
 
-        return CheckOutsideScreen(viewportPos);
+        return false;
     }
 
+    
+
+    /// <returns>A list of all the colliders of the chefs that are already placed</returns>
+    /// <remarks>Maintainer: Ying and Antosh</remarks>
     private List<BoxCollider2D> GetAllChefColliders()
     {
         var colliders = new List<BoxCollider2D>();
@@ -185,6 +146,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         return colliders;
     }
 
+    /// <returns>A list of all the chefs that are already placed</returns>
+    /// <remarks>Maintainer: Ying and Antosh</remarks>
     private List<GameObject> GetAllChefs()
     {
         var chefs = new List<GameObject>();
@@ -197,13 +160,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         return chefs;
     }
 
-    /// <summary>
-    /// Returns true if 
-    /// </summary>
-    /// <param name="viewportPos"></param>
-    /// <returns></returns>
-    private static bool CheckOutsideScreen(Vector3 viewportPos)
+
+    /// <returns>True if cursor is at a point where the chef cant be placed</returns>
+    /// <remarks>Maintainer: Ying and Antosh</remarks>
+
+    private static bool CheckOutsideScreen()
     {
+        Vector3 viewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (viewportPos.x <= 0.02 || viewportPos.x >= 0.85)
         {
             return true;
@@ -230,8 +193,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         transform.SetParent(parentAfterDrag);
         
         // dont allow player to place a chef on game over screen, or if has too little credits
-        if (!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost) &&
-            !CheckOutOfBounds(mainCamera.ScreenToViewportPoint(Input.mousePosition)))
+        if (!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost) && !CheckOutOfBounds())
         {
             Instantiate(chef, dropPosition, transform.rotation, chefParent.transform);
         }
