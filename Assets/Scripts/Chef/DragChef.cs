@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Chef;
 using GameManagement;
+using Shop;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -17,17 +18,15 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Image range; //range that appears when chef is dragged
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
-    [SerializeField] private int chefCost;
 
 
-    private CreditManager creditsManager;
-    private Image image;
-    private Image slot;
+
+    private ShopSlotManager shopSlotManager;
 
     private void Start()
     {
-        
-        creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+
+        shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<Range>().radius;//get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
 
@@ -35,28 +34,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                             - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
         range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
         
-        image = GetComponent<Image>();
-        slot = transform.parent.GetComponent<Image>();
+        // image = GetComponent<Image>();
+        // slot = transform.parent.GetComponent<Image>();
 
         chefCollider2D = GetComponent<BoxCollider2D>();
 
 
     }
-
-    private void Update()
-    {
-        if (chefCost > creditsManager.GetCredits())
-        {
-            image.color = Color.red;
-            slot.color = Color.red;
-        }
-        else
-        {
-            image.color = Color.white;
-            slot.color = new Color(0.86f, 0.61f, 0.21f);
-        }
-    }
-
 
 
     /// <summary> Pin the item while dragging.</summary>
@@ -191,13 +175,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         transform.SetParent(parentAfterDrag);
-        
-        // dont allow player to place a chef on game over screen, or if has too little credits
-        if (!GameManager.gameManager.IsGameOver() && creditsManager.SpendCredits(chefCost) && !CheckOutOfBounds())
+        range.enabled = false;
+
+        // dont allow player to place a chef on game over screen, or if has too little credit
+        bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
+        if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
         {
             Instantiate(chef, dropPosition, transform.rotation, chefParent.transform);
         }
-
-        range.enabled = false;
     }
 }
