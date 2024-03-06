@@ -117,14 +117,7 @@ public class AbilityProjectile : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null)
-            {
-                if (hit.collider.gameObject.layer == 6)
-                {
-                    Debug.Log("Hit Chef");
-                }
-            }
-            else
+            if (hit.collider == null)
             {
                 if (clicked == 1)
                 {
