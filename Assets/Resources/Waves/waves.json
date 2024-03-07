@@ -19,19 +19,13 @@
         },
         {
           "type": "Pinkie",
-          "amount": 0,
+          "amount": 5,
           "timeOfWave": 0,
           "frequency": 0.2
         },
         {
           "type": "Woody",
           "amount": 0,
-          "timeOfWave": 0,
-          "frequency": 0.5
-        },
-        {
-          "type": "Trenchcoat",
-          "amount": 1,
           "timeOfWave": 0,
           "frequency": 0.5
         }

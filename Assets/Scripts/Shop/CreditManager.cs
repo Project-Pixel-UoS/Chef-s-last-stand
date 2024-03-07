@@ -17,6 +17,8 @@ public class CreditManager : MonoBehaviour
         credits = 50;
         text.text = "Credits: " + credits;
     }
+    
+    
 
 
     /// <summary>
