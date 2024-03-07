@@ -102,8 +102,8 @@
       "mouseUnits": [
         {
           "type": "Pinkie",
-          "amount": 5,
-          "timeOfWave": 3,
+          "amount": 10,
+          "timeOfWave": 5,
           "frequency": 1
         },
         {
