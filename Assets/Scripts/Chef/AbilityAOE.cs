@@ -35,9 +35,16 @@ public class AbilityAOE : MonoBehaviour
         Vector3 direction = furthestMouse.transform.position - transform.position;
         float radians = Mathf.Atan2(direction.x, direction.y) * -1;
         float degrees = radians * Mathf.Rad2Deg;
+        degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
     }
+    
+    private float RotateBy180(float degrees)
+    {
+        return degrees + ((degrees >= 0) ? 180 : -180); 
+    }
+
 
     /// <returns> find an arbitrary mouse that is in range </returns>
     /// <remarks>Maintained by: Antosh </remarks>
@@ -78,7 +85,8 @@ public class AbilityAOE : MonoBehaviour
         if(cooldownTimer > 0) return;
 
         foreach(GameObject mouse in GetMiceInRange()){
-            Vector3 spriteDirection = transform.up;     //  forward vector of the sprite
+            Vector3 spriteDirection = -transform.up;     //  forward vector of the sprite
+            Debug.Log("sprite direction: " + spriteDirection);
             Vector3 distance = (mouse.transform.position - transform.position);
             double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
             if(mouseAngle < 120)
