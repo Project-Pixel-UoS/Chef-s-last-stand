@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mouse_Woody
   m_EditorClassIdentifier: 
   mouseName: Woody
-  speed: 1
+  speed: 0.75
   health: 50
   size: 1
   sprite: {fileID: 21300000, guid: 35bc84f0831acc3428359a2b6b1482a0, type: 3}

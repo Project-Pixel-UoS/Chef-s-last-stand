@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /// <summary>
 /// Designed to be attached to mice.
 /// Responsible for health of each mice.
@@ -40,7 +41,7 @@ public class DamageHandler : MonoBehaviour
     /// </summary>
     /// <param name="damageFactor">container for projectile's damage stats</param>
     /// <remarks>Author: Antosh</remarks>
-    IEnumerator TakeDamage(DamageFactor damageFactor)
+    public IEnumerator TakeDamage(DamageFactor damageFactor)
     {
         float durationRemaining = damageFactor.damageDuration;
         while (durationRemaining > 0) //take damage until long lasting effect runs out

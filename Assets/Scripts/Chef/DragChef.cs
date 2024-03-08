@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
 using Chef;
 using GameManagement;
 using Shop;
@@ -11,35 +12,31 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    [SerializeField] private GameObject chefParent;//empty parent object that contains all the chefs
+    [SerializeField] private GameObject chefParent; //empty parent object that contains all the chefs
     private BoxCollider2D chefCollider2D;
-    
+
     public Camera mainCamera;
     public Image range; //range that appears when chef is dragged
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
 
-
     private ShopSlotManager shopSlotManager;
 
     private void Start()
     {
-
         shopSlotManager = GetComponent<ShopSlotManager>();
-        float rangeRadius = chef.GetComponent<Range>().radius;//get the radius size from chef prefab
+        float rangeRadius = chef.GetComponent<Range>().radius; //get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
 
-        Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0)) 
-                            - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
+        Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
+                             - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
         range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
-        
+
         // image = GetComponent<Image>();
         // slot = transform.parent.GetComponent<Image>();
 
         chefCollider2D = GetComponent<BoxCollider2D>();
-
-
     }
 
 
@@ -53,6 +50,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         range.enabled = true; // makes the range visible
+
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -115,7 +113,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         return false;
     }
 
-    
 
     /// <returns>A list of all the colliders of the chefs that are already placed</returns>
     /// <remarks>Maintainer: Ying and Antosh</remarks>
@@ -147,7 +144,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     /// <returns>True if cursor is at a point where the chef cant be placed</returns>
     /// <remarks>Maintainer: Ying and Antosh</remarks>
-
     private static bool CheckOutsideScreen()
     {
         Vector3 viewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -163,7 +159,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         return false;
     }
-
 
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>

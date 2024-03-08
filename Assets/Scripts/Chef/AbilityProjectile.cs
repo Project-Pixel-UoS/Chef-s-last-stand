@@ -9,10 +9,34 @@ namespace Chef
 {
     public class AbilityProjectile : MonoBehaviour
     {
+        
+        
         [SerializeField] private GameObject Projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
         private Range range;
+        
+        
+        /// <summary> Spins chef so that he is facing the mouse </summary>
+        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        private void Rotate(GameObject furthestMouse)
+        {
+            Vector3 direction = furthestMouse.transform.position - transform.position;
+            float radians = Mathf.Atan2(direction.x, direction.y) * -1;
+            float degrees = radians * Mathf.Rad2Deg; // negative radians means chef has turned clock wise
+            degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
+            Quaternion target = Quaternion.Euler(0, 0, degrees);
+            transform.rotation = target;
+        }
+
+        private float RotateBy180(float degrees)
+        {
+            return degrees + ((degrees >= 0) ? 180 : -180);
+        }
+
+
+
         private void Awake()
         {
             range = GetComponent<Range>();
@@ -34,14 +58,14 @@ namespace Chef
         /// <summary> Spins chef so that he is facing the mouse </summary>
         /// <param name = "furthestMouse"> mouse which chef will point towards</param>
         /// <remarks>Maintained by: Antosh Nikolak</remarks>
-        private void Rotate(GameObject furthestMouse)
-        {
-            Vector3 direction = furthestMouse.transform.position - transform.position;
-            float radians = Mathf.Atan2(direction.x, direction.y) * -1;
-            float degrees = radians * Mathf.Rad2Deg;
-            Quaternion target = Quaternion.Euler(0, 0, degrees);
-            transform.rotation = target;
-        }
+        // private void Rotate(GameObject furthestMouse)
+        // {
+        //     Vector3 direction = furthestMouse.transform.position - transform.position;
+        //     float radians = Mathf.Atan2(direction.x, direction.y) * -1;
+        //     float degrees = radians * Mathf.Rad2Deg;
+        //     Quaternion target = Quaternion.Euler(0, 0, degrees);
+        //     transform.rotation = target;
+        // }
 
 
         /// <returns> find an arbitrary mouse that is in range </returns>
