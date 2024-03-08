@@ -11,5 +11,7 @@ public class MiceScriptableObject : ScriptableObject
     public float size;
     public Sprite sprite;
     public bool canGhost;
+    public bool canSplit;
     public MouseDifficulty difficulty;
+
 }

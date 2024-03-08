@@ -11,11 +11,15 @@ namespace GameManagement
         
         public static GameManager gameManager;
 
-        private void Awake()
+        private void Start()
         {
+            
             // singleton pattern
             if (gameManager == null)
+            {
                 gameManager = this;
+            }
+                
         }
 
 
