@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /// <summary>
 /// Designed to be attached to mice.
 /// Responsible for health of each mice.
