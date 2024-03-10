@@ -25,7 +25,7 @@ namespace Chef
             Vector3 direction = furthestMouse.transform.position - transform.position;
             float radians = Mathf.Atan2(direction.x, direction.y) * -1;
             float degrees = radians * Mathf.Rad2Deg; // negative radians means chef has turned clock wise
-            degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
+            // degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
             Quaternion target = Quaternion.Euler(0, 0, degrees);
             transform.rotation = target;
         }
@@ -51,13 +51,14 @@ namespace Chef
 
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
+            // Rotation.Rotation.Rotate(transform, furthestMouse.transform);
             Shoot();
         }
 
-
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        //
+        // /// <summary> Spins chef so that he is facing the mouse </summary>
+        // /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        // /// <remarks>Maintained by: Antosh Nikolak</remarks>
         // private void Rotate(GameObject furthestMouse)
         // {
         //     Vector3 direction = furthestMouse.transform.position - transform.position;
