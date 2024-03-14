@@ -19,6 +19,10 @@ public class AbilityBuff : MonoBehaviour
         colliders = Physics2D.OverlapCircleAll(transform.position, 3);
         foreach(Collider2D collider in colliders){
             GameObject temp = collider.gameObject;
+            if(temp!=this && temp.tag=="Chef"){
+                DamageFactor df = temp.GetComponent<DamageFactor>();
+                df.damage = df.damage*(1f+ATK);
+            }
         }
     }
 
