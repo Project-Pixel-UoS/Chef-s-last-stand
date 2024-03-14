@@ -9,7 +9,7 @@ using UnityEngine;
 /// <remarks>Author: Ben</remarks>
 public class ProjectileMover : MonoBehaviour
 {
-    [SerializeField] private float projectileSpeed; // speed of projectile
+    public float projectileSpeed; // speed of projectile
     [SerializeField] private float destroyTime; // time until projectile is destroyed (seconds)
 
     void Update()

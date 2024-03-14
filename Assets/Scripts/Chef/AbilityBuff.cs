@@ -17,11 +17,18 @@ public class AbilityBuff : MonoBehaviour
     void Update()
     {
         colliders = Physics2D.OverlapCircleAll(transform.position, 3);
-        foreach(Collider2D collider in colliders){
-            GameObject temp = collider.gameObject;
-            if(temp!=this && temp.tag=="Chef"){
-                DamageFactor df = temp.GetComponent<DamageFactor>();
-                df.damage = df.damage*(1f+ATK);
+        if(colliders!=null){
+            foreach(Collider2D collider in colliders){
+                GameObject gameObject = collider.gameObject;
+                if(gameObject.tag=="Chef"){
+                    Buff buff = gameObject.GetComponent<Buff>();
+                    if(buff==null){
+                        gameObject.AddComponent<Buff>();
+                    }
+                    buff = gameObject.GetComponent<Buff>();
+                    buff.damageIncrease = ATK;
+                    buff.speedIncrease = ATKSpeed;
+                }
             }
         }
     }

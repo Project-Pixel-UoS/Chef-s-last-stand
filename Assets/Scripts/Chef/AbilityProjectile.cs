@@ -15,6 +15,7 @@ namespace Chef
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
         private Range range;
+        private float originalSpeed;
         
         
         /// <summary> Spins chef so that he is facing the mouse </summary>
@@ -40,9 +41,11 @@ namespace Chef
         private void Awake()
         {
             range = GetComponent<Range>();
+            originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
         }
 
-
+        /// <summary> Update variable if buff added </summary>
+        /// <remarks>Maintained by: Lishan Xu</remarks>
         void Update()
         {
             if (Projectile == null) return;
@@ -107,7 +110,13 @@ namespace Chef
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
-            Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
+            DamageFactor df = this.GetComponent<DamageFactor>();
+            Buff bf = this.GetComponent<Buff>();
+            if(bf!=null){
+                p.GetComponent<DamageFactor>().damage = df.damage*bf.damageIncrease;
+                p.GetComponent<ProjectileMover>().projectileSpeed=originalSpeed*bf.damageIncrease;
+            }
         }
     }
 }
