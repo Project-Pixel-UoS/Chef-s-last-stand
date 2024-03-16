@@ -12,7 +12,7 @@ public class AbilityAOE : MonoBehaviour
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
-    private ParticleSystem fireParticles; // fire particles 
+    [SerializeField] private ParticleSystem fireParticles; // fire particles 
 
     void Start(){
         damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
