@@ -13,18 +13,27 @@ public class AbilityAOE : MonoBehaviour
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
     [SerializeField] private ParticleSystem fireParticles; // fire particles 
+    [SerializeField] private int arcAngle;//angle of spread of fire in degrees
 
-    void Start(){
-        damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
-        // fireParticles = GetComponent<ParticleSystem>();     // Get fire particles 
+    void Start()
+    {
+        damageFactor = GetComponent<DamageFactor>(); // Get damage factor component
+        // double arcLength = Math.PI / 180f * arcAngle * range;
+        
+        var shape = fireParticles.shape;
+        shape.arc = arcAngle;
+
+        fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
+        // fireParticles.emission.
     }
 
-    void Update(){
+    void Update()
+    {
         GameObject furthestMouse = GetFurthestMouseInRange();
-        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;     // Decrease cooldown
+        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime; // Decrease cooldown
+        AOE(); // Deal AOE damage
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
-        AOE();      // Deal AOE damage
     }
 
     /// <summary> Spins chef so that he is facing the mouse </summary>
@@ -39,10 +48,10 @@ public class AbilityAOE : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
     }
-    
+
     private float RotateBy180(float degrees)
     {
-        return degrees + ((degrees >= 0) ? 180 : -180); 
+        return degrees + ((degrees >= 0) ? 180 : -180);
     }
 
 
@@ -68,7 +77,7 @@ public class AbilityAOE : MonoBehaviour
         var mice = GameObject.FindGameObjectsWithTag("Mouse");
         var miceInRange = new List<GameObject>();
         foreach (var mouse in mice)
-        { 
+        {
             float distance = (mouse.transform.position - transform.position).magnitude;
             if (distance <= range)
             {
@@ -81,25 +90,43 @@ public class AbilityAOE : MonoBehaviour
 
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
-    private void AOE(){
-        if(cooldownTimer > 0) return;
+    private void AOE()
+    {
+        if (cooldownTimer > 0) return;
+        
+        List<GameObject> miceInRange= GetMiceInRange();
+        Debug.Log("mice in range: " + miceInRange.Count);
+        
+        var particleEmission = fireParticles.emission;
+        if (miceInRange.Count > 0)
+        {
+            particleEmission.enabled = true;
+            fireParticles.Play();
+        }
+        else
+        {
+            // var particleEmission = fireParticles.emission;
+            print("PAUSING");
+            particleEmission.enabled = false;
+            fireParticles.Stop(); 
+        }
 
-        foreach(GameObject mouse in GetMiceInRange()){
-            Vector3 spriteDirection = -transform.up;     //  forward vector of the sprite
+        foreach (GameObject mouse in miceInRange)
+        {
+            Vector3 spriteDirection = -transform.up; //  forward vector of the sprite
             Debug.Log("sprite direction: " + spriteDirection);
             Vector3 distance = (mouse.transform.position - transform.position);
             double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
-            if(mouseAngle < 120)
+            print("Angle: " + mouseAngle);
+          
+            if (mouseAngle < arcAngle / 2f)  // check is angled within half the arc length from where chef is facing
             {
                 //play particle effects and damage mouse
-                var particleEmission = fireParticles.emission;
-                particleEmission.enabled = true;
-                fireParticles.Play();
+
                 StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
             }
         }
+
         cooldownTimer = cooldown;
     }
-
-
 }
