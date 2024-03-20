@@ -16,7 +16,7 @@ public class AbilityAOE : MonoBehaviour
 
     void Start(){
         damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
-        fireParticles = GetComponent<ParticleSystem>();     // Get fire particles 
+        // fireParticles = GetComponent<ParticleSystem>();     // Get fire particles 
     }
 
     void Update(){
