@@ -23,7 +23,7 @@ public class PlateProjectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Mouse"))
         {
             Destroy(gameObject);
-            parentChef.removePlate();
+            parentChef.removePlate(); //decrease current plate count when destroyed
         }
     }
 

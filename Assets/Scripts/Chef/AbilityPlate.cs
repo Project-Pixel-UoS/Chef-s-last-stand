@@ -62,12 +62,14 @@ public class AbilityPlate : MonoBehaviour
         var adjTPs = turningPoints[(tpIndex-1)..(tpIndex+2)]; //get prev. and next TPs of random TP
         rndIndex = Random.Range(0, adjTPs.Length - 1); //select random 2 TPs to place plate btw.
         adjTPs = adjTPs[(rndIndex)..(rndIndex + 2)];
+        //the distance btw the two TPs (i.e. all possible positions plates can be)
         var vectorRange = adjTPs[1].transform.position - adjTPs[0].transform.position;
 
         var platePos = new Vector2();
         var found = false;
         while (!found)
         {
+            //grabs random position in between the two turning points
             var randomPos = adjTPs[0].transform.position + Random.value * vectorRange;
             if ((randomPos - transform.position).magnitude < range.radius)
             {
