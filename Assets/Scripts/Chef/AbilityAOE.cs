@@ -94,39 +94,50 @@ public class AbilityAOE : MonoBehaviour
     {
         if (cooldownTimer > 0) return;
         
-        List<GameObject> miceInRange= GetMiceInRange();
-        Debug.Log("mice in range: " + miceInRange.Count);
-        
-        var particleEmission = fireParticles.emission;
+        List<GameObject> miceInRange = GetMiceInRange();
+        ManageParticles(miceInRange);
+
+        DealDamage(miceInRange);
+
+        cooldownTimer = cooldown;
+    }
+
+    //todo function has a bug where only 1 mouse gets damaged because function only looks at the mice position, not accounting for the width of his entire body - had no time to fix it
+    /// <summary>
+    /// Deals damage to each mice in the mice in range list
+    /// </summary>
+    /// <param name="miceInRange"> List of mice within chefs rangs</param>
+    /// <remarks>Martin</remarks>
+    private void DealDamage(List<GameObject> miceInRange)
+    {
+        int counter = 0;
+        foreach (GameObject mouse in miceInRange)
+        {
+            Vector3 spriteDirection = -transform.up; //  forward vector of the sprite
+            Vector3 distance = (mouse.transform.position - transform.position);
+            double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+            float upperBound = arcAngle / 2f; 
+            if (mouseAngle < upperBound ) // check is angled within half the arc length from where chef is facing
+            {
+                //play particle effects and damage mouse
+                StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
+                counter++;
+
+            }
+            print("mice " + counter +"health: " + mouse.GetComponent<MouseStats>().health);
+        }
+        print("num of mice being damaged "+counter);
+    }
+
+    private void ManageParticles(List<GameObject> miceInRange)
+    {
         if (miceInRange.Count > 0)
         {
-            particleEmission.enabled = true;
             fireParticles.Play();
         }
         else
         {
-            // var particleEmission = fireParticles.emission;
-            print("PAUSING");
-            particleEmission.enabled = false;
-            fireParticles.Stop(); 
+            fireParticles.Stop();
         }
-
-        foreach (GameObject mouse in miceInRange)
-        {
-            Vector3 spriteDirection = -transform.up; //  forward vector of the sprite
-            Debug.Log("sprite direction: " + spriteDirection);
-            Vector3 distance = (mouse.transform.position - transform.position);
-            double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
-            print("Angle: " + mouseAngle);
-          
-            if (mouseAngle < arcAngle / 2f)  // check is angled within half the arc length from where chef is facing
-            {
-                //play particle effects and damage mouse
-
-                StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
-            }
-        }
-
-        cooldownTimer = cooldown;
     }
 }
