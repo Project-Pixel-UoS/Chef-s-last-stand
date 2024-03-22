@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Chef;
+using System.IO;
 
 public class AbilityPlate : MonoBehaviour
 {
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private float maxPlates;
-    public GameObject[] turningPoints;
+    [SerializeField] public Transform[] turningPoints;
     private float cooldownTimer; // timer for cooldown in between shots
     private float currPlates;
     private Range range;
     // Start is called before the first frame update
     void Start()
     {
-        turningPoints = GameObject.FindGameObjectsWithTag("TurningPoints");
+        var path = GameObject.Find("Path");
+        turningPoints = path.GetComponentsInChildren<Transform>();
     }
     private void Awake()
     {
@@ -33,9 +35,9 @@ public class AbilityPlate : MonoBehaviour
     /// <returns>
     /// turning points in range of the chef
     /// </returns>
-    private List<GameObject> GetTPsInRange()
+    private List<Transform> GetTPsInRange()
     {
-        var tpsInRange = new List<GameObject>();
+        var tpsInRange = new List<Transform>();
         foreach (var turningpoint in turningPoints)
         {
             float distance = (turningpoint.transform.position - transform.position).magnitude;
@@ -51,26 +53,24 @@ public class AbilityPlate : MonoBehaviour
     /// a possible plate position on the map
     /// </returns>
     /// <remarks> maintained by: Martin </remarks>
-    private Vector2 getPlatePosition()
+    private Vector3 getPlatePosition()
     {
         //grab random TP in range
         var inRangeTPs = GetTPsInRange();
-        if (inRangeTPs.Count == 0) return Vector2.zero;
+        if (inRangeTPs.Count == 0) return Vector3.back;
         int rndIndex = Random.Range(0, inRangeTPs.Count);
 
         int tpIndex = System.Array.IndexOf(turningPoints, inRangeTPs[rndIndex]);
         var adjTPs = turningPoints[(tpIndex-1)..(tpIndex+2)]; //get prev. and next TPs of random TP
         rndIndex = Random.Range(0, adjTPs.Length - 1); //select random 2 TPs to place plate btw.
-        adjTPs = adjTPs[(rndIndex)..(rndIndex + 2)];
-        //the distance btw the two TPs (i.e. all possible positions plates can be)
-        var vectorRange = adjTPs[1].transform.position - adjTPs[0].transform.position;
-
-        var platePos = new Vector2();
+        var restTPs = adjTPs[(rndIndex)..(rndIndex + 2)];
+      
+        var platePos = new Vector3();
         var found = false;
         while (!found)
         {
             //grabs random position in between the two turning points
-            var randomPos = adjTPs[0].transform.position + Random.value * vectorRange;
+            var randomPos = Vector3.Lerp(restTPs[0].position, restTPs[1].position, Random.value);
             if ((randomPos - transform.position).magnitude < range.radius)
             {
                 platePos = randomPos;
@@ -84,7 +84,7 @@ public class AbilityPlate : MonoBehaviour
     {
         if (cooldownTimer > 0) return;
         cooldownTimer = cooldown;
-        if (getPlatePosition().x != 0)
+        if (getPlatePosition().z != -1)
         {
             var plate = Instantiate(Projectile, getPlatePosition(), transform.rotation);
             plate.transform.parent = transform;
