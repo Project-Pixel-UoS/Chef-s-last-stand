@@ -54,10 +54,10 @@ namespace Chef
             Shoot();
         }
 
-
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        //
+        // /// <summary> Spins chef so that he is facing the mouse </summary>
+        // /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        // /// <remarks>Maintained by: Antosh Nikolak</remarks>
         // private void Rotate(GameObject furthestMouse)
         // {
         //     Vector3 direction = furthestMouse.transform.position - transform.position;
@@ -107,7 +107,8 @@ namespace Chef
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
-            Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject projectile = Instantiate(Projectile, transform.position, transform.rotation);
+            // projectile.GetComponent<ProjectileMover>().direction = -transform.up;
         }
     }
 }
