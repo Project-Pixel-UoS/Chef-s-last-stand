@@ -51,7 +51,6 @@ namespace Chef
 
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
-            // Rotation.Rotation.Rotate(transform, furthestMouse.transform);
             Shoot();
         }
 
@@ -108,7 +107,8 @@ namespace Chef
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
-            Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject projectile = Instantiate(Projectile, transform.position, transform.rotation);
+            // projectile.GetComponent<ProjectileMover>().direction = -transform.up;
         }
     }
 }

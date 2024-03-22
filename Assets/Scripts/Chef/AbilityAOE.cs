@@ -124,9 +124,9 @@ public class AbilityAOE : MonoBehaviour
                 counter++;
 
             }
-            print("mice " + counter +"health: " + mouse.GetComponent<MouseStats>().health);
+            // print("mice " + counter +"health: " + mouse.GetComponent<MouseStats>().health);
         }
-        print("num of mice being damaged "+counter);
+        // print("num of mice being damaged "+counter);
     }
 
     private void ManageParticles(List<GameObject> miceInRange)
