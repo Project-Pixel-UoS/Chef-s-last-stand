@@ -12,7 +12,7 @@ namespace Chef
 
         void Start()
         {
-            print("RANGE OBJET SCALE " + rangeObject.transform.localScale);
+            // print("RANGE OBJET SCALE " + rangeObject.transform.localScale);
             rangeSpriteRenderer = rangeObject.GetComponent<SpriteRenderer>();
             rangeObject.transform.localScale =
                 new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen

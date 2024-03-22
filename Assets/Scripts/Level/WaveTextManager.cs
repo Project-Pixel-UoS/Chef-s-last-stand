@@ -13,8 +13,7 @@ namespace Level.WaveData
         private void Awake()
         {
             text = waveText.GetComponent<Text>();
-            print("text: " + text);
-            print(" contents: " + text.text);
+
 
         }
 
