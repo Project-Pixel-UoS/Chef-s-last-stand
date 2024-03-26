@@ -13,7 +13,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
     public GameObject chef;
     [SerializeField] private GameObject chefParent; //empty parent object that contains all the chefs
-    private BoxCollider2D chefCollider2D;
+    private Collider2D chefCollider2D;
 
     public Camera mainCamera;
     public Image range; //range that appears when chef is dragged
@@ -36,7 +36,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         // image = GetComponent<Image>();
         // slot = transform.parent.GetComponent<Image>();
 
-        chefCollider2D = GetComponent<BoxCollider2D>();
+        chefCollider2D = GetComponent<Collider2D>();
     }
 
 
@@ -116,12 +116,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     /// <returns>A list of all the colliders of the chefs that are already placed</returns>
     /// <remarks>Maintainer: Ying and Antosh</remarks>
-    private List<BoxCollider2D> GetAllChefColliders()
+    private List<Collider2D> GetAllChefColliders()
     {
-        var colliders = new List<BoxCollider2D>();
+        var colliders = new List<Collider2D>();
         foreach (var chef in GetAllChefs())
         {
-            colliders.Add(chef.GetComponent<BoxCollider2D>());
+            colliders.Add(chef.GetComponent<Collider2D>());
         }
 
         return colliders;
