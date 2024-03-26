@@ -9,7 +9,6 @@ using Range = Chef.Range;
 
 public class AbilityAOE : MonoBehaviour
 {
-    // [SerializeField] private float range; // range at which chef can attack mice
     private Range range;
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
@@ -71,25 +70,7 @@ public class AbilityAOE : MonoBehaviour
         return null;
     }
 
-    // /// <returns>
-    // /// mice in range of the chef
-    // /// </returns>
-    // /// <remarks> maintained by: Antosh </remarks>
-    // private List<GameObject> GetMiceInRange()
-    // {
-    //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
-    //     var miceInRange = new List<GameObject>();
-    //     foreach (var mouse in mice)
-    //     {
-    //         float distance = (mouse.transform.position - transform.position).magnitude;
-    //         if (distance <= range)
-    //         {
-    //             miceInRange.Add(mouse);
-    //         }
-    //     }
-    //
-    //     return miceInRange;
-    // }
+
 
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>

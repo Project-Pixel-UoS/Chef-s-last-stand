@@ -39,7 +39,6 @@ public class ProjectileMover : MonoBehaviour
         // transform.Translate(transform.up * 0.01f); //backwards shoot doesnt work, goes off to the side
         // transform.position += (transform.up * Time.deltaTime); // backwards shoot works
 
-        print(Time.deltaTime);
         Vector3 move = (transform.up * Time.deltaTime); // backwards shoot works
         move.x *= -1;
         move.y *= -1;
