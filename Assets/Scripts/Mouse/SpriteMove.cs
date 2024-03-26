@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpriteMove : MonoBehaviour
 {
@@ -37,7 +38,10 @@ public class SpriteMove : MonoBehaviour
             }
             else
             {
+                MouseRotate(targets[index]);
+                // Rotation.Rotation.Rotate(transform, targets[index]);
                 target = targets[index];
+
             }
         }
     }
@@ -49,6 +53,16 @@ public class SpriteMove : MonoBehaviour
         transform.position += movement;
         totalDistanceMoved += movement.magnitude;
     }
+    
+    private void MouseRotate(Transform target)
+    {
+        Vector3 direction = target.transform.position - transform.position;
+        float radians = Mathf.Atan2(direction.x, direction.y) * -1;
+        float degrees = radians * Mathf.Rad2Deg;
+        Quaternion aim = Quaternion.Euler(0, 0, degrees);
+        transform.rotation = aim;
+    }
+
 
     public int GetIndex() {  return index; }
 

@@ -9,15 +9,13 @@ namespace Chef
 {
     public class AbilityProjectile : MonoBehaviour
     {
-        
-        
         [SerializeField] private GameObject Projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
         private Range range;
         private float originalSpeed;
-        
-        
+
+
         /// <summary> Spins chef so that he is facing the mouse </summary>
         /// <param name = "furthestMouse"> mouse which chef will point towards</param>
         /// <remarks>Maintained by: Antosh Nikolak</remarks>
@@ -35,7 +33,6 @@ namespace Chef
         {
             return degrees + ((degrees >= 0) ? 180 : -180);
         }
-
 
 
         private void Awake()
@@ -57,10 +54,10 @@ namespace Chef
             Shoot();
         }
 
-
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        //
+        // /// <summary> Spins chef so that he is facing the mouse </summary>
+        // /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        // /// <remarks>Maintained by: Antosh Nikolak</remarks>
         // private void Rotate(GameObject furthestMouse)
         // {
         //     Vector3 direction = furthestMouse.transform.position - transform.position;
@@ -113,9 +110,10 @@ namespace Chef
             GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
             DamageFactor df = this.GetComponent<DamageFactor>();
             Buff bf = this.GetComponent<Buff>();
-            if(bf!=null){
-                p.GetComponent<DamageFactor>().damage = df.damage*bf.damageIncrease;
-                p.GetComponent<ProjectileMover>().projectileSpeed=originalSpeed*bf.damageIncrease;
+            if (bf != null)
+            {
+                p.GetComponent<DamageFactor>().damage = df.damage * bf.damageIncrease;
+                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.damageIncrease;
             }
         }
     }
