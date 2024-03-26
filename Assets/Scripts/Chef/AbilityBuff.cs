@@ -4,6 +4,10 @@ using Chef;
 using Unity.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Component should be attatched to the head chef who has the ability to buff other chefs
+/// </summary>
+/// <remarks> author: Lishan</remarks>
 public class AbilityBuff : MonoBehaviour
 {
     Collider2D[] colliders;
