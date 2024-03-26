@@ -5,10 +5,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
+using Range = Chef.Range;
 
 public class AbilityAOE : MonoBehaviour
 {
-    [SerializeField] private float range; // range at which chef can attack mice
+    // [SerializeField] private float range; // range at which chef can attack mice
+    private Range range;
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
@@ -17,6 +19,7 @@ public class AbilityAOE : MonoBehaviour
 
     void Start()
     {
+        range = GetComponent<Range>();
         damageFactor = GetComponent<DamageFactor>(); // Get damage factor component
         // double arcLength = Math.PI / 180f * arcAngle * range;
         
@@ -59,7 +62,7 @@ public class AbilityAOE : MonoBehaviour
     /// <remarks>Maintained by: Antosh </remarks>
     private GameObject GetFurthestMouseInRange()
     {
-        List<GameObject> mice = GetMiceInRange();
+        List<GameObject> mice = range.GetMiceInRange();
         if (mice.Count > 0)
         {
             return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
@@ -68,25 +71,25 @@ public class AbilityAOE : MonoBehaviour
         return null;
     }
 
-    /// <returns>
-    /// mice in range of the chef
-    /// </returns>
-    /// <remarks> maintained by: Antosh </remarks>
-    private List<GameObject> GetMiceInRange()
-    {
-        var mice = GameObject.FindGameObjectsWithTag("Mouse");
-        var miceInRange = new List<GameObject>();
-        foreach (var mouse in mice)
-        {
-            float distance = (mouse.transform.position - transform.position).magnitude;
-            if (distance <= range)
-            {
-                miceInRange.Add(mouse);
-            }
-        }
-
-        return miceInRange;
-    }
+    // /// <returns>
+    // /// mice in range of the chef
+    // /// </returns>
+    // /// <remarks> maintained by: Antosh </remarks>
+    // private List<GameObject> GetMiceInRange()
+    // {
+    //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
+    //     var miceInRange = new List<GameObject>();
+    //     foreach (var mouse in mice)
+    //     {
+    //         float distance = (mouse.transform.position - transform.position).magnitude;
+    //         if (distance <= range)
+    //         {
+    //             miceInRange.Add(mouse);
+    //         }
+    //     }
+    //
+    //     return miceInRange;
+    // }
 
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
@@ -94,7 +97,7 @@ public class AbilityAOE : MonoBehaviour
     {
         if (cooldownTimer > 0) return;
         
-        List<GameObject> miceInRange = GetMiceInRange();
+        List<GameObject> miceInRange = range.GetMiceInRange();
         ManageParticles(miceInRange);
 
         DealDamage(miceInRange);
