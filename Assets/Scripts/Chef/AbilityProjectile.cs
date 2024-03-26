@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,7 +73,7 @@ namespace Chef
         /// <remarks>Maintained by: Antosh </remarks>
         private GameObject GetFurthestMouseInRange()
         {
-            List<GameObject> mice = GetMiceInRange();
+            List<GameObject> mice = gameObject.GetComponent<Range>().GetMiceInRange();
             if (mice.Count > 0)
             {
                 return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
@@ -81,25 +82,25 @@ namespace Chef
             return null;
         }
 
-        /// <returns>
-        /// mice in range of the chef
-        /// </returns>
-        /// <remarks> maintained by: Antosh </remarks>
-        private List<GameObject> GetMiceInRange()
-        {
-            var mice = GameObject.FindGameObjectsWithTag("Mouse");
-            var miceInRange = new List<GameObject>();
-            foreach (var mouse in mice)
-            {
-                float distance = (mouse.transform.position - transform.position).magnitude;
-                if (distance <= range.radius)
-                {
-                    miceInRange.Add(mouse);
-                }
-            }
-
-            return miceInRange;
-        }
+        // /// <returns>
+        // /// mice in range of the chef
+        // /// </returns>
+        // /// <remarks> maintained by: Antosh </remarks>
+        // private List<GameObject> GetMiceInRange()
+        // {
+        //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
+        //     var miceInRange = new List<GameObject>();
+        //     foreach (var mouse in mice)
+        //     {
+        //         float distance = (mouse.transform.position - transform.position).magnitude;
+        //         if (distance <= range.radius)
+        //         {
+        //             miceInRange.Add(mouse);
+        //         }
+        //     }
+        //
+        //     return miceInRange;
+        // }
 
         /// <summary> Shoot projectile in direction facing </summary>
         /// <remarks>Maintained by: Ben Brixton </remarks>

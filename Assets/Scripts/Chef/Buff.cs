@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Chef;
 using UnityEngine;
 
 /// <summary>
@@ -10,4 +11,7 @@ public class Buff : MonoBehaviour
 {
     public float damageIncrease = 0;
     public float speedIncrease  = 0;
+    public float rangeIncrease = 0;
+
+
 }
