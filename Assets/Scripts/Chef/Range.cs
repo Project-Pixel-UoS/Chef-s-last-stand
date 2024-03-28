@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Chef.Upgrades;
 using UnityEngine;
 
 namespace Chef
@@ -85,11 +86,15 @@ namespace Chef
             {
                 rangeSpriteRenderer.enabled = true;
                 clicked = true;
+                ChefTracker.Instance.CurrentChef = gameObject;
             }
             else
             {
+
                 rangeSpriteRenderer.enabled = false;
                 clicked = false;
+                ChefTracker.Instance.CurrentChef = null;
+
             }
         }
 
@@ -109,6 +114,8 @@ namespace Chef
                     {
                         rangeSpriteRenderer.enabled = false;
                         clicked = false;
+                        ChefTracker.Instance.CurrentChef = null;
+
                     }
                 }
             }
