@@ -103,7 +103,10 @@ namespace Chef
         // }
 
         /// <summary> Shoot projectile in direction facing </summary>
-        /// <remarks>Maintained by: Ben Brixton </remarks>
+        /// <remarks>
+        /// Maintained by: Ben Brixton 
+        /// Refactored by: Lishan Xu
+        /// </remarks>
         private void Shoot()
         {
             if (cooldownTimer > 0) return;
