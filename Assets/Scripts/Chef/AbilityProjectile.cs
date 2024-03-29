@@ -117,7 +117,7 @@ namespace Chef
             if (bf != null)
             {
                 p.GetComponent<DamageFactor>().damage = df.damage * bf.damageIncrease;
-                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.damageIncrease;
+                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.speedIncrease;
             }
         }
     }
