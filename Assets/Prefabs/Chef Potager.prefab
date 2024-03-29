@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3854765059203472735}
   - component: {fileID: 8053452737509301959}
   - component: {fileID: -3952903201260412454}
+  - component: {fileID: 1725052805830338619}
   m_Layer: 0
   m_Name: Chef Potager
   m_TagString: Chef
@@ -261,3 +262,15 @@ MonoBehaviour:
   damage: 5
   damageRate: 1
   damageDuration: 1
+--- !u!114 &1725052805830338619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

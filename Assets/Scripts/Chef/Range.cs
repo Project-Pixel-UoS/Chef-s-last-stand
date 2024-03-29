@@ -1,12 +1,20 @@
 using System.Collections.Generic;
 using Chef.Upgrades;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Chef
 {
     public class Range : MonoBehaviour
     {
-        public float radius; // range at which chef can attack mice
+        [SerializeField] private float radius; // range at which chef can attack mice
+        public float Radius
+        {
+            get => radius;
+            set => SetRadius(value);
+        }
+        
+        
         [SerializeField] private GameObject rangeObject; //imports the chefs range.
         private SpriteRenderer rangeSpriteRenderer;
         private bool clicked = false; //Used to see if you are clicking on or off the chef
@@ -14,10 +22,8 @@ namespace Chef
 
         void Start()
         {
-            // print("RANGE OBJET SCALE " + rangeObject.transform.localScale);
             rangeSpriteRenderer = rangeObject.GetComponent<SpriteRenderer>();
-            rangeObject.transform.localScale =
-                new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen
+            ResizeRangeVisual();
             rangeSpriteRenderer.enabled = false;
         }
 
@@ -26,6 +32,8 @@ namespace Chef
             ClickManager();
             HandleRangeBuff();
         }
+
+
         
         /// <returns>
         /// mice in range of the chef
@@ -84,13 +92,14 @@ namespace Chef
         {
             if (!clicked)
             {
+                // when chef is pressed while unselected
                 rangeSpriteRenderer.enabled = true;
                 clicked = true;
                 ChefTracker.Instance.CurrentChef = gameObject;
             }
             else
             {
-
+                // when chef is pressed while selected
                 rangeSpriteRenderer.enabled = false;
                 clicked = false;
                 ChefTracker.Instance.CurrentChef = null;
@@ -110,7 +119,7 @@ namespace Chef
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
                 if (hit.collider == null)
                 {
-                    if (clicked)
+                    if (clicked && !Utils.checkMousePosOutsideMap())
                     {
                         rangeSpriteRenderer.enabled = false;
                         clicked = false;
@@ -119,6 +128,19 @@ namespace Chef
                     }
                 }
             }
+        }
+        
+        private void ResizeRangeVisual()
+        {
+            rangeObject.transform.localScale =
+                new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen
+        }
+
+        private void SetRadius(float radius)
+        {
+            ResizeRangeVisual();
+            this.radius = radius;
+            // ResizeRangeVisual();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Chef.Upgrades
         /// <param name="chef">The new current chef being set, could be null</param>
         private void SelectNewChef(GameObject chef)
         {
-            print("Selecting new chef");
+            currentChef = chef;
             if (chef == null)
             {
                 // remove upgrade buttons
@@ -51,6 +51,7 @@ namespace Chef.Upgrades
             {
                 //display upgrade buttons corresponding to current chef
                 upgradeUI.SetActive(true);
+                currentChef.GetComponent<UpgradeTracker>().RefreshHealthBar1();
             }
             
         }
