@@ -176,7 +176,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
         if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
         {
-            Instantiate(chef, dropPosition, transform.rotation, chefParent.transform);
+            Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         }
     }
 }

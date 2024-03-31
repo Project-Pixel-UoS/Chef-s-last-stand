@@ -58,10 +58,10 @@ namespace Chef
             // Get coordinate dierction
             Vector3 direction = furthestMouse.transform.position - transform.position;
 
-            // Calcualte angle as a quaternion (-180 as sprite is default downard facing)
+            // Calcualte angle as a quaternion
             float radians = Mathf.Atan2(direction.x, direction.y) * -1;
             float degrees = radians * Mathf.Rad2Deg;
-            Quaternion target = Quaternion.Euler(0, 0, degrees-180);
+            Quaternion target = Quaternion.Euler(0, 0, degrees);
 
             // Set rotation
             transform.rotation = target;
