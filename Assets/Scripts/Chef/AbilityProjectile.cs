@@ -17,24 +17,6 @@ namespace Chef
         private float originalSpeed;
 
 
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
-        private void Rotate(GameObject furthestMouse)
-        {
-            Vector3 direction = furthestMouse.transform.position - transform.position;
-            float radians = Mathf.Atan2(direction.x, direction.y) * -1;
-            float degrees = radians * Mathf.Rad2Deg; // negative radians means chef has turned clock wise
-            degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
-            Quaternion target = Quaternion.Euler(0, 0, degrees);
-            transform.rotation = target;
-        }
-
-        private float RotateBy180(float degrees)
-        {
-            return degrees + ((degrees >= 0) ? 180 : -180);
-        }
-
 
         private void Awake()
         {
@@ -55,20 +37,6 @@ namespace Chef
             Shoot();
         }
 
-        //
-        // /// <summary> Spins chef so that he is facing the mouse </summary>
-        // /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        // /// <remarks>Maintained by: Antosh Nikolak</remarks>
-        // private void Rotate(GameObject furthestMouse)
-        // {
-        //     Vector3 direction = furthestMouse.transform.position - transform.position;
-        //     float radians = Mathf.Atan2(direction.x, direction.y) * -1;
-        //     float degrees = radians * Mathf.Rad2Deg;
-        //     Quaternion target = Quaternion.Euler(0, 0, degrees);
-        //     transform.rotation = target;
-        // }
-
-
         /// <returns> find an arbitrary mouse that is in range </returns>
         /// <remarks>Maintained by: Antosh </remarks>
         private GameObject GetFurthestMouseInRange()
@@ -82,25 +50,22 @@ namespace Chef
             return null;
         }
 
-        // /// <returns>
-        // /// mice in range of the chef
-        // /// </returns>
-        // /// <remarks> maintained by: Antosh </remarks>
-        // private List<GameObject> GetMiceInRange()
-        // {
-        //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
-        //     var miceInRange = new List<GameObject>();
-        //     foreach (var mouse in mice)
-        //     {
-        //         float distance = (mouse.transform.position - transform.position).magnitude;
-        //         if (distance <= range.radius)
-        //         {
-        //             miceInRange.Add(mouse);
-        //         }
-        //     }
-        //
-        //     return miceInRange;
-        // }
+        /// <summary> Spins chef so that he is facing the mouse </summary>
+        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        private void Rotate(GameObject furthestMouse)
+        {
+            // Get coordinate dierction
+            Vector3 direction = furthestMouse.transform.position - transform.position;
+
+            // Calcualte angle as a quaternion (-180 as sprite is default downard facing)
+            float radians = Mathf.Atan2(direction.x, direction.y) * -1;
+            float degrees = radians * Mathf.Rad2Deg;
+            Quaternion target = Quaternion.Euler(0, 0, degrees-180);
+
+            // Set rotation
+            transform.rotation = target;
+        }
 
         /// <summary> Shoot projectile in direction facing </summary>
         /// <remarks>Maintained by: Ben Brixton </remarks>
