@@ -168,8 +168,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         bool left = Physics.Raycast(transform.position, transform.right);
         bool right = Physics.Raycast(transform.position, -transform.right);
         bool above = Physics.Raycast(new Vector3(transform.position.x, transform.position.y, -5), transform.forward);
-        //Debug.Log("pos"+transform.position);
-        Collider2D[] results = new Collider2D[1];
 
         return (bottom && top) || (left && right) || above;
     }
