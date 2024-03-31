@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -9203637450718709653}
   - component: {fileID: 7016424228477295924}
   - component: {fileID: 7533226973392138995}
+  - component: {fileID: -5412019012353377404}
   m_Layer: 0
   m_Name: Chef Entremetier
-  m_TagString: Untagged
+  m_TagString: Chef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,6 +162,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0067604, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &-5412019012353377404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f40b024c4c1576469228c789aeb9712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  damageRate: 1
+  damageDuration: 5
 --- !u!1 &6208724048470825412
 GameObject:
   m_ObjectHideFlags: 0

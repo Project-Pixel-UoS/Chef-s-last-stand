@@ -5,26 +5,37 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
+using Range = Chef.Range;
 
 public class AbilityAOE : MonoBehaviour
 {
-    [SerializeField] private float range; // range at which chef can attack mice
+    private Range range;
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
-    private ParticleSystem fireParticles; // fire particles 
+    [SerializeField] private ParticleSystem fireParticles; // fire particles 
+    [SerializeField] private int arcAngle;//angle of spread of fire in degrees
 
-    void Start(){
-        damageFactor = GetComponent<DamageFactor>();        // Get damage factor component
-        fireParticles = GetComponent<ParticleSystem>();     // Get fire particles 
+    void Start()
+    {
+        range = GetComponent<Range>();
+        damageFactor = GetComponent<DamageFactor>(); // Get damage factor component
+        // double arcLength = Math.PI / 180f * arcAngle * range;
+        
+        var shape = fireParticles.shape;
+        shape.arc = arcAngle;
+
+        fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
+        // fireParticles.emission.
     }
 
-    void Update(){
+    void Update()
+    {
         GameObject furthestMouse = GetFurthestMouseInRange();
-        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;     // Decrease cooldown
+        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime; // Decrease cooldown
+        AOE(); // Deal AOE damage
         if (furthestMouse == null) return;
         Rotate(furthestMouse);
-        AOE();      // Deal AOE damage
     }
 
     /// <summary> Spins chef so that he is facing the mouse </summary>
@@ -39,10 +50,10 @@ public class AbilityAOE : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
     }
-    
+
     private float RotateBy180(float degrees)
     {
-        return degrees + ((degrees >= 0) ? 180 : -180); 
+        return degrees + ((degrees >= 0) ? 180 : -180);
     }
 
 
@@ -50,7 +61,7 @@ public class AbilityAOE : MonoBehaviour
     /// <remarks>Maintained by: Antosh </remarks>
     private GameObject GetFurthestMouseInRange()
     {
-        List<GameObject> mice = GetMiceInRange();
+        List<GameObject> mice = range.GetMiceInRange();
         if (mice.Count > 0)
         {
             return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
@@ -59,47 +70,58 @@ public class AbilityAOE : MonoBehaviour
         return null;
     }
 
-    /// <returns>
-    /// mice in range of the chef
-    /// </returns>
-    /// <remarks> maintained by: Antosh </remarks>
-    private List<GameObject> GetMiceInRange()
-    {
-        var mice = GameObject.FindGameObjectsWithTag("Mouse");
-        var miceInRange = new List<GameObject>();
-        foreach (var mouse in mice)
-        { 
-            float distance = (mouse.transform.position - transform.position).magnitude;
-            if (distance <= range)
-            {
-                miceInRange.Add(mouse);
-            }
-        }
 
-        return miceInRange;
-    }
 
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
-    private void AOE(){
-        if(cooldownTimer > 0) return;
+    private void AOE()
+    {
+        if (cooldownTimer > 0) return;
+        
+        List<GameObject> miceInRange = range.GetMiceInRange();
+        ManageParticles(miceInRange);
 
-        foreach(GameObject mouse in GetMiceInRange()){
-            Vector3 spriteDirection = -transform.up;     //  forward vector of the sprite
-            Debug.Log("sprite direction: " + spriteDirection);
-            Vector3 distance = (mouse.transform.position - transform.position);
-            double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
-            if(mouseAngle < 120)
-            {
-                //play particle effects and damage mouse
-                var particleEmission = fireParticles.emission;
-                particleEmission.enabled = true;
-                fireParticles.Play();
-                StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
-            }
-        }
+        DealDamage(miceInRange);
+
         cooldownTimer = cooldown;
     }
 
+    //todo function has a bug where only 1 mouse gets damaged because function only looks at the mice position, not accounting for the width of his entire body - had no time to fix it
+    /// <summary>
+    /// Deals damage to each mice in the mice in range list
+    /// </summary>
+    /// <param name="miceInRange"> List of mice within chefs rangs</param>
+    /// <remarks>Martin</remarks>
+    private void DealDamage(List<GameObject> miceInRange)
+    {
+        int counter = 0;
+        foreach (GameObject mouse in miceInRange)
+        {
+            Vector3 spriteDirection = -transform.up; //  forward vector of the sprite
+            Vector3 distance = (mouse.transform.position - transform.position);
+            double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+            float upperBound = arcAngle / 2f; 
+            if (mouseAngle < upperBound ) // check is angled within half the arc length from where chef is facing
+            {
+                //play particle effects and damage mouse
+                StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
+                counter++;
 
+            }
+            // print("mice " + counter +"health: " + mouse.GetComponent<MouseStats>().health);
+        }
+        // print("num of mice being damaged "+counter);
+    }
+
+    private void ManageParticles(List<GameObject> miceInRange)
+    {
+        if (miceInRange.Count > 0)
+        {
+            fireParticles.Play();
+        }
+        else
+        {
+            fireParticles.Stop();
+        }
+    }
 }

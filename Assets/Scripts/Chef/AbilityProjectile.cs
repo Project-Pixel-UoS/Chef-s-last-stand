@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,13 @@ namespace Chef
 {
     public class AbilityProjectile : MonoBehaviour
     {
-        
-        
         [SerializeField] private GameObject Projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
         private Range range;
-        
-        
+        private float originalSpeed;
+
+
         /// <summary> Spins chef so that he is facing the mouse </summary>
         /// <param name = "furthestMouse"> mouse which chef will point towards</param>
         /// <remarks>Maintained by: Antosh Nikolak</remarks>
@@ -36,13 +36,14 @@ namespace Chef
         }
 
 
-
         private void Awake()
         {
             range = GetComponent<Range>();
+            originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
         }
 
-
+        /// <summary> Update variable if buff added </summary>
+        /// <remarks>Maintained by: Lishan Xu</remarks>
         void Update()
         {
             if (Projectile == null) return;
@@ -54,10 +55,10 @@ namespace Chef
             Shoot();
         }
 
-
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        //
+        // /// <summary> Spins chef so that he is facing the mouse </summary>
+        // /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        // /// <remarks>Maintained by: Antosh Nikolak</remarks>
         // private void Rotate(GameObject furthestMouse)
         // {
         //     Vector3 direction = furthestMouse.transform.position - transform.position;
@@ -72,7 +73,7 @@ namespace Chef
         /// <remarks>Maintained by: Antosh </remarks>
         private GameObject GetFurthestMouseInRange()
         {
-            List<GameObject> mice = GetMiceInRange();
+            List<GameObject> mice = gameObject.GetComponent<Range>().GetMiceInRange();
             if (mice.Count > 0)
             {
                 return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
@@ -81,25 +82,25 @@ namespace Chef
             return null;
         }
 
-        /// <returns>
-        /// mice in range of the chef
-        /// </returns>
-        /// <remarks> maintained by: Antosh </remarks>
-        private List<GameObject> GetMiceInRange()
-        {
-            var mice = GameObject.FindGameObjectsWithTag("Mouse");
-            var miceInRange = new List<GameObject>();
-            foreach (var mouse in mice)
-            {
-                float distance = (mouse.transform.position - transform.position).magnitude;
-                if (distance <= range.radius)
-                {
-                    miceInRange.Add(mouse);
-                }
-            }
-
-            return miceInRange;
-        }
+        // /// <returns>
+        // /// mice in range of the chef
+        // /// </returns>
+        // /// <remarks> maintained by: Antosh </remarks>
+        // private List<GameObject> GetMiceInRange()
+        // {
+        //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
+        //     var miceInRange = new List<GameObject>();
+        //     foreach (var mouse in mice)
+        //     {
+        //         float distance = (mouse.transform.position - transform.position).magnitude;
+        //         if (distance <= range.radius)
+        //         {
+        //             miceInRange.Add(mouse);
+        //         }
+        //     }
+        //
+        //     return miceInRange;
+        // }
 
         /// <summary> Shoot projectile in direction facing </summary>
         /// <remarks>Maintained by: Ben Brixton </remarks>
@@ -107,7 +108,14 @@ namespace Chef
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
-            Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
+            DamageFactor df = this.GetComponent<DamageFactor>();
+            Buff bf = this.GetComponent<Buff>();
+            if (bf != null)
+            {
+                p.GetComponent<DamageFactor>().damage = df.damage * bf.damageIncrease;
+                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.damageIncrease;
+            }
         }
     }
 }
