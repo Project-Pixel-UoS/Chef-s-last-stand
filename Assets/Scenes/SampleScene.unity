@@ -416,6 +416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 204891753}
+  - component: {fileID: 204891754}
   m_Layer: 0
   m_Name: TurningPoint (8)
   m_TagString: TurningPoints
@@ -438,6 +439,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &204891754
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204891752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &207558692
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207558693}
+  - component: {fileID: 207558694}
   m_Layer: 0
   m_Name: TurningPoint (9)
   m_TagString: TurningPoints
@@ -469,6 +492,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &207558694
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207558692}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &266574280
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 352096072}
+  - component: {fileID: 352096073}
   m_Layer: 0
   m_Name: TurningPoint (5)
   m_TagString: TurningPoints
@@ -653,6 +698,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &352096073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352096071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &364758163
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 364758164}
+  - component: {fileID: 364758165}
   m_Layer: 0
   m_Name: TurningPoint
   m_TagString: TurningPoints
@@ -684,6 +751,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &364758165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364758163}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &388897576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 642449034}
+  - component: {fileID: 642449035}
   m_Layer: 0
   m_Name: EndingPoint
   m_TagString: TurningPoints
@@ -1121,6 +1210,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &642449035
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642449033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &646814839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,6 +1677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734445207}
+  - component: {fileID: 734445208}
   m_Layer: 0
   m_Name: TurningPoint (4)
   m_TagString: TurningPoints
@@ -1589,6 +1700,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &734445208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734445206}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &738460583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,7 +1774,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1831,6 +1963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 873934009}
+  - component: {fileID: 873934010}
   m_Layer: 0
   m_Name: TurningPoint (2)
   m_TagString: TurningPoints
@@ -1853,6 +1986,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &873934010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873934008}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &874502826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2158,6 +2312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1028627133}
+  - component: {fileID: 1028627134}
   m_Layer: 0
   m_Name: TurningPoint (7)
   m_TagString: TurningPoints
@@ -2180,6 +2335,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1028627134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028627132}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1050389008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,6 +2972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1620452682}
+  - component: {fileID: 1620452683}
   m_Layer: 0
   m_Name: TurningPoint (6)
   m_TagString: TurningPoints
@@ -2818,6 +2995,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1620452683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620452681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1676120463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,6 +3025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1676120464}
+  - component: {fileID: 1676120465}
   m_Layer: 0
   m_Name: TurningPoint (1)
   m_TagString: TurningPoints
@@ -2849,6 +3048,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1676120465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676120463}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1682975872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,6 +3602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939896807}
+  - component: {fileID: 1939896808}
   m_Layer: 0
   m_Name: TurningPoint (3)
   m_TagString: TurningPoints
@@ -3404,6 +3625,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1939896808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939896806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1980577058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1980577059}
+  - component: {fileID: 1980577060}
   m_Layer: 0
   m_Name: StartingPoint
   m_TagString: TurningPoints
@@ -3435,6 +3678,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1682975873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1980577060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980577058}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2055137631
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,7 +66,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         PositionChefOntoCursor();
-
         if (CheckOutOfBounds())
         {
             range.color = new Color32(238, 68, 56, 135);
@@ -92,7 +91,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private bool CheckOutOfBounds()
     {
-        return CheckIntersectingExistingChef() || CheckOutsideScreen();
+        return CheckIntersectingExistingChef() || CheckOutsideScreen() || CheckOnPath();
     }
 
     /// <summary>
@@ -160,6 +159,25 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         return false;
     }
 
+    
+    /// <returns> True if chef is on the mice's path </returns>
+    private bool CheckOnPath()
+    {
+        bool top = Physics.Raycast(transform.position, transform.up);
+        bool bottom = Physics.Raycast(transform.position, -transform.up);
+        bool left = Physics.Raycast(transform.position, transform.right);
+        bool right = Physics.Raycast(transform.position, -transform.right);
+        bool above = Physics.Raycast(new Vector3(transform.position.x, transform.position.y, -5), transform.forward);
+        //Debug.Log("pos"+transform.position);
+        Collider2D[] results = new Collider2D[1];
+
+        return (bottom && top) || (left && right) || above;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("hit");
+    }
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
