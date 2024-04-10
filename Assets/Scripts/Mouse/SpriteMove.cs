@@ -48,6 +48,7 @@ public class SpriteMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        GhostMouseHandler();
         var direction = Vector3.Normalize(target.position - transform.position);
         var movement = direction * stats.speed * Time.deltaTime;
         transform.position += movement;
@@ -67,5 +68,14 @@ public class SpriteMove : MonoBehaviour
     public int GetIndex() {  return index; }
 
     public void SetIndex(int i) { index = i; }
+
+    public void GhostMouseHandler(){
+        if(stats.canGhost){
+
+            Debug.Log("Ghost Mouse Appeared");
+        }
+
+
+    }
 
 }
