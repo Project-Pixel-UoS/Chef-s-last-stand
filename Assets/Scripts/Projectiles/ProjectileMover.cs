@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,12 @@ using UnityEngine;
 /// <remarks>Author: Ben</remarks>
 public class ProjectileMover : MonoBehaviour
 {
-    [SerializeField] private float projectileSpeed; // speed of projectile
+    public float projectileSpeed; // speed of projectile
     [SerializeField] private float destroyTime; // time until projectile is destroyed (seconds)
 
     void Update()
     {
-        transform.position += transform.up * -1 * Time.deltaTime * projectileSpeed;      // update position
+        transform.position += transform.up * Time.deltaTime * projectileSpeed;      // update position
 
         // destroy game object when timer reaches zero
         destroyTime -= Time.deltaTime;
@@ -31,6 +32,5 @@ public class ProjectileMover : MonoBehaviour
         {
             Destroy(gameObject);
         }
-     
     }
 }

@@ -23,11 +23,7 @@ public class HealthManager : MonoBehaviour
         {
             GameManager.gameManager.GameOver();
         }
-    }
-
-    
-
-    
+    }   
     
 
 
