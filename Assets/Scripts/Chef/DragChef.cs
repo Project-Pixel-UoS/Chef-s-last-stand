@@ -20,13 +20,19 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
+    [SerializeField] private Image sideBar;
+    [SerializeField] private Image bottomBar;
+
 
     private ShopSlotManager shopSlotManager;
 
     private void Start()
     {
+        sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
+        bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
+
         shopSlotManager = GetComponent<ShopSlotManager>();
-        float rangeRadius = chef.GetComponent<Range>().radius; //get the radius size from chef prefab
+        float rangeRadius = chef.GetComponent<Range>().Radius; //get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
 
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
@@ -144,15 +150,29 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     /// <returns>True if cursor is at a point where the chef cant be placed</returns>
     /// <remarks>Maintainer: Ying and Antosh</remarks>
-    private static bool CheckOutsideScreen()
+    private  bool CheckOutsideScreen()
     {
-        Vector3 viewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        if (viewportPos.x <= 0.02 || viewportPos.x >= 0.85)
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        float orthographicSize = mainCamera.orthographicSize;
+        // Calculate the width using the aspect ratio of the screen
+        float aspectRatio = Screen.width / (float)Screen.height;
+        
+        float cameraUnitWidth = orthographicSize * 2 * aspectRatio;
+        float cameraUnitHeight = orthographicSize * 2f;
+
+        float sideBarWidth = (cameraUnitWidth * sideBar.rectTransform.rect.width) / Screen.width;
+        float sideBarBound = sideBar.transform.position.x - sideBarWidth / 2;
+        
+        float bottomBarHeight = (cameraUnitHeight * bottomBar.rectTransform.rect.height) / Screen.height;
+        float bottomBarBound = bottomBar.transform.position.y + bottomBarHeight / 2;
+
+        if (worldPos.x <= -8 || worldPos.x >= sideBarBound)
         {
             return true;
         }
 
-        if (viewportPos.y <= 0.05 || viewportPos.y >= 0.95)
+        if (worldPos.y <= bottomBarBound || worldPos.y >= 4.5)
         {
             return true;
         }
