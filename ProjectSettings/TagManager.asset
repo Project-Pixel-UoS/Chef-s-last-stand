@@ -8,10 +8,12 @@ TagManager:
   - Health
   - Credits
   - Canvas
-  - Chef
+  - TurningPoints
   - BottomBar
-  - SideBar
   - UpgradeBar1
+  - SideBar
+  - Chef
+  - ChefContainer
   layers:
   - Default
   - TransparentFX

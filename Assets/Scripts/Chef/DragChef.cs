@@ -12,24 +12,16 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    [SerializeField] private GameObject chefParent; //empty parent object that contains all the chefs
-    private Collider2D chefCollider2D;
-
-    public Camera mainCamera;
     public Image range; //range that appears when chef is dragged
+
+    private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
-
-    [SerializeField] private Image sideBar;
-    [SerializeField] private Image bottomBar;
-
 
     private ShopSlotManager shopSlotManager;
 
     private void Start()
     {
-        sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
-        bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
 
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<Range>().Radius; //get the radius size from chef prefab
@@ -90,7 +82,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private void PositionChefOntoCursor()
     {
         // canvas is in world screen mode so we need to convert to world units
-        Vector3 worldCursorPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldCursorPos.z = 0;
         transform.position = worldCursorPos;
     }
@@ -137,6 +129,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ying and Antosh</remarks>
     private List<GameObject> GetAllChefs()
     {
+        var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefs = new List<GameObject>();
         //iterate over each child transform
         foreach (Transform _transform in chefParent.transform)
@@ -152,9 +145,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ying and Antosh</remarks>
     private  bool CheckOutsideScreen()
     {
+        var sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
+        var bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
+
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        float orthographicSize = mainCamera.orthographicSize;
+        float orthographicSize = Camera.main.orthographicSize;
         // Calculate the width using the aspect ratio of the screen
         float aspectRatio = Screen.width / (float)Screen.height;
         
@@ -196,6 +192,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
         if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
         {
+            var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
             Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         }
     }
