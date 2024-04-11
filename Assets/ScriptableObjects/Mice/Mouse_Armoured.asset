@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f801903af36977445b855e1772d2fcb4, type: 3}
   m_Name: Mouse_Armoured
   m_EditorClassIdentifier: 
-  mouseName: 
-  speed: 0
-  health: 0
-  size: 0
-  sprite: {fileID: 0}
+  mouseName: Armoured
+  speed: 1
+  health: 20
+  size: 1
+  sprite: {fileID: 21300000, guid: 29892a1b08ff4de4eb966d92dc5e3ba8, type: 3}
   canGhost: 0
   canSplit: 0
+  armoured: 1
   difficulty: 0

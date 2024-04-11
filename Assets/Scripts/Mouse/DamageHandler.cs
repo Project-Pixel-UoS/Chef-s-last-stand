@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Projectile;
 using UnityEngine;
 
 
@@ -27,7 +28,7 @@ public class DamageHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        DamageFactor damageFactor = other.gameObject.GetComponent<DamageFactor>();
+        DamageFactor damageFactor = HandleArmouredMouse(other);
         if (damageCoroutine != null) //check mouse still taking poisonous damage
         {
             StopCoroutine(damageCoroutine);
@@ -71,5 +72,13 @@ public class DamageHandler : MonoBehaviour
             mousePosition = transform.position;
             LevelManager.LM.SplitMouse(mousePosition, index);
         }
+    }
+
+    //if an armoured mouse is hit by onions or knives, do no damage.
+    private DamageFactor HandleArmouredMouse(Collision2D other)
+    {
+        if (stats.armoured && other.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
+
+        return other.gameObject.GetComponent<DamageFactor>();
     }
 }
