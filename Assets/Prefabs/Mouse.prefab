@@ -115,7 +115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.6858835, y: -3.111882, z: -0.020749088}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7854702822569694468}
@@ -153,6 +153,7 @@ MonoBehaviour:
   size: 0
   sprite: {fileID: 0}
   canGhost: 0
+  canSplit: 0
 --- !u!58 &5917657897216018609
 CircleCollider2D:
   m_ObjectHideFlags: 0

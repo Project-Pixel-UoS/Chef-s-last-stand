@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,40 +10,22 @@ namespace Chef
 {
     public class AbilityProjectile : MonoBehaviour
     {
-        
-        
         [SerializeField] private GameObject Projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
         private Range range;
-        
-        
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
-        private void Rotate(GameObject furthestMouse)
-        {
-            Vector3 direction = furthestMouse.transform.position - transform.position;
-            float radians = Mathf.Atan2(direction.x, direction.y) * -1;
-            float degrees = radians * Mathf.Rad2Deg; // negative radians means chef has turned clock wise
-            degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
-            Quaternion target = Quaternion.Euler(0, 0, degrees);
-            transform.rotation = target;
-        }
-
-        private float RotateBy180(float degrees)
-        {
-            return degrees + ((degrees >= 0) ? 180 : -180);
-        }
+        private float originalSpeed;
 
 
 
         private void Awake()
         {
             range = GetComponent<Range>();
+            originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
         }
 
-
+        /// <summary> Update variable if buff added </summary>
+        /// <remarks>Maintained by: Lishan Xu</remarks>
         void Update()
         {
             if (Projectile == null) return;
@@ -54,25 +37,11 @@ namespace Chef
             Shoot();
         }
 
-
-        /// <summary> Spins chef so that he is facing the mouse </summary>
-        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
-        /// <remarks>Maintained by: Antosh Nikolak</remarks>
-        // private void Rotate(GameObject furthestMouse)
-        // {
-        //     Vector3 direction = furthestMouse.transform.position - transform.position;
-        //     float radians = Mathf.Atan2(direction.x, direction.y) * -1;
-        //     float degrees = radians * Mathf.Rad2Deg;
-        //     Quaternion target = Quaternion.Euler(0, 0, degrees);
-        //     transform.rotation = target;
-        // }
-
-
         /// <returns> find an arbitrary mouse that is in range </returns>
         /// <remarks>Maintained by: Antosh </remarks>
         private GameObject GetFurthestMouseInRange()
         {
-            List<GameObject> mice = GetMiceInRange();
+            List<GameObject> mice = gameObject.GetComponent<Range>().GetMiceInRange();
             if (mice.Count > 0)
             {
                 return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
@@ -81,33 +50,40 @@ namespace Chef
             return null;
         }
 
-        /// <returns>
-        /// mice in range of the chef
-        /// </returns>
-        /// <remarks> maintained by: Antosh </remarks>
-        private List<GameObject> GetMiceInRange()
+        /// <summary> Spins chef so that he is facing the mouse </summary>
+        /// <param name = "furthestMouse"> mouse which chef will point towards</param>
+        /// <remarks>Maintained by: Antosh Nikolak</remarks>
+        private void Rotate(GameObject furthestMouse)
         {
-            var mice = GameObject.FindGameObjectsWithTag("Mouse");
-            var miceInRange = new List<GameObject>();
-            foreach (var mouse in mice)
-            {
-                float distance = (mouse.transform.position - transform.position).magnitude;
-                if (distance <= range.radius)
-                {
-                    miceInRange.Add(mouse);
-                }
-            }
+            // Get coordinate dierction
+            Vector3 direction = furthestMouse.transform.position - transform.position;
 
-            return miceInRange;
+            // Calcualte angle as a quaternion
+            float radians = Mathf.Atan2(direction.x, direction.y) * -1;
+            float degrees = radians * Mathf.Rad2Deg;
+            Quaternion target = Quaternion.Euler(0, 0, degrees);
+
+            // Set rotation
+            transform.rotation = target;
         }
 
         /// <summary> Shoot projectile in direction facing </summary>
-        /// <remarks>Maintained by: Ben Brixton </remarks>
+        /// <remarks>
+        /// Maintained by: Ben Brixton 
+        /// Refactored by: Lishan Xu
+        /// </remarks>
         private void Shoot()
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
-            Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
+            DamageFactor df = this.GetComponent<DamageFactor>();
+            Buff bf = this.GetComponent<Buff>();
+            if (bf != null)
+            {
+                p.GetComponent<DamageFactor>().damage = df.damage * bf.damageIncrease;
+                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.speedIncrease;
+            }
         }
     }
 }

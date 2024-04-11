@@ -8,7 +8,7 @@ using UnityEngine;
 /// <remarks>Antosh</remarks>
 public class DamageFactor : MonoBehaviour
 {
-    public int damage; 
+    public float damage; 
 
     //these fields should only be changed for projectiles that deal long lasting damage (eg. poison)
      public float damageRate  = 1; //how often damage is dealt
