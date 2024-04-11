@@ -15,13 +15,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     [SerializeField] private GameObject chefParent; //empty parent object that contains all the chefs
     private Collider2D chefCollider2D;
 
-    public Camera mainCamera;
     public Image range; //range that appears when chef is dragged
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
-    [SerializeField] private Image sideBar;
-    [SerializeField] private Image bottomBar;
+    private Image sideBar;
+    private Image bottomBar;
 
 
     private ShopSlotManager shopSlotManager;
@@ -90,7 +89,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private void PositionChefOntoCursor()
     {
         // canvas is in world screen mode so we need to convert to world units
-        Vector3 worldCursorPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldCursorPos.z = 0;
         transform.position = worldCursorPos;
     }
@@ -154,7 +153,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        float orthographicSize = mainCamera.orthographicSize;
+        float orthographicSize = Camera.main.orthographicSize;
         // Calculate the width using the aspect ratio of the screen
         float aspectRatio = Screen.width / (float)Screen.height;
         
