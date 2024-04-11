@@ -28,6 +28,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Start()
     {
+        sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
+        bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
+
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<Range>().Radius; //get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
@@ -193,7 +196,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
         if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
         {
-            Instantiate(chef, dropPosition, transform.rotation, chefParent.transform);
+            Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         }
     }
 }

@@ -20,13 +20,11 @@ public class AbilityAOE : MonoBehaviour
     {
         range = GetComponent<Range>();
         damageFactor = GetComponent<DamageFactor>(); // Get damage factor component
-        // double arcLength = Math.PI / 180f * arcAngle * range;
         
         var shape = fireParticles.shape;
         shape.arc = arcAngle;
 
         fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
-        // fireParticles.emission.
     }
 
     void Update()
@@ -46,14 +44,8 @@ public class AbilityAOE : MonoBehaviour
         Vector3 direction = furthestMouse.transform.position - transform.position;
         float radians = Mathf.Atan2(direction.x, direction.y) * -1;
         float degrees = radians * Mathf.Rad2Deg;
-        degrees = RotateBy180(degrees); //rotate chef 180 because his image is looking backwards
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
-    }
-
-    private float RotateBy180(float degrees)
-    {
-        return degrees + ((degrees >= 0) ? 180 : -180);
     }
 
 
@@ -108,9 +100,7 @@ public class AbilityAOE : MonoBehaviour
                 counter++;
 
             }
-            // print("mice " + counter +"health: " + mouse.GetComponent<MouseStats>().health);
         }
-        // print("num of mice being damaged "+counter);
     }
 
     private void ManageParticles(List<GameObject> miceInRange)

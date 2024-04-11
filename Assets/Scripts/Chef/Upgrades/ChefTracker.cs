@@ -11,20 +11,20 @@ namespace Chef.Upgrades
     public class ChefTracker : MonoBehaviour
     {
         
-        public static ChefTracker Instance { get; private set; }
+        public static ChefTracker Instance { get; private set; } // singleton pattern
 
-        [SerializeField] private GameObject upgradeUI;
+        [SerializeField] private GameObject upgradeUI; // game object containing upgrade button and upgrade bar
 
 
         private GameObject currentChef;
-        public GameObject CurrentChef
+        public GameObject CurrentChef // property of current selected chef (chef that's been most recently clicked)
         {
-            get => currentChef;
             set => SelectNewChef(value);
-        } // stores the currently selected chef by the player
+        } 
 
         private void Awake()
         {
+            print("CHEF TRACKER AWAKE============================");
             if (Instance != null && Instance != this) 
             { 
                 Destroy(this); 
