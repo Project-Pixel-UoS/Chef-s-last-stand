@@ -12,23 +12,16 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    [SerializeField] private GameObject chefParent; //empty parent object that contains all the chefs
-    private Collider2D chefCollider2D;
-
     public Image range; //range that appears when chef is dragged
+
+    private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
-
-    private Image sideBar;
-    private Image bottomBar;
-
 
     private ShopSlotManager shopSlotManager;
 
     private void Start()
     {
-        sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
-        bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
 
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<Range>().Radius; //get the radius size from chef prefab
@@ -136,6 +129,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ying and Antosh</remarks>
     private List<GameObject> GetAllChefs()
     {
+        var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefs = new List<GameObject>();
         //iterate over each child transform
         foreach (Transform _transform in chefParent.transform)
@@ -151,6 +145,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ying and Antosh</remarks>
     private  bool CheckOutsideScreen()
     {
+        var sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
+        var bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
+
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float orthographicSize = Camera.main.orthographicSize;
@@ -195,6 +192,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
         if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
         {
+            var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
             Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         }
     }
