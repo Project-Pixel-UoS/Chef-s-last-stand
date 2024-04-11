@@ -9,6 +9,9 @@ TagManager:
   - Credits
   - Canvas
   - Chef
+  - BottomBar
+  - SideBar
+  - UpgradeBar1
   layers:
   - Default
   - TransparentFX
