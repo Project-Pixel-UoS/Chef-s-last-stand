@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1970727718610732877}
   - component: {fileID: 5461096997308423307}
   - component: {fileID: -4606185237663331364}
+  - component: {fileID: -1760284225495076460}
   m_Layer: 0
   m_Name: Chef Prep Cook
   m_TagString: Chef
@@ -177,6 +178,18 @@ MonoBehaviour:
   damage: 10
   damageRate: 1
   damageDuration: 1
+--- !u!114 &-1760284225495076460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8700967512257991476
 GameObject:
   m_ObjectHideFlags: 0
