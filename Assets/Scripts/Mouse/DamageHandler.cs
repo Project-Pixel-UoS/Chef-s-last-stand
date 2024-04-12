@@ -19,11 +19,14 @@ public class DamageHandler : MonoBehaviour
     private CreditManager creditsManager;
     private Vector3 mousePosition;
 
+    private SpriteRenderer sprite;
+
     private void Start()
     {
         stats = gameObject.GetComponent<MouseStats>();
         credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
+        sprite= gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -49,6 +52,8 @@ public class DamageHandler : MonoBehaviour
         {
             stats.health -= damageFactor.damage;
             durationRemaining -= damageFactor.damageRate;
+            if(damageFactor.damage != 0) StartCoroutine(flashRed());
+
 
 
             if (stats.health <= 0)
@@ -61,6 +66,21 @@ public class DamageHandler : MonoBehaviour
 
             yield return new WaitForSeconds(damageFactor.damageRate);
         }
+    }
+
+    /// <summary>
+    /// Make mouse flash red when damage is delt.
+    /// </summary>
+    /// <remarks>Author: Emily</remarks>
+
+    public IEnumerator flashRed(){
+
+        
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color= Color.white;
+
+
     }
 
     //if the mouse that died was trench coat, grab its death position and spawn more mice.
