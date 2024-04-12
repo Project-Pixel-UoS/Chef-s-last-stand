@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8028758273180626249}
   - component: {fileID: -2181666239465347773}
   - component: {fileID: 6007071514904664862}
+  - component: {fileID: -1469115511128794750}
   m_Layer: 0
   m_Name: Chef Grillardin
   m_TagString: Untagged
@@ -4983,6 +4984,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9426687, y: 1.9240909}
   m_EdgeRadius: 0
+--- !u!114 &-1469115511128794750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3409814503728593753
 GameObject:
   m_ObjectHideFlags: 0

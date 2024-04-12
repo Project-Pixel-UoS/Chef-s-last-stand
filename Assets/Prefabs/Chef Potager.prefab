@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: -9203637450718709653}
   - component: {fileID: 3854765059203472735}
   - component: {fileID: 8053452737509301959}
+  - component: {fileID: -2807020189367368203}
   m_Layer: 0
   m_Name: Chef Potager
   m_TagString: Untagged
@@ -193,6 +194,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.94710135, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &-2807020189367368203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4054988461792321345
 GameObject:
   m_ObjectHideFlags: 0
