@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: -9203637450718709653}
   - component: {fileID: -1970727718610732877}
   - component: {fileID: 5461096997308423307}
-  - component: {fileID: -4606185237663331364}
-  - component: {fileID: -1760284225495076460}
+  - component: {fileID: 7887215541740292448}
   m_Layer: 0
   m_Name: Chef Prep Cook
-  m_TagString: Chef
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3595759851127861874}
-  - {fileID: 7112681270649867437}
+  - {fileID: 8051569370424579718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &-9203637450718709653
@@ -102,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.5}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -111,22 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9563326, y: 1.3245025}
   m_EdgeRadius: 0
---- !u!114 &-4606185237663331364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109480781222891229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f40b024c4c1576469228c789aeb9712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  damageRate: 1
-  damageDuration: 1
---- !u!114 &-1760284225495076460
+--- !u!114 &7887215541740292448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8035832622762413971
+--- !u!1 &4281193363392056481
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,8 +130,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7112681270649867437}
-  - component: {fileID: 3008189428083043896}
+  - component: {fileID: 8051569370424579718}
+  - component: {fileID: 3235755696769366089}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -155,13 +139,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7112681270649867437
+--- !u!4 &8051569370424579718
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8035832622762413971}
+  m_GameObject: {fileID: 4281193363392056481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -170,13 +154,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 647212506296903406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!212 &3008189428083043896
+--- !u!212 &3235755696769366089
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8035832622762413971}
+  m_GameObject: {fileID: 4281193363392056481}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -294,7 +278,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.86268425, b: 1, a: 0.5294118}
   m_FlipX: 0
