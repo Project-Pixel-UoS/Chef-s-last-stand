@@ -1418,8 +1418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chef: {fileID: 1109480781222891229, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
-  chefParent: {fileID: 2142462066}
-  mainCamera: {fileID: 519420031}
   range: {fileID: 2086689142}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &663337625
@@ -1820,8 +1818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chef: {fileID: 1109480781222891229, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
-  chefParent: {fileID: 2142462066}
-  mainCamera: {fileID: 519420031}
   range: {fileID: 12995503}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &738460587
@@ -3211,8 +3207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chef: {fileID: 1109480781222891229, guid: 54bf2f05e7468724c817e469ef3165a7, type: 3}
-  chefParent: {fileID: 2142462066}
-  mainCamera: {fileID: 519420031}
   range: {fileID: 1847974118}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &1752225670
@@ -3798,8 +3792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chef: {fileID: 1109480781222891229, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
-  chefParent: {fileID: 2142462066}
-  mainCamera: {fileID: 519420031}
   range: {fileID: 296723110}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &2055137635
@@ -4313,8 +4305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chef: {fileID: 1109480781222891229, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
-  chefParent: {fileID: 2142462066}
-  mainCamera: {fileID: 519420031}
   range: {fileID: 685523905}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &2113794001
@@ -4379,7 +4369,7 @@ GameObject:
   - component: {fileID: 2142462067}
   m_Layer: 0
   m_Name: Chefs
-  m_TagString: Untagged
+  m_TagString: ChefContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
