@@ -33,7 +33,7 @@ public class AbilityPlate : MonoBehaviour
     }
 
     /// <returns>
-    /// turning points in range of the chef
+    /// Turning points in range of the chef
     /// </returns>
     private List<Transform> GetTPsInRange()
     {
@@ -41,7 +41,7 @@ public class AbilityPlate : MonoBehaviour
         foreach (var turningpoint in turningPoints)
         {
             float distance = (turningpoint.transform.position - transform.position).magnitude;
-            if (distance <= range.radius)
+            if (distance <= range.Radius)
             {
                 tpsInRange.Add(turningpoint);
             }
@@ -53,7 +53,7 @@ public class AbilityPlate : MonoBehaviour
     /// a possible plate position on the map
     /// </returns>
     /// <remarks> maintained by: Martin </remarks>
-    private Vector3 getPlatePosition()
+    private Vector3 GetPlatePosition()
     {
         //grab random TP in range
         var inRangeTPs = GetTPsInRange();
@@ -71,7 +71,7 @@ public class AbilityPlate : MonoBehaviour
         {
             //grabs random position in between the two turning points
             var randomPos = Vector3.Lerp(restTPs[0].position, restTPs[1].position, Random.value);
-            if ((randomPos - transform.position).magnitude < range.radius)
+            if ((randomPos - transform.position).magnitude < range.Radius)
             {
                 platePos = randomPos;
                 found = true;
@@ -84,9 +84,9 @@ public class AbilityPlate : MonoBehaviour
     {
         if (cooldownTimer > 0) return;
         cooldownTimer = cooldown;
-        if (getPlatePosition().z != -1)
+        if (GetPlatePosition().z != -1)
         {
-            var plate = Instantiate(Projectile, getPlatePosition(), transform.rotation);
+            var plate = Instantiate(Projectile, GetPlatePosition(), transform.rotation);
             plate.transform.parent = transform;
             currPlates++;
         }

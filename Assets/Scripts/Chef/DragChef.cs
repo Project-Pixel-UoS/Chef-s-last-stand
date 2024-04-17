@@ -12,21 +12,19 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    [SerializeField] private GameObject chefParent; //empty parent object that contains all the chefs
-    private Collider2D chefCollider2D;
-
-    public Camera mainCamera;
     public Image range; //range that appears when chef is dragged
+
+    private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
-
 
     private ShopSlotManager shopSlotManager;
 
     private void Start()
     {
+
         shopSlotManager = GetComponent<ShopSlotManager>();
-        float rangeRadius = chef.GetComponent<Range>().radius; //get the radius size from chef prefab
+        float rangeRadius = chef.GetComponent<Range>().Radius; //get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
 
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
@@ -83,7 +81,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private void PositionChefOntoCursor()
     {
         // canvas is in world screen mode so we need to convert to world units
-        Vector3 worldCursorPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldCursorPos.z = 0;
         transform.position = worldCursorPos;
     }
@@ -130,6 +128,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ying and Antosh</remarks>
     private List<GameObject> GetAllChefs()
     {
+        var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefs = new List<GameObject>();
         //iterate over each child transform
         foreach (Transform _transform in chefParent.transform)
@@ -143,15 +142,32 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     /// <returns>True if cursor is at a point where the chef cant be placed</returns>
     /// <remarks>Maintainer: Ying and Antosh</remarks>
-    private static bool CheckOutsideScreen()
+    private  bool CheckOutsideScreen()
     {
-        Vector3 viewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        if (viewportPos.x <= 0.02 || viewportPos.x >= 0.85)
+        var sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
+        var bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
+
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        float orthographicSize = Camera.main.orthographicSize;
+        // Calculate the width using the aspect ratio of the screen
+        float aspectRatio = Screen.width / (float)Screen.height;
+        
+        float cameraUnitWidth = orthographicSize * 2 * aspectRatio;
+        float cameraUnitHeight = orthographicSize * 2f;
+
+        float sideBarWidth = (cameraUnitWidth * sideBar.rectTransform.rect.width) / Screen.width;
+        float sideBarBound = sideBar.transform.position.x - sideBarWidth / 2;
+        
+        float bottomBarHeight = (cameraUnitHeight * bottomBar.rectTransform.rect.height) / Screen.height;
+        float bottomBarBound = bottomBar.transform.position.y + bottomBarHeight / 2;
+
+        if (worldPos.x <= -8 || worldPos.x >= sideBarBound)
         {
             return true;
         }
 
-        if (viewportPos.y <= 0.05 || viewportPos.y >= 0.95)
+        if (worldPos.y <= bottomBarBound || worldPos.y >= 4.5)
         {
             return true;
         }
@@ -192,7 +208,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
         if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
         {
-            Instantiate(chef, dropPosition, transform.rotation, chefParent.transform);
+            var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
+            Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         }
     }
 }
