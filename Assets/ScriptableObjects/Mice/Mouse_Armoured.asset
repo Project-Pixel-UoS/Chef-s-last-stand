@@ -16,7 +16,7 @@ MonoBehaviour:
   speed: 1
   health: 20
   size: 1
-  sprite: {fileID: 21300000, guid: 29892a1b08ff4de4eb966d92dc5e3ba8, type: 3}
+  sprite: {fileID: 21300000, guid: 05f71643aa91fc040a9b91b9e5528d12, type: 3}
   canGhost: 0
   canSplit: 0
   armoured: 1
