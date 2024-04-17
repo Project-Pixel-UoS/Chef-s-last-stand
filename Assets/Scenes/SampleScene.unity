@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1187765863}
         m_TargetAssemblyTypeName: Chef.Upgrades.ChefTracker, Assembly-CSharp
         m_MethodName: UpgradeCurrentChefPath1
         m_Mode: 1
