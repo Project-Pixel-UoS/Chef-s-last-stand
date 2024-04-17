@@ -594,19 +594,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurningPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 361077032}
+  - {fileID: 559396811}
+  - {fileID: 1074859177}
+  - {fileID: 1092809935}
+  - {fileID: 541230236}
+  - {fileID: 1141159029}
+  - {fileID: 925287041}
+  - {fileID: 11281849}
+  - {fileID: 1831936614}
+  - {fileID: 312224178}
+  - {fileID: 1621816040}
+  - {fileID: 1323590290}
   enemy: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
   mouseTypesList:
   - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
