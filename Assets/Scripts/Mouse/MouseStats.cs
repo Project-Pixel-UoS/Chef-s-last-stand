@@ -13,6 +13,7 @@ public class MouseStats : MonoBehaviour
     public Sprite sprite;
     public bool canGhost;
     public bool canSplit;
+    public bool armoured;
 
     /// <summary> Puts stats into relevant variables from a given ScriptableObject </summary>
     /// <param name = "mouseStats"> MiceScriptableObject containing stats for that mouse type </param>
@@ -25,6 +26,7 @@ public class MouseStats : MonoBehaviour
         sprite = mouseStats.sprite;
         canGhost = mouseStats.canGhost;
         canSplit = mouseStats.canSplit;
+        armoured = mouseStats.armoured;
 
         Debug.Log(mouseName);       // TEMPORARY: used to check different mouse types are being spawned with correct stats
     }
