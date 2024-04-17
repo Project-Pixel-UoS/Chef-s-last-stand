@@ -25,7 +25,7 @@ public class DamageHandler : MonoBehaviour
         stats = gameObject.GetComponent<MouseStats>();
         credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
-        sprite= gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
