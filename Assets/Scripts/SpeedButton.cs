@@ -11,7 +11,20 @@ public class SpeedButton : MonoBehaviour
     /// <summary> Toggles time dependent processes' speeds </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
     public void ToggleSpeed(){
+
         if(GameManager.isPaused){ return; }
-        Time.timeScale = Mathf.Approximately(Time.timeScale, 1.0f) ? multiplier : 1.0f;       // Flips timescale between 1x and ?x
+
+        TMPro.TextMeshProUGUI textObject = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+        if(Mathf.Approximately(Time.timeScale, 1.0f)){
+            GameManager.speedMultiplier = multiplier;
+            textObject.text = "Speed: " + multiplier + "x";
+            Time.timeScale = GameManager.speedMultiplier;
+        }
+        else{
+            GameManager.speedMultiplier = 1.0f;
+            textObject.text = "Speed: 1x";
+            Time.timeScale = GameManager.speedMultiplier;
+        }
     }
 }
