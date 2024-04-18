@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 1
-  fireParticles: {fileID: 0}
+  fireParticles: {fileID: -3218016334599005231}
   arcAngle: 0
 --- !u!114 &-6877617645787020287
 MonoBehaviour:
