@@ -33,10 +33,4 @@ public class ProjectileMover : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //dont destroy knife when prep cook is upgraded to penetration knife
-    private bool IsSharpKnife()
-    {
-        return projectileSpeed > 10;
-    }
 }
