@@ -10,6 +10,12 @@ TagManager:
   - Canvas
   - TurningPoints
   - ChefContainer
+  - SideBar
+  - UpgradeBar1
+  - BottomBar
+  - UpgradeBar2
+  - PrepCook
+  - ChefTracker
   layers:
   - Default
   - TransparentFX
