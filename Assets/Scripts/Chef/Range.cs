@@ -54,11 +54,6 @@ namespace Chef
                 }
 
             }
-
-            if (miceInRange.Count >= 1)
-            {
-                print("IN RANGE");
-            }
             return miceInRange;
 
         }

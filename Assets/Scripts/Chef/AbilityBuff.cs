@@ -50,15 +50,5 @@ public class AbilityBuff : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision){
-    //     Debug.Log("1");
-    // }
 
-    // private void OnCollisionStay2D(Collision2D collision){
-    //     Debug.Log("2");
-    // }
-
-    // private void OnCollisionExist2D(Collision2D collision){
-    //     Debug.Log("3");
-    // }
 }
