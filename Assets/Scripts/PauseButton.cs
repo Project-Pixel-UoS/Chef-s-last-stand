@@ -9,7 +9,20 @@ public class PauseButton : MonoBehaviour
     /// <summary> Toggles time dependent processes (pauses the game) </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
     public void TogglePause(){
-        Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;       // Flips timescale between 0 and 1
-        GameManager.isPaused = (GameManager.isPaused ? false : true);
+
+        TMPro.TextMeshProUGUI textObject = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+        if(Mathf.Approximately(Time.timeScale, 0.0f)){
+            textObject.text = "Pause";
+            GameManager.isPaused = false;
+            Time.timeScale = GameManager.speedMultiplier;
+        }
+        else{
+            textObject.text = "Play";
+            GameManager.isPaused = true;
+            Time.timeScale = 0.0f;
+        }
     }
+
+
 }

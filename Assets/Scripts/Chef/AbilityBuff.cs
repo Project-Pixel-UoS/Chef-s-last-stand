@@ -33,7 +33,7 @@ public class AbilityBuff : MonoBehaviour
             foreach (Collider2D collider in colliders)
             {
                 GameObject gameObject = collider.gameObject;
-                if (gameObject.CompareTag("Chef"))
+                if (gameObject.CompareTag("HeadChef"))
                 {
                     Buff buff = gameObject.GetComponent<Buff>();
                     if (buff == null)
@@ -50,15 +50,5 @@ public class AbilityBuff : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision){
-    //     Debug.Log("1");
-    // }
 
-    // private void OnCollisionStay2D(Collision2D collision){
-    //     Debug.Log("2");
-    // }
-
-    // private void OnCollisionExist2D(Collision2D collision){
-    //     Debug.Log("3");
-    // }
 }

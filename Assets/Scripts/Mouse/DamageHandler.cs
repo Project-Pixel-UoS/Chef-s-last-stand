@@ -39,6 +39,7 @@ public class DamageHandler : MonoBehaviour
         damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         DamageFactor damageFactor = HandleArmouredMouse(other);
@@ -62,11 +63,8 @@ public class DamageHandler : MonoBehaviour
             durationRemaining -= damageFactor.damageRate;
             if(damageFactor.damage != 0) StartCoroutine(flashRed());
 
-
-
             if (stats.health <= 0)
             {
-               
                 HandleTrenchCoatMouse();
                 Destroy(gameObject); //check for death
                 creditsManager.IncreaseMoney(currencyAmount); //get money per kill

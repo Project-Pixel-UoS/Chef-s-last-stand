@@ -39,7 +39,6 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log("mice to be released: "+ miceToBeReleased);
         //check that all balloons to be spawned have been spawned, and there are no mice on the map
         if (miceToBeReleased == 0 && !GameObject.FindWithTag("Mouse"))
         {

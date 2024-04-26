@@ -13,9 +13,8 @@ TagManager:
   - SideBar
   - UpgradeBar1
   - BottomBar
-  - UpgradeBar2
-  - PrepCook
-  - ChefTracker
+  - Grillardin
+  - HeadChef
   layers:
   - Default
   - TransparentFX
