@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Chef.Upgrades;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,13 +17,15 @@ namespace Chef
         private float cooldownTimer; // timer for cooldown in between shots
         private Range range;
         private float originalSpeed;
-
+        private UpgradeTracker upgradeTracker;
+        private int projectilesThrown;
 
 
         private void Awake()
         {
             range = GetComponent<Range>();
             originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
+            upgradeTracker = GetComponent<UpgradeTracker>();
         }
 
         /// <summary> Update variable if buff added </summary>
@@ -76,6 +80,15 @@ namespace Chef
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
+            SpawnProjectile();
+            StartCoroutine(HandleMaxPrepCook());
+        }
+
+        /// <summary>
+        /// spawn the projectile that will be shot out.
+        /// </summary>
+        private void SpawnProjectile()
+        {
             GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
             DamageFactor df = this.GetComponent<DamageFactor>();
             Buff bf = this.GetComponent<Buff>();
@@ -83,6 +96,16 @@ namespace Chef
             {
                 p.GetComponent<DamageFactor>().damage = df.damage * bf.damageIncrease;
                 p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.speedIncrease;
+            }
+        }
+        
+        //spawn another knife for the prep cook max ugprade.
+        private IEnumerator HandleMaxPrepCook()
+        {
+            if(gameObject.tag.Equals("PrepCook") && upgradeTracker.getPath2Status() == 4)
+            { 
+                yield return new WaitForSeconds(0.1f);
+                SpawnProjectile();
             }
         }
     }
