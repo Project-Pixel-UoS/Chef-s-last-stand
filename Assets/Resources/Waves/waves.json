@@ -12,8 +12,8 @@
       ],
       "mouseUnits": [
         {
-          "type": "Armoured",
-          "amount": 5,
+          "type": "Woody",
+          "amount": 1,
           "timeOfWave": 0,
           "frequency": 2
         }

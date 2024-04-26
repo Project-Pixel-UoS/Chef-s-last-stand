@@ -38,7 +38,9 @@ public class DamageHandler : MonoBehaviour
         }
         damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
     }
-    
+
+
+
 
     /// <summary>
     /// Deal damage, instantaneously or over time if in bound projectile has long lasting effects

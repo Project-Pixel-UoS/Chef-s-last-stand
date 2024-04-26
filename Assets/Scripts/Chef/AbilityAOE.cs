@@ -71,10 +71,7 @@ public class AbilityAOE : MonoBehaviour
         if (cooldownTimer > 0) return;
         
         List<GameObject> miceInRange = range.GetMiceInRange();
-        ManageParticles(miceInRange);
-
-        DealDamage(miceInRange);
-
+        StartCoroutine(DealDamage(miceInRange));
         cooldownTimer = cooldown;
     }
 
@@ -84,30 +81,34 @@ public class AbilityAOE : MonoBehaviour
     /// </summary>
     /// <param name="miceInRange"> List of mice within chefs rangs</param>
     /// <remarks>Martin</remarks>
-    private void DealDamage(List<GameObject> miceInRange)
+    private IEnumerator DealDamage(List<GameObject> miceInRange)
     {
+        yield return ManageParticles(miceInRange);
         int counter = 0;
         foreach (GameObject mouse in miceInRange)
         {
-            Vector3 spriteDirection = -transform.up; //  forward vector of the sprite
+            Vector3 spriteDirection = transform.up; //  forward vector of the sprite
             Vector3 distance = (mouse.transform.position - transform.position);
             double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
-            float upperBound = arcAngle / 2f; 
+            float upperBound = arcAngle / 2f;
             if (mouseAngle < upperBound ) // check is angled within half the arc length from where chef is facing
             {
+                
                 //play particle effects and damage mouse
                 StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
                 counter++;
-
+    
             }
         }
     }
 
-    private void ManageParticles(List<GameObject> miceInRange)
+    private IEnumerator ManageParticles(List<GameObject> miceInRange)
     {
-        if (miceInRange.Count > 0)
+        if (miceInRange.Count > 0 && !fireParticles.isPlaying)
         {
             fireParticles.Play();
+            //because fire particle system takes a while to fully activate we must wait before allowing to deal damage
+            yield return new WaitForSeconds(0.5f);
         }
         else
         {

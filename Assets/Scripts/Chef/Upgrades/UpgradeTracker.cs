@@ -25,6 +25,14 @@ namespace Chef.Upgrades
             if (path1Status == maxLevel1) return; // if path is upgraded to the max we can not upgrade it again
             path1Status++;
             GetComponent<Range>().Radius *= 1.1f;
+            if (gameObject.CompareTag("Grillardin"))
+            {
+                var main =  GetComponentInChildren<ParticleSystem>().main;
+                var emission = GetComponentInChildren<ParticleSystem>().emission;
+                main.startSpeed = 1.3f * main.startSpeed.constant;
+                emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
+
+            }
             RefreshHealthBar1();
 
         }
