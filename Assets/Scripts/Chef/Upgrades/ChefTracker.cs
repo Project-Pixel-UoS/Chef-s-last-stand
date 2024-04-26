@@ -13,7 +13,9 @@ namespace Chef.Upgrades
         
         public static ChefTracker Instance { get; private set; } // singleton pattern
 
-        [SerializeField] private GameObject upgradeUI; // game object containing upgrade button and upgrade bar
+        [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
+        [SerializeField] private GameObject upgradeSpecialUI;
+        [SerializeField] private GameObject[] PrepCookUpgrades;
 
 
         private GameObject currentChef;
@@ -24,7 +26,6 @@ namespace Chef.Upgrades
 
         private void Awake()
         {
-            print("CHEF TRACKER AWAKE============================");
             if (Instance != null && Instance != this) 
             { 
                 Destroy(this); 
@@ -42,16 +43,20 @@ namespace Chef.Upgrades
         private void SelectNewChef(GameObject chef)
         {
             currentChef = chef;
+            
             if (chef == null)
             {
                 // remove upgrade buttons
-                upgradeUI.SetActive(false);
+                upgradeRangeUI.SetActive(false);
+                upgradeSpecialUI.SetActive(false);
             }
             else
             {
                 //display upgrade buttons corresponding to current chef
-                upgradeUI.SetActive(true);
-                currentChef.GetComponent<UpgradeTracker>().RefreshHealthBar1();
+                upgradeRangeUI.SetActive(true);
+                currentChef.GetComponent<UpgradeTracker>().RefreshRangeBar();
+                upgradeSpecialUI.SetActive(true);
+                currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
             }
             
         }
@@ -71,5 +76,11 @@ namespace Chef.Upgrades
         {
             currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
         }
+
+        public GameObject[] GetPrepCooks()
+        {
+            return PrepCookUpgrades;
+        }
+
     }
 }
