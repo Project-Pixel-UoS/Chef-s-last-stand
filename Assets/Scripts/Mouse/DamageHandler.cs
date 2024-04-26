@@ -26,7 +26,7 @@ public class DamageHandler : MonoBehaviour
         stats = gameObject.GetComponent<MouseStats>();
         credits = GameObject.FindGameObjectWithTag("Credits");
         creditsManager = credits.GetComponent<CreditManager>();
-        sprite= gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -38,6 +38,7 @@ public class DamageHandler : MonoBehaviour
         }
         damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -62,11 +63,8 @@ public class DamageHandler : MonoBehaviour
             durationRemaining -= damageFactor.damageRate;
             if(damageFactor.damage != 0) StartCoroutine(flashRed());
 
-
-
             if (stats.health <= 0)
             {
-               
                 HandleTrenchCoatMouse();
                 Destroy(gameObject); //check for death
                 creditsManager.IncreaseMoney(currencyAmount); //get money per kill

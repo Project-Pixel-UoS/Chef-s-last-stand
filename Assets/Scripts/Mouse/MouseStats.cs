@@ -28,7 +28,6 @@ public class MouseStats : MonoBehaviour
         canSplit = mouseStats.canSplit;
         armoured = mouseStats.armoured;
 
-        Debug.Log(mouseName);       // TEMPORARY: used to check different mouse types are being spawned with correct stats
     }
 
     void Start()

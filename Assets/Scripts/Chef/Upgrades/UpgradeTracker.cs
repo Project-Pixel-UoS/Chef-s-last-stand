@@ -14,7 +14,7 @@ namespace Chef.Upgrades
         private int path1Status, path2Status;
         private int maxLevel1 = 4;
         private int maxLevel2 = 4;
-      
+
         /// <summary>
         /// invoked upon Upgrade Range button on the bottom bar is clicked
         /// </summary>
@@ -23,9 +23,16 @@ namespace Chef.Upgrades
             if (path1Status == maxLevel1) return; // if path is upgraded to the max we can not upgrade it again
             path1Status++;
             GetComponent<Range>().Radius *= 1.1f;
+            if (gameObject.CompareTag("Grillardin"))
+            {
+                var main = GetComponentInChildren<ParticleSystem>().main;
+                var emission = GetComponentInChildren<ParticleSystem>().emission;
+                main.startSpeed = 1.23f * main.startSpeed.constant;
+                emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
+            }
             RefreshRangeBar();
         }
-        
+
         /// <summary>
         /// invoked upon Upgrade Special button on the bottom bar is clicked
         /// </summary>
@@ -36,7 +43,8 @@ namespace Chef.Upgrades
             var chef = GetChefUpgrades();
             //instantiate new chef
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
-            GameObject newChef = Instantiate(chef[path2Status], transform.position, transform.rotation, chefParent.transform);
+            GameObject newChef = Instantiate(chef[path2Status], transform.position, transform.rotation,
+                chefParent.transform);
             var range = newChef.GetComponent<Range>();
             range.Radius = GetComponent<Range>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active
@@ -52,7 +60,7 @@ namespace Chef.Upgrades
         public void RefreshRangeBar()
         {
             var upgradeBar1 = GameObject.FindGameObjectWithTag("UpgradeBar1").GetComponent<Image>();
-            upgradeBar1.fillAmount = (float) path1Status / maxLevel1;
+            upgradeBar1.fillAmount = (float)path1Status / maxLevel1;
         }
 
         /// <summary>
@@ -61,19 +69,17 @@ namespace Chef.Upgrades
         public void RefreshSpecialBar()
         {
             var upgradeBar2 = GameObject.FindGameObjectWithTag("UpgradeBar2").GetComponent<Image>();
-            upgradeBar2.fillAmount = (float) path2Status / maxLevel2;
+            upgradeBar2.fillAmount = (float)path2Status / maxLevel2;
         }
 
-       
+
         /// <returns> an array of selected chef's upgrade prefabs</returns>
         public GameObject[] GetChefUpgrades()
         {
             if (transform.tag.Equals("PrepCook"))
             {
-                print("prep cooks");
                 return ChefTracker.Instance.GetPrepCooks();
             }
-            print("RETUNR NUL");
             return null;
         }
 
@@ -85,11 +91,22 @@ namespace Chef.Upgrades
         {
             var upgradeTracker = newChef.GetComponent<UpgradeTracker>();
             upgradeTracker.SetPath1Status(path1Status);
-            upgradeTracker.SetPath2Status(path2Status); 
+            upgradeTracker.SetPath2Status(path2Status);
         }
 
-        public void SetPath1Status(int i) { path1Status = i; }
-        public void SetPath2Status(int i) { path2Status = i; }
-        public int getPath2Status() {  return path2Status; }
+        public void SetPath1Status(int i)
+        {
+            path1Status = i;
+        }
+
+        public void SetPath2Status(int i)
+        {
+            path2Status = i;
+        }
+
+        public int getPath2Status()
+        {
+            return path2Status;
+        }
     }
 }
