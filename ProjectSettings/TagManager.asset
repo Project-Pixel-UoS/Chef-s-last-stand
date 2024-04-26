@@ -24,7 +24,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Mice
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Mice
+    uniqueID: 653168571
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

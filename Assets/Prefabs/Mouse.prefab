@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7854702822569694468}
   - component: {fileID: 2933561763335887968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5917657897216018609}
   - component: {fileID: 5778720935922254239}
   - component: {fileID: 6240845577142486429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mouse
   m_TagString: Mouse
   m_Icon: {fileID: 0}
@@ -154,6 +154,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   canGhost: 0
   canSplit: 0
+  armoured: 0
 --- !u!58 &5917657897216018609
 CircleCollider2D:
   m_ObjectHideFlags: 0
