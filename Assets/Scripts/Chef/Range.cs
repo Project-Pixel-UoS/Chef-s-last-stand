@@ -35,26 +35,57 @@ namespace Chef
 
 
         
+        // /// <returns>
+        // /// mice in range of the chef
+        // /// </returns>
+        // /// <remarks> maintained by: Antosh </remarks>
+        // public List<GameObject> GetMiceInRange()
+        // {
+        //     var buffedRadius = GetBuffedRadius();
+        //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
+        //     var miceInRange = new List<GameObject>();
+        //     foreach (var mouse in mice)
+        //     {
+        //         float distance = (mouse.transform.position - transform.position).magnitude;
+        //         
+        //         if (distance <= buffedRadius)
+        //         {
+        //             miceInRange.Add(mouse);
+        //         }
+        //     }
+        //
+        //     return miceInRange;
+        // }
+
         /// <returns>
         /// mice in range of the chef
         /// </returns>
         /// <remarks> maintained by: Antosh </remarks>
         public List<GameObject> GetMiceInRange()
         {
-            var buffedRadius = GetBuffedRadius();
-            var mice = GameObject.FindGameObjectsWithTag("Mouse");
             var miceInRange = new List<GameObject>();
-            foreach (var mouse in mice)
+            var colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+            if (colliders != null)
             {
-                float distance = (mouse.transform.position - transform.position).magnitude;
-                
-                if (distance <= buffedRadius)
+                foreach (Collider2D collider in colliders)
                 {
-                    miceInRange.Add(mouse);
+                    GameObject gameObject = collider.gameObject;
+
+                    if (gameObject.CompareTag("Mouse"))
+                    {
+                        miceInRange.Add(gameObject);
+
+                    }
                 }
+
             }
 
+            if (miceInRange.Count >= 1)
+            {
+                print("IN RANGE");
+            }
             return miceInRange;
+
         }
 
         private float GetBuffedRadius()
@@ -140,7 +171,6 @@ namespace Chef
         {
             ResizeRangeVisual();
             this.radius = radius;
-            // ResizeRangeVisual();
         }
     }
 }

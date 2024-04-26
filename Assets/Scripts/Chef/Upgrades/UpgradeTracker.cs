@@ -29,9 +29,8 @@ namespace Chef.Upgrades
             {
                 var main =  GetComponentInChildren<ParticleSystem>().main;
                 var emission = GetComponentInChildren<ParticleSystem>().emission;
-                main.startSpeed = 1.3f * main.startSpeed.constant;
+                main.startSpeed = 1.2f * main.startSpeed.constant;
                 emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
-
             }
             RefreshHealthBar1();
 

@@ -90,7 +90,7 @@ public class AbilityAOE : MonoBehaviour
             Vector3 spriteDirection = transform.up; //  forward vector of the sprite
             Vector3 distance = (mouse.transform.position - transform.position);
             double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
-            float upperBound = arcAngle / 2f;
+            float upperBound = arcAngle / 2f + 5f;
             if (mouseAngle < upperBound ) // check is angled within half the arc length from where chef is facing
             {
                 

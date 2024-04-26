@@ -33,7 +33,7 @@ public class AbilityBuff : MonoBehaviour
             foreach (Collider2D collider in colliders)
             {
                 GameObject gameObject = collider.gameObject;
-                if (gameObject.CompareTag("Chef"))
+                if (gameObject.CompareTag("HeadChef"))
                 {
                     Buff buff = gameObject.GetComponent<Buff>();
                     if (buff == null)
