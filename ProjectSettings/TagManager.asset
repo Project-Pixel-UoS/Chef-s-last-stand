@@ -10,6 +10,11 @@ TagManager:
   - Canvas
   - TurningPoints
   - ChefContainer
+  - SideBar
+  - UpgradeBar1
+  - BottomBar
+  - Grillardin
+  - HeadChef
   layers:
   - Default
   - TransparentFX

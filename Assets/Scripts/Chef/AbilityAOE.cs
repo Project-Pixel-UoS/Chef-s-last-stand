@@ -108,7 +108,7 @@ public class AbilityAOE : MonoBehaviour
         {
             fireParticles.Play();
             //because fire particle system takes a while to fully activate we must wait before allowing to deal damage
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
         else
         {

@@ -56,11 +56,8 @@ public class DamageHandler : MonoBehaviour
             durationRemaining -= damageFactor.damageRate;
             if(damageFactor.damage != 0) StartCoroutine(flashRed());
 
-
-
             if (stats.health <= 0)
             {
-               
                 HandleTrenchCoatMouse();
                 Destroy(gameObject); //check for death
                 creditsManager.IncreaseMoney(currencyAmount); //get money per kill
