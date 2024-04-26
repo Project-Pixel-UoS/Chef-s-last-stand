@@ -26,7 +26,6 @@ namespace Chef.Upgrades
 
         private void Awake()
         {
-            print("CHEF TRACKER AWAKE============================");
             if (Instance != null && Instance != this) 
             { 
                 Destroy(this); 

@@ -70,8 +70,10 @@ namespace Chef.Upgrades
         {
             if (transform.tag.Equals("PrepCook"))
             {
+                print("prep cooks");
                 return ChefTracker.Instance.GetPrepCooks();
             }
+            print("RETUNR NUL");
             return null;
         }
 
