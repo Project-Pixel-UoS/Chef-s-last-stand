@@ -40,8 +40,15 @@ public class DamageHandler : MonoBehaviour
     }
 
 
-
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageFactor damageFactor = HandleArmouredMouse(other);
+        if (damageCoroutine != null) //check mouse still taking poisonous damage
+        {
+            StopCoroutine(damageCoroutine);
+        }
+        damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
+    }
     /// <summary>
     /// Deal damage, instantaneously or over time if in bound projectile has long lasting effects
     /// </summary>
@@ -93,11 +100,27 @@ public class DamageHandler : MonoBehaviour
         }
     }
 
-    //if an armoured mouse is hit by onions or knives, do no damage.
-    private DamageFactor HandleArmouredMouse(Collision2D other)
+    /// <summary>
+    /// if an armoured mouse is hit by onions or knives, do no damage.
+    /// </summary>
+    /// <param name="collision">the collision object it collided with</param>
+    /// <returns></returns>
+    private DamageFactor HandleArmouredMouse(Collision2D collision)
     {
-        if (stats.armoured && other.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
+        if (stats.armoured && collision.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
 
-        return other.gameObject.GetComponent<DamageFactor>();
+        return collision.gameObject.GetComponent<DamageFactor>();
+    }
+
+    /// <summary>
+    /// if an armoured mouse is hit by onions or knives, do no damage.
+    /// </summary>
+    /// <param name="collider">the trigger object it collided with</param>
+    /// <returns></returns>
+    private DamageFactor HandleArmouredMouse(Collider2D collider)
+    {
+        if (stats.armoured && collider.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
+
+        return collider.gameObject.GetComponent<DamageFactor>();
     }
 }

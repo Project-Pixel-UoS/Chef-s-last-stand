@@ -8,19 +8,17 @@ namespace Chef
     public class Range : MonoBehaviour
     {
         [SerializeField] private float radius; // range at which chef can attack mice
+        [SerializeField] private GameObject rangeObject; //imports the chefs range.
+        private SpriteRenderer rangeSpriteRenderer;
+        private bool clicked = false; //Used to see if you are clicking on or off the chef
+
         public float Radius
         {
             get => radius;
             set => SetRadius(value);
         }
-        
-        
-        [SerializeField] private GameObject rangeObject; //imports the chefs range.
-        private SpriteRenderer rangeSpriteRenderer;
-        private bool clicked = false; //Used to see if you are clicking on or off the chef
 
-
-        void Start()
+        void Awake()
         {
             rangeSpriteRenderer = rangeObject.GetComponent<SpriteRenderer>();
             ResizeRangeVisual();
@@ -32,30 +30,7 @@ namespace Chef
             ClickManager();
             HandleRangeBuff();
         }
-
-
         
-        // /// <returns>
-        // /// mice in range of the chef
-        // /// </returns>
-        // /// <remarks> maintained by: Antosh </remarks>
-        // public List<GameObject> GetMiceInRange()
-        // {
-        //     var buffedRadius = GetBuffedRadius();
-        //     var mice = GameObject.FindGameObjectsWithTag("Mouse");
-        //     var miceInRange = new List<GameObject>();
-        //     foreach (var mouse in mice)
-        //     {
-        //         float distance = (mouse.transform.position - transform.position).magnitude;
-        //         
-        //         if (distance <= buffedRadius)
-        //         {
-        //             miceInRange.Add(mouse);
-        //         }
-        //     }
-        //
-        //     return miceInRange;
-        // }
 
         /// <returns>
         /// mice in range of the chef
@@ -161,7 +136,7 @@ namespace Chef
             }
         }
         
-        private void ResizeRangeVisual()
+        public void ResizeRangeVisual()
         {
             rangeObject.transform.localScale =
                 new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen
@@ -171,6 +146,12 @@ namespace Chef
         {
             ResizeRangeVisual();
             this.radius = radius;
+        }
+
+        public void EnableRangeRenderer()
+        {
+            rangeSpriteRenderer.enabled = true;
+            clicked = true;
         }
     }
 }
