@@ -80,7 +80,6 @@ namespace Chef.Upgrades
             {
                 return ChefTracker.Instance.GetPrepCooks();
             }
-
             return null;
         }
 
