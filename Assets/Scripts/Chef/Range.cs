@@ -93,6 +93,13 @@ namespace Chef
         {
             if (!clicked)
             {
+                if (ChefTracker.Instance.CurrentChef != null)
+                {
+                    var rangeComp = ChefTracker.Instance.CurrentChef.GetComponent<Range>();
+                    rangeComp.rangeSpriteRenderer.enabled = false;
+                    rangeComp.clicked = false;
+
+                }
                 // when chef is pressed while unselected
                 rangeSpriteRenderer.enabled = true;
                 clicked = true;
