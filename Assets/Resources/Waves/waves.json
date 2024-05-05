@@ -14,9 +14,9 @@
         {
 
           "type": "Woody",
-          "amount": 30,
+          "amount": 3,
           "timeOfWave": 0,
-          "frequency": 2
+          "frequency": 5
         }
       ]
 
@@ -35,9 +35,9 @@
       "mouseUnits": [
         {
           "type": "Woody",
-          "amount": 10,
+          "amount": 5,
           "timeOfWave": 0,
-          "frequency": 2.5
+          "frequency": 2
         }
       ]
     },
