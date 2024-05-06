@@ -24,7 +24,7 @@ public class AbilityAOE : MonoBehaviour
         var shape = fireParticles.shape;
         shape.arc = arcAngle;
 
-        fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
+        //fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
         
     }
 

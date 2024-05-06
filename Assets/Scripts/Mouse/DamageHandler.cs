@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Projectile;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -14,6 +15,7 @@ public class DamageHandler : MonoBehaviour
 {
     private MouseStats stats;
     [SerializeField] private int currencyAmount;
+    [SerializeField] private ParticleSystem onFire;
     private Coroutine damageCoroutine;
     private GameObject credits;
     private CreditManager creditsManager;
@@ -57,6 +59,8 @@ public class DamageHandler : MonoBehaviour
     public IEnumerator TakeDamage(DamageFactor damageFactor)
     {
         float durationRemaining = damageFactor.damageDuration;
+        Debug.Log(IsBurning(damageFactor));
+        if (IsBurning(damageFactor)) { onFire.Play(); }
         while (durationRemaining > 0) //take damage until long lasting effect runs out
         {
             stats.health -= damageFactor.damage;
@@ -72,6 +76,7 @@ public class DamageHandler : MonoBehaviour
 
             yield return new WaitForSeconds(damageFactor.damageRate);
         }
+        onFire.Stop();
     }
 
     /// <summary>
@@ -122,5 +127,10 @@ public class DamageHandler : MonoBehaviour
         if (stats.armoured && collider.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
 
         return collider.gameObject.GetComponent<DamageFactor>();
+    }
+
+    private Boolean IsBurning(DamageFactor damageFactor)
+    {
+        return damageFactor.chef.name.Equals("Chef Grillardin 3(Clone)");
     }
 }
