@@ -79,6 +79,9 @@ namespace Chef.Upgrades
             if (transform.tag.Equals("PrepCook"))
             {
                 return ChefTracker.Instance.GetPrepCooks();
+            }else if (transform.tag.Equals("Grillardin"))
+            {
+                return ChefTracker.Instance.GetGrillardins();
             }
             return null;
         }

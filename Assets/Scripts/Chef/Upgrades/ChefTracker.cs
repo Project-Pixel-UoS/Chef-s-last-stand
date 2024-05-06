@@ -16,6 +16,7 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
         [SerializeField] private GameObject[] PrepCookUpgrades;
+        [SerializeField] private GameObject[] GrillardinUpgrades;
 
 
         private GameObject currentChef;
@@ -80,6 +81,11 @@ namespace Chef.Upgrades
         public GameObject[] GetPrepCooks()
         {
             return PrepCookUpgrades;
+        }
+
+        public GameObject[] GetGrillardins()
+        {
+            return GrillardinUpgrades;
         }
 
     }
