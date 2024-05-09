@@ -33,7 +33,7 @@ public class DamageHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        DamageFactor damageFactor = HandleArmouredMouse(other);
+        DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
         if (damageCoroutine != null) //check mouse still taking poisonous damage
         {
             StopCoroutine(damageCoroutine);
@@ -44,7 +44,8 @@ public class DamageHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DamageFactor damageFactor = HandleArmouredMouse(other);
+ 
+        DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
         if (damageCoroutine != null) //check mouse still taking poisonous damage
         {
             StopCoroutine(damageCoroutine);
@@ -59,24 +60,26 @@ public class DamageHandler : MonoBehaviour
     public IEnumerator TakeDamage(DamageFactor damageFactor)
     {
         float durationRemaining = damageFactor.damageDuration;
-        Debug.Log(IsBurning(damageFactor));
         if (IsBurning(damageFactor)) { onFire.Play(); }
+        HandleBurnChain(damageFactor);
         while (durationRemaining > 0) //take damage until long lasting effect runs out
         {
+            Debug.Log(durationRemaining);
             stats.health -= damageFactor.damage;
             durationRemaining -= damageFactor.damageRate;
-            if(damageFactor.damage != 0) StartCoroutine(flashRed());
 
             if (stats.health <= 0)
             {
+                Debug.Log("dead");
                 HandleTrenchCoatMouse();
+                creditsManager.IncreaseMoney(currencyAmount);//get money per kill
                 Destroy(gameObject); //check for death
-                creditsManager.IncreaseMoney(currencyAmount); //get money per kill
             }
 
+            if (damageFactor.damage != 0) StartCoroutine(flashRed());
             yield return new WaitForSeconds(damageFactor.damageRate);
         }
-        onFire.Stop();
+        if(onFire != null) { onFire.Stop(); }
     }
 
     /// <summary>
@@ -85,13 +88,9 @@ public class DamageHandler : MonoBehaviour
     /// <remarks>Author: Emily</remarks>
 
     public IEnumerator flashRed(){
-
-        
         sprite.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         sprite.color= Color.white;
-
-
     }
 
     //if the mouse that died was trench coat, grab its death position and spawn more mice.
@@ -110,27 +109,36 @@ public class DamageHandler : MonoBehaviour
     /// </summary>
     /// <param name="collision">the collision object it collided with</param>
     /// <returns></returns>
-    private DamageFactor HandleArmouredMouse(Collision2D collision)
+    private DamageFactor HandleArmouredMouse(GameObject gameObject)
     {
-        if (stats.armoured && collision.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
+        if (stats.armoured && gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
 
-        return collision.gameObject.GetComponent<DamageFactor>();
+        return gameObject.GetComponent<DamageFactor>();
     }
 
-    /// <summary>
-    /// if an armoured mouse is hit by onions or knives, do no damage.
-    /// </summary>
-    /// <param name="collider">the trigger object it collided with</param>
-    /// <returns></returns>
-    private DamageFactor HandleArmouredMouse(Collider2D collider)
+    private bool IsBurning(DamageFactor damageFactor)
     {
-        if (stats.armoured && collider.gameObject.GetComponent<SlownessProjectile>() == null) return gameObject.AddComponent<DamageFactor>();
-
-        return collider.gameObject.GetComponent<DamageFactor>();
+        var currChef = damageFactor.chef.name;
+        return currChef.Equals("Chef Grillardin 3(Clone)") || currChef.Equals("Chef Grillardin 4(Clone)");
     }
 
-    private Boolean IsBurning(DamageFactor damageFactor)
+    private void HandleBurnChain(DamageFactor damageFactor)
     {
-        return damageFactor.chef.name.Equals("Chef Grillardin 3(Clone)");
+        if(damageFactor.chef.name.Equals("Chef Grillardin 4(Clone)"))
+        {
+            var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+            if (colliders != null)
+            {
+                foreach (Collider2D collider in colliders)
+                {
+                    GameObject mouse = collider.gameObject;
+                    if (mouse.CompareTag("Mouse") && mouse != gameObject)
+                    {
+                        Debug.Log("burning");
+                        mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor);
+                    }
+                }
+            }
+        }
     }
 }
