@@ -96,7 +96,6 @@ public class AbilityAOE : MonoBehaviour
                 if (mouseAngle < upperBound) // check is angled within half the arc length from where chef is facing
                 {
                     //play particle effects and damage mouse
-                    Debug.Log("oof");
                     StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
                 }
             }

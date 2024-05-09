@@ -64,18 +64,22 @@ public class DamageHandler : MonoBehaviour
         HandleBurnChain(damageFactor);
         while (durationRemaining > 0) //take damage until long lasting effect runs out
         {
-            Debug.Log(durationRemaining);
             stats.health -= damageFactor.damage;
             durationRemaining -= damageFactor.damageRate;
 
             if (stats.health <= 0)
             {
-                Debug.Log("dead");
                 HandleTrenchCoatMouse();
                 creditsManager.IncreaseMoney(currencyAmount);//get money per kill
-                Destroy(gameObject); //check for death
+                try
+                {
+                    Destroy(gameObject); //check for death
+                }
+                catch
+                {
+                    break;
+                }
             }
-
             if (damageFactor.damage != 0) StartCoroutine(flashRed());
             yield return new WaitForSeconds(damageFactor.damageRate);
         }
@@ -122,6 +126,10 @@ public class DamageHandler : MonoBehaviour
         return currChef.Equals("Chef Grillardin 3(Clone)") || currChef.Equals("Chef Grillardin 4(Clone)");
     }
 
+    public bool IsBurning()
+    {
+        return onFire.isPlaying;
+    }
     private void HandleBurnChain(DamageFactor damageFactor)
     {
         if(damageFactor.chef.name.Equals("Chef Grillardin 4(Clone)"))
