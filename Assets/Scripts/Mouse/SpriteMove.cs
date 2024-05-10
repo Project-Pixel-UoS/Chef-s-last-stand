@@ -14,7 +14,7 @@ public class SpriteMove : MonoBehaviour
 
     public float totalDistanceMoved;
     private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
-    public HealthManager health;
+    private HealthManager health;
 
 
 
