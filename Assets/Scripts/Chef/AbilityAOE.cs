@@ -106,17 +106,13 @@ public class AbilityAOE : MonoBehaviour
     {
         if (miceInRange.Count > 0 && !fireParticles.isPlaying)
         {
-            // Debug.Log("PLAYING "+ fireParticles);
-            
             fireParticles.Play();
             //because fire particle system takes a while to fully activate we must wait before allowing to deal damage
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
-            Debug.Log("STOPPING");
-
-            // fireParticles.Stop();
+            fireParticles.Stop();
         }
     }
 }
