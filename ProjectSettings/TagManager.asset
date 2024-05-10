@@ -17,6 +17,7 @@ TagManager:
   - HeadChef
   - UpgradeBar2
   - PrepCook
+  - Undefined
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
+    uniqueID: 327907729
+    locked: 0
+  - name: Mice
     uniqueID: 653168571
     locked: 0
   - name: Default
