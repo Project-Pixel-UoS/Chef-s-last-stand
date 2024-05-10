@@ -21,6 +21,7 @@ namespace Chef.Upgrades
         private GameObject currentChef;
         public GameObject CurrentChef // property of current selected chef (chef that's been most recently clicked)
         {
+            get => currentChef;
             set => SelectNewChef(value);
         } 
 
