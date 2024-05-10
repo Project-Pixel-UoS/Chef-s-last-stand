@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6412687751390616206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8819812649088718540}
+  - component: {fileID: 6176487572238375978}
+  m_Layer: 0
+  m_Name: ChefTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8819812649088718540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412687751390616206}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.3937159, y: -1.8608723, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6176487572238375978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412687751390616206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39260870be9b490db4a6ba2e1236dbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeRangeUI: {fileID: 0}
+  upgradeSpecialUI: {fileID: 0}
+  PrepCookUpgrades:
+  - {fileID: 1109480781222891229, guid: 54bf2f05e7468724c817e469ef3165a7, type: 3}
+  - {fileID: 1109480781222891229, guid: bbdd3757c4b322a41a3e100c940a9286, type: 3}
+  - {fileID: 1109480781222891229, guid: 965fac1ad99c38f429421e28e6357495, type: 3}
+  - {fileID: 1109480781222891229, guid: 14e9fb2ea0e7e3e46a9bf9e005bfec44, type: 3}
+  - {fileID: 1109480781222891229, guid: d52f4a054f4f6214db889bff7d46c89f, type: 3}
+  GrillardinUpgrades:
+  - {fileID: 1109480781222891229, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
+  - {fileID: 1109480781222891229, guid: 8853ff40570321f40a3525e06a3bf0cf, type: 3}
+  - {fileID: 1109480781222891229, guid: 6e993ec7863b927409bc0e7f1ea04171, type: 3}
+  - {fileID: 1109480781222891229, guid: ab992c87dbf1e0042a7af8881fdb015a, type: 3}
+  - {fileID: 1109480781222891229, guid: 999804ee42bc27f48871f12bd9fb09fd, type: 3}
