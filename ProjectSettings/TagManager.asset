@@ -51,7 +51,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Mice
+  - name: Background
     uniqueID: 653168571
     locked: 0
   - name: Default
