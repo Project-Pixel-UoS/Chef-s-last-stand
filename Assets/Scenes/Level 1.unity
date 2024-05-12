@@ -224,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 11281848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: 4.35, z: 0}
+  m_LocalPosition: {x: -0.14, y: 4.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 60
+  chefCost: 120
 --- !u!61 &12999219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 60
+  chefCost: 100
 --- !u!61 &70726482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2357,7 +2357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 50
+  chefCost: 100
 --- !u!61 &520259003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3607,7 +3607,7 @@ Transform:
   m_GameObject: {fileID: 925287040}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.06, y: 4.25, z: 0}
+  m_LocalPosition: {x: 5.06, y: 4.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3839,7 +3839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 60
+  chefCost: 70
 --- !u!61 &1063996441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4577,7 +4577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 50
+  chefCost: 150
 --- !u!61 &1362491631
 BoxCollider2D:
   m_ObjectHideFlags: 0

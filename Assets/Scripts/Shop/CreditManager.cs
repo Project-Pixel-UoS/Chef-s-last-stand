@@ -14,7 +14,7 @@ public class CreditManager : MonoBehaviour
     void Start()
     {
         //some arbitrary number for now.
-        credits = 50;
+        credits = 40;
         text.text = "Credits: " + credits;
     }
     
