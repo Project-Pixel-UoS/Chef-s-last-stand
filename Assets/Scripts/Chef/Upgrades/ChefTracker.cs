@@ -1,3 +1,4 @@
+using Shop;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,8 +16,9 @@ namespace Chef.Upgrades
 
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
-        [SerializeField] private GameObject[] PrepCookUpgrades;
-        [SerializeField] private GameObject[] GrillardinUpgrades;
+        [SerializeField] private GameObject[] prepCookUpgrades;
+        [SerializeField] private GameObject[] grillardinUpgrades;
+        private ShopSlotManager upgradeManager;
 
 
         private GameObject currentChef;
@@ -35,7 +37,8 @@ namespace Chef.Upgrades
             else 
             { 
                 Instance = this; 
-            } 
+            }
+            
         }
 
         /// <summary>
@@ -59,6 +62,7 @@ namespace Chef.Upgrades
                 currentChef.GetComponent<UpgradeTracker>().RefreshRangeBar();
                 upgradeSpecialUI.SetActive(true);
                 currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
+                upgradeManager = chef.GetComponent<ShopSlotManager>();
             }
             
         }
@@ -68,7 +72,12 @@ namespace Chef.Upgrades
         /// </summary>
         public void UpgradeCurrentChefPath1()
         {
-            currentChef.GetComponent<UpgradeTracker>().UpgradePath1();
+            var chef = currentChef.GetComponent<UpgradeTracker>();
+            if (chef.getPath1Status() != 4 && upgradeManager.HandleRangeTransaction())
+            {
+                currentChef.GetComponent<UpgradeTracker>().UpgradePath1();
+            }
+            
         }
         
         /// <summary>
@@ -76,17 +85,21 @@ namespace Chef.Upgrades
         /// </summary>
         public void UpgradeCurrentChefPath2()
         {
-            currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
+            var chef = currentChef.GetComponent<UpgradeTracker>();
+            if (chef.getPath2Status() != 4 && upgradeManager.HandleCreditTransaction())
+            {
+                currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
+            }
         }
 
         public GameObject[] GetPrepCooks()
         {
-            return PrepCookUpgrades;
+            return prepCookUpgrades;
         }
 
         public GameObject[] GetGrillardins()
         {
-            return GrillardinUpgrades;
+            return grillardinUpgrades;
         }
 
     }

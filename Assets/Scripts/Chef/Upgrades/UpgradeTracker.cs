@@ -40,10 +40,10 @@ namespace Chef.Upgrades
         {
             if (path2Status == maxLevel2) return;
             path2Status++;
-            var chef = GetChefUpgrades();
+            var chefs = GetChefUpgrades();
             //instantiate new chef
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
-            GameObject newChef = Instantiate(chef[path2Status], transform.position, transform.rotation,
+            GameObject newChef = Instantiate(chefs[path2Status], transform.position, transform.rotation,
                 chefParent.transform);
             var range = newChef.GetComponent<Range>();
             range.Radius = GetComponent<Range>().Radius; //copy range upgrade status over
@@ -76,10 +76,10 @@ namespace Chef.Upgrades
         /// <returns> an array of selected chef's upgrade prefabs</returns>
         public GameObject[] GetChefUpgrades()
         {
-            if (transform.tag.Equals("PrepCook"))
+            if (transform.CompareTag("PrepCook"))
             {
                 return ChefTracker.Instance.GetPrepCooks();
-            }else if (transform.tag.Equals("Grillardin"))
+            }else if (transform.CompareTag("Grillardin"))
             {
                 return ChefTracker.Instance.GetGrillardins();
             }
@@ -110,6 +110,10 @@ namespace Chef.Upgrades
         public int getPath2Status()
         {
             return path2Status;
+        }
+        public int getPath1Status()
+        {
+            return path1Status;
         }
     }
 }
