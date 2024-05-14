@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 35
-  rangeCost: 5
+  rangeCost: 10
 --- !u!1 &4281193363392056481
 GameObject:
   m_ObjectHideFlags: 0
