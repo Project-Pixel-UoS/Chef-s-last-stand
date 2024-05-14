@@ -124,10 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f40b024c4c1576469228c789aeb9712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  chef: {fileID: 1109480781222891229, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+  damage: 2
   damageRate: 1
-  damageDuration: 5
+  damageDuration: 3
 --- !u!1 &8736687152942431436
 GameObject:
   m_ObjectHideFlags: 0

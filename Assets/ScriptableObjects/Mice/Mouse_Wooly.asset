@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseName: Wooly
   speed: 0.75
-  health: 50
-  size: 1
+  health: 100
+  size: 1.5
   sprite: {fileID: 21300000, guid: 8df4e962f73e4fd43b38d67f80224087, type: 3}
   canGhost: 0
   canSplit: 0
-  difficulty: 1
+  armoured: 0
+  difficulty: 0

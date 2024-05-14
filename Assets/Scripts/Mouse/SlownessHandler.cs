@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using Projectile;
 using UnityEngine;
 
-namespace mouse
-{
+namespace mouse{
     public class SlownessHandler : MonoBehaviour
     {
         private MouseStats stats;
