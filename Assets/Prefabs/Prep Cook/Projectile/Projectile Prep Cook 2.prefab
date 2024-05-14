@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  chef: {fileID: 1109480781222891229, guid: 965fac1ad99c38f429421e28e6357495, type: 3}
   damageRate: 1
   damageDuration: 1
 --- !u!114 &1361909375200111567

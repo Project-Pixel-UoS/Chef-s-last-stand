@@ -24,7 +24,8 @@ public class AbilityAOE : MonoBehaviour
         var shape = fireParticles.shape;
         shape.arc = arcAngle;
 
-        fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
+        //fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
+        
     }
 
     void Update()
@@ -84,20 +85,19 @@ public class AbilityAOE : MonoBehaviour
     private IEnumerator DealDamage(List<GameObject> miceInRange)
     {
         yield return ManageParticles(miceInRange);
-        int counter = 0;
         foreach (GameObject mouse in miceInRange)
         {
-            Vector3 spriteDirection = transform.up; //  forward vector of the sprite
-            Vector3 distance = (mouse.transform.position - transform.position);
-            double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
-            float upperBound = arcAngle / 2f + 5f;
-            if (mouseAngle < upperBound ) // check is angled within half the arc length from where chef is facing
+            if (mouse != null)
             {
-                
-                //play particle effects and damage mouse
-                StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
-                counter++;
-    
+                Vector3 spriteDirection = transform.up; //  forward vector of the sprite
+                Vector3 distance = (mouse.transform.position - transform.position);
+                double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+                float upperBound = arcAngle / 2f + 5f;
+                if (mouseAngle < upperBound) // check is angled within half the arc length from where chef is facing
+                {
+                    //play particle effects and damage mouse
+                    StartCoroutine(mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor));
+                }
             }
         }
     }

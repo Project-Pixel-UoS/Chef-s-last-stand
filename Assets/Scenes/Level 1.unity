@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 3
+  rangeCost: 0
 --- !u!61 &12999219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -365,6 +366,7 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
   range: {fileID: 1563055043}
   parentAfterDrag: {fileID: 0}
+  placeableAreas: {fileID: 1458014724}
 --- !u!114 &12999221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 3
+  rangeCost: 0
 --- !u!61 &70726482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -668,6 +671,7 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
   range: {fileID: 398234635}
   parentAfterDrag: {fileID: 0}
+  placeableAreas: {fileID: 1458014724}
 --- !u!114 &70726484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 2
+  rangeCost: 0
 --- !u!61 &204293416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1251,6 +1256,7 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: 54bf2f05e7468724c817e469ef3165a7, type: 3}
   range: {fileID: 50701844}
   parentAfterDrag: {fileID: 0}
+  placeableAreas: {fileID: 1458014724}
 --- !u!114 &204293418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2512,6 +2518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 2
+  rangeCost: 0
 --- !u!61 &520259003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2572,6 +2579,7 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
   range: {fileID: 826792981}
   parentAfterDrag: {fileID: 0}
+  placeableAreas: {fileID: 1458014724}
 --- !u!114 &520259005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2785,7 +2793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeRangeUI: {fileID: 141500186}
   upgradeSpecialUI: {fileID: 1694771708}
-  PrepCookUpgrades: []
+  prepCookUpgrades: []
+  grillardinUpgrades: []
 --- !u!4 &621719805
 Transform:
   m_ObjectHideFlags: 0
@@ -3989,6 +3998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 3
+  rangeCost: 0
 --- !u!61 &1063996441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4049,6 +4059,7 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
   range: {fileID: 292572446}
   parentAfterDrag: {fileID: 0}
+  placeableAreas: {fileID: 1458014724}
 --- !u!114 &1063996443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4881,6 +4892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 3
+  rangeCost: 0
 --- !u!61 &1362491631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4941,6 +4953,7 @@ MonoBehaviour:
   chef: {fileID: 1109480781222891229, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
   range: {fileID: 1586371753}
   parentAfterDrag: {fileID: 0}
+  placeableAreas: {fileID: 1458014724}
 --- !u!114 &1362491633
 MonoBehaviour:
   m_ObjectHideFlags: 0

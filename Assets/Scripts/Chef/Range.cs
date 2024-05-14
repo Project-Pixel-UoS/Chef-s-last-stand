@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Chef.Upgrades;
-using DefaultNamespace;
 using UnityEngine;
+using Util;
 
 namespace Chef
 {
@@ -10,7 +10,6 @@ namespace Chef
         [SerializeField] private float radius; // range at which chef can attack mice
         [SerializeField] private GameObject rangeObject; //imports the chefs range.
         private SpriteRenderer rangeSpriteRenderer;
-        private bool clicked = false; //Used to see if you are clicking on or off the chef
 
         public float Radius
         {
@@ -91,18 +90,24 @@ namespace Chef
         /// <remarks>Maintained by: Emily Johnston </remarks>
         void OnMouseDown()
         {
-            if (!clicked)
-            {
+            if (ChefTracker.Instance.CurrentChef != gameObject)
+            { 
                 // when chef is pressed while unselected
+                
+                //disable previous chefs range
+                if (ChefTracker.Instance.CurrentChef != null)
+                {
+                    var rangeComp = ChefTracker.Instance.CurrentChef.GetComponent<Range>();
+                    rangeComp.rangeSpriteRenderer.enabled = false;
+                }
+               
                 rangeSpriteRenderer.enabled = true;
-                clicked = true;
                 ChefTracker.Instance.CurrentChef = gameObject;
             }
             else
             {
                 // when chef is pressed while selected
                 rangeSpriteRenderer.enabled = false;
-                clicked = false;
                 ChefTracker.Instance.CurrentChef = null;
 
             }
@@ -120,10 +125,9 @@ namespace Chef
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
                 if (hit.collider == null)
                 {
-                    if (clicked && !Utils.checkMousePosOutsideMap())
+                    if (ChefTracker.Instance.CurrentChef == gameObject && !Utils.checkMousePosOutsideMap())
                     {
                         rangeSpriteRenderer.enabled = false;
-                        clicked = false;
                         ChefTracker.Instance.CurrentChef = null;
 
                     }
@@ -146,7 +150,6 @@ namespace Chef
         public void EnableRangeRenderer()
         {
             rangeSpriteRenderer.enabled = true;
-            clicked = true;
         }
     }
 }

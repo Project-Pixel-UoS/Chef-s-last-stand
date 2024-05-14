@@ -20,6 +20,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private ShopSlotManager shopSlotManager;
 
+    [SerializeField] private GameObject placeableAreas;
+
     private void Start()
     {
 
@@ -89,7 +91,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private bool CheckOutOfBounds()
     {
-        return CheckIntersectingExistingChef() || CheckOutsideScreen() || CheckOnPath();
+        return CheckIntersectingExistingChef() || CheckInArea();
     }
 
     /// <summary>
@@ -138,43 +140,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         return chefs;
     }
-
-
-    /// <returns>True if cursor is at a point where the chef cant be placed</returns>
-    /// <remarks>Maintainer: Ying and Antosh</remarks>
-    private  bool CheckOutsideScreen()
-    {
-        var sideBar = GameObject.FindGameObjectWithTag("SideBar").GetComponent<Image>();
-        var bottomBar = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<Image>();
-
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        float orthographicSize = Camera.main.orthographicSize;
-        // Calculate the width using the aspect ratio of the screen
-        float aspectRatio = Screen.width / (float)Screen.height;
-        
-        float cameraUnitWidth = orthographicSize * 2 * aspectRatio;
-        float cameraUnitHeight = orthographicSize * 2f;
-
-        float sideBarWidth = (cameraUnitWidth * sideBar.rectTransform.rect.width) / Screen.width;
-        float sideBarBound = sideBar.transform.position.x - sideBarWidth / 2;
-        
-        float bottomBarHeight = (cameraUnitHeight * bottomBar.rectTransform.rect.height) / Screen.height;
-        float bottomBarBound = bottomBar.transform.position.y + bottomBarHeight / 2;
-
-        if (worldPos.x <= -8 || worldPos.x >= sideBarBound)
-        {
-            return true;
-        }
-
-        if (worldPos.y <= bottomBarBound || worldPos.y >= 4.5)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
     
     /// <returns> True if chef is on the mice's path </returns>
     private bool CheckOnPath()
@@ -188,10 +153,26 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         return (bottom && top) || (left && right) || above;
     }
 
+    /// <summary>
+    /// Checks if chef is in a placeable area
+    /// </summary>
+    /// <returns>true if chefs is in placeable area</returns>
+    /// <remarks>Maintainer: Ben Brixton</remarks>
+    private bool CheckInArea()
+    {
+        foreach (Transform child in placeableAreas.transform){
+            if(chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<BoxCollider2D>().bounds)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("hit");
     }
+
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
