@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Chef.Upgrades;
-using DefaultNamespace;
 using UnityEngine;
+using Util;
 
 namespace Chef
 {
