@@ -32,6 +32,6 @@ public class MouseStats : MonoBehaviour
 
     void Start()
     {
-        gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite;        // Sets sprite according to scritable object
+        gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite;// Sets sprite according to scritable object
     }
 }

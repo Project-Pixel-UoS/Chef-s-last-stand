@@ -5006,8 +5006,8 @@ Transform:
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4890200131344803959}
   - {fileID: 7854702822569694468}
+  - {fileID: 4890200131344803959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4181688277928253522
@@ -5091,7 +5091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyAmount: 5
-  onFire: {fileID: 0}
+  onFire: {fileID: 8138921289049156857}
 --- !u!114 &4294900302895690777
 MonoBehaviour:
   m_ObjectHideFlags: 0
