@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 20
+  chefCost: 100
   rangeCost: 5
 --- !u!1 &3409814503728593753
 GameObject:
