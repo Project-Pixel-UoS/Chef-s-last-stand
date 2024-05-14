@@ -74,8 +74,6 @@ public class AbilityPlate : MonoBehaviour
             if ((randomPos - transform.position).magnitude < range.Radius)
             {
                 platePos = randomPos;
-                print("plate pos being set to: " + randomPos);
-
                 found = true;
             }
         }
