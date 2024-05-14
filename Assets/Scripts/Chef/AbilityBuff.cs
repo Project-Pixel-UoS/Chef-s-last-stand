@@ -17,14 +17,12 @@ public class AbilityBuff : MonoBehaviour
 
     private float range;
 
-    // Start is called before the first frame update
     void Start()
     {
         range = GetComponent<Range>().Radius;
         colliders = Physics2D.OverlapCircleAll(transform.position, range);
     }
 
-    // Update is called once per frame
     void Update()
     {
         colliders = Physics2D.OverlapCircleAll(transform.position, range);

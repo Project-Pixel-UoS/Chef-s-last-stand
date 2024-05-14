@@ -19,7 +19,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Vector3 dropPosition;
 
     private ShopSlotManager shopSlotManager;
-
     [SerializeField] private GameObject placeableAreas;
 
     private void Start()
@@ -115,12 +114,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     /// <returns>A list of all the colliders of the chefs that are already placed</returns>
     /// <remarks>Maintainer: Ying and Antosh</remarks>
-    private List<Collider2D> GetAllChefColliders()
+    private List<BoxCollider2D> GetAllChefColliders()
     {
-        var colliders = new List<Collider2D>();
+        var colliders = new List<BoxCollider2D>();
         foreach (var chef in GetAllChefs())
         {
-            colliders.Add(chef.GetComponent<Collider2D>());
+            colliders.Add(chef.GetComponent<BoxCollider2D>());
         }
 
         return colliders;

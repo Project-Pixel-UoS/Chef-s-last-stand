@@ -94,9 +94,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041573966325760781}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  chef: {fileID: 1109480781222891229, guid: 54bf2f05e7468724c817e469ef3165a7, type: 3}
+  chef: {fileID: 2041573966325760781}
   damageRate: 1
   damageDuration: 1
 --- !u!114 &1361909375200111567

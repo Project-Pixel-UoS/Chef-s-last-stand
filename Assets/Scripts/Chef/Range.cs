@@ -90,10 +90,10 @@ namespace Chef
         /// <remarks>Maintained by: Emily Johnston </remarks>
         void OnMouseDown()
         {
+            print("Mouse down being triggered");
             if (ChefTracker.Instance.CurrentChef != gameObject)
             { 
                 // when chef is pressed while unselected
-                
                 //disable previous chefs range
                 if (ChefTracker.Instance.CurrentChef != null)
                 {
@@ -113,6 +113,10 @@ namespace Chef
             }
         }
 
+   
+        
+        
+
         /// <summary> Checks what is being clicked </summary>
         /// <remarks>Maintained by: Emily Johnston </remarks>
         public void ClickManager()
@@ -123,6 +127,7 @@ namespace Chef
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+             
                 if (hit.collider == null)
                 {
                     if (ChefTracker.Instance.CurrentChef == gameObject && !Utils.checkMousePosOutsideMap())
