@@ -857,7 +857,13 @@ MonoBehaviour:
     the mice keep on sneaking into the kitchen and stealing their food! The chefs
     are at their wit\u2019s end, and have decided to take matters into their own
     hands. The chefs picked up their cooking utensils and are now waiting for the
-    mice to attack, and finish them once and for all.\n\nHow to play:\n?????????"
+    mice to attack, and finish them once and for all.\n\nHow to play:\nPhase 1: Spend
+    money to place Chefs onto tables in order to defend the food. Choose wisely as
+    each Chef costs different amounts and works best against different types of mice\r\nPhase
+    2: Earn money from Each Mouse disposed of. Lose Health for each mouse that makes
+    it to the kitchen\r\nPhase 3: Spend that money on more Chef\u2019s or upgrades
+    for your Chef\u2019s\r\nPhase 4: Survive all the Waves with your Health bar intact
+    to successfully defend the kitchen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -884,8 +890,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
