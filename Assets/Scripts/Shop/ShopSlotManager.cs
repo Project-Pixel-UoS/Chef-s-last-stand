@@ -16,6 +16,7 @@ namespace Shop
         private Image chefImage;
 
         public int chefCost;
+        public int rangeCost;
         private CreditManager creditsManager;
         
         private void Start()
@@ -27,15 +28,18 @@ namespace Shop
         
         private void Update()
         {
-            if (chefCost > creditsManager.GetCredits())
+            if (slotImage != null)
             {
-                chefImage.color = Color.red;
-                slotImage.color = Color.red;
-            }
-            else
-            {
-                chefImage.color = Color.white;
-                slotImage.color = new Color(0.86f, 0.61f, 0.21f);
+                if (chefCost > creditsManager.GetCredits())
+                {
+                    chefImage.color = Color.red;
+                    slotImage.color = Color.red;
+                }
+                else
+                {
+                    chefImage.color = Color.white;
+                    slotImage.color = new Color(0.86f, 0.61f, 0.21f);
+                }
             }
         }
 
@@ -49,7 +53,13 @@ namespace Shop
             bool sufficientFunds = creditsManager.SpendCredits(chefCost);
             return sufficientFunds;
         }
-        
+
+        public bool HandleRangeTransaction()
+        {
+            bool sufficientFunds = creditsManager.SpendCredits(rangeCost);
+            return sufficientFunds;
+        }
+
 
     }
 }
