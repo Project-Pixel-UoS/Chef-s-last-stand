@@ -78,11 +78,14 @@ namespace Chef.Upgrades
         {
             if (transform.CompareTag("PrepCook"))
             {
+                print("Returning all prep cooks: " + ChefTracker.Instance.GetPrepCooks());
                 return ChefTracker.Instance.GetPrepCooks();
             }else if (transform.CompareTag("Grillardin"))
             {
+                print("Returning all grillardins: " + ChefTracker.Instance.GetGrillardins());
                 return ChefTracker.Instance.GetGrillardins();
             }
+            print("Null!");
             return null;
         }
 

@@ -63,6 +63,8 @@ namespace Chef.Upgrades
                 upgradeSpecialUI.SetActive(true);
                 currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
                 upgradeManager = chef.GetComponent<ShopSlotManager>();
+                print("setting upgrade manager: " + upgradeManager);
+
             }
             
         }
@@ -86,6 +88,9 @@ namespace Chef.Upgrades
         public void UpgradeCurrentChefPath2()
         {
             var chef = currentChef.GetComponent<UpgradeTracker>();
+            print("Upgrade tracker: " + chef);
+            print("Upgrade manager: " + upgradeManager);
+
             if (chef.getPath2Status() != 4 && upgradeManager.HandleCreditTransaction())
             {
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
