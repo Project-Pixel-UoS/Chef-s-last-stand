@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Chef;
 using System.IO;
+using Util;
 
 public class AbilityPlate : MonoBehaviour
 {
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private float maxPlates;
-    [SerializeField] public Transform[] turningPoints;
+    private Transform[] turningPoints;
     private float cooldownTimer; // timer for cooldown in between shots
     private float currPlates;
     private Range range;
@@ -86,6 +87,7 @@ public class AbilityPlate : MonoBehaviour
         cooldownTimer = cooldown;
         if (GetPlatePosition().z != -1)
         {
+            Utils.PlayShootSound(gameObject);
             var plate = Instantiate(Projectile, GetPlatePosition(), transform.rotation);
             plate.transform.parent = transform;
             currPlates++;

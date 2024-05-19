@@ -43,5 +43,29 @@ namespace Util
             return false;
 
         }
+
+        public static void PlayShootSound(GameObject chef)
+        {
+            GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Play();
+        }
+        public static void StopShootSound(GameObject chef)
+        {
+            GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Stop();
+
+        }
+        
+        public static GameObject GetChildWithTag(GameObject parent, string tag)
+        {
+            foreach (Transform child in parent.transform)
+            {
+                if (child.gameObject.CompareTag(tag))
+                {
+                    return child.gameObject;
+                }
+            }
+            return null;
+        }
+
+     
     }
 }

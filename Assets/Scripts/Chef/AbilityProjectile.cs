@@ -6,6 +6,7 @@ using Chef.Upgrades;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 
 namespace Chef
@@ -80,6 +81,7 @@ namespace Chef
         {
             if (cooldownTimer > 0) return;
             cooldownTimer = cooldown;
+            Utils.PlayShootSound(gameObject);
             SpawnProjectile();
             StartCoroutine(HandleMaxPrepCook());
         }

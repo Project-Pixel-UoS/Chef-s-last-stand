@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Util;
 using static UnityEngine.EventSystems.EventTrigger;
 using Range = Chef.Range;
 
@@ -14,18 +15,17 @@ public class AbilityAOE : MonoBehaviour
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
     [SerializeField] private ParticleSystem fireParticles; // fire particles 
-    [SerializeField] private int arcAngle;//angle of spread of fire in degrees
+    [SerializeField] private int arcAngle; //angle of spread of fire in degrees
 
     void Start()
     {
         range = GetComponent<Range>();
         damageFactor = GetComponent<DamageFactor>(); // Get damage factor component
-        
+
         var shape = fireParticles.shape;
         shape.arc = arcAngle;
 
         //fireParticles.transform.eulerAngles = new Vector3(0, 0, 225 + (90f - arcAngle) / 2);
-        
     }
 
     void Update()
@@ -64,13 +64,12 @@ public class AbilityAOE : MonoBehaviour
     }
 
 
-
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
     private void AOE()
     {
         if (cooldownTimer > 0) return;
-        
+
         List<GameObject> miceInRange = range.GetMiceInRange();
         StartCoroutine(DealDamage(miceInRange));
         cooldownTimer = cooldown;
@@ -87,6 +86,7 @@ public class AbilityAOE : MonoBehaviour
         yield return ManageParticles(miceInRange);
         foreach (GameObject mouse in miceInRange)
         {
+            print("mouse: " + mouse);
             if (mouse != null)
             {
                 Vector3 spriteDirection = transform.up; //  forward vector of the sprite
@@ -106,6 +106,7 @@ public class AbilityAOE : MonoBehaviour
     {
         if (miceInRange.Count > 0 && !fireParticles.isPlaying)
         {
+            Utils.PlayShootSound(gameObject);
             fireParticles.Play();
             //because fire particle system takes a while to fully activate we must wait before allowing to deal damage
             yield return new WaitForSeconds(0.2f);
@@ -113,6 +114,8 @@ public class AbilityAOE : MonoBehaviour
         else
         {
             fireParticles.Stop();
+            yield return new WaitForSeconds(0.7f); //because fire particle system takes a while to fully disappear
+            Utils.StopShootSound(gameObject);
         }
     }
 }

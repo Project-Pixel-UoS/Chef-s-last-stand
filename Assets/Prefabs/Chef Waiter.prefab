@@ -196,7 +196,6 @@ MonoBehaviour:
   Projectile: {fileID: 2041573966325760781, guid: d098e47773abb9e4398621ec7cd55f7c, type: 3}
   cooldown: 2
   maxPlates: 3
-  turningPoints: []
 --- !u!114 &3091158959010883618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +304,7 @@ GameObject:
   - component: {fileID: 1458470445572405868}
   m_Layer: 0
   m_Name: plate_smash
-  m_TagString: Untagged
+  m_TagString: ProjectileThrowFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +335,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4c0e95bc8c3199e45aa00df2988c910f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
