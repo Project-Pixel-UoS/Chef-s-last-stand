@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -2270968725706419191}
   m_Layer: 0
   m_Name: Chef Grillardin 4
-  m_TagString: ProjectileThrowFX
+  m_TagString: Grillardin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 1391448439291143151}
   m_Layer: 0
   m_Name: Grill_burn_loop
-  m_TagString: Untagged
+  m_TagString: ProjectileThrowFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
