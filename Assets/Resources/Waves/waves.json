@@ -17,12 +17,6 @@
           "amount": 3,
           "timeOfWave": 0,
           "frequency": 2
-        },
-        {
-          "type": "Wooly",
-          "amount": 100,
-          "timeOfWave": 1,
-          "frequency": 0.1
         }
       ]
 

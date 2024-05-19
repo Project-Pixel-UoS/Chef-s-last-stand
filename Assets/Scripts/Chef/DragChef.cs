@@ -185,9 +185,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         range.enabled = false;
 
         // dont allow player to place a chef on game over screen, or if has too little credit
-        bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
-        if (!GameManager.gameManager.IsGameOver() && sufficientFunds && !CheckOutOfBounds())
+        // bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
+        if (!GameManager.gameManager.IsGameOver() && shopSlotManager.CheckSufficientChefFunds() && !CheckOutOfBounds())
         {
+            shopSlotManager.HandleChefTransaction();
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
             Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         }

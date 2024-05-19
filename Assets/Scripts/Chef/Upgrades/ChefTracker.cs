@@ -74,8 +74,9 @@ namespace Chef.Upgrades
         public void UpgradeCurrentChefPath1()
         {
             var chef = currentChef.GetComponent<UpgradeTracker>();
-            if (chef.getPath1Status() != 4 && upgradeManager.HandleRangeTransaction())
+            if (chef.getPath1Status() != 4 && upgradeManager.CheckSufficientRangeFunds())
             {
+                upgradeManager.HandleRangeTransaction();
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath1();
             }
             
@@ -87,8 +88,9 @@ namespace Chef.Upgrades
         public void UpgradeCurrentChefPath2()
         {
             var chef = currentChef.GetComponent<UpgradeTracker>();
-            if (chef.getPath2Status() != 4 && upgradeManager.HandleCreditTransaction())
+            if (chef.getPath2Status() != 4 && upgradeManager.CheckSufficientChefFunds())
             {
+                upgradeManager.HandleChefTransaction();
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
             }
         }
