@@ -139,9 +139,9 @@ GameObject:
   - component: {fileID: 7989630137209133669}
   - component: {fileID: 5944407029019408347}
   - component: {fileID: 6733890637323858978}
+  - component: {fileID: 5110289829332149551}
   - component: {fileID: -8225661181477205927}
   - component: {fileID: -11078296931815846}
-  - component: {fileID: 6841339178977116078}
   m_Layer: 0
   m_Name: Projectile Potager
   m_TagString: Untagged
@@ -215,6 +215,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   destroyTime: 1
+--- !u!50 &5110289829332149551
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041573966325760781}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &-8225661181477205927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,33 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slownessFactor: 3
   duration: 3
---- !u!50 &6841339178977116078
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041573966325760781}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &8736687152942431436
 GameObject:
   m_ObjectHideFlags: 0

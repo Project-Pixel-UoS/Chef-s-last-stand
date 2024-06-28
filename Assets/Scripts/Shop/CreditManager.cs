@@ -10,14 +10,12 @@ public class CreditManager : MonoBehaviour
 {
     private int credits;
     [SerializeField] private Text text;
-    
+
     void Start()
     {
-        credits = 40;
+        credits = 400; // should be 40 in production mode
         text.text = "Credits: " + credits;
     }
-    
-    
 
 
     /// <summary>
@@ -51,5 +49,8 @@ public class CreditManager : MonoBehaviour
         }
     }
 
-    public int GetCredits() {  return credits; }
+    public int GetCredits()
+    {
+        return credits;
+    }
 }
