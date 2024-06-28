@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: -5843223008570000811}
   - component: {fileID: -5073770246374414763}
   - component: {fileID: -458673801847131121}
+  - component: {fileID: 5659145071796658612}
   m_Layer: 0
   m_Name: Chef Head
   m_TagString: HeadChef
@@ -243,6 +244,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7176461, y: 0.8356447}
   m_EdgeRadius: 0
+--- !u!114 &5659145071796658612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chefCost: 0
+  rangeCost: 5
 --- !u!1 &6208724048470825412
 GameObject:
   m_ObjectHideFlags: 0

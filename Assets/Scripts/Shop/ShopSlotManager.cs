@@ -15,7 +15,9 @@ namespace Shop
         private Image slotImage;
         private Image chefImage;
 
-        public int chefCost;
+        // represent cost of buying the chef if attached to side bar slot, or upgrading path 2 of the chef if attached
+        // to chef game object
+        public int chefCost; 
         public int rangeCost;
         private CreditManager creditsManager;
         
@@ -48,10 +50,14 @@ namespace Shop
         /// </summary>
         /// <returns>true if enough there are sufficient funds</returns>
         /// <remarks>maintainer: Antosh</remarks>
-        public bool HandleCreditTransaction()
+        public void HandleChefTransaction()
         {
-            bool sufficientFunds = creditsManager.SpendCredits(chefCost);
-            return sufficientFunds;
+            creditsManager.SpendCredits(chefCost);
+        }
+
+        public bool CheckSufficientChefFunds()
+        {
+            return creditsManager.GetCredits() >= chefCost;
         }
 
         public bool HandleRangeTransaction()
@@ -59,6 +65,12 @@ namespace Shop
             bool sufficientFunds = creditsManager.SpendCredits(rangeCost);
             return sufficientFunds;
         }
+        
+        public bool CheckSufficientRangeFunds()
+        {
+            return creditsManager.GetCredits() >= rangeCost;
+        }
+
 
 
     }
