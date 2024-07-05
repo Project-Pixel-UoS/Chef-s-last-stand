@@ -30,7 +30,15 @@ public class AbilityPlate : MonoBehaviour
     {
         if (Projectile == null) return;
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
-        if (currPlates != maxPlates) Shoot();
+        if (currPlates != maxPlates)
+        {
+            var targetPos = GetPlatePosition();
+            var plate = Shoot();
+            if (plate != null && targetPos.z != -1)
+            {
+                StartCoroutine(MovePlate(plate, targetPos));
+            }
+        }
     }
 
     /// <returns>
@@ -81,22 +89,28 @@ public class AbilityPlate : MonoBehaviour
         return platePos;
     }
 
-    private void Shoot()
+    private GameObject Shoot()
     {
-        if (cooldownTimer > 0) return;
+        if (cooldownTimer > 0) return null;
         cooldownTimer = cooldown;
-        if (GetPlatePosition().z != -1)
-        {
-            Utils.PlayShootSound(gameObject);
-            var plate = Instantiate(Projectile, GetPlatePosition(), transform.rotation);
-            plate.transform.parent = transform;
-            currPlates++;
-        }
-        
+        Utils.PlayShootSound(gameObject);
+        var plate = Instantiate(Projectile, transform.position, transform.rotation);
+        plate.transform.parent = transform;
+        currPlates++;
+        return plate;
     }
 
     public void removePlate()
     {
         currPlates--;
+    }
+
+    private IEnumerator MovePlate(GameObject plate, Vector3 targetPos)
+    {
+        while(plate != null && plate.transform.position != targetPos)
+        {
+            plate.transform.position = Vector3.MoveTowards(plate.transform.position, targetPos, 0.5f);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
