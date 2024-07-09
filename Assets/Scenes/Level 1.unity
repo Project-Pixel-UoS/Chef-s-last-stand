@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 1118665280}
   m_Layer: 0
   m_Name: Chef's Last Stand Level Music (1st Draft)
-  m_TagString: Untagged
+  m_TagString: LevelMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

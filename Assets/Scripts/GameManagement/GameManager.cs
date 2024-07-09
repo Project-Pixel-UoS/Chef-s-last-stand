@@ -14,13 +14,14 @@ namespace GameManagement
 
         private void Start()
         {
-            
             // singleton pattern
             if (gameManager == null)
             {
                 gameManager = this;
             }
-                
+
+            var menuMusic = GameObject.FindGameObjectWithTag("MenuMusic");
+            menuMusic.GetComponent<AudioSource>().Stop();
         }
 
 
