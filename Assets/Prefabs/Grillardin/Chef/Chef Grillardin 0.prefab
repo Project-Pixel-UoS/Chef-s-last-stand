@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6007071514904664862}
   - component: {fileID: -1469115511128794750}
   - component: {fileID: 8854314696486517693}
+  - component: {fileID: 8744337260076530441}
   m_Layer: 0
   m_Name: Chef Grillardin 0
   m_TagString: Grillardin
@@ -157,6 +158,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chefCost: 100
   rangeCost: 20
+--- !u!114 &8744337260076530441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageIncrease: 1
+  speedIncrease: 1
+  rangeIncrease: 1
 --- !u!1 &3409814503728593753
 GameObject:
   m_ObjectHideFlags: 0
