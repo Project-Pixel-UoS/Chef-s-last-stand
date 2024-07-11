@@ -19,9 +19,14 @@ namespace GameManagement
             {
                 gameManager = this;
             }
+            
+            GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Stop();
+            
+            print("level volume: " + SoundMenu.Instance.GetLevelVolume());
+            // initialize level music according to the slider
+            var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
+            levelMusic.GetComponent<AudioSource>().volume = SoundMenu.Instance.GetLevelVolume();
 
-            var menuMusic = GameObject.FindGameObjectWithTag("MenuMusic");
-            menuMusic.GetComponent<AudioSource>().Stop();
         }
 
 
@@ -43,7 +48,7 @@ namespace GameManagement
         /// <summary>
         /// Method restarts the level, invoked upon start again button in game over screen inside canvas
         /// </summary>
-        public void RestartLevel()
+        public void RestartLevel()//todo change so that it reload scene
         {
             SceneManager.LoadScene("SampleScene"); //Load scene called Game
         }

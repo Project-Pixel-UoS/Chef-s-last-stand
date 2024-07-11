@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 81358299}
   - component: {fileID: 81358301}
   m_Layer: 0
-  m_Name: CLS_Menu_Music_demo_1
-  m_TagString: Untagged
+  m_Name: MenuMusic
+  m_TagString: MenuMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

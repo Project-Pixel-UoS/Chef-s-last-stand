@@ -8,7 +8,7 @@ public class SoundFXInitializer : MonoBehaviour
     {
         foreach (var audioSource in GetComponentsInChildren<AudioSource>())
         {
-            audioSource.volume = SoundMenu.Instance.GetSoundEffectsVolume();
+            audioSource.volume = SoundMenu.Instance.GetSoundFXVolume();
         }
     }
 }

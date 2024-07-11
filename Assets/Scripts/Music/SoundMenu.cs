@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SoundMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private GameObject backgroundSpawner;
+    // [SerializeField] private GameObject pauseMenuUI;
+    // [SerializeField] private GameObject backgroundSpawner;
+
+    private AudioSource menuMusic;
     // private BackgroundMovement backgroundMovement;
 
-    private List<AudioSource> soundEffectAudioSources;
+    // private List<AudioSource> soundEffectAudioSources;
 
-    [SerializeField] private Slider backgroundVolumeSlider;
-    [SerializeField] private Slider soundEffectVolumeSlider;
+    [SerializeField] private Slider levelVolumeSlider;
+    [SerializeField] private Slider soundFXVolumeSlider;
     [SerializeField] private Slider menuVolumeSlider;
 
     // public float menuVolume;
@@ -24,10 +27,10 @@ public class SoundMenu : MonoBehaviour
     void Awake()
     {
         SetupSingletonField();
-        soundEffectAudioSources = GetSoundEffects();
-        // backgroundMovement = backgroundSpawner.GetComponent<BackgroundMovement>();
+        menuMusic = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>();
         SetVolumeSliders();
-        gameObject.SetActive(false); //game object must start of active in order for player prefs to function
+        // soundEffectAudioSources = GetSoundEffects();
+        // gameObject.SetActive(false); //game object must start of active in order for player prefs to function
     }
 
     private void SetupSingletonField()
@@ -46,7 +49,7 @@ public class SoundMenu : MonoBehaviour
     private List<AudioSource> GetSoundEffects()
     {
         List<AudioSource> audioSources = new List<AudioSource>();
-        foreach (var soundEffect in GameObject.FindGameObjectsWithTag("SoundEffect"))
+        foreach (var soundEffect in GameObject.FindGameObjectsWithTag("SoundFX"))
         {
             audioSources.Add(soundEffect.GetComponent<AudioSource>());
         }
@@ -66,75 +69,88 @@ public class SoundMenu : MonoBehaviour
             PlayerPrefs.SetFloat("menuVolume", 1);
 
 
-        LoadBackgroundMusic();
+        LoadLevelVolume();
         LoadMenuVolume();
-        LoadSoundEffectVolume();
+        LoadSoundFXVolume();
     }
 
-    public void ToggleSoundsMenu()
-    {
-        pauseMenuUI.SetActive(false);
-        gameObject.SetActive(true); //enable the sound menu
-    }
-
-    public void Back()
-    {
-        pauseMenuUI.SetActive(true);
-        gameObject.SetActive(false);
-    }
-
-    public void ChangeBackgroundMusicVolume()
-    {
-        // AudioListener.volume = backgroundVolumeSlider.value;
-        SaveBackgroundMusic();
-        // backgroundMovement.audioSourceOne.volume = backgroundVolumeSlider.value;
-        // backgroundMovement.audioSourceTwo.volume = backgroundVolumeSlider.value;
-    }
-
-    public void ChangeSoundsEffectVolume()
-    {
-        SaveSoundEffectVolume();
-        foreach (var soundEffect in soundEffectAudioSources)
-        {
-            if (soundEffect != null)
-            {
-                soundEffect.volume = soundEffectVolumeSlider.value;
-            }
-        }
-    }
-
-    // public void ChangeMenuMusicVolume()
+    // public void ToggleSoundsMenu()
     // {
-    //     SaveMenuVolume();
-    //     // menuVolume = menuVolumeSlider.value;
+    //     pauseMenuUI.SetActive(false);
+    //     gameObject.SetActive(true); //enable the sound menu
     // }
-    //
+
+    // public void Back()
+    // {
+    //     pauseMenuUI.SetActive(true);
+    //     gameObject.SetActive(false);
+    // }
+
+    // public void ChangeLevelMusicVolume()
+    // {
+    //     // AudioListener.volume = backgroundVolumeSlider.value;
+    //     SaveBackgroundMusic();
+    //     // backgroundMovement.audioSourceOne.volume = backgroundVolumeSlider.value;
+    //     // backgroundMovement.audioSourceTwo.volume = backgroundVolumeSlider.value;
+    // }
+
+    public void ChangeSoundFXVolume()
+    {
+        SaveSoundFXVolume();
+        // foreach (var soundEffect in soundEffectAudioSources)
+        // {
+        //     if (soundEffect != null)
+        //     {
+        //         soundEffect.volume = soundEffectVolumeSlider.value;
+        //     }
+        // }
+    }
+    
+    public void ChangeLevelMusicVolume()
+    {
+        SaveLevelVolume();
+        // foreach (var soundEffect in soundEffectAudioSources)
+        // {
+        //     if (soundEffect != null)
+        //     {
+        //         soundEffect.volume = soundEffectVolumeSlider.value;
+        //     }
+        // }
+    }
+
+    public void ChangeMenuMusicVolume()
+    {
+        SaveMenuVolume();
+        SetMenuMusicVolume();
+    }
+
+
 
 
     //Loading and saving functions
-    private void LoadBackgroundMusic()
+    private void LoadLevelVolume()
     {
-        backgroundVolumeSlider.value = PlayerPrefs.GetFloat("backgroundMusicVolume");
+        levelVolumeSlider.value = GetLevelVolume();
     }
 
-    private void SaveBackgroundMusic()
+    private void SaveLevelVolume()
     {
-        PlayerPrefs.SetFloat("backgroundMusicVolume", backgroundVolumeSlider.value);
+        PlayerPrefs.SetFloat("levelVolume", levelVolumeSlider.value);
     }
 
-    private void LoadSoundEffectVolume()
+    private void LoadSoundFXVolume()
     {
-        soundEffectVolumeSlider.value = PlayerPrefs.GetFloat("soundEffectVolume");
+        soundFXVolumeSlider.value = GetSoundFXVolume();
     }
 
-    private void SaveSoundEffectVolume()
+    private void SaveSoundFXVolume()
     {
-        PlayerPrefs.SetFloat("soundEffectVolume", soundEffectVolumeSlider.value);
+        PlayerPrefs.SetFloat("soundFXVolume", soundFXVolumeSlider.value);
     }
 
     private void LoadMenuVolume()
     {
-        menuVolumeSlider.value = PlayerPrefs.GetFloat("menuVolume");
+        menuVolumeSlider.value = GetMenuVolume();
     }
 
     private void SaveMenuVolume()
@@ -142,18 +158,23 @@ public class SoundMenu : MonoBehaviour
         PlayerPrefs.SetFloat("menuVolume", menuVolumeSlider.value);
     }
 
-    public float GetBackgroundVolume()
+    public float GetLevelVolume()
     {
-        return backgroundVolumeSlider.value;
+        return PlayerPrefs.GetFloat("levelVolume");
     }
 
-    // public float GetMenuVolume()
-    // {
-    //     return menuVolumeSlider.value;
-    // } 
-
-    public float GetSoundEffectsVolume()
+    public float GetMenuVolume()
     {
-        return soundEffectVolumeSlider.value;
+        return PlayerPrefs.GetFloat("menuVolume");
+    } 
+
+    public float GetSoundFXVolume()
+    {
+        return PlayerPrefs.GetFloat("soundFXVolume");
+    }
+    
+    public void SetMenuMusicVolume()
+    {
+        menuMusic.volume = GetMenuVolume();
     }
 }
