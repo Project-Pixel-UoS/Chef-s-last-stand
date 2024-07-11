@@ -22,11 +22,17 @@ namespace GameManagement
                 gameManager = this;
             }
 
-            GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Stop();
+            var menuMusic = GameObject.FindGameObjectWithTag("MenuMusic");
+            if (menuMusic != null)// if statement only needed to developer mode, in case start from level scene
+            {
+                GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Stop();
+            }
 
             // initialize level music according to the slider
             var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
-            levelMusic.GetComponent<AudioSource>().volume = SoundMenu.Instance.GetLevelVolume();
+            // print("Level music: " + levelMusic);
+            // print("audio source: " + levelMusic.GetComponent<AudioSource>());
+            levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
         }
 
 

@@ -35,7 +35,7 @@ public class AbilityBuff : MonoBehaviour
             GameObject gameObject = collider.gameObject;        // Get game object
             Buff buff = gameObject.GetComponent<Buff>();        // Get its "buff" object
 
-            Debug.Log("Found " + gameObject.name);
+            // Debug.Log("Found " + gameObject.name);
 
             // If it has no "buff" object, it isn't a chef
             if (buff == null){ continue; }
