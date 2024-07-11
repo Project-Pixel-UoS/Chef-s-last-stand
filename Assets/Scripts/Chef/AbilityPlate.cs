@@ -109,8 +109,8 @@ public class AbilityPlate : MonoBehaviour
     {
         while(plate != null && plate.transform.position != targetPos)
         {
-            plate.transform.position = Vector3.MoveTowards(plate.transform.position, targetPos, 0.5f);
-            yield return new WaitForSeconds(0.1f);
+            plate.transform.position = Vector3.MoveTowards(plate.transform.position, targetPos, 0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }
