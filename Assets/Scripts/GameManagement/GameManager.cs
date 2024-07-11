@@ -2,6 +2,8 @@ namespace GameManagement
 {
     using UnityEngine;
     using UnityEngine.SceneManagement;
+    using Music;
+
 
     public class GameManager : MonoBehaviour
     {
@@ -9,7 +11,7 @@ namespace GameManagement
         public static float speedMultiplier;
 
         [SerializeField] private GameObject gameOverScreen;
-        
+
         public static GameManager gameManager;
 
         private void Start()
@@ -19,14 +21,12 @@ namespace GameManagement
             {
                 gameManager = this;
             }
-            
+
             GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Stop();
-            
-            print("level volume: " + SoundMenu.Instance.GetLevelVolume());
+
             // initialize level music according to the slider
             var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
             levelMusic.GetComponent<AudioSource>().volume = SoundMenu.Instance.GetLevelVolume();
-
         }
 
 
@@ -48,10 +48,9 @@ namespace GameManagement
         /// <summary>
         /// Method restarts the level, invoked upon start again button in game over screen inside canvas
         /// </summary>
-        public void RestartLevel()//todo change so that it reload scene
+        public void RestartLevel() //todo change so that it reload scene
         {
             SceneManager.LoadScene("SampleScene"); //Load scene called Game
         }
     }
 }
-

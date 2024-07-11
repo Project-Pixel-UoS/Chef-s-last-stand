@@ -1,14 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class SoundFXInitializer : MonoBehaviour
+namespace Music
 {
-    void Start()
+    using UnityEngine;
+    
+    /// <summary>
+    /// Responsible for adjusting volume of game objects sound effects
+    /// Should be attached to any game object that makes sound
+    /// </summary>
+    /// <remarks>Antosh</remarks>
+    public class SoundFXInitializer : MonoBehaviour
     {
-        foreach (var audioSource in GetComponentsInChildren<AudioSource>())
+        void Start()
         {
-            audioSource.volume = SoundMenu.Instance.GetSoundFXVolume();
+            foreach (var audioSource in GetComponentsInChildren<AudioSource>())
+            {
+                audioSource.volume = SoundMenu.Instance.GetSoundFXVolume();
+            }
         }
     }
 }

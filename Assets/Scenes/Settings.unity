@@ -708,8 +708,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1216687521}
-        m_TargetAssemblyTypeName: SoundMenu, Assembly-CSharp
-        m_MethodName: ChangeLevelMusicVolume
+        m_TargetAssemblyTypeName: Music.SoundMenu, Assembly-CSharp
+        m_MethodName: SaveLevelVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2268,8 +2268,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1216687521}
-        m_TargetAssemblyTypeName: SoundMenu, Assembly-CSharp
-        m_MethodName: ChangeSoundFXVolume
+        m_TargetAssemblyTypeName: Music.SoundMenu, Assembly-CSharp
+        m_MethodName: SaveSoundFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
