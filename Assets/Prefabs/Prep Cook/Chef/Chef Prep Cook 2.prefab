@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 647212506296903406}
   - component: {fileID: -9203637450718709653}
   - component: {fileID: -1970727718610732877}
-  - component: {fileID: 5461096997308423307}
   - component: {fileID: 7887215541740292448}
   - component: {fileID: 3256497228894662022}
+  - component: {fileID: 4727502684924421229}
+  - component: {fileID: 2431992648814847000}
   m_Layer: 0
   m_Name: Chef Prep Cook 2
   m_TagString: PrepCook
@@ -67,7 +68,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   rangeObject: {fileID: 8700967512257991476}
---- !u!61 &5461096997308423307
+--- !u!114 &7887215541740292448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3256497228894662022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chefCost: 30
+  rangeCost: 10
+--- !u!61 &4727502684924421229
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,20 +126,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.022040546, y: -0.05142811}
+  m_Offset: {x: -0.002350688, y: 0.082272634}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 1.25}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9563326, y: 1.3245025}
+  m_Size: {x: 1.0611169, y: 0.56748104}
   m_EdgeRadius: 0
---- !u!114 &7887215541740292448
+--- !u!114 &2431992648814847000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,23 +148,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109480781222891229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3256497228894662022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109480781222891229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chefCost: 30
-  rangeCost: 10
+  damageIncrease: 1
+  speedIncrease: 1
+  rangeIncrease: 1
 --- !u!1 &4281193363392056481
 GameObject:
   m_ObjectHideFlags: 0

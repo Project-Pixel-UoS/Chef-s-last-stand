@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 7533226973392138995}
   - component: {fileID: -3343250522032395345}
   - component: {fileID: 1214436624015060238}
+  - component: {fileID: 1925694442024242584}
   m_Layer: 0
   m_Name: Chef Entremetier
   m_TagString: Untagged
@@ -266,6 +267,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chefCost: 0
   rangeCost: 5
+--- !u!114 &1925694442024242584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageIncrease: 1
+  speedIncrease: 1
+  rangeIncrease: 1
 --- !u!1 &1441932722712167455
 GameObject:
   m_ObjectHideFlags: 0

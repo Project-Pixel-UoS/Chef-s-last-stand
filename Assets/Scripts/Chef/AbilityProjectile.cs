@@ -92,12 +92,15 @@ namespace Chef
         private void SpawnProjectile()
         {
             GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
-            DamageFactor df = this.GetComponent<DamageFactor>();
-            Buff bf = this.GetComponent<Buff>();
-            if (bf != null)
+            DamageFactor df = p.GetComponent<DamageFactor>();
+            Buff buff = GetComponent<Buff>();
+            if (buff != null)
             {
-                p.GetComponent<DamageFactor>().damage = df.damage * bf.damageIncrease;
-                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * bf.speedIncrease;
+                p.GetComponent<DamageFactor>().damage = df.damage * buff.damageIncrease;
+                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
+            }
+            else{
+                Debug.Log("FAILED TO GET BUFF");
             }
         }
         
