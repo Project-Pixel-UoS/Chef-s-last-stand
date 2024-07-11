@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 647212506296903406}
   - component: {fileID: -9203637450718709653}
   - component: {fileID: -1970727718610732877}
+  - component: {fileID: 5461096997308423307}
   - component: {fileID: 7887215541740292448}
   - component: {fileID: 2325135678370490676}
-  - component: {fileID: -2098903044050691176}
-  - component: {fileID: 2893290450505863667}
+  - component: {fileID: 449975682554370595}
   m_Layer: 0
   m_Name: Chef Prep Cook 0
   m_TagString: PrepCook
@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 3595759851127861874}
   - {fileID: 8051569370424579718}
-  - {fileID: 2987001784519629635}
+  - {fileID: 5733388284182888516}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &-9203637450718709653
@@ -68,48 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   rangeObject: {fileID: 8700967512257991476}
---- !u!114 &7887215541740292448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109480781222891229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2325135678370490676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109480781222891229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chefCost: 40
-  rangeCost: 10
---- !u!114 &-2098903044050691176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109480781222891229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageIncrease: 1
-  speedIncrease: 1
-  rangeIncrease: 1
---- !u!61 &2893290450505863667
+--- !u!61 &5461096997308423307
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,19 +100,57 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.002350688, y: 0.082272634}
+  m_Offset: {x: -0.022040546, y: -0.05142811}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.25, y: 1.25}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0611169, y: 0.56748104}
+  m_Size: {x: 1.9563326, y: 1.3245025}
   m_EdgeRadius: 0
+--- !u!114 &7887215541740292448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2325135678370490676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chefCost: 40
+  rangeCost: 10
+--- !u!114 &449975682554370595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befb4aee4658faf4bbb4f7c7a3efbe1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4281193363392056481
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +235,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7937446070397727921
+--- !u!1 &4324449806304887507
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,37 +243,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2987001784519629635}
-  - component: {fileID: 7370723754688714145}
+  - component: {fileID: 5733388284182888516}
+  - component: {fileID: 2808313606234645902}
   m_Layer: 0
-  m_Name: Throw
+  m_Name: Knife_swish
   m_TagString: ProjectileThrowFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2987001784519629635
+--- !u!4 &5733388284182888516
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937446070397727921}
+  m_GameObject: {fileID: 4324449806304887507}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 647212506296903406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &7370723754688714145
+--- !u!82 &2808313606234645902
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937446070397727921}
+  m_GameObject: {fileID: 4324449806304887507}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}

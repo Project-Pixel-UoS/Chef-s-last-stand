@@ -18,6 +18,10 @@ TagManager:
   - UpgradeBar2
   - PrepCook
   - ProjectileThrowFX
+  - pause
+  - BackgroundMusic
+  - MenuMusic
+  - LevelMusic
   layers:
   - Default
   - TransparentFX

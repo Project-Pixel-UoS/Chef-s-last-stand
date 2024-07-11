@@ -33,7 +33,6 @@ public class DamageHandler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        print("Collision!");
         DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
         if (damageCoroutine != null) //check mouse still taking poisonous damage
         {
