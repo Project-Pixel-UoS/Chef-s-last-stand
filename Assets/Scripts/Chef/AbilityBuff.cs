@@ -27,15 +27,10 @@ public class AbilityBuff : MonoBehaviour
     {
         // Get all objects within range
         colliders = Physics2D.OverlapCircleAll(transform.position, range);
-
-        Debug.Log("--------------------");
-
         foreach (Collider2D collider in colliders)
         {
             GameObject gameObject = collider.gameObject;        // Get game object
             Buff buff = gameObject.GetComponent<Buff>();        // Get its "buff" object
-
-            // Debug.Log("Found " + gameObject.name);
 
             // If it has no "buff" object, it isn't a chef
             if (buff == null){ continue; }
@@ -44,7 +39,6 @@ public class AbilityBuff : MonoBehaviour
             buff.damageIncrease = ATK;
             buff.speedIncrease = ATKSpeed;
             buff.rangeIncrease = rangeIncrease;
-            Debug.Log("Set buff object's stats");
         }
     }
 
