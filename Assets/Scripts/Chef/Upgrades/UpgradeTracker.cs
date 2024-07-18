@@ -82,6 +82,9 @@ namespace Chef.Upgrades
             }else if (transform.CompareTag("Grillardin"))
             {
                 return ChefTracker.Instance.GetGrillardins();
+            }else if (transform.CompareTag("Waiter"))
+            {
+                return ChefTracker.Instance.GetWaiters();
             }
             return null;
         }
