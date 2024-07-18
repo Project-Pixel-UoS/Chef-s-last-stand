@@ -10,6 +10,7 @@ public class AbilityPlate : MonoBehaviour
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private float maxPlates;
+    [SerializeField] private Sprite brokenPlate;
     private Transform[] turningPoints;
     private float cooldownTimer; // timer for cooldown in between shots
     private float currPlates;
@@ -112,5 +113,6 @@ public class AbilityPlate : MonoBehaviour
             plate.transform.position = Vector3.MoveTowards(plate.transform.position, targetPos, 0.1f);
             yield return new WaitForSeconds(0.01f);
         }
+        plate.GetComponentInChildren<SpriteRenderer>().sprite = brokenPlate;
     }
 }
