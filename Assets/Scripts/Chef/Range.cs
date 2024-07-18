@@ -57,6 +57,11 @@ namespace Chef
 
         }
 
+        public bool IsMouseInRange(GameObject mouse)
+        {
+            return GetMiceInRange().Contains(mouse);
+        }
+
         private float GetBuffedRadius()
         {
             Buff bf = GetComponent<Buff>();
