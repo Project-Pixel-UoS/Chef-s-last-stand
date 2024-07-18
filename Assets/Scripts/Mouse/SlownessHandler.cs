@@ -2,7 +2,7 @@ using System.Collections;
 using Projectile;
 using UnityEngine;
 
-namespace mouse{
+namespace Mouse{
     public class SlownessHandler : MonoBehaviour
     {
         private MouseStats stats;

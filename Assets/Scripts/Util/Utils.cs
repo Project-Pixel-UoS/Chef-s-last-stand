@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Util
 {
-    public class Utils
+    public class Utils:MonoBehaviour
     {
   
         /// <returns> False if mouse position is outside of the action zone, where the game is happening.
@@ -65,6 +66,8 @@ namespace Util
             }
             return null;
         }
+        
+
 
      
     }

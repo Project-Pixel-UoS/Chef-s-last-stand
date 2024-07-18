@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Chef.Upgrades;
+using Mouse;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,12 +48,18 @@ namespace Chef
         private GameObject GetFurthestMouseInRange()
         {
             List<GameObject> mice = gameObject.GetComponent<Range>().GetMiceInRange();
+            mice.RemoveAll(IsInvisibleGhost);
             if (mice.Count > 0)
             {
                 return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
             }
-
             return null;
+        }
+
+        private bool IsInvisibleGhost(GameObject mouse)
+        {
+            var ghostMouse = mouse.GetComponent<GhostMouse>();
+            return ghostMouse != null && !ghostMouse.Visible;
         }
 
         /// <summary> Spins chef so that he is facing the mouse </summary>
@@ -60,10 +67,10 @@ namespace Chef
         /// <remarks>Maintained by: Antosh Nikolak</remarks>
         private void Rotate(GameObject furthestMouse)
         {
-            // Get coordinate dierction
+            // Get coordinate direction
             Vector3 direction = furthestMouse.transform.position - transform.position;
 
-            // Calcualte angle as a quaternion
+            // Calculate angle as a quaternion
             float radians = Mathf.Atan2(direction.x, direction.y) * -1;
             float degrees = radians * Mathf.Rad2Deg;
             Quaternion target = Quaternion.Euler(0, 0, degrees);
@@ -104,7 +111,7 @@ namespace Chef
             }
         }
         
-        //spawn another knife for the prep cook max ugprade.
+        //spawn another knife for the prep cook max upgrade.
         private IEnumerator HandleMaxPrepCook()
         {
             if(gameObject.tag.Equals("PrepCook") && upgradeTracker.getPath2Status() == 4)
