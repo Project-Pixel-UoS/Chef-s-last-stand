@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9203637450718709653, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 3511449751020379562, guid: f6e66ad21050bb143bcc1cc35ca49d79, type: 3}
     - target: {fileID: 647212506296903406, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109480781222891229, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Name
-      value: Base Prep Cook
+      value: Chef Prep Cook 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: chefCost
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

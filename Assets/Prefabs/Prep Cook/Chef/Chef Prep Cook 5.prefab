@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: cooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -9203637450718709653, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 9179175033185136875, guid: af783a242f3b47d4f92a467728b1d9de, type: 3}
     - target: {fileID: 647212506296903406, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

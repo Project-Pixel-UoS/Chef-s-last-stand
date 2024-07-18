@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: -2807020189367368203}
   - component: {fileID: 8417773937103734731}
   - component: {fileID: -7586934172698215888}
+  - component: {fileID: 6270002830517181902}
   m_Layer: 0
   m_Name: Chef Potager
   m_TagString: Untagged
@@ -235,6 +236,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befb4aee4658faf4bbb4f7c7a3efbe1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6270002830517181902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageIncrease: 1
+  speedIncrease: 1
+  rangeIncrease: 1
 --- !u!1 &4054988461792321345
 GameObject:
   m_ObjectHideFlags: 0
