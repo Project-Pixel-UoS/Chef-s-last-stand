@@ -171,21 +171,16 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (GameManager.isPaused)
-        {
-            return;
-        }
-
         transform.SetParent(parentAfterDrag);
         range.enabled = false;
 
-        // dont allow player to place a chef on game over screen, or if has too little credit
-        // bool sufficientFunds = shopSlotManager.HandleCreditTransaction();
-        if (!GameManager.gameManager.IsGameOver() && shopSlotManager.CheckSufficientChefFunds() && !CheckOutOfBounds())
-        {
-            shopSlotManager.HandleChefTransaction();
-            var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
-            Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
-        }
+        if(GameManager.isPaused){ return; }     // Cannot place when game is paused
+        if(GameManager.gameManager.IsGameOver()){ return; }     // Cannot place if game has ended
+        if(!shopSlotManager.CheckSufficientChefFunds()){ return; }      // Cannot place if don't have sufficient funds
+        if(CheckOutOfBounds()){ return; }       // Cannot place if out of bounds
+
+        shopSlotManager.HandleChefTransaction();
+        var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
+        Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
     }
 }
