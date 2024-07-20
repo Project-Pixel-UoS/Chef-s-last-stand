@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Range = Chef.Range;
 
@@ -11,7 +10,6 @@ namespace Mouse
     /// <remarks>Author: Antosh</remarks>
     public class GhostMouse : MonoBehaviour
     {
-        
         private enum State
         {
             Visible,
@@ -21,101 +19,71 @@ namespace Mouse
         }
         
         private SpriteRenderer spriteRenderer;
-        public bool Visible { get; private set; }
-
-        // private IEnumerator fadeOutCoroutine;
-        // private IEnumerator fadeInCoroutine;
         private IEnumerator fadeCoroutine;
-
-        private State state = State.FadeOut;
+        private State currentState = State.FadeOut;
 
 
         private void Start()
         {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            // fadeInCoroutine = null;
             fadeCoroutine = StartCoroutineWithDelay(2, FadeOut());
             StartCoroutine(fadeCoroutine);
         }
 
         private void Update()
         {
-            if (IsInRangeOfHeadChef() && state != State.FadeIn && state != State.Visible) // check fade in not already happening
+            if (IsInRangeOfHeadChef() && currentState != State.FadeIn && currentState != State.Visible)
             {
-                // print("Pre Show Mouse: " + GetAlpha());
                 ShowMouse();
             }
-            else if (!IsInRangeOfHeadChef() && state != State.FadeOut && state != State.Invisible) // check fade out is not already happening
+            else if (!IsInRangeOfHeadChef() && currentState != State.FadeOut && currentState != State.Invisible) 
             {
-                // print("Pre hide");
                 HideMouse();
-                // print("post hide alpha: " + GetAlpha());
             }
         }
 
         private void HideMouse()
         {
-            print("hide mouse");
-            if (state == State.FadeIn) //check currently fading
+            if (currentState == State.FadeIn) //check currently fading
             {
-                // interrupt fade in
                 StopCoroutine(fadeCoroutine);
-                // fadeInCoroutine = null;
             }
-
             fadeCoroutine = FadeOut();
             StartCoroutine(fadeCoroutine);
         }
 
         private void ShowMouse()
         {
-            print("show mouse");
-            // print("alpha 1: " + GetAlpha());
-            if (state == State.FadeOut) 
+            if (currentState == State.FadeOut) 
             {
                 StopCoroutine(fadeCoroutine);
-                // fadeOutCoroutine = null;
             }
-            // print("alpha 2: " + GetAlpha());
             fadeCoroutine = FadeIn();
             StartCoroutine(fadeCoroutine);
         }
 
         private IEnumerator FadeIn()
         {
-            
-            print("Fading in!");
-            // print("alpha 3: " + GetAlpha());
-            state = State.FadeIn;
-            // Visible = true;
+            currentState = State.FadeIn;
             while (GetAlpha() < 1)
             {
-                float n = (GetAlpha() + 0.01f);
                 ChangeAlpha(GetAlpha() + 0.01f);
-                // print("alpha 4: " + GetAlpha());
-
                 yield return new WaitForSeconds(0.01f);
             }
-
             fadeCoroutine = null;
-            state = State.Visible;
-            // print("complete");
+            currentState = State.Visible;
         }
 
         private IEnumerator FadeOut()
         {
-            print("Fading out!");
-
-            state = State.FadeOut;
+            currentState = State.FadeOut;
             while (GetAlpha() >= 0.1)
             {
                 ChangeAlpha(GetAlpha() - 0.01f);
                 yield return new WaitForSeconds(0.01f);
             }
-
-            // Visible = false;
             fadeCoroutine = null;
-            state = State.Invisible;
+            currentState = State.Invisible;
         }
 
         private bool IsInRangeOfHeadChef()
@@ -127,13 +95,11 @@ namespace Mouse
                     return true;
                 }
             }
-
             return false;
         }
 
         public void ChangeAlpha(float alpha)
         {
-            print("changing alpha: " + alpha);
             var color = spriteRenderer.color;
             color.a = alpha;
             spriteRenderer.color = color;
@@ -148,6 +114,11 @@ namespace Mouse
         {
             yield return new WaitForSeconds(delay);
             StartCoroutine(targetCoroutine);
+        }
+
+        public bool IsVisible()
+        {
+            return currentState is State.Visible or State.FadeIn;
         }
     }
 }
