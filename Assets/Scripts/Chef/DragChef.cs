@@ -167,11 +167,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         return true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("hit");
-    }
-
     /// <summary> Instantiate chef on the last overlapped map tile.</summary>
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
