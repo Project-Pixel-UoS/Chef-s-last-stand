@@ -99,9 +99,6 @@ namespace Chef
                 p.GetComponent<DamageFactor>().damage = df.damage * buff.damageIncrease;
                 p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
             }
-            else{
-                Debug.Log("FAILED TO GET BUFF");
-            }
         }
         
         //spawn another knife for the prep cook max ugprade.
