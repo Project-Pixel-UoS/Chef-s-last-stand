@@ -1,6 +1,9 @@
+using UnityEngine.Serialization;
+
 namespace Mouse
 {
     using UnityEngine;
+
     public class MouseStats : MonoBehaviour
     {
         // Stats
@@ -10,8 +13,11 @@ namespace Mouse
         public float size;
         public Sprite sprite;
         public bool canGhost;
-        public bool canSplit;
         public bool armoured;
+
+        public string splitMouseType = ""; // mouse type that is produced upon death. Empty string if none 
+        public int numOfSplitMice; // amount of mice produced upon death. Set to 0 if none
+
 
         /// <summary> Puts stats into relevant variables from a given ScriptableObject </summary>
         /// <param name = "mouseStats"> MiceScriptableObject containing stats for that mouse type </param>
@@ -25,14 +31,22 @@ namespace Mouse
             sprite = mouseStats.sprite;
             canGhost = mouseStats.canGhost;
             if (canGhost) gameObject.AddComponent<GhostMouse>();
-            canSplit = mouseStats.canSplit;
             armoured = mouseStats.armoured;
+
+            splitMouseType = mouseStats.splitMouseType;
+            numOfSplitMice = mouseStats.numOfSplitMice;
+            if (CanSplit()) gameObject.AddComponent<MouseSplitter>();
         }
 
         void Start()
         {
             gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =
                 sprite; // Sets sprite according to scritable object
+        }
+
+        public bool CanSplit()
+        {
+            return !string.IsNullOrEmpty(splitMouseType) && numOfSplitMice > 0;
         }
     }
 }

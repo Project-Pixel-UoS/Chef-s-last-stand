@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce0c6ea506814345961b7fecfe50ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chef: {fileID: 1109480781222891229, guid: 54bf2f05e7468724c817e469ef3165a7, type: 3}
+  chef: {fileID: 1109480781222891229, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
   range: {fileID: 50701844}
   parentAfterDrag: {fileID: 0}
   placeableAreas: {fileID: 1458014724}
@@ -1591,13 +1591,6 @@ MonoBehaviour:
   - {fileID: 1114921725}
   - {fileID: 631968097}
   - {fileID: 1071162273}
-  enemy: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
-  mouseTypesList:
-  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
-  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
-  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
-  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
-  - {fileID: 11400000, guid: 568c1f86006a8bd46b188f1dbb789237, type: 2}
 --- !u!114 &266574284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2832,17 +2825,17 @@ MonoBehaviour:
   upgradeRangeUI: {fileID: 141500186}
   upgradeSpecialUI: {fileID: 1694771708}
   prepCookUpgrades:
-  - {fileID: 1109480781222891229, guid: 54bf2f05e7468724c817e469ef3165a7, type: 3}
-  - {fileID: 1109480781222891229, guid: bbdd3757c4b322a41a3e100c940a9286, type: 3}
-  - {fileID: 1109480781222891229, guid: 965fac1ad99c38f429421e28e6357495, type: 3}
-  - {fileID: 1109480781222891229, guid: 14e9fb2ea0e7e3e46a9bf9e005bfec44, type: 3}
-  - {fileID: 1109480781222891229, guid: d52f4a054f4f6214db889bff7d46c89f, type: 3}
+  - {fileID: 8918619655933509355, guid: e635382ece6ef7a45b5e1c98a6d800ff, type: 3}
+  - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
+  - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
+  - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
+  - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
   grillardinUpgrades:
-  - {fileID: 1109480781222891229, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
-  - {fileID: 1109480781222891229, guid: 8853ff40570321f40a3525e06a3bf0cf, type: 3}
-  - {fileID: 1109480781222891229, guid: 6e993ec7863b927409bc0e7f1ea04171, type: 3}
-  - {fileID: 1109480781222891229, guid: ab992c87dbf1e0042a7af8881fdb015a, type: 3}
-  - {fileID: 1109480781222891229, guid: 999804ee42bc27f48871f12bd9fb09fd, type: 3}
+  - {fileID: 6793610824908156425, guid: 9da5d2aee3b5fb34eb337aad242dde0a, type: 3}
+  - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
+  - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
+  - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
+  - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
 --- !u!4 &621719805
 Transform:
   m_ObjectHideFlags: 0
@@ -5743,6 +5736,59 @@ Transform:
   - {fileID: 1964017846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1499304865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499304866}
+  - component: {fileID: 1499304867}
+  m_Layer: 0
+  m_Name: MouseFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499304866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499304865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52689755, y: -0.040203102, z: -0.0437989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499304867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499304865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51aa02327beb4be78042beababeabc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
+  mouseTypesList:
+  - {fileID: 11400000, guid: 568c1f86006a8bd46b188f1dbb789237, type: 2}
+  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
+  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
+  - {fileID: 11400000, guid: 532d65b96bbe93e40a201d2a0a528c2e, type: 2}
+  - {fileID: 11400000, guid: f20d81e1d16219341b43a001ed128b3f, type: 2}
+  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
+  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
 --- !u!224 &1502159540 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
@@ -7550,3 +7596,4 @@ SceneRoots:
   - {fileID: 1458014725}
   - {fileID: 1961687314}
   - {fileID: 1118665281}
+  - {fileID: 1499304866}

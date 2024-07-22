@@ -18,7 +18,7 @@ namespace Mouse
         private Coroutine damageCoroutine;
         private GameObject credits;
         private CreditManager creditsManager;
-        private Vector3 mousePosition;
+        // private Vector3 mousePosition;
 
         private SpriteRenderer sprite;
 
@@ -32,17 +32,16 @@ namespace Mouse
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
-            if (damageCoroutine != null) //check mouse still taking poisonous damage
-            {
-                StopCoroutine(damageCoroutine);
-            }
-
-            damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
+            HandleProjectile(other.gameObject);
         }
 
 
         private void OnTriggerEnter2D(Collider2D other)
+        {
+            HandleProjectile(other.gameObject);
+        }
+
+        private void HandleProjectile(GameObject other)
         {
             DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
             if (damageCoroutine != null) //check mouse still taking poisonous damage
@@ -74,7 +73,7 @@ namespace Mouse
 
                 if (stats.health <= 0)
                 {
-                    HandleTrenchCoatMouse();
+                    HandleMouseSplit();//mice such as trench coat should split off into multiple mice after death
                     creditsManager.IncreaseMoney(currencyAmount); //get money per kill
                     try
                     {
@@ -108,32 +107,35 @@ namespace Mouse
         }
 
         //if the mouse that died was trench coat, grab its death position and spawn more mice.
-        private void HandleTrenchCoatMouse()
+        private void HandleMouseSplit()
         {
-            if (stats.canSplit)
+            if (stats.CanSplit())
             {
-                int index = GetComponent<SpriteMove>().GetIndex();
-                mousePosition = transform.position;
-                LevelManager.LM.SplitMouse(mousePosition, index);
+                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType);
             }
+       
         }
 
         /// <summary>
         /// if an armoured mouse is hit by onions or knives, do no damage.
         /// </summary>
-        /// <param name="collision">the collision object it collided with</param>
+        /// <param name="projectile">the collision object it collided with</param>
         /// <returns></returns>
-        private DamageFactor HandleArmouredMouse(GameObject gameObject)
+        private DamageFactor HandleArmouredMouse(GameObject projectile)
         {
-            if (stats.armoured && gameObject.GetComponent<SlownessProjectile>() == null)
-                return gameObject.AddComponent<DamageFactor>();
-
-            return gameObject.GetComponent<DamageFactor>();
+            var damageFactor = projectile.GetComponent<DamageFactor>();
+            if (stats.armoured && projectile.GetComponent<SlownessProjectile>() == null)
+            {
+                damageFactor.damage = 0;
+                damageFactor.damageRate = 1;
+                damageFactor.damageDuration = 1;
+            }
+            return damageFactor;
         }
 
         private bool IsBurning(DamageFactor damageFactor)
         {
-            var currChef = damageFactor.chef.name;
+            string currChef = damageFactor.chef.name;
             return currChef.Equals("Chef Grillardin 3(Clone)") || currChef.Equals("Chef Grillardin 4(Clone)");
         }
 
@@ -154,7 +156,6 @@ namespace Mouse
                         GameObject mouse = collider.gameObject;
                         if (mouse.CompareTag("Mouse") && mouse != gameObject)
                         {
-                            Debug.Log("burning");
                             mouse.GetComponent<DamageHandler>().TakeDamage(damageFactor);
                         }
                     }

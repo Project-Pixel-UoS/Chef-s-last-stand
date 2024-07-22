@@ -7,37 +7,36 @@ namespace Mouse
         private MouseStats stats;
         private Transform[] targets;
         private Transform target;
-        private int index = 0;
+        private int targetWayPointIndex = 0;
 
         public float totalDistanceMoved;
         private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
         private HealthManager health;
 
 
-        void Start()
+        void Awake()
         {
             health = GameObject.FindGameObjectWithTag("Health")
                 .GetComponent<HealthManager>(); //finds the health manager
             stats = gameObject.GetComponent<MouseStats>();
             targets = LevelManager.LM.TurningPoints;
-            target = targets[index];
+            target = targets[targetWayPointIndex];
         }
 
         void Update()
         {
             if (Vector2.Distance(target.position, transform.position) <= 0.1f)
             {
-                index++;
-                if (index == targets.Length)
+                targetWayPointIndex++;
+                if (targetWayPointIndex == targets.Length)
                 {
                     Destroy(gameObject);
                     health.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
                 }
                 else
                 {
-                    MouseRotate(targets[index]);
-                    // Rotation.Rotation.Rotate(transform, targets[index]);
-                    target = targets[index];
+                    MouseRotate(targets[targetWayPointIndex]);
+                    target = targets[targetWayPointIndex];
                 }
             }
         }
@@ -60,14 +59,16 @@ namespace Mouse
         }
 
 
-        public int GetIndex()
+        public int GetTargetWayPointIndex()
         {
-            return index;
+            return targetWayPointIndex;
         }
 
-        public void SetIndex(int i)
+        public void SetTargetWayPointIndex(int i)
         {
-            index = i;
+            targetWayPointIndex = i;
+            target = targets[targetWayPointIndex];
+            MouseRotate(target);
         }
     }
 }
