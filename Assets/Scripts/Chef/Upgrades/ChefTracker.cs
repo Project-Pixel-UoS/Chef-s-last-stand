@@ -109,10 +109,11 @@ namespace Chef.Upgrades
         public GameObject[] GetHeadChefs()
         {
             return HeadChefUpgrades;
+        }
         public GameObject[] GetWaiters()
         {
             return waiterUpgrades;
         }
-
+        
     }
 }
