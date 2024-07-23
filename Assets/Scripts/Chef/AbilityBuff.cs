@@ -39,26 +39,16 @@ public class AbilityBuff : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             GameObject gameObject = collider.gameObject; // Get game object
-            if (gameObject.CompareTag("Mouse"))
-            {
-                var ghostMouse = gameObject.GetComponent<GhostMouse>();
-                if (ghostMouse != null) //check this is ghost mouse
-                {
-                    ghostMouse.ChangeAlpha(1);
-                }
-            }
-            else
-            {
-                Buff buff = gameObject.GetComponent<Buff>(); // Get its "buff" object
 
-                // If it has no "buff" object, it isn't a chef
-                if (buff != null)
-                {
-                    // If it has a "buff" object, set its stats
-                    buff.damageIncrease = ATK;
-                    buff.speedIncrease = ATKSpeed;
-                    buff.rangeIncrease = rangeIncrease;
-                }
+            Buff buff = gameObject.GetComponent<Buff>(); // Get its "buff" object
+
+            // If it has no "buff" object, it isn't a chef
+            if (buff != null)
+            {
+                // If it has a "buff" object, set its stats
+                buff.damageIncrease = ATK;
+                buff.speedIncrease = ATKSpeed;
+                buff.rangeIncrease = rangeIncrease;
             }
         }
     }

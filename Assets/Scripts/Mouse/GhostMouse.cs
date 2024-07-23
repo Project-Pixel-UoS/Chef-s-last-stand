@@ -1,36 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Range = Chef.Range;
 
 namespace Mouse
 {
-    
     /// <summary>
     /// Responsible for showing and hiding the ghost mouse
     /// </summary>
     /// <remarks>Author: Antosh</remarks>
     public class GhostMouse : MonoBehaviour
     {
+        private enum State
+        {
+            Visible,
+            FadeIn,
+            Invisible,
+            FadeOut
+        }
+        
         private SpriteRenderer spriteRenderer;
-        public bool Visible { get; private set; }
+        private IEnumerator fadeCoroutine;
+        private State currentState = State.FadeOut;
 
-        private IEnumerator fadeOutCoroutine;
- 
+
         private void Start()
         {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            fadeOutCoroutine = StartCoroutineWithDelay(1, FadeOut());
-            StartCoroutine(fadeOutCoroutine);
+            fadeCoroutine = StartCoroutineWithDelay(2, FadeOut());
+            StartCoroutine(fadeCoroutine);
         }
 
         private void Update()
         {
-            if (IsInRangeOfHeadChef())
+            if (IsInRangeOfHeadChef() && currentState != State.FadeIn && currentState != State.Visible)
             {
                 ShowMouse();
             }
-            else if (fadeOutCoroutine == null) // check fade out is not already happening
+            else if (!IsInRangeOfHeadChef() && currentState != State.FadeOut && currentState != State.Invisible) 
             {
                 HideMouse();
             }
@@ -38,33 +44,46 @@ namespace Mouse
 
         private void HideMouse()
         {
-            print("HIDING MOUSE");
-            fadeOutCoroutine = FadeOut();
-            StartCoroutine(fadeOutCoroutine);
+            if (currentState == State.FadeIn) //check currently fading
+            {
+                StopCoroutine(fadeCoroutine);
+            }
+            fadeCoroutine = FadeOut();
+            StartCoroutine(fadeCoroutine);
         }
 
         private void ShowMouse()
         {
-            if (fadeOutCoroutine != null) //check currently fading
+            if (currentState == State.FadeOut) 
             {
-                // interrupt fade out
-                StopCoroutine(fadeOutCoroutine);
-                fadeOutCoroutine = null;
+                StopCoroutine(fadeCoroutine);
             }
-            //instantly show mouse
-            Visible = true;
-            ChangeAlpha(1);
+            fadeCoroutine = FadeIn();
+            StartCoroutine(fadeCoroutine);
+        }
+
+        private IEnumerator FadeIn()
+        {
+            currentState = State.FadeIn;
+            while (GetAlpha() < 1)
+            {
+                ChangeAlpha(GetAlpha() + 0.01f);
+                yield return new WaitForSeconds(0.01f);
+            }
+            fadeCoroutine = null;
+            currentState = State.Visible;
         }
 
         private IEnumerator FadeOut()
         {
+            currentState = State.FadeOut;
             while (GetAlpha() >= 0.1)
             {
                 ChangeAlpha(GetAlpha() - 0.01f);
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(0.01f);
             }
-            Visible = false;
-            fadeOutCoroutine = null;
+            fadeCoroutine = null;
+            currentState = State.Invisible;
         }
 
         private bool IsInRangeOfHeadChef()
@@ -78,6 +97,7 @@ namespace Mouse
             }
             return false;
         }
+
         public void ChangeAlpha(float alpha)
         {
             var color = spriteRenderer.color;
@@ -89,14 +109,16 @@ namespace Mouse
         {
             return spriteRenderer.color.a;
         }
-        
+
         private IEnumerator StartCoroutineWithDelay(float delay, IEnumerator targetCoroutine)
         {
             yield return new WaitForSeconds(delay);
             StartCoroutine(targetCoroutine);
         }
 
-
-
+        public bool IsVisible()
+        {
+            return currentState is State.Visible or State.FadeIn;
+        }
     }
 }

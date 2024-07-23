@@ -59,7 +59,7 @@ namespace Chef
         private bool IsInvisibleGhost(GameObject mouse)
         {
             var ghostMouse = mouse.GetComponent<GhostMouse>();
-            return ghostMouse != null && !ghostMouse.Visible;
+            return ghostMouse != null && !ghostMouse.IsVisible();
         }
 
         /// <summary> Spins chef so that he is facing the mouse </summary>
