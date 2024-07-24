@@ -131,17 +131,30 @@ namespace Mouse
             return gameObject.GetComponent<DamageFactor>();
         }
 
+        /// <summary>
+        /// checks if the grillardin 3/4 is damaging the mouse.
+        /// </summary>
+        /// <param name="damageFactor">the chef's damage script</param>
+        /// <returns>true if grillardin 3/4 is damaging the mouse, false otherwise.</returns>
         private bool IsBurning(DamageFactor damageFactor)
         {
             var currChef = damageFactor.chef.name;
             return currChef.Equals("Chef Grillardin 3(Clone)") || currChef.Equals("Chef Grillardin 4(Clone)");
         }
 
+        /// <summary>
+        /// whether the burning animation is playing.
+        /// </summary>
+        /// <returns>true if animation is playing, false otherwise.</returns>
         public bool IsBurning()
         {
             return onFire.isPlaying;
         }
 
+        /// <summary>
+        /// For level 4 grillardin upgrade. When mouse is burning, grab surrounding mice and deal damage to them too.
+        /// </summary>
+        /// <param name="damageFactor">the grillardin's damage script</param>
         private void HandleBurnChain(DamageFactor damageFactor)
         {
             if (damageFactor.chef.name.Equals("Chef Grillardin 4(Clone)"))
