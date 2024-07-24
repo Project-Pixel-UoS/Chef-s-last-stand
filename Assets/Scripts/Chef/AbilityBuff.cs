@@ -21,6 +21,7 @@ public class AbilityBuff : MonoBehaviour
     private float passiveIncomeCDTimer;
     [SerializeField] private float cooldown;
     [SerializeField] private int income;
+    [SerializeField] private ParticleSystem money;
 
 
     void Start()
@@ -63,7 +64,7 @@ public class AbilityBuff : MonoBehaviour
             if (passiveIncomeCDTimer > 0) return;
             creditsManager.IncreaseMoney(income);
             passiveIncomeCDTimer = cooldown;
-
+            money.Play();
         }
     }
 }
