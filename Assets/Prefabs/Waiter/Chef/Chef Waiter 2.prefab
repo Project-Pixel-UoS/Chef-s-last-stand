@@ -13,16 +13,20 @@ PrefabInstance:
       value: Chef Waiter 2
       objectReference: {fileID: 0}
     - target: {fileID: 3856329636547258512, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d1f2ac20ed224879954f4e74bb57ba2, type: 3}
+    - target: {fileID: 3856329636547258512, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3856329636547258512, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
       propertyPath: m_Color.g
-      value: 0.0323627
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3856329636547258512, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3895032665551030024, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
       propertyPath: m_LocalPosition.x
