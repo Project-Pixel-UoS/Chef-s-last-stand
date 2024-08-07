@@ -16,6 +16,7 @@ namespace Chef.Upgrades
 
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
+        [SerializeField] private GameObject sellChefUI;
         [SerializeField] private GameObject[] prepCookUpgrades;
         [SerializeField] private GameObject[] grillardinUpgrades;
         [SerializeField] private GameObject[] waiterUpgrades;
@@ -55,6 +56,7 @@ namespace Chef.Upgrades
                 // remove upgrade buttons
                 upgradeRangeUI.SetActive(false);
                 upgradeSpecialUI.SetActive(false);
+                sellChefUI.SetActive(false);
             }
             else
             {
@@ -62,6 +64,7 @@ namespace Chef.Upgrades
                 upgradeRangeUI.SetActive(true);
                 currentChef.GetComponent<UpgradeTracker>().RefreshRangeBar();
                 upgradeSpecialUI.SetActive(true);
+                sellChefUI.SetActive(true);
                 currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
                 upgradeManager = chef.GetComponent<ShopSlotManager>();
 
@@ -94,6 +97,24 @@ namespace Chef.Upgrades
                 upgradeManager.HandleChefTransaction();
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
             }
+        }
+
+        /// <summary>
+        /// Sells the current chef
+        /// </summary>
+        /// <remarks>Author: Ben</remarks>
+        public void SellChef()
+        {
+            Destroy(currentChef);
+
+            // Close all UI, as chef no longer exists
+            upgradeRangeUI.SetActive(false);
+            upgradeSpecialUI.SetActive(false);
+            sellChefUI.SetActive(false);
+
+            // Note: Should scale with chef cost (20%)
+            CreditManager creditManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+            creditManager.IncreaseMoney(200);
         }
 
         public GameObject[] GetPrepCooks()

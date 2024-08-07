@@ -95,7 +95,6 @@ namespace Chef
         /// <remarks>Maintained by: Emily Johnston </remarks>
         void OnMouseDown()
         {
-            print("Mouse down being triggered");
             if (ChefTracker.Instance.CurrentChef != gameObject)
             { 
                 // when chef is pressed while unselected
