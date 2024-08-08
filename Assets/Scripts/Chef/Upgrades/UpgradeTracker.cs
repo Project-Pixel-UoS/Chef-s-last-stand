@@ -76,15 +76,20 @@ namespace Chef.Upgrades
         /// <returns> an array of selected chef's upgrade prefabs</returns>
         public GameObject[] GetChefUpgrades()
         {
-            if (transform.CompareTag("PrepCook"))
-            {
+            if (transform.CompareTag("PrepCook")){
                 return ChefTracker.Instance.GetPrepCooks();
-            }else if (transform.CompareTag("Grillardin"))
-            {
+            }
+            else if (transform.CompareTag("Grillardin")){
                 return ChefTracker.Instance.GetGrillardins();
-            }else if (transform.CompareTag("Waiter"))
-            {
+            }
+            else if (transform.CompareTag("Waiter")){
                 return ChefTracker.Instance.GetWaiters();
+            }
+            else if (transform.CompareTag("Entremetier")){
+                return ChefTracker.Instance.GetEntremetiers();
+            }
+            else{
+                Debug.Log("Unknown chef");
             }
             return null;
         }

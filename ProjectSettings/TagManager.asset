@@ -23,6 +23,7 @@ TagManager:
   - MenuMusic
   - LevelMusic
   - Waiter
+  - Entremetier
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,7 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject[] prepCookUpgrades;
         [SerializeField] private GameObject[] grillardinUpgrades;
         [SerializeField] private GameObject[] waiterUpgrades;
+        [SerializeField] private GameObject[] entremetierUpgrades;
         private ShopSlotManager upgradeManager;
 
 
@@ -112,7 +113,7 @@ namespace Chef.Upgrades
             upgradeSpecialUI.SetActive(false);
             sellChefUI.SetActive(false);
 
-            // Note: Should scale with chef cost (20%)
+            // Note: Should scale with chef cost (30%)
             CreditManager creditManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
             creditManager.IncreaseMoney(200);
         }
@@ -130,6 +131,11 @@ namespace Chef.Upgrades
         public GameObject[] GetWaiters()
         {
             return waiterUpgrades;
+        }
+
+        public GameObject[] GetEntremetiers()
+        {
+            return entremetierUpgrades;
         }
 
     }
