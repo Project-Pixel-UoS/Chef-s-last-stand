@@ -1,6 +1,7 @@
 using Level.WaveData.WaveData;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Mouse_", menuName = "ScriptableObjects/MiceScriptableObject", order = 1)]
 public class MiceScriptableObject : ScriptableObject
@@ -13,6 +14,7 @@ public class MiceScriptableObject : ScriptableObject
     public bool canGhost;
     public bool canSplit;
     public bool armoured;
+    [FormerlySerializedAs("healing")] public bool canHeal;
     public MouseDifficulty difficulty;
 
 }

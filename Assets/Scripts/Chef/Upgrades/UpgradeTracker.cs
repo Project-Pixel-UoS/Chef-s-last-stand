@@ -1,4 +1,5 @@
 using System;
+using Range;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ namespace Chef.Upgrades
         {
             if (path1Status == maxLevel1) return; // if path is upgraded to the max we can not upgrade it again
             path1Status++;
-            GetComponent<Range>().Radius *= 1.1f;
+            GetComponent<ChefRange>().Radius *= 1.1f;
             if (gameObject.CompareTag("Grillardin"))
             {
                 var main = GetComponentInChildren<ParticleSystem>().main;
@@ -45,8 +46,8 @@ namespace Chef.Upgrades
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
             GameObject newChef = Instantiate(chefs[path2Status], transform.position, transform.rotation,
                 chefParent.transform);
-            var range = newChef.GetComponent<Range>();
-            range.Radius = GetComponent<Range>().Radius; //copy range upgrade status over
+            var range = newChef.GetComponent<ChefRange>();
+            range.Radius = GetComponent<ChefRange>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active
             DuplicateUpgradeStats(newChef); //change new chef stats
             RefreshSpecialBar();

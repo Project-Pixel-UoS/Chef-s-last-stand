@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
 using Chef;
+using Range;
 using Shop;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
 
         shopSlotManager = GetComponent<ShopSlotManager>();
-        float rangeRadius = chef.GetComponent<Range>().Radius; //get the radius size from chef prefab
+        float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
         range.enabled = false; //hides the range at the beginning
 
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))

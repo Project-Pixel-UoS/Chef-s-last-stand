@@ -19,8 +19,8 @@ namespace Mouse
         private GameObject credits;
         private CreditManager creditsManager;
         private Vector3 mousePosition;
-
         private SpriteRenderer sprite;
+        public IEnumerator flashRedCoroutine = null;
 
         private void Start()
         {
@@ -86,7 +86,12 @@ namespace Mouse
                     }
                 }
 
-                if (damageFactor.damage != 0) StartCoroutine(flashRed());
+
+                if (damageFactor.damage != 0)
+                {
+                    flashRedCoroutine = FlashRed();
+                    StartCoroutine(flashRedCoroutine);
+                }
                 yield return new WaitForSeconds(damageFactor.damageRate);
             }
 
@@ -100,11 +105,12 @@ namespace Mouse
         /// Make mouse flash red when damage is delt.
         /// </summary>
         /// <remarks>Author: Emily</remarks>
-        public IEnumerator flashRed()
+        public IEnumerator FlashRed()
         {
             sprite.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             sprite.color = Color.white;
+            flashRedCoroutine = null;
         }
 
         //if the mouse that died was trench coat, grab its death position and spawn more mice.

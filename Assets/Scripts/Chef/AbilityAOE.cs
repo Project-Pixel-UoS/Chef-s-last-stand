@@ -2,16 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Chef;
 using Mouse;
+using Range;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Util;
 using static UnityEngine.EventSystems.EventTrigger;
-using Range = Chef.Range;
 
 public class AbilityAOE : MonoBehaviour
 {
-    private Range range;
+    private ChefRange chefRange;
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     private float cooldownTimer; // timer for cooldown in between shots
     private DamageFactor damageFactor; // damage factor
@@ -20,7 +21,7 @@ public class AbilityAOE : MonoBehaviour
 
     void Start()
     {
-        range = GetComponent<Range>();
+        chefRange = GetComponent<ChefRange>();
         damageFactor = GetComponent<DamageFactor>(); // Get damage factor component
 
         var shape = fireParticles.shape;
@@ -55,7 +56,7 @@ public class AbilityAOE : MonoBehaviour
     /// <remarks>Maintained by: Antosh </remarks>
     private GameObject GetFurthestMouseInRange()
     {
-        List<GameObject> mice = range.GetMiceInRange();
+        List<GameObject> mice = chefRange.GetMiceInRange();
         if (mice.Count > 0)
         {
             return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
@@ -71,7 +72,7 @@ public class AbilityAOE : MonoBehaviour
     {
         if (cooldownTimer > 0) return;
 
-        List<GameObject> miceInRange = range.GetMiceInRange();
+        List<GameObject> miceInRange = chefRange.GetMiceInRange();
         StartCoroutine(DealDamage(miceInRange));
         cooldownTimer = cooldown;
     }

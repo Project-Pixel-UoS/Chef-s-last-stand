@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Chef;
 using Mouse;
+using Range;
 using Unity.Collections;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ public class AbilityBuff : MonoBehaviour
 
     void Start()
     {
-        range = GetComponent<Range>().Radius;
+        range = GetComponent<ChefRange>().Radius;
         colliders = Physics2D.OverlapCircleAll(transform.position, range);
         creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
     }

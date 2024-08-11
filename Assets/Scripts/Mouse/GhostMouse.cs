@@ -1,6 +1,7 @@
 using System.Collections;
+using Chef;
+using Range;
 using UnityEngine;
-using Range = Chef.Range;
 
 namespace Mouse
 {
@@ -90,7 +91,7 @@ namespace Mouse
         {
             foreach (var headChef in GameObject.FindGameObjectsWithTag("HeadChef"))
             {
-                if (headChef.GetComponent<Range>().IsMouseInRange(gameObject))
+                if (headChef.GetComponent<ChefRange>().IsMouseInRange(gameObject))
                 {
                     return true;
                 }
