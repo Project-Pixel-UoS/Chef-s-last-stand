@@ -1,56 +1,58 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Mouse;
 using UnityEngine;
 
 namespace Range
 {
+    
+    //the bug is because a circle collider of radius 1 isnt the same size as my image of local scale 1. Units must be lines up.
     public class MedicMouseRange : Range
     {
+        private Transform ring;
+        private float healingRingRadius;
+        private List<GameObject> miceHealedInCurrentPulse = new ();
+        private const int healingPower = 1;
 
-       public GameObject ringEffect;
-        
         private void Awake()
         {
-            CreateRingEffectObject();
-        }
+            ring = transform.Find("Pulse");
+            radius = 3;
 
-        private void CreateRingEffectObject()
-        {
-            // create 
-            ringEffect = Instantiate(ringEffect, transform);
         }
-
-        
 
         private void Start()
         {
-            SetRadius(5);
-            StartCoroutine(InitializeMouseHealingPulse());
         }
 
-        IEnumerator InitializeMouseHealingPulse()
+        private void Update()
         {
-            while (true)
+            UpdateHealingRing();
+            HealMice();
+        }
+
+        private void UpdateHealingRing()
+        {
+            healingRingRadius += 0.005f;
+            if (healingRingRadius > radius)
             {
-                HealMice();
-                yield return new WaitForSeconds(5);
+                healingRingRadius = 0;
+                miceHealedInCurrentPulse.Clear();
             }
+
+            ring.localScale = new Vector3(healingRingRadius, healingRingRadius);
         }
 
         private void HealMice()
         {
-            foreach (GameObject mouse in GetMiceInRange())
+            // print(GetMiceInRange(healingRingRadius).Count);
+            foreach (GameObject mouse in GetMiceInRange(healingRingRadius))
             {
-                mouse.GetComponent<HealingHandler>().Heal();
+                if (miceHealedInCurrentPulse.Contains(mouse) || mouse == gameObject) continue;
+                mouse.GetComponent<MouseHealthHandler>().Heal(healingPower);
+                miceHealedInCurrentPulse.Add(mouse);
             }
         }
-
-        private void HealMouse(GameObject mouse)
-        {
-        }
-
-
-
     }
 }

@@ -1,3 +1,4 @@
+using Range;
 using UnityEngine.Serialization;
 
 namespace Mouse
@@ -8,7 +9,7 @@ namespace Mouse
         // Stats
         public string mouseName;
         public float speed;
-        public float health;
+        public float maxHealth;
         public float size;
         public Sprite sprite;
         public bool canGhost;
@@ -23,7 +24,7 @@ namespace Mouse
         {
             mouseName = mouseStats.mouseName;
             speed = mouseStats.speed;
-            health = mouseStats.health;
+            maxHealth = mouseStats.health;
             size = mouseStats.size;
             sprite = mouseStats.sprite;
             canSplit = mouseStats.canSplit;
@@ -33,7 +34,14 @@ namespace Mouse
             if (canGhost) gameObject.AddComponent<GhostMouse>();
 
             canHeal = mouseStats.canHeal;
-            if (canHeal) gameObject.AddComponent<MedicMouse>();
+            if (canHeal)
+            {
+                gameObject.AddComponent<MedicMouseRange>();
+            }
+            else
+            {
+                gameObject.transform.Find("Pulse").gameObject.SetActive(false);
+            }
             
         
         }

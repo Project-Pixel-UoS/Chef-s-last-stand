@@ -18,7 +18,6 @@ namespace Chef
         [SerializeField] private GameObject Projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
-        private ChefRange chefRange;
         private float originalSpeed;
         private UpgradeTracker upgradeTracker;
         private int projectilesThrown;
@@ -26,7 +25,6 @@ namespace Chef
 
         private void Awake()
         {
-            chefRange = GetComponent<ChefRange>();
             originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
             upgradeTracker = GetComponent<UpgradeTracker>();
         }

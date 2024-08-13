@@ -88,7 +88,6 @@ public class AbilityAOE : MonoBehaviour
         yield return ManageParticles(miceInRange);
         foreach (GameObject mouse in miceInRange)
         {
-            print("mouse: " + mouse);
             if (mouse != null)
             {
                 Vector3 spriteDirection = transform.up; //  forward vector of the sprite

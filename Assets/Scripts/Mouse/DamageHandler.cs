@@ -21,6 +21,8 @@ namespace Mouse
         private Vector3 mousePosition;
         private SpriteRenderer sprite;
         public IEnumerator flashRedCoroutine = null;
+        private MouseHealthHandler mouseHealthHandler;
+        
 
         private void Start()
         {
@@ -28,23 +30,23 @@ namespace Mouse
             credits = GameObject.FindGameObjectWithTag("Credits");
             creditsManager = credits.GetComponent<CreditManager>();
             sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+            mouseHealthHandler = gameObject.GetComponent<MouseHealthHandler>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
-            if (damageCoroutine != null) //check mouse still taking poisonous damage
-            {
-                StopCoroutine(damageCoroutine);
-            }
-
-            damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
+            HandleCollision(other.gameObject);
         }
 
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
+            HandleCollision(other.gameObject);
+        }
+
+        private void HandleCollision(GameObject weapon)
+        {
+            DamageFactor damageFactor = HandleArmouredMouse(weapon);
             if (damageCoroutine != null) //check mouse still taking poisonous damage
             {
                 StopCoroutine(damageCoroutine);
@@ -69,10 +71,10 @@ namespace Mouse
             HandleBurnChain(damageFactor);
             while (durationRemaining > 0) //take damage until long lasting effect runs out
             {
-                stats.health -= damageFactor.damage;
+                mouseHealthHandler.DecrementHealth(damageFactor.damage);
                 durationRemaining -= damageFactor.damageRate;
 
-                if (stats.health <= 0)
+                if (mouseHealthHandler.Health <= 0)
                 {
                     HandleTrenchCoatMouse();
                     creditsManager.IncreaseMoney(currencyAmount); //get money per kill

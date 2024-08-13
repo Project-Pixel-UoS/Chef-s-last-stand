@@ -3,26 +3,32 @@ using UnityEngine;
 
 namespace Mouse
 {
-    public class HealingHandler:MonoBehaviour
+    public class MouseHealthHandler:MonoBehaviour
     {
-        
-        
-        
         private SpriteRenderer sprite;
-        private MouseStats stats;
-
-
+        private float maxHealth;
+        private float health;
+        public float Health
+        {
+            get => health;
+        }
+        
         private void Awake()
         {
             sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
-            stats = gameObject.GetComponent<MouseStats>();
+            maxHealth = gameObject.GetComponent<MouseStats>().maxHealth;
         }
         
-        public void Heal()
+        public void Heal(int healingPower)
         {
-            stats.health += 1;
+            Debug.Log("HEAL");
             StopRedFlash();
             StartCoroutine(FlashGreen());
+            if (health + healingPower <= maxHealth)
+            {
+                health += healingPower;
+            }
+           
         }
 
         private void StopRedFlash()
@@ -40,6 +46,13 @@ namespace Mouse
             yield return new WaitForSeconds(0.1f);
             sprite.color = Color.white;
         }
+
+        public void DecrementHealth(float damage)
+        {
+            health -= damage;
+        }
+
+
 
      
     }

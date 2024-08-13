@@ -24,20 +24,26 @@ namespace Range
             return GetMiceInRange().Contains(mouse);
         }
         
+
+        public List<GameObject> GetMiceInRange()
+        {
+            return GetMiceInRange(radius);
+        }
+        
         /// <returns>
         /// mice in range of the chef
         /// </returns>
         /// <remarks> maintained by: Antosh </remarks>
-        public List<GameObject> GetMiceInRange()
+        protected List<GameObject> GetMiceInRange(float radius)
         {
             var miceInRange = new List<GameObject>();
             var colliders = Physics2D.OverlapCircleAll(transform.position, radius);
             if (colliders != null)
             {
+                print("num of colliders: " + colliders.Length);
                 foreach (Collider2D collider in colliders)
                 {
                     GameObject gameObject = collider.gameObject;
-
                     if (gameObject.CompareTag("Mouse"))
                     {
                         miceInRange.Add(gameObject);
