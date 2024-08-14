@@ -73,7 +73,7 @@ namespace Mouse
             {
                 mouseHealthHandler.DecrementHealth(damageFactor.damage);
                 durationRemaining -= damageFactor.damageRate;
-
+                
                 if (mouseHealthHandler.Health <= 0)
                 {
                     HandleTrenchCoatMouse();

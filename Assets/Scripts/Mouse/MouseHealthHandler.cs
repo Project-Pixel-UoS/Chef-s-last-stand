@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,15 +14,16 @@ namespace Mouse
             get => health;
         }
         
-        private void Awake()
+        private void Start()
         {
             sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
             maxHealth = gameObject.GetComponent<MouseStats>().maxHealth;
+            health = maxHealth;
         }
-        
+
+
         public void Heal(int healingPower)
         {
-            Debug.Log("HEAL");
             StopRedFlash();
             StartCoroutine(FlashGreen());
             if (health + healingPower <= maxHealth)

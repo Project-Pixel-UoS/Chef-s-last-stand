@@ -13,17 +13,12 @@ namespace Range
         private Transform ring;
         private float healingRingRadius;
         private List<GameObject> miceHealedInCurrentPulse = new ();
-        private const int healingPower = 1;
+        private const int healingPower = 2;
 
         private void Awake()
         {
             ring = transform.Find("Pulse");
-            radius = 3;
-
-        }
-
-        private void Start()
-        {
+            radius = 3; // serves as the max radius
         }
 
         private void Update()

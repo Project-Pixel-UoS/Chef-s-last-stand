@@ -40,7 +40,6 @@ namespace Range
             var colliders = Physics2D.OverlapCircleAll(transform.position, radius);
             if (colliders != null)
             {
-                print("num of colliders: " + colliders.Length);
                 foreach (Collider2D collider in colliders)
                 {
                     GameObject gameObject = collider.gameObject;
