@@ -3,19 +3,13 @@ using Chef.Upgrades;
 using UnityEngine;
 using Util;
 
-namespace Chef
+namespace Range
 {
-    public class Range : MonoBehaviour
+    public class ChefRange : Range
     {
-        [SerializeField] private float radius; // range at which chef can attack mice
         [SerializeField] private GameObject rangeObject; //imports the chefs range.
         private SpriteRenderer rangeSpriteRenderer;
-
-        public float Radius
-        {
-            get => radius;
-            set => SetRadius(value);
-        }
+        
 
         void Awake()
         {
@@ -30,51 +24,6 @@ namespace Chef
             HandleRangeBuff();
         }
         
-
-        /// <returns>
-        /// mice in range of the chef
-        /// </returns>
-        /// <remarks> maintained by: Antosh </remarks>
-        public List<GameObject> GetMiceInRange()
-        {
-            var miceInRange = new List<GameObject>();
-            var colliders = Physics2D.OverlapCircleAll(transform.position, radius);
-            if (colliders != null)
-            {
-                foreach (Collider2D collider in colliders)
-                {
-                    GameObject gameObject = collider.gameObject;
-
-                    if (gameObject.CompareTag("Mouse"))
-                    {
-                        miceInRange.Add(gameObject);
-
-                    }
-                }
-
-            }
-            return miceInRange;
-
-        }
-
-        public bool IsMouseInRange(GameObject mouse)
-        {
-            return GetMiceInRange().Contains(mouse);
-        }
-
-        private float GetBuffedRadius()
-        {
-            Buff bf = GetComponent<Buff>();
-
-            float buffedRadius = radius;
-            if (bf != null)
-            {
-                buffedRadius *= bf.rangeIncrease;
-            }
-
-            return buffedRadius;
-        }
-
         private void HandleRangeBuff()
         {
             Buff bf = GetComponent<Buff>();
@@ -95,14 +44,13 @@ namespace Chef
         /// <remarks>Maintained by: Emily Johnston </remarks>
         void OnMouseDown()
         {
-            print("Mouse down being triggered");
             if (ChefTracker.Instance.CurrentChef != gameObject)
             { 
                 // when chef is pressed while unselected
                 //disable previous chefs range
                 if (ChefTracker.Instance.CurrentChef != null)
                 {
-                    var rangeComp = ChefTracker.Instance.CurrentChef.GetComponent<Range>();
+                    var rangeComp = ChefTracker.Instance.CurrentChef.GetComponent<ChefRange>();
                     rangeComp.rangeSpriteRenderer.enabled = false;
                 }
                
@@ -117,9 +65,6 @@ namespace Chef
 
             }
         }
-
-   
-        
         
 
         /// <summary> Checks what is being clicked </summary>
@@ -151,10 +96,10 @@ namespace Chef
                 new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen
         }
 
-        private void SetRadius(float radius)
+        protected override void SetRadius(float radius)
         {
             ResizeRangeVisual();
-            this.radius = radius;
+            base.SetRadius(radius);
         }
 
         public void EnableRangeRenderer()
