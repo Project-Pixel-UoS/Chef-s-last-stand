@@ -34,7 +34,7 @@ namespace Range
 
         private void UpdateHealingRing()
         {
-            healingRingRadius += 0.005f;
+            healingRingRadius += 0.01f;
             if (healingRingRadius > radius)
             {
                 healingRingRadius = 0;
