@@ -2843,7 +2843,7 @@ MonoBehaviour:
   - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
   - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
   - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
-  HeadChefUpgrades:
+  headChefUpgrades:
   - {fileID: 5382022526961067999, guid: eaf5623706eea4ef2ba016158309cff4, type: 3}
   - {fileID: 3278178606034727307, guid: 12c01e967cd3f4f52b6be296ad65348c, type: 3}
   - {fileID: 3576404127385971326, guid: 4a6c0ca66faf14e9d9d141b8e2856006, type: 3}
@@ -2855,6 +2855,12 @@ MonoBehaviour:
   - {fileID: 5226210433837137258, guid: a81f9099c4b5842858894914a4771bec, type: 3}
   - {fileID: 7371938965104641409, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
   - {fileID: 4033949866842330905, guid: 9bff7bb1f9e764b199304997ee90d46f, type: 3}
+  potagerUpgrades:
+  - {fileID: 6606718523713685315, guid: e6515802b955e44e2a6e62c5fe83cc48, type: 3}
+  - {fileID: 3214730166764726401, guid: 16da327eaaa37437ea3d7fa34e4696da, type: 3}
+  - {fileID: 1411327357221626818, guid: b616bffcb00614dba86127fb52125e1b, type: 3}
+  - {fileID: 1217206349449072670, guid: 5e5f9533d83544b69b734b2d3cd824be, type: 3}
+  - {fileID: 3444367643440370664, guid: 3910e583306e7467487c2aee94da8008, type: 3}
 --- !u!4 &621719805
 Transform:
   m_ObjectHideFlags: 0

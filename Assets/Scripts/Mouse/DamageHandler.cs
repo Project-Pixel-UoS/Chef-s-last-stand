@@ -1,7 +1,6 @@
 namespace Mouse
 {
     using System.Collections;
-    using Projectile;
     using UnityEngine;
 
 

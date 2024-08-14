@@ -1,5 +1,4 @@
 using System.Collections;
-using Projectile;
 using UnityEngine;
 
 namespace Mouse{

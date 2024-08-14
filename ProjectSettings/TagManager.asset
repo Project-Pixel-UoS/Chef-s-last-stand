@@ -23,6 +23,7 @@ TagManager:
   - MenuMusic
   - LevelMusic
   - Waiter
+  - Potager
   layers:
   - Default
   - TransparentFX
