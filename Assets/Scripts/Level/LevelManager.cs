@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
 
     private WaveTextManager waveTextManager;
 
+    private bool faded = true; //for route signal coroutine
+
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class LevelManager : MonoBehaviour
         LM = this;
         LoadLevel();
         StartCoroutine(StartWaveWithText());
+        RouteSignal();
     }
 
     private void Update()
@@ -98,6 +101,51 @@ public class LevelManager : MonoBehaviour
         }
 
         throw new ArgumentException("The mouse that your provided doesnt exist!");
+    }
+
+    //enumerator to fade in and out three times
+    private void RouteSignal()
+    {
+        Debug.Log("te");
+        foreach (Transform point in TurningPoints)
+        {
+            SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
+            IEnumerator c = FadeIn(sprite);
+            StartCoroutine(c);
+        }
+    }
+
+    private IEnumerator FadeIn(SpriteRenderer sprite)
+    {
+        while (GetAlpha(sprite) < 1)
+        {
+            ChangeAlpha(sprite, GetAlpha(sprite) + 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(3);
+        StartCoroutine(FadeOut(sprite));
+    }
+
+    private IEnumerator FadeOut(SpriteRenderer sprite)
+    {
+        while (GetAlpha(sprite) >= 0.1)
+        {
+            ChangeAlpha(sprite, GetAlpha(sprite) - 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        if (!faded) faded = true;
+    }
+
+    public void ChangeAlpha(SpriteRenderer sprite, float alpha)
+    {
+        var color = sprite.color;
+        color.a = alpha;
+        sprite.color = color;
+    }
+
+    private float GetAlpha(SpriteRenderer sprite)
+    {
+        return sprite.color.a;
     }
 
 
