@@ -18,8 +18,10 @@ namespace Mouse
         private GameObject credits;
         private CreditManager creditsManager;
         private Vector3 mousePosition;
-
         private SpriteRenderer sprite;
+        public IEnumerator flashRedCoroutine = null;
+        private MouseHealthHandler mouseHealthHandler;
+        
 
         private void Start()
         {
@@ -27,23 +29,23 @@ namespace Mouse
             credits = GameObject.FindGameObjectWithTag("Credits");
             creditsManager = credits.GetComponent<CreditManager>();
             sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+            mouseHealthHandler = gameObject.GetComponent<MouseHealthHandler>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
-            if (damageCoroutine != null) //check mouse still taking poisonous damage
-            {
-                StopCoroutine(damageCoroutine);
-            }
-
-            damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
+            HandleCollision(other.gameObject);
         }
 
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
+            HandleCollision(other.gameObject);
+        }
+
+        private void HandleCollision(GameObject weapon)
+        {
+            DamageFactor damageFactor = HandleArmouredMouse(weapon);
             if (damageCoroutine != null) //check mouse still taking poisonous damage
             {
                 StopCoroutine(damageCoroutine);
@@ -68,10 +70,10 @@ namespace Mouse
             HandleBurnChain(damageFactor);
             while (durationRemaining > 0) //take damage until long lasting effect runs out
             {
-                stats.health -= damageFactor.damage;
+                mouseHealthHandler.DecrementHealth(damageFactor.damage);
                 durationRemaining -= damageFactor.damageRate;
-
-                if (stats.health <= 0)
+                
+                if (mouseHealthHandler.Health <= 0)
                 {
                     HandleTrenchCoatMouse();
                     creditsManager.IncreaseMoney(currencyAmount); //get money per kill
@@ -85,7 +87,12 @@ namespace Mouse
                     }
                 }
 
-                if (damageFactor.damage != 0) StartCoroutine(flashRed());
+
+                if (damageFactor.damage != 0)
+                {
+                    flashRedCoroutine = FlashRed();
+                    StartCoroutine(flashRedCoroutine);
+                }
                 yield return new WaitForSeconds(damageFactor.damageRate);
             }
 
@@ -99,11 +106,12 @@ namespace Mouse
         /// Make mouse flash red when damage is delt.
         /// </summary>
         /// <remarks>Author: Emily</remarks>
-        public IEnumerator flashRed()
+        public IEnumerator FlashRed()
         {
             sprite.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             sprite.color = Color.white;
+            flashRedCoroutine = null;
         }
 
         //if the mouse that died was trench coat, grab its death position and spawn more mice.

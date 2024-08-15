@@ -1,3 +1,6 @@
+using Range;
+using UnityEngine.Serialization;
+
 namespace Mouse
 {
     using UnityEngine;
@@ -6,11 +9,12 @@ namespace Mouse
         // Stats
         public string mouseName;
         public float speed;
-        public float health;
+        public float maxHealth;
         public float size;
         public Sprite sprite;
         public bool canGhost;
-        public bool canSplit;
+        public bool canSplit; 
+        public bool canHeal;
         public bool armoured;
 
         /// <summary> Puts stats into relevant variables from a given ScriptableObject </summary>
@@ -20,19 +24,32 @@ namespace Mouse
         {
             mouseName = mouseStats.mouseName;
             speed = mouseStats.speed;
-            health = mouseStats.health;
+            maxHealth = mouseStats.health;
             size = mouseStats.size;
             sprite = mouseStats.sprite;
-            canGhost = mouseStats.canGhost;
-            if (canGhost) gameObject.AddComponent<GhostMouse>();
             canSplit = mouseStats.canSplit;
             armoured = mouseStats.armoured;
+            
+            canGhost = mouseStats.canGhost;
+            if (canGhost) gameObject.AddComponent<GhostMouse>();
+
+            canHeal = mouseStats.canHeal;
+            if (canHeal)
+            {
+                gameObject.AddComponent<MedicMouseRange>();
+            }
+            else
+            {
+                gameObject.transform.Find("Pulse").gameObject.SetActive(false);
+            }
+            
+        
         }
 
         void Start()
         {
-            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =
-                sprite; // Sets sprite according to scritable object
+            // Sets sprite according to scritable object
+            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite; 
         }
     }
 }
