@@ -51,7 +51,7 @@ namespace Mouse{
 
             SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
 
-            if (slownessProjectile != null)
+            if (slownessProjectile != null && !isSlowed)
             {
                 SlowMouse(slownessProjectile);
             }
