@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Chef;
 using Mouse;
+using Range;
 using Unity.Collections;
 using UnityEngine;
 
@@ -17,15 +18,24 @@ public class AbilityBuff : MonoBehaviour
     public float rangeIncrease = 2;
 
     private float range;
+    private CreditManager creditsManager;
+    private float passiveIncomeCDTimer;
+    [SerializeField] private float cooldown;
+    [SerializeField] private int income;
+    [SerializeField] private ParticleSystem money;
+
 
     void Start()
     {
-        range = GetComponent<Range>().Radius;
+        range = GetComponent<ChefRange>().Radius;
         colliders = Physics2D.OverlapCircleAll(transform.position, range);
+        creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
     }
 
     void Update()
     {
+        if (passiveIncomeCDTimer > 0) passiveIncomeCDTimer -= Time.deltaTime;
+        HandlePassiveIncome();
         // Get all objects within range
         colliders = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (Collider2D collider in colliders)
@@ -42,6 +52,20 @@ public class AbilityBuff : MonoBehaviour
                 buff.speedIncrease = ATKSpeed;
                 buff.rangeIncrease = rangeIncrease;
             }
+        }
+    }
+
+    /// <summary>
+    /// checks if head chef is level 3/4, then generate passive income.
+    /// </summary>
+    private void HandlePassiveIncome()
+    {
+        if(transform.name.Equals("Chef Head 3(Clone)") || transform.name.Equals("Chef Head 4(Clone)"))
+        {
+            if (passiveIncomeCDTimer > 0) return;
+            creditsManager.IncreaseMoney(income);
+            passiveIncomeCDTimer = cooldown;
+            money.Play();
         }
     }
 }

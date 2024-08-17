@@ -15,6 +15,7 @@ public class MiceScriptableObject : ScriptableObject
     public string splitMouseType = ""; // mouse type that is produced upon death. Empty string if none 
     public int numOfSplitMice; // amount of mice produced upon death. Set to 0 if none
     public bool armoured;
+    [FormerlySerializedAs("healing")] public bool canHeal;
     public MouseDifficulty difficulty;
     
 

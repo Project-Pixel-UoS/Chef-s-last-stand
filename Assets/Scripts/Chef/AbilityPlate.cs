@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Chef;
 using System.IO;
+using Range;
 using Util;
 
 public class AbilityPlate : MonoBehaviour
@@ -10,10 +11,11 @@ public class AbilityPlate : MonoBehaviour
     [SerializeField] private GameObject Projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private float maxPlates;
+    [SerializeField] private Sprite brokenPlate;
     private Transform[] turningPoints;
     private float cooldownTimer; // timer for cooldown in between shots
     private float currPlates;
-    private Range range;
+    private ChefRange chefRange;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class AbilityPlate : MonoBehaviour
     }
     private void Awake()
     {
-        range = GetComponent<Range>();
+        chefRange = GetComponent<ChefRange>();
     }
 
     // Update is called once per frame
@@ -50,7 +52,7 @@ public class AbilityPlate : MonoBehaviour
         foreach (var turningpoint in turningPoints)
         {
             float distance = (turningpoint.transform.position - transform.position).magnitude;
-            if (distance <= range.Radius)
+            if (distance <= chefRange.Radius)
             {
                 tpsInRange.Add(turningpoint);
             }
@@ -80,7 +82,7 @@ public class AbilityPlate : MonoBehaviour
         {
             //grabs random position in between the two turning points
             var randomPos = Vector3.Lerp(restTPs[0].position, restTPs[1].position, Random.value);
-            if ((randomPos - transform.position).magnitude < range.Radius)
+            if ((randomPos - transform.position).magnitude < chefRange.Radius)
             {
                 platePos = randomPos;
                 found = true;
@@ -112,5 +114,6 @@ public class AbilityPlate : MonoBehaviour
             plate.transform.position = Vector3.MoveTowards(plate.transform.position, targetPos, 0.1f);
             yield return new WaitForSeconds(0.01f);
         }
+        plate.GetComponentInChildren<SpriteRenderer>().sprite = brokenPlate;
     }
 }

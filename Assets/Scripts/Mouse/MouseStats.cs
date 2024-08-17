@@ -1,18 +1,18 @@
-using UnityEngine.Serialization;
+using Range;
+using UnityEngine;
 
 namespace Mouse
 {
-    using UnityEngine;
-
     public class MouseStats : MonoBehaviour
     {
         // Stats
         public string mouseName;
         public float speed;
-        public float health;
+        public float maxHealth;
         public float size;
         public Sprite sprite;
         public bool canGhost;
+        public bool canHeal;
         public bool armoured;
 
         public string splitMouseType = ""; // mouse type that is produced upon death. Empty string if none 
@@ -26,22 +26,45 @@ namespace Mouse
         {
             mouseName = mouseStats.mouseName;
             speed = mouseStats.speed;
-            health = mouseStats.health;
+            maxHealth = mouseStats.health;
             size = mouseStats.size;
             sprite = mouseStats.sprite;
-            canGhost = mouseStats.canGhost;
-            if (canGhost) gameObject.AddComponent<GhostMouse>();
             armoured = mouseStats.armoured;
+            ProcessSplitterMouseStats(mouseStats);
+            ProcessCanGhost(mouseStats);
+            ProcessCanHeal(mouseStats);
+        }
 
+        private void ProcessSplitterMouseStats(MiceScriptableObject mouseStats)
+        {
             splitMouseType = mouseStats.splitMouseType;
             numOfSplitMice = mouseStats.numOfSplitMice;
             if (CanSplit()) gameObject.AddComponent<MouseSplitter>();
+
+        }
+
+        private void ProcessCanGhost(MiceScriptableObject mouseStats)
+        {
+            canGhost = mouseStats.canGhost;
+            if (canGhost) gameObject.AddComponent<GhostMouse>();
+        }
+
+        private void ProcessCanHeal(MiceScriptableObject mouseStats)
+        {
+            canHeal = mouseStats.canHeal;
+            if (canHeal)
+            {
+                gameObject.AddComponent<MedicMouseRange>();
+            }
+            else
+            {
+                gameObject.transform.Find("Pulse").gameObject.SetActive(false);
+            }
         }
 
         void Start()
         {
-            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite =
-                sprite; // Sets sprite according to scritable object
+            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite; 
         }
 
         public bool CanSplit()

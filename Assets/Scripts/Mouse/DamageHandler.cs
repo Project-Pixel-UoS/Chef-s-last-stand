@@ -1,8 +1,9 @@
+using System.Collections;
+using Projectile;
+using UnityEngine;
+
 namespace Mouse
 {
-    using System.Collections;
-    using Projectile;
-    using UnityEngine;
 
 
     /// <summary>
@@ -15,12 +16,13 @@ namespace Mouse
         private MouseStats stats;
         [SerializeField] private int currencyAmount;
         [SerializeField] private ParticleSystem onFire;
-        private Coroutine damageCoroutine;
+        private IEnumerator damageCoroutine;
         private GameObject credits;
         private CreditManager creditsManager;
-        // private Vector3 mousePosition;
-
         private SpriteRenderer sprite;
+        public IEnumerator flashRedCoroutine = null;
+        private MouseHealthHandler mouseHealthHandler;
+        
 
         private void Start()
         {
@@ -28,28 +30,41 @@ namespace Mouse
             credits = GameObject.FindGameObjectWithTag("Credits");
             creditsManager = credits.GetComponent<CreditManager>();
             sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+            mouseHealthHandler = gameObject.GetComponent<MouseHealthHandler>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            HandleProjectile(other.gameObject);
+            HandleCollision(other.gameObject);
         }
 
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            HandleProjectile(other.gameObject);
+            HandleCollision(other.gameObject);
         }
 
-        private void HandleProjectile(GameObject other)
+
+        private void HandleCollision(GameObject weapon)
         {
-            DamageFactor damageFactor = HandleArmouredMouse(other.gameObject);
+            StopPoisonousDamage();
+            StartDamageCoroutine(weapon);
+        }
+
+        private void StartDamageCoroutine(GameObject weapon)
+        {
+            DamageFactor damageFactor = HandleArmouredMouse(weapon);
+            damageCoroutine = TakeDamage(damageFactor);
+            print("Damage co routine: " + damageCoroutine);
+            StartCoroutine(damageCoroutine);
+        }
+
+        private void StopPoisonousDamage()
+        {
             if (damageCoroutine != null) //check mouse still taking poisonous damage
             {
                 StopCoroutine(damageCoroutine);
             }
-
-            damageCoroutine = StartCoroutine(TakeDamage(damageFactor));
         }
 
         /// <summary>
@@ -60,18 +75,15 @@ namespace Mouse
         public IEnumerator TakeDamage(DamageFactor damageFactor)
         {
             float durationRemaining = damageFactor.damageDuration;
-            if (IsBurning(damageFactor))
-            {
-                onFire.Play();
-            }
-
+            if (IsBurning(damageFactor)) onFire.Play();
+            
             HandleBurnChain(damageFactor);
             while (durationRemaining > 0) //take damage until long lasting effect runs out
             {
-                stats.health -= damageFactor.damage;
+                mouseHealthHandler.DecrementHealth(damageFactor.damage);
                 durationRemaining -= damageFactor.damageRate;
-
-                if (stats.health <= 0)
+                
+                if (mouseHealthHandler.Health <= 0)
                 {
                     HandleMouseSplit();//mice such as trench coat should split off into multiple mice after death
                     creditsManager.IncreaseMoney(currencyAmount); //get money per kill
@@ -85,25 +97,28 @@ namespace Mouse
                     }
                 }
 
-                if (damageFactor.damage != 0) StartCoroutine(flashRed());
+                if (damageFactor.damage != 0)
+                {
+                    flashRedCoroutine = FlashRed();
+                    StartCoroutine(flashRedCoroutine);
+                }
                 yield return new WaitForSeconds(damageFactor.damageRate);
             }
 
-            if (onFire != null)
-            {
-                onFire.Stop();
-            }
+            if (onFire != null) onFire.Stop();
+            
         }
 
         /// <summary>
         /// Make mouse flash red when damage is delt.
         /// </summary>
         /// <remarks>Author: Emily</remarks>
-        public IEnumerator flashRed()
+        public IEnumerator FlashRed()
         {
             sprite.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             sprite.color = Color.white;
+            flashRedCoroutine = null;
         }
 
         //if the mouse that died was trench coat, grab its death position and spawn more mice.
@@ -121,6 +136,7 @@ namespace Mouse
         /// </summary>
         /// <param name="projectile">the collision object it collided with</param>
         /// <returns></returns>
+        /// TODO Should not need this method, should just return from method, TEST LATER
         private DamageFactor HandleArmouredMouse(GameObject projectile)
         {
             var damageFactor = projectile.GetComponent<DamageFactor>();
@@ -133,17 +149,30 @@ namespace Mouse
             return damageFactor;
         }
 
+        /// <summary>
+        /// checks if the grillardin 3/4 is damaging the mouse.
+        /// </summary>
+        /// <param name="damageFactor">the chef's damage script</param>
+        /// <returns>true if grillardin 3/4 is damaging the mouse, false otherwise.</returns>
         private bool IsBurning(DamageFactor damageFactor)
         {
             string currChef = damageFactor.chef.name;
             return currChef.Equals("Chef Grillardin 3(Clone)") || currChef.Equals("Chef Grillardin 4(Clone)");
         }
 
+        /// <summary>
+        /// whether the burning animation is playing.
+        /// </summary>
+        /// <returns>true if animation is playing, false otherwise.</returns>
         public bool IsBurning()
         {
             return onFire.isPlaying;
         }
 
+        /// <summary>
+        /// For level 4 grillardin upgrade. When mouse is burning, grab surrounding mice and deal damage to them too.
+        /// </summary>
+        /// <param name="damageFactor">the grillardin's damage script</param>
         private void HandleBurnChain(DamageFactor damageFactor)
         {
             if (damageFactor.chef.name.Equals("Chef Grillardin 4(Clone)"))

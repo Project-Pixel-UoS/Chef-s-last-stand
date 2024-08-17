@@ -60,43 +60,6 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    // /// <summary>Spawns a mouse of indicated mouse type</summary>
-    // /// <param name="mouseType"> type of mouse that will be spawned in</param>
-    // /// <remarks>Maintained by: Emily</remarks>
-    // private void SpawnMouse(MiceScriptableObject mouseType)
-    // {
-    //     GameObject newMouse =
-    //         Instantiate(enemy, TurningPoints[0].position, transform.rotation); // Instantiate mouse prefab
-    //     newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-    // }
-
-    // /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
-    // private void SpawnMouse(MiceScriptableObject mouseType, Vector3 position, int wayPointIndex)
-    // {
-    //     GameObject newMouse = Instantiate(enemy, position, transform.rotation); // Instantiate mouse prefab
-    //     newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-    //     newMouse.GetComponent<SpriteMove>().SetTargetWayPointIndex(wayPointIndex);
-    // }
-    
-    
-    // /// <summary>
-    // /// returns mice scriptable object that corresponds to the mouseName provided
-    // /// </summary>
-    // /// <exception cref="ArgumentException"> thrown if mouseName does not correspond to any type of mouse</exception>
-    // /// <remarks>Maintained by Antosh</remarks>
-    // private MiceScriptableObject GetMouseType(string mouseName)
-    // {
-    //     foreach (var mouseType in mouseTypesList)
-    //     {
-    //         if (mouseType.mouseName == mouseName)
-    //         {
-    //             return mouseType;
-    //         }
-    //     }
-    //
-    //     throw new ArgumentException("The mouse that your provided doesnt exist!");
-    // }
-
 
     /// <summary>The process of one wave</summary>
     /// <remarks>Maintained by: Emily</remarks>

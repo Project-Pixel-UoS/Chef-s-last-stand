@@ -2836,6 +2836,8 @@ MonoBehaviour:
   - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
   - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
   - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
+  HeadChefUpgrades: []
+  waiterUpgrades: []
 --- !u!4 &621719805
 Transform:
   m_ObjectHideFlags: 0
@@ -5777,13 +5779,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1499304865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51aa02327beb4be78042beababeabc7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 62cf0fd53dad4d28aa0a015b7e11f0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
   mouseTypesList:
   - {fileID: 11400000, guid: 568c1f86006a8bd46b188f1dbb789237, type: 2}
   - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
+  - {fileID: 11400000, guid: 25af01f4f0b78d9408ac12d7e9ba2ffd, type: 2}
   - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
   - {fileID: 11400000, guid: 532d65b96bbe93e40a201d2a0a528c2e, type: 2}
   - {fileID: 11400000, guid: f20d81e1d16219341b43a001ed128b3f, type: 2}

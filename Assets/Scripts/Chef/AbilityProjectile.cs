@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Chef.Upgrades;
 using Mouse;
+using Range;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,6 @@ namespace Chef
         [SerializeField] private GameObject Projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
-        private Range range;
         private float originalSpeed;
         private UpgradeTracker upgradeTracker;
         private int projectilesThrown;
@@ -25,7 +25,6 @@ namespace Chef
 
         private void Awake()
         {
-            range = GetComponent<Range>();
             originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
             upgradeTracker = GetComponent<UpgradeTracker>();
         }
@@ -47,7 +46,7 @@ namespace Chef
         /// <remarks>Maintained by: Antosh </remarks>
         private GameObject GetFurthestMouseInRange()
         {
-            List<GameObject> mice = gameObject.GetComponent<Range>().GetMiceInRange();
+            List<GameObject> mice = gameObject.GetComponent<ChefRange>().GetMiceInRange();
             mice.RemoveAll(IsInvisibleGhost);
             if (mice.Count > 0)
             {
@@ -105,9 +104,6 @@ namespace Chef
             {
                 p.GetComponent<DamageFactor>().damage = df.damage * buff.damageIncrease;
                 p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
-            }
-            else{
-                Debug.Log("FAILED TO GET BUFF");
             }
         }
         

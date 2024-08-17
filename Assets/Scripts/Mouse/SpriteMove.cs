@@ -11,13 +11,13 @@ namespace Mouse
 
         public float totalDistanceMoved;
         private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
-        private HealthManager health;
+        private PlayerHealthManager playerHealth;
 
 
         void Awake()
         {
-            health = GameObject.FindGameObjectWithTag("Health")
-                .GetComponent<HealthManager>(); //finds the health manager
+            playerHealth = GameObject.FindGameObjectWithTag("Health")
+                .GetComponent<PlayerHealthManager>(); //finds the health manager
             stats = gameObject.GetComponent<MouseStats>();
             targets = LevelManager.LM.TurningPoints;
             target = targets[targetWayPointIndex];
@@ -31,7 +31,7 @@ namespace Mouse
                 if (targetWayPointIndex == targets.Length)
                 {
                     Destroy(gameObject);
-                    health.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
+                    playerHealth.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
                 }
                 else
                 {

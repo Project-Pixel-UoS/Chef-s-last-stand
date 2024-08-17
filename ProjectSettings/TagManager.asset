@@ -22,6 +22,7 @@ TagManager:
   - BackgroundMusic
   - MenuMusic
   - LevelMusic
+  - Waiter
   layers:
   - Default
   - TransparentFX
