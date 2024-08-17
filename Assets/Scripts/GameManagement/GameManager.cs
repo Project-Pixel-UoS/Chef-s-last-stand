@@ -30,8 +30,6 @@ namespace GameManagement
 
             // initialize level music according to the slider
             var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
-            // print("Level music: " + levelMusic);
-            // print("audio source: " + levelMusic.GetComponent<AudioSource>());
             levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
         }
 

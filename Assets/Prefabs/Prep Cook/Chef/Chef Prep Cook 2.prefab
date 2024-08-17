@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9203637450718709653, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 3886107942698729891, guid: e20d0d984a0d1714b8118356ad35a1c0, type: 3}
     - target: {fileID: 647212506296903406, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109480781222891229, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Name
-      value: Chef Prep Cook 6
+      value: Chef Prep Cook 2
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: chefCost
