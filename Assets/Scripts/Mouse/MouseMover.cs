@@ -1,8 +1,9 @@
 namespace Mouse
 {
     using UnityEngine;
+    using Cheese = Cheese.Cheese;
 
-    public class SpriteMove : MonoBehaviour
+    public class MouseMover : MonoBehaviour
     {
         private MouseStats stats;
         private Transform[] targets;
@@ -12,12 +13,13 @@ namespace Mouse
         public float totalDistanceMoved;
         private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
         private PlayerHealthManager playerHealth;
+        private Cheese cheese;
 
 
         void Awake()
         {
-            playerHealth = GameObject.FindGameObjectWithTag("Health")
-                .GetComponent<PlayerHealthManager>(); //finds the health manager
+            cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
+            playerHealth = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             stats = gameObject.GetComponent<MouseStats>();
             targets = LevelManager.LM.TurningPoints;
             target = targets[targetWayPointIndex];
@@ -30,8 +32,7 @@ namespace Mouse
                 targetWayPointIndex++;
                 if (targetWayPointIndex == targets.Length)
                 {
-                    Destroy(gameObject);
-                    playerHealth.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
+                    ProcessMouseFinish();
                 }
                 else
                 {
@@ -39,6 +40,20 @@ namespace Mouse
                     target = targets[targetWayPointIndex];
                 }
             }
+        }
+
+        private void ProcessMouseFinish()
+        {
+            Destroy(gameObject);
+            playerHealth.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
+            if (DoesLevelContainsCheese())
+                cheese.GetComponent<Cheese>().UpdateSpriteIfNecessary();
+            
+        }
+
+        private static bool DoesLevelContainsCheese()
+        {
+            return GameObject.FindGameObjectWithTag("Cheese") != null;
         }
 
         void FixedUpdate()
@@ -56,12 +71,6 @@ namespace Mouse
             float degrees = radians * Mathf.Rad2Deg;
             Quaternion aim = Quaternion.Euler(0, 0, degrees);
             transform.rotation = aim;
-        }
-
-
-        public int GetTargetWayPointIndex()
-        {
-            return targetWayPointIndex;
         }
 
         public void SetTargetWayPointIndex(int i)

@@ -57,7 +57,7 @@ public class AbilityAOE : MonoBehaviour
         List<GameObject> mice = chefRange.GetMiceInRange();
         if (mice.Count > 0)
         {
-            return mice.OrderByDescending(mouse => mouse.GetComponent<SpriteMove>().totalDistanceMoved).First();
+            return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
         }
 
         return null;

@@ -33,11 +33,8 @@ namespace GameManagement
             levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
         }
 
-
-        /// <summary>
-        /// Game Over Screen is shown, current wave with run until completion
-        /// </summary>
-        public void GameOver()
+        
+        public void ShowGameOverScreen()
         {
             gameOverScreen.SetActive(true);
         }
@@ -50,11 +47,11 @@ namespace GameManagement
         }
 
         /// <summary>
-        /// Method restarts the level, invoked upon start again button in game over screen inside canvas
+        /// Invoked upon start again button in game over screen inside canvas
         /// </summary>
-        public void RestartLevel() //todo change so that it reload scene
+        public void RestartLevel() 
         {
-            SceneManager.LoadScene("SampleScene"); //Load scene called Game
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
         }
     }
 }

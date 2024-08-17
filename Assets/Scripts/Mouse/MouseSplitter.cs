@@ -7,7 +7,7 @@ namespace Mouse
     {
         public void Split(int numOfMice, string mouseType)
         {
-            float totalDistanceMoved = GetComponent<SpriteMove>().totalDistanceMoved;
+            float totalDistanceMoved = GetComponent<MouseMover>().totalDistanceMoved;
             for (int i = 0; i < numOfMice; i++)
             {
                 float spawnDistance = totalDistanceMoved - i;

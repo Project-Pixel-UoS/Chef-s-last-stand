@@ -4,26 +4,38 @@ using System.Collections.Generic;
 using GameManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
     public Image healthBar;
-    public float healthAmount = 100f; // The total health amount
-    
+    private const float InitialHealth = 100f; // The total health amount
+    public float currentHealth;
+
+    private void Start()
+    {
+        currentHealth = InitialHealth;
+    }
+
 
     /// <summary> Reduces the health bar's health </summary>
     /// <param name = "damage"> The amount of health the health bar will lose</param>
     /// <remarks> Maintained by: Emily Johnston</remarks>
     public void TakeDamage(float damage)
     {
-        healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 100f;
-        if (healthAmount <= 0)
+        currentHealth -= damage;
+        healthBar.fillAmount = currentHealth / 100f;
+        if (currentHealth <= 0)
         {
-            GameManager.gameManager.GameOver();
+            GameManager.gameManager.ShowGameOverScreen();
         }
-    }   
+    }
+
+    public float GetCurrentHealthAsPercentage()
+    {
+        return 100 * currentHealth / InitialHealth;
+    }
     
 
 

@@ -13,9 +13,9 @@
       "mouseUnits": [
         {
           "type": "Trojan",
-          "amount": 1,
+          "amount": 30,
           "timeOfWave": 0,
-          "frequency": 2
+          "frequency": 1
         },
         {
           "type": "Medic",
