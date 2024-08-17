@@ -55,7 +55,6 @@ namespace Mouse
         {
             DamageFactor damageFactor = HandleArmouredMouse(weapon);
             damageCoroutine = TakeDamage(damageFactor);
-            print("Damage co routine: " + damageCoroutine);
             StartCoroutine(damageCoroutine);
         }
 
