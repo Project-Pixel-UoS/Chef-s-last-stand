@@ -35,7 +35,7 @@ namespace Mouse
         {
             GameObject newMouse = Instantiate(mousePrefab, position, transform.rotation); // Instantiate mouse prefab
             newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-            var spriteMove = newMouse.GetComponent<SpriteMove>();
+            var spriteMove = newMouse.GetComponent<MouseMover>();
             spriteMove.SetTargetWayPointIndex(wayPointIndex);
             spriteMove.totalDistanceMoved = pathDistance; // only needs to be modified when 
         }

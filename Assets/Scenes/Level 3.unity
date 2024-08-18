@@ -1832,10 +1832,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.845, y: 3.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &320944475
@@ -5360,7 +5360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1066172140}
-  healthAmount: 100
+  currentHealth: 0
 --- !u!4 &1311076897
 Transform:
   m_ObjectHideFlags: 0
@@ -5832,7 +5832,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1499304865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62cf0fd53dad4d28aa0a015b7e11f0e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 046f8c9599f8406f9aa4f4862691f70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
@@ -5988,9 +5988,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 60ec66b2fe9cd6040a8c65701a8b510b, type: 3}
   - {fileID: 21300000, guid: d30ba9deba961ca4898b7191ea05426f, type: 3}
   - {fileID: 21300000, guid: 162ff3103b488524bb65b1cffe5eb763, type: 3}
-  currentCheeseStageIndex: 0
-  healthManager: {fileID: 0}
-  spriteRenderer: {fileID: 0}
 --- !u!4 &1518190547
 Transform:
   m_ObjectHideFlags: 0
