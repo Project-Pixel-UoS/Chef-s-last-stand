@@ -24,7 +24,6 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject[] entremetierUpgrades;
         private ShopSlotManager upgradeManager;
 
-
         private GameObject currentChef;
         public GameObject CurrentChef // property of current selected chef (chef that's been most recently clicked)
         {
@@ -70,6 +69,8 @@ namespace Chef.Upgrades
                 currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
                 upgradeManager = chef.GetComponent<ShopSlotManager>();
 
+                TMPro.TextMeshProUGUI sellText = sellChefUI.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+                sellText.text = "Sell chef\n" + "("+getSellCost()+")";
             }
             
         }
@@ -106,11 +107,7 @@ namespace Chef.Upgrades
         /// </summary>
         /// <remarks>Author: Ben</remarks>
         public void SellChef()
-        {
-            // Get chef/upgrade costs
-            int chefCost = currentChef.GetComponent<ShopItem>().getCost();
-            int upgardeCost = 0;
-            
+        {            
             // Destroy the chef
             Destroy(currentChef);
 
@@ -121,7 +118,14 @@ namespace Chef.Upgrades
 
             // Give back percentage of chef cost
             CreditManager creditManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
-            creditManager.IncreaseMoney((int)(sellChefFraction * (chefCost+upgardeCost)));
+            creditManager.IncreaseMoney(getSellCost());
+        }
+
+        private int getSellCost(){
+            // Get chef/upgrade costs
+            int chefCost = currentChef.GetComponent<ShopItem>().getCost();
+            int upgradeCost = 0;
+            return (int)(sellChefFraction * (chefCost+upgradeCost));
         }
 
         public GameObject[] GetPrepCooks()
