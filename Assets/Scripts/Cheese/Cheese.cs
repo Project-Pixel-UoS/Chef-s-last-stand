@@ -24,7 +24,6 @@ namespace Cheese
         public void UpdateSpriteIfNecessary()
         {
             var newCheeseStageIndex = CalculateNewCheeseStageIndex();
-            print("Cheese index: " + newCheeseStageIndex);
             if (currentCheeseStageIndex != newCheeseStageIndex)
                 spriteRenderer.sprite = cheeseStage[newCheeseStageIndex];
         }
