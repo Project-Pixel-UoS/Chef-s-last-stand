@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2325135678370490676}
   - component: {fileID: 449975682554370595}
   - component: {fileID: 5836016623740107159}
+  - component: {fileID: -8537824975395176814}
   m_Layer: 0
   m_Name: Base Prep Cook
   m_TagString: PrepCook
@@ -138,8 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 40
-  rangeCost: 10
 --- !u!114 &449975682554370595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +166,19 @@ MonoBehaviour:
   damageIncrease: 1
   speedIncrease: 1
   rangeIncrease: 1
+--- !u!114 &-8537824975395176814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109480781222891229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888a785604ba73c468fb3242288a17c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 40
 --- !u!1 &4281193363392056481
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Shop
@@ -14,11 +13,10 @@ namespace Shop
         
         private Image slotImage;
         private Image chefImage;
-
         // represent cost of buying the chef if attached to side bar slot, or upgrading path 2 of the chef if attached
         // to chef game object
-        public int chefCost; 
-        public int rangeCost;
+        private int chefCost;
+        private int rangeCost;
         private CreditManager creditsManager;
         
         private void Start()
@@ -26,6 +24,18 @@ namespace Shop
             chefImage = GetComponent<Image>();
             slotImage = transform.parent.GetComponent<Image>();
             creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+
+
+            // For some ungodly reason, this script is used for both managing 
+            // shop slots, and also being attached to chefs for something else entirely??
+            // When attached to a chef, this error will be thrown. 
+            try{
+                GameObject chef = GetComponent<DragChef>().getChef();
+                chefCost = chef.GetComponent<ShopItem>().getCost();
+            }
+            catch(Exception e){
+                Debug.Log(e);
+            }
         }
         
         private void Update()
