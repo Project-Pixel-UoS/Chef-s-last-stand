@@ -14,6 +14,7 @@ namespace Chef.Upgrades
         
         public static ChefTracker Instance { get; private set; } // singleton pattern
 
+        [SerializeField] private float sellChefFraction;
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
         [SerializeField] private GameObject sellChefUI;
@@ -106,16 +107,21 @@ namespace Chef.Upgrades
         /// <remarks>Author: Ben</remarks>
         public void SellChef()
         {
+            // Get chef/upgrade costs
+            int chefCost = currentChef.GetComponent<ShopItem>().getCost();
+            int upgardeCost = 0;
+            
+            // Destroy the chef
             Destroy(currentChef);
 
-            // Close all UI, as chef no longer exists
+            // Close all UI (as chef no longer exists)
             upgradeRangeUI.SetActive(false);
             upgradeSpecialUI.SetActive(false);
             sellChefUI.SetActive(false);
 
-            // Note: Should scale with chef cost (30%)
+            // Give back percentage of chef cost
             CreditManager creditManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
-            creditManager.IncreaseMoney(200);
+            creditManager.IncreaseMoney((int)(sellChefFraction * (chefCost+upgardeCost)));
         }
 
         public GameObject[] GetPrepCooks()
