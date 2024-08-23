@@ -13,6 +13,9 @@ namespace GameManagement
         [SerializeField] private GameObject gameOverScreen;
 
         public static GameManager gameManager;
+        
+        public delegate void OnGameOver();
+        public static OnGameOver onGameOver; 
 
         private void Start()
         {
@@ -33,9 +36,10 @@ namespace GameManagement
         }
 
         
-        public void ShowGameOverScreen()
+        public void GameOver()
         {
             gameOverScreen.SetActive(true);
+            onGameOver();
         }
 
 

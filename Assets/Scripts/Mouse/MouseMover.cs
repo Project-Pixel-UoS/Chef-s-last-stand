@@ -8,10 +8,9 @@ namespace Mouse
     public class MouseMover : MonoBehaviour
     {
         private MouseStats stats;
-        private Transform[] targets;
+        private Path path;
         private Transform target;
         private int targetWayPointIndex = 0;
-
         public float totalDistanceMoved;
         private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
         private PlayerHealthManager playerHealth;
@@ -23,23 +22,25 @@ namespace Mouse
             cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
             playerHealth = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             stats = gameObject.GetComponent<MouseStats>();
-            targets = LevelManager.LM.TurningPoints;
-            target = targets[targetWayPointIndex];
+            // path.targets = LevelManager.LM.TurningPoints;
+            target = path.targets[targetWayPointIndex];
         }
+
+
 
         void Update()
         {
             if (Vector2.Distance(target.position, transform.position) <= 0.1f)
             {
                 targetWayPointIndex++;
-                if (targetWayPointIndex == targets.Length)
+                if (targetWayPointIndex == path.targets.Length)
                 {
                     ProcessMouseFinish();
                 }
                 else
                 {
-                    MouseRotate(targets[targetWayPointIndex]);
-                    target = targets[targetWayPointIndex];
+                    MouseRotate(path.targets[targetWayPointIndex]);
+                    target = path.targets[targetWayPointIndex];
                 }
             }
         }
@@ -55,12 +56,14 @@ namespace Mouse
 
         private void DamagePlayer()
         {
-            playerHealth.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
-            if (DoesLevelContainsCheese())
+            playerHealth.TakeDamage(mouseDamage);
+            if (IsCheeseExistent())
+            {
                 cheese.GetComponent<Cheese>().UpdateSpriteIfNecessary();
+            }
         }
 
-        private static bool DoesLevelContainsCheese()
+        private static bool IsCheeseExistent()
         {
             return GameObject.FindGameObjectWithTag("Cheese") != null;
         }
@@ -85,7 +88,7 @@ namespace Mouse
         public void SetTargetWayPointIndex(int i)
         {
             targetWayPointIndex = i;
-            target = targets[targetWayPointIndex];
+            target = path.targets[targetWayPointIndex];
             MouseRotate(target);
         }
     }

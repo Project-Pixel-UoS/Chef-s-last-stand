@@ -51,7 +51,7 @@ namespace Mouse
         /// <param name="mouseType"> type of mouse that will be spawned in</param>
         public void SpawnMouse(MiceScriptableObject mouseType)
         {
-            SpawnMouse(mouseType, LevelManager.LM.TurningPoints[0].position, 1, 0);
+            SpawnMouse(mouseType, GameObject.FindGameObjectWithTag("Path").gameObject.GetStartPos,1, 0);
         }
         
         

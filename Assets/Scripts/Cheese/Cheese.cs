@@ -19,33 +19,24 @@ namespace Cheese
         {
             healthManager = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-            
             currentCheeseStageIndex = 0;
+            GameManager.onGameOver += HideCheese;
         }
 
         public void UpdateSpriteIfNecessary()
         {
             var newCheeseStageIndex = CalculateNewCheeseStageIndex();
-            if (!GameManager.gameManager.IsGameOver())
-            {
-                UpdateSprite(newCheeseStageIndex);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
-    
-
-
-        private void UpdateSprite(int newCheeseStageIndex)
-        {
             if (currentCheeseStageIndex != newCheeseStageIndex)
             {
                 spriteRenderer.sprite = cheeseStage[newCheeseStageIndex];
                 currentCheeseStageIndex = newCheeseStageIndex;
             }
+  
+        }
+
+        public void HideCheese()
+        {
+            gameObject.SetActive(false);
         }
 
         private int CalculateNewCheeseStageIndex()
@@ -54,5 +45,7 @@ namespace Cheese
             double indicesPerCheeseSprite = 100f / cheeseStage.Length;
             return cheeseStage.Length - (int)Math.Ceiling(healthPercentage / indicesPerCheeseSprite);
         }
+        
+        
     }
 }

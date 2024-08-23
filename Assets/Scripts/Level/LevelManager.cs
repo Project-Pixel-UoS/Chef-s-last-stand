@@ -16,8 +16,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
-    // public GameObject enemy;
-    // public MiceScriptableObject[] mouseTypesList;
     
     private Waves waves;
     private int currentWave = 0;
@@ -137,42 +135,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    
-    // private MiceScriptableObject GetRandomMouseType(MouseDifficulty mouseUnitDifficulty)
-    // {
-    //     List<MiceScriptableObject> sameDifficultyMice = GetAllMouseTypes(mouseUnitDifficulty);
-    //     return sameDifficultyMice[Random.Range(0, sameDifficultyMice.Count)];
-    // }
-    //
-    //
-    // /// <summary>
-    // /// Returns a list of all the mouse types corresponding to the mouse unity difficulty
-    // /// </summary>
-    // /// <param name="mouseUnitDifficulty"></param>
-    // /// <returns></returns>
-    // private List<MiceScriptableObject> GetAllMouseTypes(MouseDifficulty mouseUnitDifficulty)
-    // {
-    //     List<MiceScriptableObject> sameDifficultyMice = new List<MiceScriptableObject>();
-    //     foreach (var mouseType in mouseTypesList)
-    //     {
-    //         if (mouseType.difficulty == mouseUnitDifficulty)
-    //         {
-    //             sameDifficultyMice.Add(mouseType);
-    //         }
-    //     }
-    //
-    //     return sameDifficultyMice;
-    // }
-
-    // /// <summary>
-    // /// spawns 2 mice at the trenchcoat mouse's death position.
-    // /// </summary>
-    // /// <param name="position">the positions to spawn the mice on.</param>
-    // /// <param name="index">the next index the split off mice continue to.</param>
-    // public void SplitMouse(Vector3 position, int index)
-    // {
-    //     SpawnMouse(GetMouseType("Woody"), position, index);
-    //     SpawnMouse(GetMouseType("Woody"), new Vector3(position.x - 0.5f, position.y), index);
-    // }
-    
 }
