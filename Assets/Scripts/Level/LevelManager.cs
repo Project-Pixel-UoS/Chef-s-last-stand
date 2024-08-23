@@ -108,7 +108,6 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void RouteSignal()
     {
-        Debug.Log("te");
         foreach (Transform point in TurningPoints)
         {
             SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();

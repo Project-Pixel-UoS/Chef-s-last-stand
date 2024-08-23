@@ -139,18 +139,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         return chefs;
     }
-    
-    /// <returns> True if chef is on the mice's path </returns>
-    private bool CheckOnPath()
-    {
-        bool top = Physics.Raycast(transform.position, transform.up);
-        bool bottom = Physics.Raycast(transform.position, -transform.up);
-        bool left = Physics.Raycast(transform.position, transform.right);
-        bool right = Physics.Raycast(transform.position, -transform.right);
-        bool above = Physics.Raycast(new Vector3(transform.position.x, transform.position.y, -5), transform.forward);
-
-        return (bottom && top) || (left && right) || above;
-    }
 
     /// <summary>
     /// Checks if chef is in a placeable area
