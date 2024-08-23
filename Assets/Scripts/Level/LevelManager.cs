@@ -103,7 +103,9 @@ public class LevelManager : MonoBehaviour
         throw new ArgumentException("The mouse that your provided doesnt exist!");
     }
 
-    //enumerator to fade in and out three times
+    /// <summary>
+    /// Displays level path at the beginning of the level.
+    /// </summary>
     private void RouteSignal()
     {
         Debug.Log("te");
@@ -133,7 +135,7 @@ public class LevelManager : MonoBehaviour
             ChangeAlpha(sprite, GetAlpha(sprite) - 0.01f);
             yield return new WaitForSeconds(0.01f);
         }
-        if (!faded) faded = true;
+        if (faded) faded = false;
     }
 
     public void ChangeAlpha(SpriteRenderer sprite, float alpha)
