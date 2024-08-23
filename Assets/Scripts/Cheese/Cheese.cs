@@ -1,4 +1,6 @@
 using System;
+using GameManagement;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
@@ -24,14 +26,32 @@ namespace Cheese
         public void UpdateSpriteIfNecessary()
         {
             var newCheeseStageIndex = CalculateNewCheeseStageIndex();
+            if (!GameManager.gameManager.IsGameOver())
+            {
+                UpdateSprite(newCheeseStageIndex);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+    
+
+
+        private void UpdateSprite(int newCheeseStageIndex)
+        {
             if (currentCheeseStageIndex != newCheeseStageIndex)
+            {
                 spriteRenderer.sprite = cheeseStage[newCheeseStageIndex];
+                currentCheeseStageIndex = newCheeseStageIndex;
+            }
         }
 
         private int CalculateNewCheeseStageIndex()
         {
-            float healthPercentage = healthManager.GetCurrentHealthAsPercentage();
-            float indicesPerCheeseSprite = 100f / cheeseStage.Length;
+            double healthPercentage = healthManager.GetCurrentHealthAsPercentage();
+            double indicesPerCheeseSprite = 100f / cheeseStage.Length;
             return cheeseStage.Length - (int)Math.Ceiling(healthPercentage / indicesPerCheeseSprite);
         }
     }

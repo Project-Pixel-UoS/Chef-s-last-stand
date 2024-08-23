@@ -13,7 +13,7 @@
       "mouseUnits": [
         {
           "type": "Medic",
-          "amount": 1,
+          "amount": 20,
           "timeOfWave": 2,
           "frequency": 1
         }

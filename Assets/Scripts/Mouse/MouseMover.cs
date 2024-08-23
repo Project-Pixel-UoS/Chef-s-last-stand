@@ -1,3 +1,5 @@
+using GameManagement;
+
 namespace Mouse
 {
     using UnityEngine;
@@ -45,10 +47,17 @@ namespace Mouse
         private void ProcessMouseFinish()
         {
             Destroy(gameObject);
+            if (!GameManager.gameManager.IsGameOver())
+            {
+                DamagePlayer();
+            }
+        }
+
+        private void DamagePlayer()
+        {
             playerHealth.TakeDamage(mouseDamage); //the player taking damage as the mouse reaches the end
             if (DoesLevelContainsCheese())
                 cheese.GetComponent<Cheese>().UpdateSpriteIfNecessary();
-            
         }
 
         private static bool DoesLevelContainsCheese()

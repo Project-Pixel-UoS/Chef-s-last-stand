@@ -16,7 +16,6 @@ namespace GameManagement
 
         private void Start()
         {
-            // singleton pattern
             if (gameManager == null)
             {
                 gameManager = this;
