@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
         LM = this;
         LoadLevel();
         StartCoroutine(StartWaveWithText());
+        RouteSignal();
     }
 
     private void Update()
@@ -58,6 +59,50 @@ public class LevelManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Displays level path at the beginning of the level.
+    /// </summary>
+    private void RouteSignal()
+    {
+        foreach (Transform point in TurningPoints)
+        {
+            SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
+            IEnumerator c = FadeIn(sprite);
+            StartCoroutine(c);
+        }
+    }
+
+    private IEnumerator FadeIn(SpriteRenderer sprite)
+    {
+        while (GetAlpha(sprite) < 1)
+        {
+            ChangeAlpha(sprite, GetAlpha(sprite) + 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(3);
+        StartCoroutine(FadeOut(sprite));
+    }
+
+    private IEnumerator FadeOut(SpriteRenderer sprite)
+    {
+        while (GetAlpha(sprite) >= 0.1)
+        {
+            ChangeAlpha(sprite, GetAlpha(sprite) - 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public void ChangeAlpha(SpriteRenderer sprite, float alpha)
+    {
+        var color = sprite.color;
+        color.a = alpha;
+        sprite.color = color;
+    }
+
+    private float GetAlpha(SpriteRenderer sprite)
+    {
+        return sprite.color.a;
+    }
 
     /// <summary>The process of one wave</summary>
     /// <remarks>Maintained by: Emily</remarks>
@@ -134,5 +179,6 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
     }
+
 
 }
