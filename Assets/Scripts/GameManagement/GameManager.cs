@@ -51,6 +51,7 @@ namespace GameManagement
         {
             gameOverScreen.SetActive(true);
             onGameOver?.Invoke();
+
         }
 
 

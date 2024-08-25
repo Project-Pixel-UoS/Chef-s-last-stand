@@ -28,6 +28,7 @@ namespace Mouse
             {
                 cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
             }
+
         }
 
 
@@ -55,6 +56,8 @@ namespace Mouse
             {
                 DamagePlayer();
             }
+
+            
         }
 
         private void DamagePlayer()

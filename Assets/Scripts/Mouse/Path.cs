@@ -2,6 +2,7 @@ using System;
 using GameManagement;
 using Unity.VisualScripting;
 
+
 using UnityEngine;
 
 namespace Mouse
@@ -10,12 +11,6 @@ namespace Mouse
     {
         [SerializeField] private Transform[] targets;
         
-        public Vector2 StartPos()
-        {
-            return targets[0].position;
-        }
-        
-
         public Vector2 GetStartPos()
         {
             return targets[0].position;
