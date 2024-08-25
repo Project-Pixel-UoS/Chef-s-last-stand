@@ -19,7 +19,6 @@ namespace Mouse
 
         private void Awake()
         {
-            //singleton pattern
             if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
@@ -51,7 +50,8 @@ namespace Mouse
         /// <param name="mouseType"> type of mouse that will be spawned in</param>
         public void SpawnMouse(MiceScriptableObject mouseType)
         {
-            SpawnMouse(mouseType, GameObject.FindGameObjectWithTag("Path").gameObject.GetStartPos,1, 0);
+            var startPos = GameObject.FindGameObjectWithTag("Path").GetComponent<Path>().GetStartPos();
+            SpawnMouse(mouseType, startPos,1, 0);
         }
         
         

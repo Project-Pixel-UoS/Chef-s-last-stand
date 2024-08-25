@@ -1,9 +1,7 @@
 using System;
 using GameManagement;
-using UnityEditor.Build;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
+
 
 namespace Cheese
 {
@@ -20,7 +18,12 @@ namespace Cheese
             healthManager = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
             currentCheeseStageIndex = 0;
-            GameManager.onGameOver += HideCheese;
+            GameManager.gameManager.onGameOver += DisableCheese;
+        }
+
+        private void DisableCheese()
+        {
+            gameObject.SetActive(false);
         }
 
         public void UpdateSpriteIfNecessary()
@@ -34,10 +37,7 @@ namespace Cheese
   
         }
 
-        public void HideCheese()
-        {
-            gameObject.SetActive(false);
-        }
+   
 
         private int CalculateNewCheeseStageIndex()
         {

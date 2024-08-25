@@ -1,3 +1,5 @@
+using System;
+
 namespace GameManagement
 {
     using UnityEngine;
@@ -15,14 +17,23 @@ namespace GameManagement
         public static GameManager gameManager;
         
         public delegate void OnGameOver();
-        public static OnGameOver onGameOver; 
+        public OnGameOver onGameOver;
 
-        private void Start()
+        private void Awake()
         {
             if (gameManager == null)
             {
                 gameManager = this;
             }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private void Start()
+        {
+ 
 
             var menuMusic = GameObject.FindGameObjectWithTag("MenuMusic");
             if (menuMusic != null)// if statement only needed to developer mode, in case start from level scene
@@ -39,7 +50,7 @@ namespace GameManagement
         public void GameOver()
         {
             gameOverScreen.SetActive(true);
-            onGameOver();
+            onGameOver?.Invoke();
         }
 
 

@@ -19,13 +19,16 @@ namespace Mouse
 
         void Awake()
         {
-            cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
+       
             playerHealth = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
+            path = GameObject.FindGameObjectWithTag("Path").GetComponent<Path>();
+            target = path.GetTarget(targetWayPointIndex);
             stats = gameObject.GetComponent<MouseStats>();
-            // path.targets = LevelManager.LM.TurningPoints;
-            target = path.targets[targetWayPointIndex];
+            if (IsCheeseExistent())
+            {
+                cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
+            }
         }
-
 
 
         void Update()
@@ -33,14 +36,14 @@ namespace Mouse
             if (Vector2.Distance(target.position, transform.position) <= 0.1f)
             {
                 targetWayPointIndex++;
-                if (targetWayPointIndex == path.targets.Length)
+                if (targetWayPointIndex == path.GetPathLength())
                 {
                     ProcessMouseFinish();
                 }
                 else
                 {
-                    MouseRotate(path.targets[targetWayPointIndex]);
-                    target = path.targets[targetWayPointIndex];
+                    target = path.GetTarget(targetWayPointIndex);
+                    MouseRotate(target);
                 }
             }
         }
@@ -57,9 +60,9 @@ namespace Mouse
         private void DamagePlayer()
         {
             playerHealth.TakeDamage(mouseDamage);
-            if (IsCheeseExistent())
+            if (cheese != null && cheese.isActiveAndEnabled)
             {
-                cheese.GetComponent<Cheese>().UpdateSpriteIfNecessary();
+                cheese.UpdateSpriteIfNecessary();
             }
         }
 
@@ -88,7 +91,7 @@ namespace Mouse
         public void SetTargetWayPointIndex(int i)
         {
             targetWayPointIndex = i;
-            target = path.targets[targetWayPointIndex];
+            target = path.GetTarget(targetWayPointIndex);
             MouseRotate(target);
         }
     }
