@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanvasScript : MonoBehaviour
 {
+    //Code credit to user PGJ1 from https://discussions.unity.com/t/stretch-canvas-to-fit-device/716883
     void Start()
     {
         RectTransform rt = GetComponent<RectTransform>();
