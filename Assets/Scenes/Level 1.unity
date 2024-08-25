@@ -2995,8 +2995,18 @@ MonoBehaviour:
   - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
   - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
   - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
-  HeadChefUpgrades: []
-  waiterUpgrades: []
+  HeadChefUpgrades:
+  - {fileID: 5382022526961067999, guid: eaf5623706eea4ef2ba016158309cff4, type: 3}
+  - {fileID: 3278178606034727307, guid: 12c01e967cd3f4f52b6be296ad65348c, type: 3}
+  - {fileID: 3576404127385971326, guid: 4a6c0ca66faf14e9d9d141b8e2856006, type: 3}
+  - {fileID: 2329278772789997264, guid: 504d7dc12e5ce4231a9150b14120fad7, type: 3}
+  - {fileID: 3063072801995536698, guid: 57f4dca9fdd0c49378f69bcc1be9d092, type: 3}
+  waiterUpgrades:
+  - {fileID: 1860389874518480346, guid: 457046fd49b124c5ab48fccea91aa41c, type: 3}
+  - {fileID: 3572226617333509947, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
+  - {fileID: 5226210433837137258, guid: a81f9099c4b5842858894914a4771bec, type: 3}
+  - {fileID: 7371938965104641409, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
+  - {fileID: 4033949866842330905, guid: 9bff7bb1f9e764b199304997ee90d46f, type: 3}
 --- !u!4 &621719805
 Transform:
   m_ObjectHideFlags: 0
@@ -3321,7 +3331,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2041677877
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7988c4ef2024e6d46bedb1447f33a671, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

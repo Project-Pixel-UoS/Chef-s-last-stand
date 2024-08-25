@@ -13,9 +13,15 @@ public class CanvasScript : MonoBehaviour
 
         screenSize *= 02;
 
+
         float sizeY = screenSize.y / rt.rect.height;
         float sizeX = screenSize.x / rt.rect.width;
 
         rt.localScale = new Vector3(sizeX, sizeY, 1);
     }
 }
+
+//9.88, 4,8
+
+//8.54 x 4.80 -> 1920 x 1080 
+//aspect ratio is consistent
