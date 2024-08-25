@@ -180,7 +180,5 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    
 
-    
 }

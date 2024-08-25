@@ -1,3 +1,5 @@
+using GameManagement;
+
 namespace Mouse
 {
     using UnityEngine;
@@ -9,7 +11,6 @@ namespace Mouse
         private Path path;
         private Transform target;
         private int targetWayPointIndex = 0;
-
         public float totalDistanceMoved;
         private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
         private PlayerHealthManager playerHealth;
@@ -18,12 +19,18 @@ namespace Mouse
 
         void Awake()
         {
-            cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
+       
             playerHealth = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             path = GameObject.FindGameObjectWithTag("Path").GetComponent<Path>();
             target = path.GetTarget(targetWayPointIndex);
             stats = gameObject.GetComponent<MouseStats>();
+            if (IsCheeseExistent())
+            {
+                cheese = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Cheese>();
+            }
+
         }
+
 
         void Update()
         {
@@ -45,13 +52,24 @@ namespace Mouse
         private void ProcessMouseFinish()
         {
             Destroy(gameObject);
-            playerHealth.TakeDamage(mouseDamage);
-            if (DoesLevelContainsCheese())
-                cheese.GetComponent<Cheese>().UpdateSpriteIfNecessary();
+            if (!GameManager.gameManager.IsGameOver())
+            {
+                DamagePlayer();
+            }
+
             
         }
 
-        private static bool DoesLevelContainsCheese()
+        private void DamagePlayer()
+        {
+            playerHealth.TakeDamage(mouseDamage);
+            if (cheese != null && cheese.isActiveAndEnabled)
+            {
+                cheese.UpdateSpriteIfNecessary();
+            }
+        }
+
+        private static bool IsCheeseExistent()
         {
             return GameObject.FindGameObjectWithTag("Cheese") != null;
         }

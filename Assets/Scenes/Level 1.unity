@@ -7776,9 +7776,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1961687314}
+  - component: {fileID: 1961687315}
   m_Layer: 0
   m_Name: Path
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7828,6 +7829,32 @@ Transform:
   - {fileID: 1071162273}
   m_Father: {fileID: 1425006890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961687315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961687313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7faaf033046248398b955407c04f28da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 346843279}
+  - {fileID: 1638463597}
+  - {fileID: 857425909}
+  - {fileID: 867900099}
+  - {fileID: 374733622}
+  - {fileID: 810600962}
+  - {fileID: 762973795}
+  - {fileID: 1262417639}
+  - {fileID: 1667990358}
+  - {fileID: 385972832}
+  - {fileID: 1114921725}
+  - {fileID: 631968097}
+  - {fileID: 1071162273}
 --- !u!1 &1964017845
 GameObject:
   m_ObjectHideFlags: 0
