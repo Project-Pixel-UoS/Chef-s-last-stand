@@ -28,7 +28,7 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.fillAmount = currentHealth / 100f;
         if (currentHealth <= 0)
         {
-            GameManager.gameManager.ShowGameOverScreen();
+            GameManager.gameManager.GameOver();
         }
     }
 
