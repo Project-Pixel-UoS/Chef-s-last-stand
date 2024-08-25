@@ -1,4 +1,5 @@
 using System;
+using GameManagement;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
@@ -19,6 +20,12 @@ namespace Cheese
             spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
             
             currentCheeseStageIndex = 0;
+            GameManager.gameManager.onGameOver += DisableCheese;
+        }
+
+        private void DisableCheese()
+        {
+            gameObject.SetActive(false);
         }
 
         public void UpdateSpriteIfNecessary()
