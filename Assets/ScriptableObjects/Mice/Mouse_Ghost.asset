@@ -20,5 +20,4 @@ MonoBehaviour:
   canGhost: 1
   canSplit: 0
   armoured: 0
-  canHeal: 0
   difficulty: 2

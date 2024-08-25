@@ -12,15 +12,9 @@
       ],
       "mouseUnits": [
         {
-          "type": "Woody",
-          "amount": 1,
+          "type": "Pinkie",
+          "amount": 20,
           "timeOfWave": 0,
-          "frequency": 2
-        },
-        {
-          "type": "Medic",
-          "amount": 1,
-          "timeOfWave": 2,
           "frequency": 1
         }
       ]

@@ -13,6 +13,10 @@ namespace GameManagement
         [SerializeField] private GameObject gameOverScreen;
 
         public static GameManager gameManager;
+        
+        public delegate void OnGameOver();
+
+        public OnGameOver onGameOver;
 
         private void Start()
         {
@@ -30,18 +34,14 @@ namespace GameManagement
 
             // initialize level music according to the slider
             var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
-            // print("Level music: " + levelMusic);
-            // print("audio source: " + levelMusic.GetComponent<AudioSource>());
             levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
         }
 
-
-        /// <summary>
-        /// Game Over Screen is shown, current wave with run until completion
-        /// </summary>
+        
         public void GameOver()
         {
             gameOverScreen.SetActive(true);
+            onGameOver();
         }
 
 
@@ -52,11 +52,11 @@ namespace GameManagement
         }
 
         /// <summary>
-        /// Method restarts the level, invoked upon start again button in game over screen inside canvas
+        /// Invoked upon start again button in game over screen inside canvas
         /// </summary>
-        public void RestartLevel() //todo change so that it reload scene
+        public void RestartLevel() 
         {
-            SceneManager.LoadScene("SampleScene"); //Load scene called Game
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
         }
     }
 }

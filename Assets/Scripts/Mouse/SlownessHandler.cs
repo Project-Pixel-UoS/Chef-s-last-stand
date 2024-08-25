@@ -2,19 +2,18 @@ using System.Collections;
 using Projectile;
 using UnityEngine;
 
-namespace Mouse{
+namespace Mouse
+{
     public class SlownessHandler : MonoBehaviour
     {
         private MouseStats stats;
         private bool isSlowed;
-        private SpriteMove spriteMove;
         private Coroutine speedRestoreCoroutine;
 
 
         private void Start()
         {
             stats = gameObject.GetComponent<MouseStats>();
-            spriteMove = GetComponent<SpriteMove>();
         }
 
         /// <summary> reduced speed of mouse </summary>
@@ -24,9 +23,7 @@ namespace Mouse{
         {
             if (isSlowed) //stop chef being doubly slowed
             {
-                //restart co routine so that the duration of slowness is renewed
-                StopCoroutine(speedRestoreCoroutine);
-                speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile));
+                RestartSlownessCoroutine(slownessProjectile);
             }
             else
             {
@@ -34,6 +31,12 @@ namespace Mouse{
                 stats.speed /= slownessProjectile.slownessFactor;
                 speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile)); //runs with delay
             }
+        }
+
+        private void RestartSlownessCoroutine(SlownessProjectile slownessProjectile)
+        {
+            StopCoroutine(speedRestoreCoroutine);
+            speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile));
         }
 
         /// <summary> restores speed back to normal after delay </summary>
@@ -48,14 +51,8 @@ namespace Mouse{
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            GameObject otherGameObject = other.gameObject;
-
-            SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
-
-            if (slownessProjectile != null)
-            {
-                SlowMouse(slownessProjectile);
-            }
+            var slownessProjectile = other.gameObject.GetComponent<SlownessProjectile>();
+            if (slownessProjectile != null) SlowMouse(slownessProjectile);
         }
     }
 }

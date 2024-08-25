@@ -23,6 +23,8 @@ TagManager:
   - MenuMusic
   - LevelMusic
   - Waiter
+  - Cheese
+  - Path
   layers:
   - Default
   - TransparentFX

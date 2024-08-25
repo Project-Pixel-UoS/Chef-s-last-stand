@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce0c6ea506814345961b7fecfe50ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chef: {fileID: 8918619655933509355, guid: e635382ece6ef7a45b5e1c98a6d800ff, type: 3}
+  chef: {fileID: 1109480781222891229, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
   range: {fileID: 50701844}
   parentAfterDrag: {fileID: 0}
   placeableAreas: {fileID: 1458014724}
@@ -1591,14 +1591,6 @@ MonoBehaviour:
   - {fileID: 1114921725}
   - {fileID: 631968097}
   - {fileID: 1071162273}
-  enemy: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
-  mouseTypesList:
-  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
-  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
-  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
-  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
-  - {fileID: 11400000, guid: 568c1f86006a8bd46b188f1dbb789237, type: 2}
-  - {fileID: 11400000, guid: 25af01f4f0b78d9408ac12d7e9ba2ffd, type: 2}
 --- !u!114 &266574284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2993,28 +2985,18 @@ MonoBehaviour:
   upgradeSpecialUI: {fileID: 1694771708}
   prepCookUpgrades:
   - {fileID: 8918619655933509355, guid: e635382ece6ef7a45b5e1c98a6d800ff, type: 3}
-  - {fileID: 7368503182685209937, guid: 3386c0d5b44d14294bf608c4cf21597b, type: 3}
-  - {fileID: 369318071369025501, guid: dcca08c2a09fa4da9a6b9ea3f4e819ec, type: 3}
-  - {fileID: 170236846030654428, guid: 41a6dfd778dbd4b90aab1d341a54e1ae, type: 3}
-  - {fileID: 8216382675313761420, guid: bd555d521337d4993abbd0a0992ccd69, type: 3}
+  - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
+  - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
+  - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
+  - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
   grillardinUpgrades:
   - {fileID: 6793610824908156425, guid: 9da5d2aee3b5fb34eb337aad242dde0a, type: 3}
   - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
   - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
   - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
   - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
-  HeadChefUpgrades:
-  - {fileID: 5382022526961067999, guid: eaf5623706eea4ef2ba016158309cff4, type: 3}
-  - {fileID: 3278178606034727307, guid: 12c01e967cd3f4f52b6be296ad65348c, type: 3}
-  - {fileID: 3576404127385971326, guid: 4a6c0ca66faf14e9d9d141b8e2856006, type: 3}
-  - {fileID: 2329278772789997264, guid: 504d7dc12e5ce4231a9150b14120fad7, type: 3}
-  - {fileID: 3063072801995536698, guid: 57f4dca9fdd0c49378f69bcc1be9d092, type: 3}
-  waiterUpgrades:
-  - {fileID: 1860389874518480346, guid: 457046fd49b124c5ab48fccea91aa41c, type: 3}
-  - {fileID: 3572226617333509947, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
-  - {fileID: 5226210433837137258, guid: a81f9099c4b5842858894914a4771bec, type: 3}
-  - {fileID: 7371938965104641409, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
-  - {fileID: 4033949866842330905, guid: 9bff7bb1f9e764b199304997ee90d46f, type: 3}
+  HeadChefUpgrades: []
+  waiterUpgrades: []
 --- !u!4 &621719805
 Transform:
   m_ObjectHideFlags: 0
@@ -6355,6 +6337,60 @@ Transform:
   - {fileID: 1964017846}
   m_Father: {fileID: 1425006890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1499304865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499304866}
+  - component: {fileID: 1499304867}
+  m_Layer: 0
+  m_Name: MouseFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499304866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499304865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52689755, y: -0.040203102, z: -0.0437989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499304867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499304865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046f8c9599f8406f9aa4f4862691f70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
+  mouseTypesList:
+  - {fileID: 11400000, guid: 568c1f86006a8bd46b188f1dbb789237, type: 2}
+  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
+  - {fileID: 11400000, guid: 25af01f4f0b78d9408ac12d7e9ba2ffd, type: 2}
+  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
+  - {fileID: 11400000, guid: 532d65b96bbe93e40a201d2a0a528c2e, type: 2}
+  - {fileID: 11400000, guid: f20d81e1d16219341b43a001ed128b3f, type: 2}
+  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
+  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
 --- !u!224 &1502159540 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
@@ -8265,3 +8301,4 @@ SceneRoots:
   - {fileID: 621719805}
   - {fileID: 1425006890}
   - {fileID: 1118665281}
+  - {fileID: 1499304866}
