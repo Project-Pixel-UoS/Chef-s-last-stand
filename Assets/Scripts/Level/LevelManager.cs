@@ -16,8 +16,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
-    // public GameObject enemy;
-    // public MiceScriptableObject[] mouseTypesList;
     
     private Waves waves;
     private int currentWave = 0;
@@ -60,41 +58,6 @@ public class LevelManager : MonoBehaviour
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
     }
 
-    /// <summary>Spawns a mouse of indicated mouse type</summary>
-    /// <param name="mouseType"> type of mouse that will be spawned in</param>
-    /// <remarks>Maintained by: Emily</remarks>
-    private void SpawnMouse(MiceScriptableObject mouseType)
-    {
-        GameObject newMouse =
-            Instantiate(enemy, TurningPoints[0].position, transform.rotation); // Instantiate mouse prefab
-        newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-    }
-
-    /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
-    private void SpawnMouse(MiceScriptableObject mouseType, Vector3 position, int index)
-    {
-        GameObject newMouse =
-            Instantiate(enemy, position, transform.rotation); // Instantiate mouse prefab
-        newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-        newMouse.GetComponent<SpriteMove>().SetIndex(index);
-    }
-    /// <summary>
-    /// returns mice scriptable object that corresponds to the mouseName provided
-    /// </summary>
-    /// <exception cref="ArgumentException"> thrown if mouseName does not correspond to any type of mouse</exception>
-    /// <remarks>Maintained by Antosh</remarks>
-    private MiceScriptableObject GetMouseType(string mouseName)
-    {
-        foreach (var mouseType in mouseTypesList)
-        {
-            if (mouseType.mouseName == mouseName)
-            {
-                return mouseType;
-            }
-        }
-
-        throw new ArgumentException("The mouse that your provided doesnt exist!");
-    }
 
     /// <summary>
     /// Displays level path at the beginning of the level.
@@ -218,41 +181,6 @@ public class LevelManager : MonoBehaviour
     }
 
     
-    // private MiceScriptableObject GetRandomMouseType(MouseDifficulty mouseUnitDifficulty)
-    // {
-    //     List<MiceScriptableObject> sameDifficultyMice = GetAllMouseTypes(mouseUnitDifficulty);
-    //     return sameDifficultyMice[Random.Range(0, sameDifficultyMice.Count)];
-    // }
-    //
-    //
-    // /// <summary>
-    // /// Returns a list of all the mouse types corresponding to the mouse unity difficulty
-    // /// </summary>
-    // /// <param name="mouseUnitDifficulty"></param>
-    // /// <returns></returns>
-    // private List<MiceScriptableObject> GetAllMouseTypes(MouseDifficulty mouseUnitDifficulty)
-    // {
-    //     List<MiceScriptableObject> sameDifficultyMice = new List<MiceScriptableObject>();
-    //     foreach (var mouseType in mouseTypesList)
-    //     {
-    //         if (mouseType.difficulty == mouseUnitDifficulty)
-    //         {
-    //             sameDifficultyMice.Add(mouseType);
-    //         }
-    //     }
-    //
-    //     return sameDifficultyMice;
-    // }
 
-    // /// <summary>
-    // /// spawns 2 mice at the trenchcoat mouse's death position.
-    // /// </summary>
-    // /// <param name="position">the positions to spawn the mice on.</param>
-    // /// <param name="index">the next index the split off mice continue to.</param>
-    // public void SplitMouse(Vector3 position, int index)
-    // {
-    //     SpawnMouse(GetMouseType("Woody"), position, index);
-    //     SpawnMouse(GetMouseType("Woody"), new Vector3(position.x - 0.5f, position.y), index);
-    // }
     
 }

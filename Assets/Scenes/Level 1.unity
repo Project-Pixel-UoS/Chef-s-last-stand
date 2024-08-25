@@ -5890,7 +5890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1066172140}
-  healthAmount: 100
+  currentHealth: 0
 --- !u!4 &1311076897
 Transform:
   m_ObjectHideFlags: 0
@@ -6295,7 +6295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1425006885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fed0b1f424c7435999dbd3ab8c95430, type: 3}
+  m_Script: {fileID: 11500000, guid: 178aa78717c63494fac253fb927bb4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1458014724
