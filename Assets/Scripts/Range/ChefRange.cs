@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using Chef.Upgrades;
 using UnityEngine;
-using Util;
-
 namespace Range
 {
     public class ChefRange : Range
