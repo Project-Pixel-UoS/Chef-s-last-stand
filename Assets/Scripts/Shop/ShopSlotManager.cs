@@ -34,12 +34,12 @@ namespace Shop
             {
                 if (chefCost > creditsManager.GetCredits())
                 {
-                    chefImage.color = Color.red;
-                    rangeImage.color = Color.red;
+                    chefImage.color = UnityEngine.Color.red;
+                    rangeImage.color = UnityEngine.Color.red;
                 }
                 else
                 {
-                    chefImage.color = Color.white;
+                    chefImage.color = UnityEngine.Color.white;
                 }
             }
         }
