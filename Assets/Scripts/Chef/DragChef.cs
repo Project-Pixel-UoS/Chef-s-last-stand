@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
 using Chef;
+using Chef.Upgrades;
 using Range;
 using Shop;
 using UnityEngine;
@@ -31,10 +32,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
         range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
-
-        // image = GetComponent<Image>();
-        // slot = transform.parent.GetComponent<Image>();
-
         chefCollider2D = GetComponent<Collider2D>();
     }
 
@@ -53,6 +50,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+
+        ChefTracker.Instance.CurrentChef = null;
     }
 
     /// <summary> Make the item follow the mouse.</summary>

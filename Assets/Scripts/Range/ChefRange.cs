@@ -15,7 +15,9 @@ namespace Range
         {
             rangeSpriteRenderer = rangeObject.GetComponent<SpriteRenderer>();
             ResizeRangeVisual();
+            rangeSpriteRenderer.color = new Color(0.23f, 0.23f, 0.23f, 0.45f);
             rangeSpriteRenderer.enabled = false;
+
         }
 
         void Update()
