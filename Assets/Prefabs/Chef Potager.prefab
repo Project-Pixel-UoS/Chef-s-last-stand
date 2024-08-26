@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8417773937103734731}
   - component: {fileID: -7586934172698215888}
   - component: {fileID: 6270002830517181902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chef Potager
   m_TagString: Untagged
   m_Icon: {fileID: 0}

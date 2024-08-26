@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -458673801847131121}
   - component: {fileID: 5659145071796658612}
   - component: {fileID: 8026327480268486096}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Chef Head
   m_TagString: HeadChef
   m_Icon: {fileID: 0}

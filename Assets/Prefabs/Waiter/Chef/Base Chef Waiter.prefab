@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 5437742673897442452}
   - component: {fileID: 5621596560810024591}
   - component: {fileID: 6477900318618563714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Chef Waiter
   m_TagString: Waiter
   m_Icon: {fileID: 0}

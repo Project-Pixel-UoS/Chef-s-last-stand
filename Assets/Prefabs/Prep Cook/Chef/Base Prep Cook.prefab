@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2325135678370490676}
   - component: {fileID: 449975682554370595}
   - component: {fileID: 5836016623740107159}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Prep Cook
   m_TagString: PrepCook
   m_Icon: {fileID: 0}

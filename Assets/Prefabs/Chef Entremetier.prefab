@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1214436624015060238}
   - component: {fileID: -5866290309611744982}
   - component: {fileID: -9055419470364539618}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chef Entremetier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

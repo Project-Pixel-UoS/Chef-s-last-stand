@@ -2480,6 +2480,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.1993494, y: 1.4528708}
   m_EdgeRadius: 0
+--- !u!1 &477525832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 477525834}
+  - component: {fileID: 477525833}
+  m_Layer: 0
+  m_Name: LevelBackgroundClickListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &477525833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477525832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1964dfc9cf1740c2be5ab08ec55343d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &477525834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477525832}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &483685432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,10 +3023,10 @@ MonoBehaviour:
   upgradeSpecialUI: {fileID: 1694771708}
   prepCookUpgrades:
   - {fileID: 8918619655933509355, guid: e635382ece6ef7a45b5e1c98a6d800ff, type: 3}
-  - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
-  - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
-  - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
-  - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
+  - {fileID: 7368503182685209937, guid: 3386c0d5b44d14294bf608c4cf21597b, type: 3}
+  - {fileID: 369318071369025501, guid: dcca08c2a09fa4da9a6b9ea3f4e819ec, type: 3}
+  - {fileID: 170236846030654428, guid: 41a6dfd778dbd4b90aab1d341a54e1ae, type: 3}
+  - {fileID: 8216382675313761420, guid: bd555d521337d4993abbd0a0992ccd69, type: 3}
   grillardinUpgrades:
   - {fileID: 6793610824908156425, guid: 9da5d2aee3b5fb34eb337aad242dde0a, type: 3}
   - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
@@ -8535,6 +8579,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 477525834}
   - {fileID: 519420032}
   - {fileID: 266574282}
   - {fileID: 1050389011}
