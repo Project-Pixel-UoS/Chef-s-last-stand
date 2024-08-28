@@ -35,13 +35,11 @@ namespace Range
                 healingRingRadius = 0;
                 miceHealedInCurrentPulse.Clear();
             }
-
             ring.localScale = new Vector3(healingRingRadius, healingRingRadius);
         }
 
         private void HealMice()
         {
-            // print(GetMiceInRange(healingRingRadius).Count);
             foreach (GameObject mouse in GetMiceInRange(healingRingRadius))
             {
                 if (miceHealedInCurrentPulse.Contains(mouse) || mouse == gameObject) continue;
