@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 422723165
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.86268425, b: 1, a: 0.5294118}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8417773937103734731}
   - component: {fileID: -7586934172698215888}
   - component: {fileID: 6270002830517181902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chef Potager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,8 +321,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2031268669
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b8331e139cc130d438b60fcbeadf6ba9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

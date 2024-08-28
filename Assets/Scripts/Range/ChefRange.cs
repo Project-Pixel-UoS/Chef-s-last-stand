@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using Chef.Upgrades;
 using UnityEngine;
-using Util;
-
 namespace Range
 {
     public class ChefRange : Range
@@ -15,12 +11,13 @@ namespace Range
         {
             rangeSpriteRenderer = rangeObject.GetComponent<SpriteRenderer>();
             ResizeRangeVisual();
+            rangeSpriteRenderer.color = Color.Color.rangeColor;
             rangeSpriteRenderer.enabled = false;
+
         }
 
         void Update()
         {
-            ClickManager();
             HandleRangeBuff();
         }
         
@@ -40,57 +37,7 @@ namespace Range
             }
         }
 
-        /// <summary> Activates when the Chef is pressed </summary>
-        /// <remarks>Maintained by: Emily Johnston </remarks>
-        void OnMouseDown()
-        {
-            if (ChefTracker.Instance.CurrentChef != gameObject)
-            { 
-                // when chef is pressed while unselected
-                //disable previous chefs range
-                if (ChefTracker.Instance.CurrentChef != null)
-                {
-                    var rangeComp = ChefTracker.Instance.CurrentChef.GetComponent<ChefRange>();
-                    rangeComp.rangeSpriteRenderer.enabled = false;
-                }
-               
-                rangeSpriteRenderer.enabled = true;
-                ChefTracker.Instance.CurrentChef = gameObject;
-            }
-            else
-            {
-                // when chef is pressed while selected
-                rangeSpriteRenderer.enabled = false;
-                ChefTracker.Instance.CurrentChef = null;
-
-            }
-        }
-        
-
-        /// <summary> Checks what is being clicked </summary>
-        /// <remarks>Maintained by: Emily Johnston </remarks>
-        public void ClickManager()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-             
-                if (hit.collider == null)
-                {
-                    if (ChefTracker.Instance.CurrentChef == gameObject && !Utils.checkMousePosOutsideMap())
-                    {
-                        rangeSpriteRenderer.enabled = false;
-                        ChefTracker.Instance.CurrentChef = null;
-
-                    }
-                }
-            }
-        }
-        
-        public void ResizeRangeVisual()
+        private void ResizeRangeVisual()
         {
             rangeObject.transform.localScale =
                 new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen

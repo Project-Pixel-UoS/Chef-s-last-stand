@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1214436624015060238}
   - component: {fileID: -5866290309611744982}
   - component: {fileID: -9055419470364539618}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chef Entremetier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,8 +365,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2031268669
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f9fc425d175a20548ad4ef5f0cef30d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -449,11 +449,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 422723165
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.86268425, b: 1, a: 0.5294118}
+  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

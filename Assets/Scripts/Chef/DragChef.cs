@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
 using Chef;
+using Chef.Upgrades;
 using Range;
 using Shop;
 using UnityEngine;
@@ -12,7 +13,7 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    public Image range; //range that appears when chef is dragged
+    private Image range; //range that appears when chef is dragged
 
     private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
@@ -26,15 +27,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
+        range = transform.GetChild(0).GetComponent<Image>();
+
         range.enabled = false; //hides the range at the beginning
 
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
         range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
-
-        // image = GetComponent<Image>();
-        // slot = transform.parent.GetComponent<Image>();
-
         chefCollider2D = GetComponent<Collider2D>();
     }
 
@@ -53,6 +52,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+
+        ChefTracker.Instance.CurrentChef = null;
     }
 
     /// <summary> Make the item follow the mouse.</summary>
@@ -71,7 +72,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         else
         {
-            range.color = new Color32(0, 220, 255, 135);
+            range.color = Color.Color.rangeColor;
         }
 
         // Convert back from viewport to world space
