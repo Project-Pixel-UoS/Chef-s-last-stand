@@ -25,6 +25,7 @@ TagManager:
   - Waiter
   - Cheese
   - Path
+  - Entremetier
   layers:
   - Default
   - TransparentFX
