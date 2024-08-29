@@ -28,7 +28,9 @@ public class SlownessProjectile : MonoBehaviour
         {
             if (transform.name.Equals("Projectile Potager 4(Clone)"))
             {
-                GameObject gooper = Instantiate(soup, collision.transform.position, collision.transform.rotation);
+                var prevGoop = transform.parent.Find("goop(Clone)");
+                if (prevGoop != null) Destroy(prevGoop.gameObject);
+                GameObject gooper = Instantiate(soup, collision.transform.position, collision.transform.rotation, transform.parent);
                 Destroy(gooper, duration);
             }
             Destroy(gameObject);

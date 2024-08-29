@@ -104,7 +104,7 @@ namespace Chef
         /// </summary>
         private void SpawnProjectile()
         {
-            GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject p = Instantiate(Projectile, transform.position, transform.rotation, transform);
             DamageFactor df = p.GetComponent<DamageFactor>();
             Buff buff = GetComponent<Buff>();
             if (buff != null)
