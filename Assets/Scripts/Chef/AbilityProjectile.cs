@@ -25,7 +25,6 @@ namespace Chef
 
         private void Awake()
         {
-            range = GetComponent<Range>();
             if(Projectile.GetComponent<ProjectileMover>() != null)
             {
                 originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
