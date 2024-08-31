@@ -44,9 +44,9 @@ namespace Mouse
 
         public IEnumerator FlashGreen()
         {
-            sprite.color = Color.green;
+            sprite.color = UnityEngine.Color.green;
             yield return new WaitForSeconds(0.1f);
-            sprite.color = Color.white;
+            sprite.color = UnityEngine.Color.white;
         }
 
         public void DecrementHealth(float damage)

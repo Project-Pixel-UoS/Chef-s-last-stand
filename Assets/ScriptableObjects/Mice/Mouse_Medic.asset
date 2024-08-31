@@ -16,9 +16,10 @@ MonoBehaviour:
   speed: 1
   health: 100
   size: 1
-  sprite: {fileID: 21300000, guid: 758dff74f206ee744a3fe7459d57111c, type: 3}
+  sprite: {fileID: 21300000, guid: 8a1332ac43f363348b8b96a1baba4f49, type: 3}
   canGhost: 0
-  canSplit: 0
+  splitMouseType: 
+  numOfSplitMice: 0
   armoured: 0
   canHeal: 1
   difficulty: 0

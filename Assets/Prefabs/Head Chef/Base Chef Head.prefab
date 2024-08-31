@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2031268669
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 229cd008e1c0be5469a2585bf8b6d825, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -458673801847131121}
   - component: {fileID: 5659145071796658612}
   - component: {fileID: 8026327480268486096}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Chef Head
   m_TagString: HeadChef
   m_Icon: {fileID: 0}
@@ -5197,9 +5197,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: 422723165
+  m_SortingLayer: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.86268425, b: 1, a: 0.5294118}
   m_FlipX: 0

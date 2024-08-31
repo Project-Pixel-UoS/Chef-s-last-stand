@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8683903525441649541}
   - component: {fileID: 8947899773611984627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: goofy_bonk
   m_TagString: ProjectileThrowFX
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1214436624015060238}
   - component: {fileID: -5866290309611744982}
   - component: {fileID: -9055419470364539618}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Chef Entremetier
   m_TagString: Entremetier
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8233970159033142140}
   - component: {fileID: 4357221676546473598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8973134422368199056}
   - component: {fileID: 4587567146336282443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}

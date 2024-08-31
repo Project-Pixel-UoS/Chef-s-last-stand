@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8854314696486517693}
   - component: {fileID: 829756087365659209}
   - component: {fileID: 3120532969132306141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Grillardin
   m_TagString: Grillardin
   m_Icon: {fileID: 0}
@@ -37,10 +37,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2027864309442456130}
   - {fileID: 3272618578974699315}
   - {fileID: 8646569577271590852}
   - {fileID: 6982524721456318708}
+  - {fileID: 2027864309442456130}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &1862279063496394528
@@ -256,8 +256,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2031268669
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ed6cc8deb51ebb34d9c6a798caf89fe7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -340,8 +340,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 422723165
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.86268425, b: 1, a: 0.5294118}
