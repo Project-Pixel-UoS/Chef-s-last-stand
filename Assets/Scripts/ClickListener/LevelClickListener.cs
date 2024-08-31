@@ -18,8 +18,6 @@ namespace ClickListener
             if (IsMouseClicked() && !Utils.checkMousePosOutsideMap())
             {
                 GameObject clickedChef = GetClickedChef();
-                print("CLICKED on chef: " + clickedChef);
-
                 ChefTracker.Instance.OnChefClicked(clickedChef);
             }
         }
@@ -40,7 +38,6 @@ namespace ClickListener
         private GameObject GetClickedChef()
         {
             var clickedItem = CalculateMouseDownRaycast().collider;
-            print("ITEM: " + clickedItem);
             return clickedItem != null ? clickedItem.gameObject : null;
         }
     }

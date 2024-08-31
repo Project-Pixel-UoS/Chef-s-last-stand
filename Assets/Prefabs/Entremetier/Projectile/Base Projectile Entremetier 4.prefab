@@ -24,6 +24,22 @@ PrefabInstance:
       propertyPath: damageDuration
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: m_Size.x
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fa29817f5ef6064c88a682d39812653, type: 3}
+    - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2041573966325760781, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Name
       value: Base Projectile Entremetier 4
