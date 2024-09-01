@@ -13,9 +13,9 @@ using UnityEngine;
 public class AbilityBuff : MonoBehaviour
 {
     Collider2D[] colliders;
-    public float ATK = 0;
-    public float ATKSpeed = 0;
-    public float rangeIncrease = 2;
+    public float ATK = 0; // damage increase multiplier
+    public float ATKSpeed = 0; // speed increase multiplier
+    public float rangeIncrease = 2; // range increase multiplier
 
     private float range;
     private CreditManager creditsManager;

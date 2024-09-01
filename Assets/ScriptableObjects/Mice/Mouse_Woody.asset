@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseName: Woody
   speed: 1
-  health: 10000
+  health: 6
   size: 1
   sprite: {fileID: 21300000, guid: 64256489341d4c64691cb0c052fe2459, type: 3}
   canGhost: 0
-  canSplit: 0
+  splitMouseType: 
+  numOfSplitMice: 0
   armoured: 0
   canHeal: 0
   difficulty: 0

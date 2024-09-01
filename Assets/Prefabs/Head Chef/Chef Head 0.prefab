@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: income
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: cooldown
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 647212506296903406, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109480781222891229, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: m_Name
-      value: Base Chef Head
+      value: Chef Head 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3001,7 +3001,12 @@ MonoBehaviour:
   - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
   - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
   - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
-  headChefUpgrades: []
+  headChefUpgrades:
+  - {fileID: 5382022526961067999, guid: eaf5623706eea4ef2ba016158309cff4, type: 3}
+  - {fileID: 3278178606034727307, guid: 12c01e967cd3f4f52b6be296ad65348c, type: 3}
+  - {fileID: 3576404127385971326, guid: 4a6c0ca66faf14e9d9d141b8e2856006, type: 3}
+  - {fileID: 2329278772789997264, guid: 504d7dc12e5ce4231a9150b14120fad7, type: 3}
+  - {fileID: 3063072801995536698, guid: 57f4dca9fdd0c49378f69bcc1be9d092, type: 3}
   waiterUpgrades: []
   potagerUpgrades:
   - {fileID: 6606718523713685315, guid: e6515802b955e44e2a6e62c5fe83cc48, type: 3}
