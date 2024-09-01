@@ -25,6 +25,7 @@ TagManager:
   - Waiter
   - Cheese
   - Path
+  - Entremetier
   layers:
   - Default
   - TransparentFX
@@ -64,12 +65,6 @@ TagManager:
     locked: 0
   - name: Mice
     uniqueID: 653168571
-    locked: 0
-  - name: Range
-    uniqueID: 422723165
-    locked: 0
-  - name: ChefVisual
-    uniqueID: 2031268669
     locked: 0
   - name: Default
     uniqueID: 0
