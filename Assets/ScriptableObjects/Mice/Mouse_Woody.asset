@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseName: Woody
   speed: 1
-  health: 6
+  health: 5
   size: 1
   sprite: {fileID: 21300000, guid: 64256489341d4c64691cb0c052fe2459, type: 3}
   canGhost: 0
