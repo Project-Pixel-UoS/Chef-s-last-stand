@@ -12,7 +12,7 @@ public class SlownessProjectile : MonoBehaviour
     void Update()
     {
         transform.position += transform.up * Time.deltaTime * projectileSpeed;      // update position
-
+        
         // destroy game object when timer reaches zero
         destroyTime -= Time.deltaTime;
         if (destroyTime <= 0)

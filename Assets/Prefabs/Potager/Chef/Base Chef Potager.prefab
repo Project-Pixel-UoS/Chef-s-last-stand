@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9093825272001794825}
   - component: {fileID: 8900955056199217128}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8417773937103734731}
   - component: {fileID: -7586934172698215888}
   - component: {fileID: 6270002830517181902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Chef Potager
   m_TagString: Potager
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5395228203763114884}
   - component: {fileID: 964805554624470497}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2967375257015232997}
   - component: {fileID: 3187876407269021413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Soup_splash
   m_TagString: ProjectileThrowFX
   m_Icon: {fileID: 0}

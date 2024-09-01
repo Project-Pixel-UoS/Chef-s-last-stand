@@ -12,7 +12,7 @@ namespace Shop
     public class ShopSlotManager : MonoBehaviour
     {
         
-        private Image slotImage;
+        private Image rangeImage;
         private Image chefImage;
 
         // represent cost of buying the chef if attached to side bar slot, or upgrading path 2 of the chef if attached
@@ -23,24 +23,23 @@ namespace Shop
         
         private void Start()
         {
-            chefImage = GetComponent<Image>();
-            slotImage = transform.parent.GetComponent<Image>();
+            chefImage = transform.GetChild(1).GetComponent<Image>();
+            rangeImage = transform.GetChild(0).GetComponent<Image>();
             creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
         }
         
         private void Update()
         {
-            if (slotImage != null)
+            if (rangeImage != null)
             {
                 if (chefCost > creditsManager.GetCredits())
                 {
-                    chefImage.color = Color.red;
-                    slotImage.color = Color.red;
+                    chefImage.color = UnityEngine.Color.red;
+                    rangeImage.color = UnityEngine.Color.red;
                 }
                 else
                 {
-                    chefImage.color = Color.white;
-                    slotImage.color = new Color(0.86f, 0.61f, 0.21f);
+                    chefImage.color = UnityEngine.Color.white;
                 }
             }
         }
@@ -48,7 +47,6 @@ namespace Shop
         /// <summary>
         /// If player has sufficient funds transaction is performed.
         /// </summary>
-        /// <returns>true if enough there are sufficient funds</returns>
         /// <remarks>maintainer: Antosh</remarks>
         public void HandleChefTransaction()
         {

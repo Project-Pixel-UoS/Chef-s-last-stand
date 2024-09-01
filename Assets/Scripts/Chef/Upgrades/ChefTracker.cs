@@ -1,17 +1,16 @@
+using Range;
 using Shop;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Chef.Upgrades
 {
-    
     /// <summary>
     /// Keeps track of the currently selected chef by the player
     /// </summary>
     /// <remarks>Author: Antosh</remarks>
     public class ChefTracker : MonoBehaviour
     {
-        
         public static ChefTracker Instance { get; private set; } // singleton pattern
 
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
@@ -21,27 +20,28 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject[] headChefUpgrades;
         [SerializeField] private GameObject[] waiterUpgrades;
         [SerializeField] private GameObject[] potagerUpgrades;
+        [SerializeField] private GameObject[] entremetierUpgrades;
         private ShopSlotManager upgradeManager;
 
 
         private GameObject currentChef;
+
         public GameObject CurrentChef // property of current selected chef (chef that's been most recently clicked)
         {
             get => currentChef;
             set => SelectNewChef(value);
-        } 
+        }
 
         private void Awake()
         {
-            if (Instance != null && Instance != this) 
-            { 
-                Destroy(this); 
-            } 
-            else 
-            { 
-                Instance = this; 
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
             }
-            
+            else
+            {
+                Instance = this;
+            }
         }
 
         /// <summary>
@@ -50,25 +50,45 @@ namespace Chef.Upgrades
         /// <param name="chef">The new current chef being set, could be null</param>
         private void SelectNewChef(GameObject chef)
         {
-            currentChef = chef;
-            
+            DisableRange(currentChef);
             if (chef == null)
             {
-                // remove upgrade buttons
-                upgradeRangeUI.SetActive(false);
-                upgradeSpecialUI.SetActive(false);
+                RemoveUpdgradeButtons();
             }
             else
             {
-                //display upgrade buttons corresponding to current chef
-                upgradeRangeUI.SetActive(true);
-                currentChef.GetComponent<UpgradeTracker>().RefreshRangeBar();
-                upgradeSpecialUI.SetActive(true);
-                currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
-                upgradeManager = chef.GetComponent<ShopSlotManager>();
-
+                ShowRange(chef);
+                DisplayUpgradeButtons(chef);
             }
-            
+            currentChef = chef;
+        }
+
+        private void ShowRange(GameObject chef)
+        {
+            chef.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        private void DisableRange(GameObject chef)
+        {
+            if (chef != null)
+            {
+                chef.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
+
+        private void DisplayUpgradeButtons(GameObject chef)
+        {
+            upgradeRangeUI.SetActive(true);
+            chef.GetComponent<UpgradeTracker>().RefreshRangeBar();
+            upgradeSpecialUI.SetActive(true);
+            chef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
+            upgradeManager = chef.GetComponent<ShopSlotManager>();
+        }
+
+        private void RemoveUpdgradeButtons()
+        {
+            upgradeRangeUI.SetActive(false);
+            upgradeSpecialUI.SetActive(false);
         }
 
         /// <summary>
@@ -82,9 +102,8 @@ namespace Chef.Upgrades
                 upgradeManager.HandleRangeTransaction();
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath1();
             }
-            
         }
-        
+
         /// <summary>
         /// Invoked when 'Upgrade Range' button on the bottom bar is clicked
         /// </summary>
@@ -98,6 +117,20 @@ namespace Chef.Upgrades
             }
         }
 
+        /// <summary>
+        /// invoked when a chef is pressed
+        /// </summary>
+        /// <param name="lastClickedChef">most recently pressed chef</param>
+        public void OnChefClicked(GameObject lastClickedChef)
+        {
+            SelectNewChef(IsChefAlreadySelected(lastClickedChef) ? null : lastClickedChef);
+        }
+
+        private bool IsChefAlreadySelected(GameObject lastClickedChef)
+        {
+            return lastClickedChef == currentChef;
+        }
+
         public GameObject[] GetPrepCooks()
         {
             return prepCookUpgrades;
@@ -106,10 +139,12 @@ namespace Chef.Upgrades
         {
             return grillardinUpgrades;
         }
+
         public GameObject[] GetHeadChefs()
         {
             return headChefUpgrades;
         }
+
         public GameObject[] GetWaiters()
         {
             return waiterUpgrades;
@@ -119,5 +154,12 @@ namespace Chef.Upgrades
             return potagerUpgrades;
         }
         
+        public GameObject[] GetEntremetiers()
+        {
+            return entremetierUpgrades;
+        }
+
+
+
     }
 }

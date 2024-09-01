@@ -1,19 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Mouse{
+namespace Mouse
+{
     public class SlownessHandler : MonoBehaviour
     {
         private MouseStats stats;
         private bool isSlowed;
-        private SpriteMove spriteMove;
         private Coroutine speedRestoreCoroutine;
 
 
         private void Start()
         {
             stats = gameObject.GetComponent<MouseStats>();
-            spriteMove = GetComponent<SpriteMove>();
         }
 
         /// <summary> reduced speed of mouse </summary>
@@ -23,9 +22,7 @@ namespace Mouse{
         {
             if (isSlowed) //stop chef being doubly slowed
             {
-                //restart co routine so that the duration of slowness is renewed
-                StopCoroutine(speedRestoreCoroutine);
-                speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile));
+                RestartSlownessCoroutine(slownessProjectile);
             }
             else
             {
@@ -33,6 +30,12 @@ namespace Mouse{
                 stats.speed /= slownessProjectile.slownessFactor;
                 speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile)); //runs with delay
             }
+        }
+
+        private void RestartSlownessCoroutine(SlownessProjectile slownessProjectile)
+        {
+            StopCoroutine(speedRestoreCoroutine);
+            speedRestoreCoroutine = StartCoroutine(RestoreSpeed(slownessProjectile));
         }
 
         /// <summary> restores speed back to normal after delay </summary>
@@ -47,14 +50,13 @@ namespace Mouse{
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            GameObject otherGameObject = other.gameObject;
+             GameObject otherGameObject = other.gameObject;
+             SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
+             if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
+             {
+                 SlowMouse(slownessProjectile);
+             }
 
-            SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
-
-            if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
-            {
-                SlowMouse(slownessProjectile);
-            }
         }
     }
 }

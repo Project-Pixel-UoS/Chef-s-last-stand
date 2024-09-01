@@ -31,6 +31,7 @@ namespace Chef.Upgrades
                 main.startSpeed = 1.23f * main.startSpeed.constant;
                 emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
             }
+
             RefreshRangeBar();
         }
 
@@ -44,6 +45,8 @@ namespace Chef.Upgrades
             var chefs = GetChefUpgrades();
             //instantiate new chef
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
+            print("chefs: " + chefs);
+            print("chef " + chefs[path2Status]);
             GameObject newChef = Instantiate(chefs[path2Status], transform.position, transform.rotation,
                 chefParent.transform);
             var range = newChef.GetComponent<ChefRange>();
@@ -80,19 +83,27 @@ namespace Chef.Upgrades
             if (transform.CompareTag("PrepCook"))
             {
                 return ChefTracker.Instance.GetPrepCooks();
-            }else if (transform.CompareTag("Grillardin"))
+            }
+            else if (transform.CompareTag("Grillardin"))
             {
                 return ChefTracker.Instance.GetGrillardins();
-            }else if (transform.CompareTag("HeadChef"))
+            }
+            else if (transform.CompareTag("HeadChef"))
             {
                 return ChefTracker.Instance.GetHeadChefs();
-            }else if (transform.CompareTag("Waiter"))
+            }
+            else if (transform.CompareTag("Waiter"))
             {
                 return ChefTracker.Instance.GetWaiters();
             }else if (transform.CompareTag("Potager"))
             {
                 return ChefTracker.Instance.GetPotagers();
             }
+            else if (transform.CompareTag("Entremetier"))
+            {
+                return ChefTracker.Instance.GetEntremetiers();
+            }
+
             return null;
         }
 
@@ -121,6 +132,7 @@ namespace Chef.Upgrades
         {
             return path2Status;
         }
+
         public int getPath1Status()
         {
             return path1Status;

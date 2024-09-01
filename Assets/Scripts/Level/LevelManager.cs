@@ -16,15 +16,12 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
-    public GameObject enemy;
-    public MiceScriptableObject[] mouseTypesList;
     
     private Waves waves;
     private int currentWave = 0;
     private int miceToBeReleased = -1; //set to -1 so that game doesnt automatically transition into next wave
 
     private WaveTextManager waveTextManager;
-
 
     private void Awake()
     {
@@ -36,6 +33,7 @@ public class LevelManager : MonoBehaviour
         LM = this;
         LoadLevel();
         StartCoroutine(StartWaveWithText());
+        RouteSignal();
     }
 
     private void Update()
@@ -49,11 +47,8 @@ public class LevelManager : MonoBehaviour
 
                 StartCoroutine(TransitionIntoNextWave());
             }
-      
         }
     }
-
-
 
     /// <summary>fills the waves list with data from JSON file</summary>
     /// <remarks>Maintained by: Antosh</remarks>
@@ -64,42 +59,50 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    /// <summary>Spawns a mouse of indicated mouse type</summary>
-    /// <param name="mouseType"> type of mouse that will be spawned in</param>
-    /// <remarks>Maintained by: Emily</remarks>
-    private void SpawnMouse(MiceScriptableObject mouseType)
-    {
-        GameObject newMouse =
-            Instantiate(enemy, TurningPoints[0].position, transform.rotation); // Instantiate mouse prefab
-        newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-    }
-
-    /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
-    private void SpawnMouse(MiceScriptableObject mouseType, Vector3 position, int index)
-    {
-        GameObject newMouse =
-            Instantiate(enemy, position, transform.rotation); // Instantiate mouse prefab
-        newMouse.GetComponent<MouseStats>().loadStats(mouseType);
-        newMouse.GetComponent<SpriteMove>().SetIndex(index);
-    }
     /// <summary>
-    /// returns mice scriptable object that corresponds to the mouseName provided
+    /// Displays level path at the beginning of the level.
     /// </summary>
-    /// <exception cref="ArgumentException"> thrown if mouseName does not correspond to any type of mouse</exception>
-    /// <remarks>Maintained by Antosh</remarks>
-    private MiceScriptableObject GetMouseType(string mouseName)
+    private void RouteSignal()
     {
-        foreach (var mouseType in mouseTypesList)
+        foreach (Transform point in TurningPoints)
         {
-            if (mouseType.mouseName == mouseName)
-            {
-                return mouseType;
-            }
+            SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
+            IEnumerator c = FadeIn(sprite);
+            StartCoroutine(c);
         }
-
-        throw new ArgumentException("The mouse that your provided doesnt exist!");
     }
 
+    private IEnumerator FadeIn(SpriteRenderer sprite)
+    {
+        while (GetAlpha(sprite) < 1)
+        {
+            ChangeAlpha(sprite, GetAlpha(sprite) + 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(3);
+        StartCoroutine(FadeOut(sprite));
+    }
+
+    private IEnumerator FadeOut(SpriteRenderer sprite)
+    {
+        while (GetAlpha(sprite) >= 0.1)
+        {
+            ChangeAlpha(sprite, GetAlpha(sprite) - 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public void ChangeAlpha(SpriteRenderer sprite, float alpha)
+    {
+        var color = sprite.color;
+        color.a = alpha;
+        sprite.color = color;
+    }
+
+    private float GetAlpha(SpriteRenderer sprite)
+    {
+        return sprite.color.a;
+    }
 
     /// <summary>The process of one wave</summary>
     /// <remarks>Maintained by: Emily</remarks>
@@ -158,7 +161,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(mouseUnit.timeOfWave);
         for (int i = 0; i < mouseUnit.amount; i++)
         {
-            SpawnMouse(GetMouseType(mouseUnit.type));
+            MouseFactory.Instance.SpawnMouse(mouseUnit.type);
             miceToBeReleased--;
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
@@ -171,49 +174,11 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(mouseUnit.timeOfWave);
         for (int i = 0; i < mouseUnit.amount; i++)
         {
-            SpawnMouse(GetRandomMouseType(mouseUnit.difficulty));
+            MouseFactory.Instance.SpawnMouse(mouseUnit.difficulty);
             miceToBeReleased--;
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
     }
 
-    
-    private MiceScriptableObject GetRandomMouseType(MouseDifficulty mouseUnitDifficulty)
-    {
-        List<MiceScriptableObject> sameDifficultyMice = GetAllMouseTypes(mouseUnitDifficulty);
-        return sameDifficultyMice[Random.Range(0, sameDifficultyMice.Count)];
-    }
 
-
-    /// <summary>
-    /// Returns a list of all the mouse types corresponding to the mouse unity difficulty
-    /// </summary>
-    /// <param name="mouseUnitDifficulty"></param>
-    /// <returns></returns>
-    private List<MiceScriptableObject> GetAllMouseTypes(MouseDifficulty mouseUnitDifficulty)
-    {
-        List<MiceScriptableObject> sameDifficultyMice = new List<MiceScriptableObject>();
-        foreach (var mouseType in mouseTypesList)
-        {
-            // if (String.Equals(mouseType.difficulty.ToString(), mouseUnitDifficulty,
-            //         StringComparison.CurrentCultureIgnoreCase))
-            if (mouseType.difficulty == mouseUnitDifficulty)
-            {
-                sameDifficultyMice.Add(mouseType);
-            }
-        }
-
-        return sameDifficultyMice;
-    }
-
-    /// <summary>
-    /// spawns 2 mice at the trenchcoat mouse's death position.
-    /// </summary>
-    /// <param name="position">the positions to spawn the mice on.</param>
-    /// <param name="index">the next index the split off mice continue to.</param>
-    public void SplitMouse(Vector3 position, int index)
-    {
-        SpawnMouse(GetMouseType("Woody"), position, index);
-        SpawnMouse(GetMouseType("Woody"), new Vector3(position.x - 0.5f, position.y), index);
-    }
 }
