@@ -17,8 +17,9 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject upgradeSpecialUI;
         [SerializeField] private GameObject[] prepCookUpgrades;
         [SerializeField] private GameObject[] grillardinUpgrades;
-        [SerializeField] private GameObject[] HeadChefUpgrades;
+        [SerializeField] private GameObject[] headChefUpgrades;
         [SerializeField] private GameObject[] waiterUpgrades;
+        [SerializeField] private GameObject[] potagerUpgrades;
         [SerializeField] private GameObject[] entremetierUpgrades;
         private ShopSlotManager upgradeManager;
 
@@ -141,13 +142,18 @@ namespace Chef.Upgrades
 
         public GameObject[] GetHeadChefs()
         {
-            return HeadChefUpgrades;
+            return headChefUpgrades;
         }
 
         public GameObject[] GetWaiters()
         {
             return waiterUpgrades;
         }
+        public GameObject[] GetPotagers()
+        {
+            return potagerUpgrades;
+        }
+        
         public GameObject[] GetEntremetiers()
         {
             return entremetierUpgrades;

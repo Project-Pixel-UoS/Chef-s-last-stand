@@ -2991,18 +2991,24 @@ MonoBehaviour:
   upgradeSpecialUI: {fileID: 1694771708}
   prepCookUpgrades:
   - {fileID: 8918619655933509355, guid: e635382ece6ef7a45b5e1c98a6d800ff, type: 3}
-  - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
-  - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
-  - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
-  - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
+  - {fileID: 7368503182685209937, guid: 3386c0d5b44d14294bf608c4cf21597b, type: 3}
+  - {fileID: 369318071369025501, guid: dcca08c2a09fa4da9a6b9ea3f4e819ec, type: 3}
+  - {fileID: 170236846030654428, guid: 41a6dfd778dbd4b90aab1d341a54e1ae, type: 3}
+  - {fileID: 8216382675313761420, guid: bd555d521337d4993abbd0a0992ccd69, type: 3}
   grillardinUpgrades:
   - {fileID: 6793610824908156425, guid: 9da5d2aee3b5fb34eb337aad242dde0a, type: 3}
   - {fileID: 4441752816778171411, guid: aad72ef7326012246b8c18c00d215732, type: 3}
   - {fileID: 5096937886776715573, guid: 4ea214d3f64f22a48b4faaf2eaad6dc5, type: 3}
   - {fileID: 1955640439392362053, guid: ab8fb22e263e62b43aab72fb470d12e3, type: 3}
   - {fileID: 7415927751869972777, guid: 0ec86c7170530ca49ab6f61d25fd70b3, type: 3}
-  HeadChefUpgrades: []
+  headChefUpgrades: []
   waiterUpgrades: []
+  potagerUpgrades:
+  - {fileID: 6606718523713685315, guid: e6515802b955e44e2a6e62c5fe83cc48, type: 3}
+  - {fileID: 3214730166764726401, guid: 16da327eaaa37437ea3d7fa34e4696da, type: 3}
+  - {fileID: 1411327357221626818, guid: b616bffcb00614dba86127fb52125e1b, type: 3}
+  - {fileID: 1217206349449072670, guid: 5e5f9533d83544b69b734b2d3cd824be, type: 3}
+  - {fileID: 3444367643440370664, guid: 3910e583306e7467487c2aee94da8008, type: 3}
   entremetierUpgrades:
   - {fileID: 8161887325091484187, guid: dddef4814ee774756a47344ff008fe12, type: 3}
   - {fileID: 809726828073736811, guid: dac872d34ea6c4147b543dd96b35109e, type: 3}
@@ -3333,7 +3339,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2041677877
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7988c4ef2024e6d46bedb1447f33a671, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4971,7 +4977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce0c6ea506814345961b7fecfe50ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chef: {fileID: 1109480781222891229, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+  chef: {fileID: 8161887325091484187, guid: dddef4814ee774756a47344ff008fe12, type: 3}
   parentAfterDrag: {fileID: 0}
   placeableAreas: {fileID: 1458014724}
 --- !u!1 &1050389008

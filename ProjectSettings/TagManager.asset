@@ -23,9 +23,9 @@ TagManager:
   - MenuMusic
   - LevelMusic
   - Waiter
-  - Cheese
-  - Path
+  - Potager
   - Entremetier
+  - Cheese
   layers:
   - Default
   - TransparentFX
@@ -62,6 +62,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 2041677877
+    locked: 0
+  - name: Obstacle
+    uniqueID: 2864497401
     locked: 0
   - name: Mice
     uniqueID: 653168571

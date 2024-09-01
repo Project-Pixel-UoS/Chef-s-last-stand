@@ -1,5 +1,4 @@
 using System.Collections;
-using Projectile;
 using UnityEngine;
 
 namespace Mouse
@@ -51,8 +50,13 @@ namespace Mouse
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            var slownessProjectile = other.gameObject.GetComponent<SlownessProjectile>();
-            if (slownessProjectile != null) SlowMouse(slownessProjectile);
+             GameObject otherGameObject = other.gameObject;
+             SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
+             if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
+             {
+                 SlowMouse(slownessProjectile);
+             }
+
         }
     }
 }

@@ -25,7 +25,14 @@ namespace Chef
 
         private void Awake()
         {
-            originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
+            if(Projectile.GetComponent<ProjectileMover>() != null)
+            {
+                originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
+            }
+            else
+            {
+                originalSpeed = Projectile.GetComponent<SlownessProjectile>().projectileSpeed;
+            }
             upgradeTracker = GetComponent<UpgradeTracker>();
         }
 
@@ -97,13 +104,21 @@ namespace Chef
         /// </summary>
         private void SpawnProjectile()
         {
-            GameObject p = Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject p = Instantiate(Projectile, transform.position, transform.rotation, transform);
             DamageFactor df = p.GetComponent<DamageFactor>();
             Buff buff = GetComponent<Buff>();
             if (buff != null)
             {
                 p.GetComponent<DamageFactor>().damage = df.damage * buff.damageIncrease;
-                p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
+                if(p.GetComponent<ProjectileMover>() != null)
+                {
+                    p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
+                }
+                else
+                {
+                    p.GetComponent<SlownessProjectile>().projectileSpeed = originalSpeed * buff.speedIncrease;
+                }
+                
             }
         }
         

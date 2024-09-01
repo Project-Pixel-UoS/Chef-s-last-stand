@@ -1,10 +1,9 @@
-using System.Collections;
-using Projectile;
-using UnityEngine;
+
 
 namespace Mouse
 {
-
+    using System.Collections;
+    using UnityEngine;
 
     /// <summary>
     /// Designed to be attached to mice.
