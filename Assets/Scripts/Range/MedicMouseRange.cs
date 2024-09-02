@@ -7,7 +7,6 @@ using UnityEngine;
 namespace Range
 {
     
-    //the bug is because a circle collider of radius 1 isnt the same size as my image of local scale 1. Units must be lines up.
     public class MedicMouseRange : Range
     {
         private Transform ring;
@@ -29,7 +28,7 @@ namespace Range
 
         private void UpdateHealingRing()
         {
-            healingRingRadius += 0.01f;
+            healingRingRadius += 0.6f * Time.deltaTime;
             if (healingRingRadius > radius)
             {
                 healingRingRadius = 0;

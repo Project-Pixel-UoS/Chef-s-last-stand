@@ -18,9 +18,9 @@
           "frequency": 0.1
         },
         {
-          "type": "Pinkie",
-          "amount": 10,
-          "timeOfWave": 8,
+          "type": "Medic",
+          "amount": 1,
+          "timeOfWave": 1,
           "frequency": 0.1
         }
       ]
