@@ -21,11 +21,13 @@ namespace Chef
         private float originalSpeed;
         private UpgradeTracker upgradeTracker;
         private int projectilesThrown;
+        private Buff buff;
 
 
         private void Awake()
         {
             upgradeTracker = GetComponent<UpgradeTracker>();
+            buff = GetComponent<Buff>();
         }
 
         /// <summary> Update variable if buff added </summary>
@@ -85,7 +87,7 @@ namespace Chef
         private void Shoot()
         {
             if (cooldownTimer > 0) return;
-            cooldownTimer = cooldown;
+            cooldownTimer = cooldown * buff.reloadTimeMultiplier;
             Utils.PlayShootSound(gameObject);
             SpawnProjectile();
             StartCoroutine(HandleMaxPrepCook());
@@ -102,15 +104,6 @@ namespace Chef
             if (buff != null)
             {
                 p.GetComponent<DamageFactor>().damage = df.damage * buff.damageMultiplier;
-                // if(p.GetComponent<ProjectileMover>() != null)
-                // {
-                //     p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.reloadTimeMultiplier;
-                // }
-                // else
-                // {
-                //     p.GetComponent<SlownessProjectile>().projectileSpeed = originalSpeed * buff.reloadTimeMultiplier;
-                // }
-                
             }
         }
         
