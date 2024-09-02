@@ -5,6 +5,7 @@ using Mouse;
 using Range;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Component should be attatched to the head chef who has the ability to buff other chefs
@@ -13,9 +14,9 @@ using UnityEngine;
 public class AbilityBuff : MonoBehaviour
 {
     Collider2D[] colliders;
-    public float ATK = 0; // damage increase multiplier
-    public float ATKSpeed = 0; // speed increase multiplier
-    public float rangeIncrease = 2; // range increase multiplier
+    public float damageMultiplier;
+    public float reloadTimeMultiplier; 
+    public float rangeRadiusMultiplier = 2; 
 
     private float range;
     private CreditManager creditsManager;
@@ -47,10 +48,9 @@ public class AbilityBuff : MonoBehaviour
             // If it has no "buff" object, it isn't a chef
             if (buff != null)
             {
-                // If it has a "buff" object, set its stats
-                buff.damageIncrease = ATK;
-                buff.speedIncrease = ATKSpeed;
-                buff.rangeIncrease = rangeIncrease;
+                buff.damageMultiplier = damageMultiplier;
+                buff.reloadTimeMultiplier = reloadTimeMultiplier;
+                buff.rangeRadiusMultiplier = rangeRadiusMultiplier;
             }
         }
     }

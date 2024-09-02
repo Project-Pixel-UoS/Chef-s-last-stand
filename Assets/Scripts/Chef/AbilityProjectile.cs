@@ -25,14 +25,6 @@ namespace Chef
 
         private void Awake()
         {
-            if(Projectile.GetComponent<ProjectileMover>() != null)
-            {
-                originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
-            }
-            else
-            {
-                originalSpeed = Projectile.GetComponent<SlownessProjectile>().projectileSpeed;
-            }
             upgradeTracker = GetComponent<UpgradeTracker>();
         }
 
@@ -109,15 +101,15 @@ namespace Chef
             Buff buff = GetComponent<Buff>();
             if (buff != null)
             {
-                p.GetComponent<DamageFactor>().damage = df.damage * buff.damageIncrease;
-                if(p.GetComponent<ProjectileMover>() != null)
-                {
-                    p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
-                }
-                else
-                {
-                    p.GetComponent<SlownessProjectile>().projectileSpeed = originalSpeed * buff.speedIncrease;
-                }
+                p.GetComponent<DamageFactor>().damage = df.damage * buff.damageMultiplier;
+                // if(p.GetComponent<ProjectileMover>() != null)
+                // {
+                //     p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.reloadTimeMultiplier;
+                // }
+                // else
+                // {
+                //     p.GetComponent<SlownessProjectile>().projectileSpeed = originalSpeed * buff.reloadTimeMultiplier;
+                // }
                 
             }
         }

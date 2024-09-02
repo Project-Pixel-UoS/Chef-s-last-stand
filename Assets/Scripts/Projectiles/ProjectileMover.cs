@@ -10,14 +10,16 @@ using UnityEngine;
 /// <remarks>Author: Ben</remarks>
 public class ProjectileMover : MonoBehaviour
 {
-    public float projectileSpeed; // speed of projectile
-    [SerializeField] private float destroyTime; // time until projectile is destroyed (seconds)
+    [SerializeField] private float destroyTime = 1; // time until projectile is destroyed (seconds)
 
     void Update()
     {
-        transform.position += transform.up * Time.deltaTime * projectileSpeed;      // update position
+        MoveProjectile(15);
+        DestroyIfTimerIs0();
+    }
 
-        // destroy game object when timer reaches zero
+    private void DestroyIfTimerIs0()
+    {
         destroyTime -= Time.deltaTime;
         if (destroyTime <= 0)
         {
@@ -25,7 +27,11 @@ public class ProjectileMover : MonoBehaviour
         }
     }
 
-    // if projectile collides with game object, it is destroyed
+    private void MoveProjectile(int speed)
+    {
+        transform.position += transform.up * Time.deltaTime * speed;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Mouse"))
