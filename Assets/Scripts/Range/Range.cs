@@ -36,6 +36,17 @@ namespace Range
         /// <remarks> maintained by: Antosh </remarks>
         protected List<GameObject> GetMiceInRange(float radius)
         {
+            float ratio = 0;
+            if (Screen.height > 1080)
+            {
+                ratio = 1080 / (float)Screen.height;
+                radius *= ratio;
+            }
+            else if (Screen.width > 1920)
+            {
+                ratio = 1920 / (float)Screen.width;
+                radius *= ratio;
+            }
             var miceInRange = new List<GameObject>();
             var colliders = Physics2D.OverlapCircleAll(transform.position, radius);
             if (colliders != null)
