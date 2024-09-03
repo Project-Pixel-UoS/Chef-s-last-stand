@@ -31,8 +31,23 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         range.enabled = false; //hides the range at the beginning
 
+        
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
+        //Debug.Log(Screen.height);
+        //Debug.Log(Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0)));
+        //Debug.Log(Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0)));
+        float ratio = 0;
+        if (Screen.height > 1080)
+        {
+            ratio = 1080 / (float)Screen.height;
+            rangeSize *= ratio;
+        }else if(Screen.width > 1920)
+        {
+            ratio = 1920 / (float)Screen.width;
+            rangeSize *= ratio;
+        }
+        Debug.Log(ratio);
         range.transform.localScale = rangeSize;
         chefCollider2D = GetComponent<Collider2D>();
     }

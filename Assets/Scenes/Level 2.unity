@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 37368063}
   - component: {fileID: 37368065}
   - component: {fileID: 37368064}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sidebar
   m_TagString: SideBar
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ RectTransform:
   m_GameObject: {fileID: 37368062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 305538152}
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 272899012}
   - component: {fileID: 272899014}
   - component: {fileID: 272899013}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,6 +1146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1251,7 +1255,7 @@ GameObject:
   - component: {fileID: 305538155}
   - component: {fileID: 305538154}
   - component: {fileID: 305538153}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1361,6 +1365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1465,7 +1473,7 @@ GameObject:
   - component: {fileID: 320944476}
   - component: {fileID: 320944478}
   - component: {fileID: 320944477}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,6 +1611,10 @@ PrefabInstance:
     - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Name
       value: Slot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Pivot.x
@@ -2061,7 +2073,7 @@ GameObject:
   - component: {fileID: 388593919}
   - component: {fileID: 388593921}
   - component: {fileID: 388593920}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChefVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2140,6 +2152,10 @@ PrefabInstance:
     - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Name
       value: Slot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Pivot.x
@@ -2457,7 +2473,7 @@ GameObject:
   - component: {fileID: 516457469}
   - component: {fileID: 516457468}
   - component: {fileID: 516457467}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Pause Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2732,7 +2748,7 @@ GameObject:
   - component: {fileID: 540264861}
   - component: {fileID: 540264860}
   - component: {fileID: 540264859}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3035,7 +3051,7 @@ GameObject:
   - component: {fileID: 663931156}
   - component: {fileID: 663931155}
   - component: {fileID: 663931154}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Speed Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3264,7 +3280,7 @@ GameObject:
   - component: {fileID: 741499895}
   - component: {fileID: 741499897}
   - component: {fileID: 741499896}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3436,7 +3452,7 @@ GameObject:
   - component: {fileID: 762193009}
   - component: {fileID: 762193011}
   - component: {fileID: 762193010}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChefVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3771,7 +3787,7 @@ GameObject:
   - component: {fileID: 787560257}
   - component: {fileID: 787560259}
   - component: {fileID: 787560258}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChefVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3847,7 +3863,7 @@ GameObject:
   - component: {fileID: 806032508}
   - component: {fileID: 806032507}
   - component: {fileID: 806032506}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4066,7 +4082,7 @@ GameObject:
   - component: {fileID: 834463530}
   - component: {fileID: 834463532}
   - component: {fileID: 834463533}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4269,7 +4285,7 @@ GameObject:
   - component: {fileID: 864720414}
   - component: {fileID: 864720416}
   - component: {fileID: 864720415}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChefVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4637,7 +4653,7 @@ GameObject:
   - component: {fileID: 897952422}
   - component: {fileID: 897952424}
   - component: {fileID: 897952423}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4883,7 +4899,7 @@ GameObject:
   - component: {fileID: 1049963582}
   - component: {fileID: 1049963581}
   - component: {fileID: 1049963580}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5064,7 +5080,7 @@ GameObject:
   - component: {fileID: 1053384217}
   - component: {fileID: 1053384219}
   - component: {fileID: 1053384218}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5810,7 +5826,7 @@ GameObject:
   - component: {fileID: 1169047661}
   - component: {fileID: 1169047660}
   - component: {fileID: 1169047659}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5923,7 +5939,7 @@ GameObject:
   - component: {fileID: 1175810488}
   - component: {fileID: 1175810490}
   - component: {fileID: 1175810489}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6065,7 +6081,7 @@ GameObject:
   - component: {fileID: 1210818731}
   - component: {fileID: 1210818733}
   - component: {fileID: 1210818732}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6377,7 +6393,7 @@ GameObject:
   - component: {fileID: 1397749779}
   - component: {fileID: 1397749778}
   - component: {fileID: 1397749777}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6494,6 +6510,10 @@ PrefabInstance:
     - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Name
       value: Slot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Pivot.x
@@ -6884,7 +6904,7 @@ GameObject:
   - component: {fileID: 1635351424}
   - component: {fileID: 1635351426}
   - component: {fileID: 1635351425}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChefVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7066,7 +7086,7 @@ GameObject:
   - component: {fileID: 1651474812}
   - component: {fileID: 1651474811}
   - component: {fileID: 1651474810}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7477,6 +7497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4215029721901386122, guid: e913146b084e3d044892ebe755914ecc, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7989848505078483016, guid: e913146b084e3d044892ebe755914ecc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7847,7 +7871,7 @@ GameObject:
   - component: {fileID: 1829670143}
   - component: {fileID: 1829670145}
   - component: {fileID: 1829670144}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ChefVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
