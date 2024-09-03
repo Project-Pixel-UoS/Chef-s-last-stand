@@ -13,7 +13,7 @@ using UnityEngine.EventSystems;
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    private Image range; //range that appears when chef is dragged
+    private SpriteRenderer range; //range that appears when chef is dragged
 
     private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
@@ -27,13 +27,13 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
-        range = transform.GetChild(0).GetComponent<Image>();
+        range = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         range.enabled = false; //hides the range at the beginning
 
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-        range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
+        range.transform.localScale = rangeSize;
         chefCollider2D = GetComponent<Collider2D>();
     }
 
