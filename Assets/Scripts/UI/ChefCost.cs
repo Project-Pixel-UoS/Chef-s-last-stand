@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Shop;
 public class ChefCost : MonoBehaviour
 {
     [SerializeField] GameObject shopItem;
@@ -10,7 +11,8 @@ public class ChefCost : MonoBehaviour
     void Start()
     {
         textObject = gameObject.GetComponent<TMPro.TextMeshProUGUI>();
-        int cost = shopItem.GetComponent<DragChef>().getChef().GetComponent<ShopItem>().getCost();
-        textObject.text = cost.ToString();
+        GameObject chef = shopItem.GetComponent<DragChef>().getChef();
+        int chefCost = chef.GetComponent<ShopSlotManager>().getChefCost();
+        textObject.text = chefCost.ToString();
     }
 }

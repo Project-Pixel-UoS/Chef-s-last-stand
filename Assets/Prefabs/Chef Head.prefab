@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -458673801847131121}
   - component: {fileID: 5659145071796658612}
   - component: {fileID: 8026327480268486096}
-  - component: {fileID: -3213953612346507634}
+  - component: {fileID: 2017418771618613764}
   m_Layer: 0
   m_Name: Chef Head
   m_TagString: HeadChef
@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentChefTier: 0
 --- !u!114 &8026327480268486096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befb4aee4658faf4bbb4f7c7a3efbe1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3213953612346507634
+--- !u!114 &2017418771618613764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,10 +244,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109480781222891229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888a785604ba73c468fb3242288a17c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9308f0044b2eed34dbdebdb946cdbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 150
+  chefCosts: 0a000000140000001e0000002800000032000000
+  rangeCost: 10
 --- !u!1 &6208724048470825412
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,8 +43,7 @@ namespace Chef.Upgrades
             var chefs = GetChefUpgrades();
             //instantiate new chef
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
-            GameObject newChef = Instantiate(chefs[path2Status], transform.position, transform.rotation,
-                chefParent.transform);
+            GameObject newChef = Instantiate(chefs[path2Status], transform.position, transform.rotation, chefParent.transform);
             var range = newChef.GetComponent<Range>();
             range.Radius = GetComponent<Range>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active

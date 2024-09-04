@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8417773937103734731}
   - component: {fileID: -7586934172698215888}
   - component: {fileID: 6270002830517181902}
-  - component: {fileID: -686816822757655610}
+  - component: {fileID: 4272882827091466803}
   m_Layer: 0
   m_Name: Chef Potager
   m_TagString: Untagged
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentChefTier: 0
 --- !u!114 &-7586934172698215888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +251,7 @@ MonoBehaviour:
   damageIncrease: 1
   speedIncrease: 1
   rangeIncrease: 1
---- !u!114 &-686816822757655610
+--- !u!114 &4272882827091466803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,10 +260,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109480781222891229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888a785604ba73c468fb3242288a17c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9308f0044b2eed34dbdebdb946cdbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 70
+  chefCosts: 0a000000140000001e0000002800000032000000
+  rangeCost: 10
 --- !u!1 &4054988461792321345
 GameObject:
   m_ObjectHideFlags: 0

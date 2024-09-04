@@ -17,6 +17,8 @@ namespace Chef.Upgrades
         [SerializeField] private float sellChefFraction;
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
+        [SerializeField] private TMPro.TextMeshProUGUI rangeCostTextObject;
+        [SerializeField] private TMPro.TextMeshProUGUI abilityCostTextObject;
         [SerializeField] private GameObject sellChefUI;
         [SerializeField] private GameObject[] prepCookUpgrades;
         [SerializeField] private GameObject[] grillardinUpgrades;
@@ -61,13 +63,19 @@ namespace Chef.Upgrades
             }
             else
             {
+                upgradeManager = chef.GetComponent<ShopSlotManager>();
+
                 //display upgrade buttons corresponding to current chef
+
                 upgradeRangeUI.SetActive(true);
                 currentChef.GetComponent<UpgradeTracker>().RefreshRangeBar();
+                rangeCostTextObject.text = ("Upgrade range\n(" + upgradeManager.getRangeCost() + ")");
+
                 upgradeSpecialUI.SetActive(true);
-                sellChefUI.SetActive(true);
                 currentChef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
-                upgradeManager = chef.GetComponent<ShopSlotManager>();
+                abilityCostTextObject.text = ("Upgrade ability\n(" + upgradeManager.getChefCost() + ")");
+
+                sellChefUI.SetActive(true);
 
                 TMPro.TextMeshProUGUI sellText = sellChefUI.GetComponentInChildren<TMPro.TextMeshProUGUI>();
                 sellText.text = "Sell chef\n" + "("+getSellCost()+")";
@@ -81,9 +89,10 @@ namespace Chef.Upgrades
         public void UpgradeCurrentChefPath1()
         {
             var chef = currentChef.GetComponent<UpgradeTracker>();
-            if (chef.getPath1Status() != 4 && upgradeManager.CheckSufficientRangeFunds())
+            if (chef.getPath1Status() != 4 && upgradeManager.checkSufficientFunds(upgradeManager.getChefCost()))
             {
-                upgradeManager.HandleRangeTransaction();
+                CreditManager creditManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+                creditManager.SpendCredits(upgradeManager.getRangeCost());
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath1();
             }
             
@@ -95,9 +104,10 @@ namespace Chef.Upgrades
         public void UpgradeCurrentChefPath2()
         {
             var chef = currentChef.GetComponent<UpgradeTracker>();
-            if (chef.getPath2Status() != 4 && upgradeManager.CheckSufficientChefFunds())
+            if (chef.getPath2Status() != 4 && upgradeManager.checkSufficientFunds(upgradeManager.getChefCost()))
             {
-                upgradeManager.HandleChefTransaction();
+                CreditManager creditManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+                creditManager.SpendCredits(upgradeManager.getChefCost());
                 currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
             }
         }
@@ -123,9 +133,19 @@ namespace Chef.Upgrades
 
         private int getSellCost(){
             // Get chef/upgrade costs
-            int chefCost = currentChef.GetComponent<ShopItem>().getCost();
-            int upgradeCost = 0;
-            return (int)(sellChefFraction * (chefCost+upgradeCost));
+            ShopSlotManager chefShopSlotManager = currentChef.GetComponent<ShopSlotManager>();
+            
+            int totalChefCost = 0;
+
+            for(int i = 1; i < chefShopSlotManager.currentChefTier; i++){    // UpgradeCosts
+                totalChefCost += chefShopSlotManager.chefCosts[i];
+            }
+
+            if(chefShopSlotManager.currentChefTier == 0){    // Initial buy cost
+                totalChefCost = chefShopSlotManager.chefCosts[0];
+            }
+
+            return (int)(sellChefFraction * totalChefCost);
         }
 
         public GameObject[] GetPrepCooks()

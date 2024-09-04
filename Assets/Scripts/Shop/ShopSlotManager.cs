@@ -15,34 +15,24 @@ namespace Shop
         private Image chefImage;
         // represent cost of buying the chef if attached to side bar slot, or upgrading path 2 of the chef if attached
         // to chef game object
-        private int chefCost;
-        private int rangeCost;
+        public int[] chefCosts;
+        public int rangeCost;
         private CreditManager creditsManager;
+        [SerializeField] public int currentChefTier;
         
         private void Start()
         {
+            loadCosts();
             chefImage = GetComponent<Image>();
             slotImage = transform.parent.GetComponent<Image>();
             creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
-
-
-            // For some ungodly reason, this script is used for both managing 
-            // shop slots, and also being attached to chefs for something else entirely??
-            // When attached to a chef, this error will be thrown. 
-            try{
-                GameObject chef = GetComponent<DragChef>().getChef();
-                chefCost = chef.GetComponent<ShopItem>().getCost();
-            }
-            catch(Exception e){
-                Debug.Log(e);
-            }
         }
         
         private void Update()
         {
             if (slotImage != null)
             {
-                if (chefCost > creditsManager.GetCredits())
+                if (chefCosts[currentChefTier] > creditsManager.GetCredits())
                 {
                     chefImage.color = Color.red;
                     slotImage.color = Color.red;
@@ -55,33 +45,30 @@ namespace Shop
             }
         }
 
-        /// <summary>
-        /// If player has sufficient funds transaction is performed.
-        /// </summary>
-        /// <returns>true if enough there are sufficient funds</returns>
-        /// <remarks>maintainer: Antosh</remarks>
-        public void HandleChefTransaction()
-        {
-            creditsManager.SpendCredits(chefCost);
+        private void loadCosts(){
+            try{
+                chefCosts = GetComponent<ChefPricing>().getChefCosts();
+                rangeCost = GetComponent<ChefPricing>().getRangeCost();
+            } catch{
+                GameObject chef = GetComponent<DragChef>().getChef();
+                chefCosts = chef.GetComponent<ChefPricing>().getChefCosts();
+                rangeCost = chef.GetComponent<ChefPricing>().getRangeCost();
+            }
         }
 
-        public bool CheckSufficientChefFunds()
-        {
-            return creditsManager.GetCredits() >= chefCost;
+        public int getChefCost(){
+            loadCosts();
+            return chefCosts[currentChefTier];
         }
 
-        public bool HandleRangeTransaction()
-        {
-            bool sufficientFunds = creditsManager.SpendCredits(rangeCost);
-            return sufficientFunds;
-        }
-        
-        public bool CheckSufficientRangeFunds()
-        {
-            return creditsManager.GetCredits() >= rangeCost;
+        public int getRangeCost(){
+            loadCosts();
+            return rangeCost;
         }
 
-
+        public bool checkSufficientFunds(int cost){
+            return cost <= creditsManager.GetCredits();
+        }
 
     }
 }

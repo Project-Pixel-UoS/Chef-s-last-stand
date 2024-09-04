@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1214436624015060238}
   - component: {fileID: -5866290309611744982}
   - component: {fileID: -9055419470364539618}
-  - component: {fileID: 7826830831228795072}
+  - component: {fileID: 3721405554359248124}
   m_Layer: 0
   m_Name: Entremetier Base
   m_TagString: Entremetier
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentChefTier: 0
 --- !u!114 &-5866290309611744982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
   damageIncrease: 1
   speedIncrease: 1
   rangeIncrease: 1
---- !u!114 &7826830831228795072
+--- !u!114 &3721405554359248124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,10 +304,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109480781222891229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888a785604ba73c468fb3242288a17c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9308f0044b2eed34dbdebdb946cdbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 100
+  chefCosts: 0a000000140000001e0000002800000032000000
+  rangeCost: 10
 --- !u!1 &1441932722712167455
 GameObject:
   m_ObjectHideFlags: 0
