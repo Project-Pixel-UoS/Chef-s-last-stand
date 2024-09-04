@@ -44,7 +44,8 @@ namespace Range
         }
 
         protected override void SetRadius(float radius)
-        {
+        { 
+            Debug.Log("visual radius "+radius);
             ResizeRangeVisual();
             base.SetRadius(radius);
         }

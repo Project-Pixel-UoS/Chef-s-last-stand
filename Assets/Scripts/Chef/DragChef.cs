@@ -28,26 +28,21 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
         range = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
 
         range.enabled = false; //hides the range at the beginning
 
-        
+
+        //if screen is taller than wider, game will expand, so we have to decrease the range size
+        //if screen is wider than taller, game will shrink, difference is negligible btw devices.
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-        //Debug.Log(Screen.height);
-        //Debug.Log(Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0)));
-        //Debug.Log(Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0)));
-        float ratio = 0;
-        if (Screen.height > 1080)
+        if (canvas.rect.height > 1090) 
         {
-            ratio = 1080 / (float)Screen.height;
-            rangeSize *= ratio;
-        }else if(Screen.width > 1920)
-        {
-            ratio = 1920 / (float)Screen.width;
+            float ratio = 1080 / (float)canvas.rect.height;
             rangeSize *= ratio;
         }
-        Debug.Log(ratio);
+        
         range.transform.localScale = rangeSize;
         chefCollider2D = GetComponent<Collider2D>();
     }
