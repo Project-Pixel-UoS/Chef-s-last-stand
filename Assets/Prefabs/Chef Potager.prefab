@@ -223,6 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chefCosts: 
+  rangeCost: 0
   currentChefTier: 0
 --- !u!114 &-7586934172698215888
 MonoBehaviour:
@@ -263,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9308f0044b2eed34dbdebdb946cdbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCosts: 0a000000140000001e0000002800000032000000
+  chefCosts: 0a000000140000001e00000028000000320000003c000000
   rangeCost: 10
 --- !u!1 &4054988461792321345
 GameObject:
