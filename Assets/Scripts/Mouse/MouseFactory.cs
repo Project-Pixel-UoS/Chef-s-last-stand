@@ -53,10 +53,10 @@ namespace Mouse
             var startPos = GameObject.Find("Path").GetComponent<Path>().GetStartPos();
             SpawnMouse(mouseType, startPos,1, 0);
 
-            var startPos2 = GameObject.Find("Path 2").GetComponent<Path>().GetStartPos();
+            var startPos2 = GameObject.Find("Path 2");
             if(startPos2 != null)
             {
-                SpawnMouse(mouseType, startPos2, 1, 0);
+                SpawnMouse(mouseType, startPos2.GetComponent<Path>().GetStartPos(), 1, 0);
             }
         }
         

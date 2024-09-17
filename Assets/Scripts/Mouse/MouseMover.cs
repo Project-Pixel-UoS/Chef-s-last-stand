@@ -9,7 +9,7 @@ namespace Mouse
     {
         private MouseStats stats;
         private Path path;
-        private Path path2;
+        private GameObject path2;
         private Transform target;
         private int targetWayPointIndex = 0;
         public float totalDistanceMoved;
@@ -23,10 +23,10 @@ namespace Mouse
        
             playerHealth = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             path = GameObject.Find("Path").GetComponent<Path>();
-            path2 = GameObject.Find("Path 2").GetComponent<Path>();
-            if (Vector3.Distance(transform.position, path2.GetStartPos()) <= 0.1)
+            path2 = GameObject.Find("Path 2");
+            if (path2 != null && Vector3.Distance(transform.position, path2.GetComponent<Path>().GetStartPos()) <= 0.1)
             {
-                path = path2;
+                path = path2.GetComponent<Path>();
             }
             target = path.GetTarget(targetWayPointIndex);
             stats = gameObject.GetComponent<MouseStats>();
