@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
+    public Transform[] TurningPoints2;
     
     private Waves waves;
     private int currentWave = 0;
@@ -33,7 +34,8 @@ public class LevelManager : MonoBehaviour
         LM = this;
         LoadLevel();
         StartCoroutine(StartWaveWithText());
-        RouteSignal();
+        RouteSignal(TurningPoints);
+        RouteSignal(TurningPoints2);
     }
 
     private void Update()
@@ -62,9 +64,9 @@ public class LevelManager : MonoBehaviour
     /// <summary>
     /// Displays level path at the beginning of the level.
     /// </summary>
-    private void RouteSignal()
+    private void RouteSignal(Transform[] tps)
     {
-        foreach (Transform point in TurningPoints)
+        foreach (Transform point in tps)
         {
             SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
             IEnumerator c = FadeIn(sprite);

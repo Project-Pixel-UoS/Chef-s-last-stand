@@ -50,8 +50,14 @@ namespace Mouse
         /// <param name="mouseType"> type of mouse that will be spawned in</param>
         public void SpawnMouse(MiceScriptableObject mouseType)
         {
-            var startPos = GameObject.FindGameObjectWithTag("Path").GetComponent<Path>().GetStartPos();
+            var startPos = GameObject.Find("Path").GetComponent<Path>().GetStartPos();
             SpawnMouse(mouseType, startPos,1, 0);
+
+            var startPos2 = GameObject.Find("Path 2").GetComponent<Path>().GetStartPos();
+            if(startPos2 != null)
+            {
+                SpawnMouse(mouseType, startPos2, 1, 0);
+            }
         }
         
         

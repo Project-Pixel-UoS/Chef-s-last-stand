@@ -11,7 +11,7 @@ namespace Mouse
     {
         [SerializeField] private Transform[] targets;
         
-        public Vector2 GetStartPos()
+        public Vector3 GetStartPos()
         {
             return targets[0].position;
         }
