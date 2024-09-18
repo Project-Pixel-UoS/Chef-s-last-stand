@@ -37,12 +37,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //if screen is wider than taller, game will shrink, difference is negligible btw devices.
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-        if (canvas.rect.height > 1090) 
-        {
-            float ratio = 1080 / (float)canvas.rect.height;
-            rangeSize *= ratio;
-        }
-        
+        // if (canvas.rect.height > 1090) 
+        // {
+        //     float ratio = 1080 / (float)canvas.rect.height;
+        //     rangeSize *= ratio;
+        // }
+        //
         range.transform.localScale = rangeSize;
         chefCollider2D = GetComponent<Collider2D>();
     }
