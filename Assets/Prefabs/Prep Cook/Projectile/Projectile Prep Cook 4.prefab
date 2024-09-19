@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile Prep Cook 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5944407029019408347, guid: e2244ea97e5a97e4cb2bf64dd1f8d088, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7989630137209133669, guid: e2244ea97e5a97e4cb2bf64dd1f8d088, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
