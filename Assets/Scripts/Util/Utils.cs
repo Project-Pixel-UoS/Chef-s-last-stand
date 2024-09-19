@@ -67,6 +67,13 @@ namespace Util
             return null;
         }
         
+        public static bool IsScreenToWide()
+        {
+            float currentAspectRatio = (float)Screen.width / Screen.height;
+            float targetAspectRatio = (float)16 / 9;
+            return currentAspectRatio >= targetAspectRatio;
+        }
+        
 
 
      

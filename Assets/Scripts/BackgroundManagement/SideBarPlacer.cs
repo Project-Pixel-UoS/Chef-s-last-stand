@@ -9,7 +9,7 @@ namespace BackgroundManagement
 
         private void Start()
         {
-            if (IsScreenToWide())
+            if (Util.Utils.IsScreenToWide())
             {
                 int numOfBricksToPlace = 3;
                 AddBrickToTheLeftOfGameStage(numOfBricksToPlace);
@@ -17,12 +17,7 @@ namespace BackgroundManagement
             }
         }
 
-        private static bool IsScreenToWide()
-        {
-            float currentAspectRatio = (float)Screen.width / Screen.height;
-            float targetAspectRatio = (float)16 / 9;
-            return currentAspectRatio >= targetAspectRatio;
-        }
+ 
 
         private void AddBrickToTheRightOfGameStage(int numOfBricksToPlace)
         {

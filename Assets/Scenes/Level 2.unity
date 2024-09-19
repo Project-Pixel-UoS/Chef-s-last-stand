@@ -967,7 +967,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 272899012}
-  - component: {fileID: 272899014}
   - component: {fileID: 272899013}
   m_Layer: 0
   m_Name: Range
@@ -976,13 +975,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &272899012
-RectTransform:
+--- !u!4 &272899012
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272899011}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3101125, y: 1.3101125, z: 1.5719103}
@@ -990,11 +990,6 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 540264858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -60}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &272899013
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1047,14 +1042,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &272899014
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272899011}
-  m_CullTransparentMesh: 1
 --- !u!1 &277913983
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,7 +5110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053384217}
   - component: {fileID: 1053384219}
-  - component: {fileID: 1053384218}
+  - component: {fileID: 1053384220}
   m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
@@ -5150,7 +5137,15 @@ RectTransform:
   m_AnchoredPosition: {x: 60, y: -60}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &1053384218
+--- !u!222 &1053384219
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053384216}
+  m_CullTransparentMesh: 1
+--- !u!212 &1053384220
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5192,7 +5187,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 2c6aa234a8382a941a86ec1e441df20c, type: 3}
-  m_Color: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 0.4509804}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5202,14 +5197,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &1053384219
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053384216}
-  m_CullTransparentMesh: 1
 --- !u!1 &1060269546
 GameObject:
   m_ObjectHideFlags: 0

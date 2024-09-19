@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
@@ -8,12 +9,14 @@ using Shop;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Util;
 
 
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
     private SpriteRenderer range; //range that appears when chef is dragged
+
 
     private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
@@ -24,13 +27,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Start()
     {
-
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
         range = transform.GetChild(0).GetComponent<SpriteRenderer>();
         RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
-
-        range.enabled = false; //hides the range at the beginning
 
 
         //if screen is taller than wider, game will expand, so we have to decrease the range size
@@ -42,8 +42,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //     float ratio = 1080 / (float)canvas.rect.height;
         //     rangeSize *= ratio;
         // }
-        //
+
+        range.enabled = false; //hides the range at the beginning
         range.transform.localScale = rangeSize;
+
         chefCollider2D = GetComponent<Collider2D>();
     }
 
@@ -84,6 +86,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             range.color = Color.Color.rangeColor;
         }
+
 
         // Convert back from viewport to world space
         dropPosition = transform.position;
@@ -158,11 +161,14 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ben Brixton</remarks>
     private bool CheckInArea()
     {
-        foreach (Transform child in placeableAreas.transform){
-            if(chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<BoxCollider2D>().bounds)){
+        foreach (Transform child in placeableAreas.transform)
+        {
+            if (chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<BoxCollider2D>().bounds))
+            {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -173,10 +179,25 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         transform.SetParent(parentAfterDrag);
         range.enabled = false;
 
-        if(GameManager.isPaused){ return; }     // Cannot place when game is paused
-        if(GameManager.gameManager.IsGameOver()){ return; }     // Cannot place if game has ended
-        if(!shopSlotManager.CheckSufficientChefFunds()){ return; }      // Cannot place if don't have sufficient funds
-        if(CheckOutOfBounds()){ return; }       // Cannot place if out of bounds
+        if (GameManager.isPaused)
+        {
+            return;
+        } // Cannot place when game is paused
+
+        if (GameManager.gameManager.IsGameOver())
+        {
+            return;
+        } // Cannot place if game has ended
+
+        if (!shopSlotManager.CheckSufficientChefFunds())
+        {
+            return;
+        } // Cannot place if don't have sufficient funds
+
+        if (CheckOutOfBounds())
+        {
+            return;
+        } // Cannot place if out of bounds
 
         shopSlotManager.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
