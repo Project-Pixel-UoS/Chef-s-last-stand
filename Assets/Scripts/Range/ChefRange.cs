@@ -21,7 +21,7 @@ namespace Range
             HandleRangeBuff();
         }
         
-        private void HandleRangeBuff()
+        private void HandleRangeBuff()//TODO this needs an update because it onnly makes the circles bigger not the acutal range
         {
             Buff bf = GetComponent<Buff>();
             if (bf != null)
@@ -44,7 +44,8 @@ namespace Range
         }
 
         protected override void SetRadius(float radius)
-        {
+        { 
+            Debug.Log("visual radius "+radius);
             ResizeRangeVisual();
             base.SetRadius(radius);
         }

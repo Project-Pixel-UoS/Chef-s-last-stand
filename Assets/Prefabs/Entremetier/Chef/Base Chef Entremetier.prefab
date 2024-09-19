@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48653809b5f441879642bbae15aa0f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  radius: 2
   rangeObject: {fileID: 6208724048470825412}
 --- !u!61 &7533226973392138995
 BoxCollider2D:
