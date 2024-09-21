@@ -33,6 +33,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
         range = transform.GetChild(0).GetComponent<SpriteRenderer>();
         rectTransform = GetComponent<RectTransform>();
+        DisplayChefPrice();
+
+        
         RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
 
 
@@ -50,6 +53,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         range.transform.localScale = rangeSize;
 
         chefCollider2D = GetComponent<Collider2D>();
+    }
+
+    private void DisplayChefPrice()
+    {
+        gameObject.transform.parent.GetComponentInChildren<Text>().text = shopSlotManager.chefCost.ToString() + '$';
     }
 
 
