@@ -9,15 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f801903af36977445b855e1772d2fcb4, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Mouse_Wooly
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
   mouseName: Wooly
   speed: 0.75
   health: 100
   size: 1.5
   sprite: {fileID: 21300000, guid: 8df4e962f73e4fd43b38d67f80224087, type: 3}
   canGhost: 0
-  canSplit: 0
+  splitMouseType: 
+  numOfSplitMice: 0
   armoured: 0
+  canHeal: 0
   difficulty: 0
