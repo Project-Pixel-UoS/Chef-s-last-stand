@@ -25,11 +25,14 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private ShopSlotManager shopSlotManager;
     [SerializeField] private GameObject placeableAreas;
 
+    private RectTransform rectTransform;
+
     private void Start()
     {
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
         range = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        rectTransform = GetComponent<RectTransform>();
         RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
 
 
@@ -176,7 +179,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(parentAfterDrag);
+        ReturnSpriteToSlot();
         range.enabled = false;
 
         if (GameManager.isPaused)
@@ -202,5 +205,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         shopSlotManager.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
+    }
+
+    private void ReturnSpriteToSlot()
+    {
+        transform.SetParent(parentAfterDrag);
+        rectTransform.localPosition = new Vector2(0, 0);
     }
 }
