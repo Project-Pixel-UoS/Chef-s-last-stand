@@ -26,6 +26,8 @@ TagManager:
   - Potager
   - Entremetier
   - Cheese
+  - Path
+  - Bricks
   layers:
   - Default
   - TransparentFX

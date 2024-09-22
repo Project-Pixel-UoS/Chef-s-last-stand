@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
@@ -8,12 +9,14 @@ using Shop;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Util;
 
 
 public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject chef;
-    private Image range; //range that appears when chef is dragged
+    private SpriteRenderer range; //range that appears when chef is dragged
+
 
     private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
@@ -22,19 +25,39 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private ShopSlotManager shopSlotManager;
     [SerializeField] private GameObject placeableAreas;
 
+    private RectTransform rectTransform;
+
     private void Start()
     {
-
         shopSlotManager = GetComponent<ShopSlotManager>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
-        range = transform.GetChild(0).GetComponent<Image>();
+        range = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        rectTransform = GetComponent<RectTransform>();
+        DisplayChefPrice();
 
-        range.enabled = false; //hides the range at the beginning
+        
+        RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
 
+
+        //if screen is taller than wider, game will expand, so we have to decrease the range size
+        //if screen is wider than taller, game will shrink, difference is negligible btw devices.
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-        range.rectTransform.sizeDelta = new Vector2(rangeSize.x, rangeSize.y);
+        // if (canvas.rect.height > 1090) 
+        // {
+        //     float ratio = 1080 / (float)canvas.rect.height;
+        //     rangeSize *= ratio;
+        // }
+
+        range.enabled = false; //hides the range at the beginning
+        range.transform.localScale = rangeSize;
+
         chefCollider2D = GetComponent<Collider2D>();
+    }
+
+    private void DisplayChefPrice()
+    {
+        gameObject.transform.parent.GetComponentInChildren<Text>().text = shopSlotManager.chefCost.ToString() + '$';
     }
 
 
@@ -74,6 +97,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             range.color = Color.Color.rangeColor;
         }
+
 
         // Convert back from viewport to world space
         dropPosition = transform.position;
@@ -148,11 +172,14 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintainer: Ben Brixton</remarks>
     private bool CheckInArea()
     {
-        foreach (Transform child in placeableAreas.transform){
-            if(chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<BoxCollider2D>().bounds)){
+        foreach (Transform child in placeableAreas.transform)
+        {
+            if (chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<BoxCollider2D>().bounds))
+            {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -160,16 +187,37 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(parentAfterDrag);
+        ReturnSpriteToSlot();
         range.enabled = false;
 
-        if(GameManager.isPaused){ return; }     // Cannot place when game is paused
-        if(GameManager.gameManager.IsGameOver()){ return; }     // Cannot place if game has ended
-        if(!shopSlotManager.CheckSufficientChefFunds()){ return; }      // Cannot place if don't have sufficient funds
-        if(CheckOutOfBounds()){ return; }       // Cannot place if out of bounds
+        if (GameManager.isPaused)
+        {
+            return;
+        } // Cannot place when game is paused
+
+        if (GameManager.gameManager.IsGameOver())
+        {
+            return;
+        } // Cannot place if game has ended
+
+        if (!shopSlotManager.CheckSufficientChefFunds())
+        {
+            return;
+        } // Cannot place if don't have sufficient funds
+
+        if (CheckOutOfBounds())
+        {
+            return;
+        } // Cannot place if out of bounds
 
         shopSlotManager.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
+    }
+
+    private void ReturnSpriteToSlot()
+    {
+        transform.SetParent(parentAfterDrag);
+        rectTransform.localPosition = new Vector2(0, 0);
     }
 }

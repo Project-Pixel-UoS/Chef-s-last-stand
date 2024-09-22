@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.UI;
 
 namespace GameManagement
 {
@@ -16,9 +17,9 @@ namespace GameManagement
 
         public static GameManager gameManager;
 
-      
 
         public delegate void OnGameOver();
+
         public OnGameOver onGameOver;
 
         private void Awake()
@@ -35,10 +36,8 @@ namespace GameManagement
 
         private void Start()
         {
- 
-
             var menuMusic = GameObject.FindGameObjectWithTag("MenuMusic");
-            if (menuMusic != null)// if statement only needed to developer mode, in case start from level scene
+            if (menuMusic != null) // if statement only needed to developer mode, in case start from level scene
             {
                 GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Stop();
             }
@@ -48,12 +47,10 @@ namespace GameManagement
             levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
         }
 
-        
         public void GameOver()
         {
             gameOverScreen.SetActive(true);
             onGameOver?.Invoke();
-
         }
 
 
@@ -66,9 +63,9 @@ namespace GameManagement
         /// <summary>
         /// Invoked upon start again button in game over screen inside canvas
         /// </summary>
-        public void RestartLevel() 
+        public void RestartLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -19,11 +19,13 @@ namespace Chef.Upgrades
         /// <summary>
         /// invoked upon Upgrade Range button on the bottom bar is clicked
         /// </summary>
-        public void UpgradePath1()
+        public void UpgradeRange()
         {
             if (path1Status == maxLevel1) return; // if path is upgraded to the max we can not upgrade it again
             path1Status++;
             GetComponent<ChefRange>().Radius *= 1.1f;
+            GetComponent<ChefRange>().RadiusWithoutBuff *= 1.1f;
+
             if (gameObject.CompareTag("Grillardin"))
             {
                 var main = GetComponentInChildren<ParticleSystem>().main;
@@ -38,7 +40,7 @@ namespace Chef.Upgrades
         /// <summary>
         /// invoked upon Upgrade Special button on the bottom bar is clicked
         /// </summary>
-        public void UpgradePath2()
+        public void UpgradeAbility()
         {
             if (path2Status == maxLevel2) return;
             path2Status++;
@@ -49,6 +51,7 @@ namespace Chef.Upgrades
                 chefParent.transform);
             DuplicateUpgradeStats(newChef);//change new chef stats
             var range = newChef.GetComponent<ChefRange>();
+            range.RadiusWithoutBuff = GetComponent<ChefRange>().Radius; //copy range upgrade status over
             range.Radius = GetComponent<ChefRange>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active
             RefreshSpecialBar();

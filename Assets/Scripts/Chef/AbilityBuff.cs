@@ -5,6 +5,7 @@ using Mouse;
 using Range;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Component should be attatched to the head chef who has the ability to buff other chefs
@@ -13,9 +14,11 @@ using UnityEngine;
 public class AbilityBuff : MonoBehaviour
 {
     Collider2D[] colliders;
-    public float ATK = 0; // damage increase multiplier
-    public float ATKSpeed = 0; // speed increase multiplier
-    public float rangeIncrease = 2; // range increase multiplier
+    public float damageMultiplier = 1; // damage increase multiplier
+    public float reloadTimeMultiplier = 1; // speed increase multiplier
+    public float rangeMultiplier = 1.5f; // range increase multiplier
+    
+    
 
     private float range;
     private CreditManager creditsManager;
@@ -30,27 +33,28 @@ public class AbilityBuff : MonoBehaviour
         range = GetComponent<ChefRange>().Radius;
         colliders = Physics2D.OverlapCircleAll(transform.position, range);
         creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
+
     }
 
     void Update()
     {
         if (passiveIncomeCDTimer > 0) passiveIncomeCDTimer -= Time.deltaTime;
         HandlePassiveIncome();
-        // Get all objects within range
-        colliders = Physics2D.OverlapCircleAll(transform.position, range);
+        BuffChefs();
+    }
+
+    private void BuffChefs()
+    {
+        colliders = Physics2D.OverlapCircleAll(transform.position, range); // Get all objects within range
         foreach (Collider2D collider in colliders)
         {
-            GameObject gameObject = collider.gameObject; // Get game object
+            Buff buff = collider.gameObject.GetComponent<Buff>();
+            if (buff != null) // If it has no "buff" object, it isn't a chef
 
-            Buff buff = gameObject.GetComponent<Buff>(); // Get its "buff" object
-
-            // If it has no "buff" object, it isn't a chef
-            if (buff != null)
             {
-                // If it has a "buff" object, set its stats
-                buff.damageIncrease = ATK;
-                buff.speedIncrease = ATKSpeed;
-                buff.rangeIncrease = rangeIncrease;
+                buff.DamageMultiplier = damageMultiplier;
+                buff.ReloadTimeMultiplier = reloadTimeMultiplier;
+                buff.RangeMultiplier = rangeMultiplier;
             }
         }
     }
@@ -60,7 +64,7 @@ public class AbilityBuff : MonoBehaviour
     /// </summary>
     private void HandlePassiveIncome()
     {
-        if(transform.name.Equals("Chef Head 3(Clone)") || transform.name.Equals("Chef Head 4(Clone)"))
+        if (transform.name.Equals("Chef Head 3(Clone)") || transform.name.Equals("Chef Head 4(Clone)"))
         {
             if (passiveIncomeCDTimer > 0) return;
             creditsManager.IncreaseMoney(income);
