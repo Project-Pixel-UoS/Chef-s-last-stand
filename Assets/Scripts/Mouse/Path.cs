@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using GameManagement;
 using Unity.VisualScripting;
 
@@ -10,8 +12,28 @@ namespace Mouse
     public class Path : MonoBehaviour
     {
         [SerializeField] private Transform[] targets;
+
+        private void Start()
+        {
+            
+            RouteSignal(targets);
+        }
         
-        public Vector2 GetStartPos()
+        /// <summary>
+        /// Displays level path at the beginning of the level.
+        /// </summary>
+        private void RouteSignal(Transform[] tps)
+        {
+            foreach (Transform point in tps)
+            {
+                SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
+                IEnumerator c = LevelManager.LM.FadeIn(sprite);
+                print("c: " + c);
+                StartCoroutine(c);
+            }
+        }
+
+        public Vector3 GetStartPos()
         {
             return targets[0].position;
         }
