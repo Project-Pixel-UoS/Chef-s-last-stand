@@ -4,11 +4,12 @@ using UnityEngine;
 using Chef;
 using System.IO;
 using Range;
+using UnityEngine.Serialization;
 using Util;
 
 public class AbilityPlate : MonoBehaviour
 {
-    [SerializeField] private GameObject Projectile; // projectile for chef to shoot
+    [FormerlySerializedAs("Projectile")] [SerializeField] private GameObject projectile; // projectile for chef to shoot
     [SerializeField] private float cooldown; // time in between chef shooting (seconds)
     [SerializeField] private float maxPlates;
     [SerializeField] private Sprite brokenPlate;
@@ -16,6 +17,8 @@ public class AbilityPlate : MonoBehaviour
     private float cooldownTimer; // timer for cooldown in between shots
     private float currPlates;
     private ChefRange chefRange;
+    private Buff buff;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,13 +28,13 @@ public class AbilityPlate : MonoBehaviour
     private void Awake()
     {
         chefRange = GetComponent<ChefRange>();
+        buff = GetComponent<Buff>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Projectile == null) return;
-        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
+        if (projectile == null) return;
+        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime / buff.ReloadTimeMultiplier ;
         if (currPlates != maxPlates)
         {
             var targetPos = GetPlatePosition();
@@ -96,7 +99,7 @@ public class AbilityPlate : MonoBehaviour
         if (cooldownTimer > 0) return null;
         cooldownTimer = cooldown;
         Utils.PlayShootSound(gameObject);
-        var plate = Instantiate(Projectile, transform.position, transform.rotation);
+        var plate = Instantiate(projectile, transform.position, transform.rotation);
         plate.transform.parent = transform;
         currPlates++;
         return plate;
@@ -114,6 +117,11 @@ public class AbilityPlate : MonoBehaviour
             plate.transform.position = Vector3.MoveTowards(plate.transform.position, targetPos, 0.1f);
             yield return new WaitForSeconds(0.01f);
         }
-        plate.GetComponentInChildren<SpriteRenderer>().sprite = brokenPlate;
+
+        // plate can be destroyed by the time it reaches its destination if a mouse is in the way
+        if (plate != null)
+        {
+            plate.GetComponentInChildren<SpriteRenderer>().sprite = brokenPlate;
+        }
     }
 }

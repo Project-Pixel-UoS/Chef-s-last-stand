@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chef Head 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3344661070343554498, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 41b48c9405e205b47bf244790f0feebb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

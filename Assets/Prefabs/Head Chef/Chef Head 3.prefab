@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: reloadTimeMultiplier
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 395487858234514934, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 889c327ffc66c924ca6a619404fc073f, type: 3}
+    - target: {fileID: 479805007370221945, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf4d5a620f2c2b14a9b41db7e32ce7d6, type: 2}
     - target: {fileID: 647212506296903406, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
