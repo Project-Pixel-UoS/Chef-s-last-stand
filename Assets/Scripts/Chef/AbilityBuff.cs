@@ -49,9 +49,9 @@ public class AbilityBuff : MonoBehaviour
             if (buff != null)
             {
                 // If it has a "buff" object, set its stats
-                buff.damageMultiplier = damageMultiplier;
-                buff.reloadTimeMultiplier = reloadTimeMultiplier;
-                buff.rangeMultiplier = rangeMultiplier;
+                buff.DamageMultiplier = damageMultiplier;
+                buff.ReloadTimeMultiplier = reloadTimeMultiplier;
+                buff.RangeMultiplier = rangeMultiplier;
             }
         }
     }

@@ -27,7 +27,7 @@ namespace Range
             if (bf != null)
             {
                 rangeObject.transform.localScale =
-                    new Vector3(radius * 2 * bf.rangeMultiplier, radius * 2 * bf.rangeMultiplier,
+                    new Vector3(radius * 2 * bf.RangeMultiplier, radius * 2 * bf.RangeMultiplier,
                         1); //makes the range the same size as chosen
             }
             else

@@ -10,9 +10,9 @@ using UnityEngine.Serialization;
 /// <remarks>Lishan</remarks>
 public class Buff : MonoBehaviour
 {
-    public float damageMultiplier = 0;
-    public float reloadTimeMultiplier  = 0;
-    public float rangeMultiplier = 0;
+    public float DamageMultiplier { get; set; } = 1;
+    public float ReloadTimeMultiplier { get; set; } = 1;
+    public float RangeMultiplier { get; set; } = 1;
 
 
 }

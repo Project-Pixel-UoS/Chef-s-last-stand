@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109480781222891229, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Name
-      value: Chef Prep Cook 5
+      value: Chef Prep Cook 1
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: chefCost

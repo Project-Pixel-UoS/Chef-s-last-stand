@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 3511449751020379562, guid: f6e66ad21050bb143bcc1cc35ca49d79, type: 3}
+    - target: {fileID: -9203637450718709653, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 3511449751020379562, guid: f6e66ad21050bb143bcc1cc35ca49d79, type: 3}
     - target: {fileID: 647212506296903406, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
