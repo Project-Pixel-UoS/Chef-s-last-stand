@@ -12,9 +12,9 @@
       ],
       "mouseUnits": [
         {
-          "type": "Pinkie",
-          "amount": 10,
-          "timeOfWave": 8,
+          "type": "Woody",
+          "amount": 1,
+          "timeOfWave": 1,
           "frequency": 0.1
         }
       ]

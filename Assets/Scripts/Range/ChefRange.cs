@@ -14,14 +14,7 @@ namespace Range
             ResizeRangeVisual();
             rangeSpriteRenderer.color = Color.Color.rangeColor;
             rangeSpriteRenderer.enabled = false;
-            
             RadiusWithoutBuff = Radius;
-            
-            // // print("ppu: " + (float) Screen.height / (Camera.main.orthographicSize * 2));
-            // var rectSize = rangeObject.GetComponent<SpriteRenderer>().sprite.rect.size;
-            // print("rect size x: " + rectSize.x);
-            
-
         }
 
         void Update()
@@ -29,7 +22,6 @@ namespace Range
             HandleRangeBuff();
         }
         
-        //TODO range sprite innacurately represents the radius
         private void HandleRangeBuff()
         {
             var buff = GetComponent<Buff>();

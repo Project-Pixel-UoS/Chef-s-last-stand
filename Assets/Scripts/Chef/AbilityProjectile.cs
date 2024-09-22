@@ -30,7 +30,7 @@ namespace Chef
         {
             if (projectile == null) return;
             GameObject furthestMouse = GetFurthestMouseInRange();
-            if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime * buff.ReloadTimeMultiplier);
+            if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime / buff.ReloadTimeMultiplier);
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
             Shoot();
