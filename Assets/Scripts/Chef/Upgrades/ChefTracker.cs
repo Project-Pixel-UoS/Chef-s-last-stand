@@ -53,7 +53,7 @@ namespace Chef.Upgrades
             DisableRange(currentChef);
             if (chef == null)
             {
-                RemoveUpdgradeButtons();
+                RemoveUpgradeButtons();
             }
             else
             {
@@ -85,7 +85,7 @@ namespace Chef.Upgrades
             upgradeManager = chef.GetComponent<ShopSlotManager>();
         }
 
-        private void RemoveUpdgradeButtons()
+        private void RemoveUpgradeButtons()
         {
             upgradeRangeUI.SetActive(false);
             upgradeSpecialUI.SetActive(false);

@@ -28,6 +28,8 @@ TagManager:
   - Cheese
   - Path
   - Bricks
+  - RangeButtonText
+  - SpecialButtonText
   layers:
   - Default
   - TransparentFX

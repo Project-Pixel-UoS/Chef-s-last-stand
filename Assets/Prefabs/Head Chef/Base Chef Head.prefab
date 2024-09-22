@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800086cd1b04a224e8fba354e4dfa2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK: 1.5
-  ATKSpeed: 1.5
-  rangeIncrease: 2
+  damageMultiplier: 1
+  reloadTimeMultiplier: 1
+  rangeMultiplier: 1.5
   cooldown: 4
   income: 5
   money: {fileID: 395487858234514934}
@@ -168,6 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressBars:
+  - {fileID: 21300000, guid: 4a681a56296bade4f981a0b938546032, type: 3}
+  - {fileID: 21300000, guid: d99a57f4187ae7148bb1685478f5a9f5, type: 3}
+  - {fileID: 21300000, guid: edbfd72cb28e0164dbe9bbfb4d22b653, type: 3}
+  - {fileID: 21300000, guid: 72b43c29f63fa6b4fbe33984b5c88d0b, type: 3}
+  - {fileID: 21300000, guid: a438fc32afe3ff5459d7d19470e38f52, type: 3}
 --- !u!61 &-458673801847131121
 BoxCollider2D:
   m_ObjectHideFlags: 0

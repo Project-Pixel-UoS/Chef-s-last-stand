@@ -1,5 +1,6 @@
 using System;
 using Range;
+using Shop;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace Chef.Upgrades
         private int path1Status, path2Status;
         private int maxLevel1 = 4;
         private int maxLevel2 = 4;
+        [SerializeField] Sprite[] progressBars;
 
         /// <summary>
         /// invoked upon Upgrade Range button on the bottom bar is clicked
@@ -64,17 +66,37 @@ namespace Chef.Upgrades
         /// </summary>
         public void RefreshRangeBar()
         {
+            var rangeText = GameObject.FindGameObjectWithTag("RangeButtonText").GetComponent<Text>();
+            if(path1Status == maxLevel1)
+            {
+                rangeText.text = "Range maxed";
+            }
+            else
+            {
+                var cost = transform.GetComponent<ShopSlotManager>().rangeCost;
+                rangeText.text = "Range: \n" + "$" + cost;
+            }
             var upgradeBar1 = GameObject.FindGameObjectWithTag("UpgradeBar1").GetComponent<Image>();
-            upgradeBar1.fillAmount = (float)path1Status / maxLevel1;
+            upgradeBar1.sprite = progressBars[path1Status];
         }
 
         /// <summary>
         /// updates visual of special upgrade bar.
         /// </summary>
         public void RefreshSpecialBar()
-        {
+        {   
+            var specialText = GameObject.FindGameObjectWithTag("SpecialButtonText").GetComponent<Text>();
+            if(path2Status == maxLevel2)
+            {
+                specialText.text = "Ability maxed";
+            }
+            else
+            {
+                var cost = transform.GetComponent<ShopSlotManager>().chefCost;
+                specialText.text = "Special: \n" + "$" + cost;
+            }
             var upgradeBar2 = GameObject.FindGameObjectWithTag("UpgradeBar2").GetComponent<Image>();
-            upgradeBar2.fillAmount = (float)path2Status / maxLevel2;
+            upgradeBar2.sprite = progressBars[path2Status];
         }
 
 
