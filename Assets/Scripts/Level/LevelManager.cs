@@ -26,16 +26,14 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        LM = this;
         waveTextManager = GetComponent<WaveTextManager>();
     }
 
     void Start()
     {
-        LM = this;
         LoadLevel();
         StartCoroutine(StartWaveWithText());
-        RouteSignal(TurningPoints);
-        RouteSignal(TurningPoints2);
     }
 
     private void Update()
@@ -64,17 +62,17 @@ public class LevelManager : MonoBehaviour
     /// <summary>
     /// Displays level path at the beginning of the level.
     /// </summary>
-    private void RouteSignal(Transform[] tps)
-    {
-        foreach (Transform point in tps)
-        {
-            SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
-            IEnumerator c = FadeIn(sprite);
-            StartCoroutine(c);
-        }
-    }
+    // private void RouteSignal(Transform[] tps)
+    // {
+    //     foreach (Transform point in tps)
+    //     {
+    //         SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
+    //         IEnumerator c = FadeIn(sprite);
+    //         StartCoroutine(c);
+    //     }
+    // }
 
-    private IEnumerator FadeIn(SpriteRenderer sprite)
+    public IEnumerator FadeIn(SpriteRenderer sprite)
     {
         while (GetAlpha(sprite) < 1)
         {
@@ -85,7 +83,7 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(FadeOut(sprite));
     }
 
-    private IEnumerator FadeOut(SpriteRenderer sprite)
+    public IEnumerator FadeOut(SpriteRenderer sprite)
     {
         while (GetAlpha(sprite) >= 0.1)
         {
