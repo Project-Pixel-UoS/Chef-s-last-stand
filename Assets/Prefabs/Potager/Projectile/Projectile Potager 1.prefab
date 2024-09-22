@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8608627437989915027, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
+      propertyPath: destroyTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8225661181477205927, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: chef
       value: 

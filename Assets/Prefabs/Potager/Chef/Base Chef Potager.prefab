@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c6c95ed36def641846b80463322dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 2041573966325760781, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
+  projectile: {fileID: 8992436262982488789, guid: 12cde63f28f284ae8a3c1354fa8789b8, type: 3}
   cooldown: 3
 --- !u!114 &3854765059203472735
 MonoBehaviour:
@@ -248,9 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageIncrease: 1
-  speedIncrease: 1
-  rangeIncrease: 1
 --- !u!1 &4054988461792321345
 GameObject:
   m_ObjectHideFlags: 0

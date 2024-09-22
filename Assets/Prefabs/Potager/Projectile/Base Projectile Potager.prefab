@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: -11078296931815846}
   - component: {fileID: 6841339178977116078}
   - component: {fileID: -4917713658814391042}
+  - component: {fileID: -8608627437989915027}
   m_Layer: 0
   m_Name: Base Projectile Potager
   m_TagString: Untagged
@@ -231,8 +232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slownessFactor: 3
   duration: 3
-  projectileSpeed: 10
-  destroyTime: 1
   soup: {fileID: 7145465551852298663, guid: 1a85fe221315b4722905cf91f2be916a, type: 3}
 --- !u!50 &6841339178977116078
 Rigidbody2D:
@@ -273,6 +272,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befb4aee4658faf4bbb4f7c7a3efbe1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8608627437989915027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041573966325760781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51864824627feb49a2332e49a61f527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 10
+  destroyTime: 1
 --- !u!1 &8736687152942431436
 GameObject:
   m_ObjectHideFlags: 0
