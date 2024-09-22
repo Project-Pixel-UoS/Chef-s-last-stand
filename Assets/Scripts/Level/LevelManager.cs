@@ -16,7 +16,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
     public Transform[] TurningPoints;
-    public Transform[] TurningPoints2;
     
     private Waves waves;
     private int currentWave = 0;
