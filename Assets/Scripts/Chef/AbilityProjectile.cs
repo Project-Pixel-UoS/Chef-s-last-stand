@@ -30,11 +30,7 @@ namespace Chef
         {
             if (projectile == null) return;
             GameObject furthestMouse = GetFurthestMouseInRange();
-            print("Cool down before: " + cooldownTimer);
-
-            print("reload time mulyiplier: " + buff.ReloadTimeMultiplier);
             if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime * buff.ReloadTimeMultiplier);
-            print("Cool down after: " + cooldownTimer);
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
             Shoot();
@@ -50,6 +46,7 @@ namespace Chef
             {
                 return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
             }
+
             return null;
         }
 
@@ -83,9 +80,7 @@ namespace Chef
         /// </remarks>
         private void Shoot()
         {
-            print("SHOOT: " + cooldownTimer);
             if (cooldownTimer > 0) return;
-            print("ACCTUALLY shooting");
             cooldownTimer = cooldown;
             Utils.PlayShootSound(gameObject);
             SpawnProjectile();
@@ -99,18 +94,14 @@ namespace Chef
         {
             GameObject p = Instantiate(projectile, transform.position, transform.rotation, transform);
             DamageFactor df = p.GetComponent<DamageFactor>();
-            Buff buff = GetComponent<Buff>();
-            if (buff != null)
-            {
-                p.GetComponent<DamageFactor>().damage = df.damage * buff.DamageMultiplier;
-            }
+            p.GetComponent<DamageFactor>().damage = df.damage * buff.DamageMultiplier;
         }
-        
+
         //spawn another knife for the prep cook max upgrade.
         private IEnumerator HandleMaxPrepCook()
         {
-            if(gameObject.tag.Equals("PrepCook") && upgradeTracker.getPath2Status() == 4)
-            { 
+            if (gameObject.tag.Equals("PrepCook") && upgradeTracker.getPath2Status() == 4)
+            {
                 yield return new WaitForSeconds(0.1f);
                 SpawnProjectile();
             }

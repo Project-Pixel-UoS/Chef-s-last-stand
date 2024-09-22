@@ -24,6 +24,18 @@ PrefabInstance:
       propertyPath: cooldown
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: rangeMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: damageMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: reloadTimeMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 647212506296903406, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

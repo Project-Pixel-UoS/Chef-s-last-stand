@@ -6,13 +6,21 @@ namespace Range
         [SerializeField] private GameObject rangeObject; //imports the chefs range.
         private SpriteRenderer rangeSpriteRenderer;
         
-
+        public float RadiusWithoutBuff { get; set; }
+        
         void Awake()
         {
             rangeSpriteRenderer = rangeObject.GetComponent<SpriteRenderer>();
             ResizeRangeVisual();
             rangeSpriteRenderer.color = Color.Color.rangeColor;
             rangeSpriteRenderer.enabled = false;
+            
+            RadiusWithoutBuff = Radius;
+            
+            // // print("ppu: " + (float) Screen.height / (Camera.main.orthographicSize * 2));
+            // var rectSize = rangeObject.GetComponent<SpriteRenderer>().sprite.rect.size;
+            // print("rect size x: " + rectSize.x);
+            
 
         }
 
@@ -21,31 +29,24 @@ namespace Range
             HandleRangeBuff();
         }
         
-        private void HandleRangeBuff()//TODO this needs an update because it onnly makes the circles bigger not the acutal range
+        //TODO range sprite innacurately represents the radius
+        private void HandleRangeBuff()
         {
-            Buff bf = GetComponent<Buff>();
-            if (bf != null)
+            var buff = GetComponent<Buff>();
+            if (buff != null)
             {
-                rangeObject.transform.localScale =
-                    new Vector3(radius * 2 * bf.RangeMultiplier, radius * 2 * bf.RangeMultiplier,
-                        1); //makes the range the same size as chosen
-            }
-            else
-            {
-                rangeObject.transform.localScale =
-                    new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen
+                SetRadius(RadiusWithoutBuff * buff.RangeMultiplier);
+
             }
         }
 
         private void ResizeRangeVisual()
         {
-            rangeObject.transform.localScale =
-                new Vector3(radius * 2, radius * 2, 1); //makes the range the same size as chosen
+            rangeObject.transform.localScale = new Vector3(Radius * 2, Radius * 2, 1); 
         }
 
         protected override void SetRadius(float radius)
         { 
-            Debug.Log("visual radius "+radius);
             ResizeRangeVisual();
             base.SetRadius(radius);
         }

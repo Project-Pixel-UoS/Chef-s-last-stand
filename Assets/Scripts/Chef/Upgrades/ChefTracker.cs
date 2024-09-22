@@ -100,7 +100,7 @@ namespace Chef.Upgrades
             if (chef.getPath1Status() != 4 && upgradeManager.CheckSufficientRangeFunds())
             {
                 upgradeManager.HandleRangeTransaction();
-                currentChef.GetComponent<UpgradeTracker>().UpgradePath1();
+                currentChef.GetComponent<UpgradeTracker>().UpgradeRange();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Chef.Upgrades
             if (chef.getPath2Status() != 4 && upgradeManager.CheckSufficientChefFunds())
             {
                 upgradeManager.HandleChefTransaction();
-                currentChef.GetComponent<UpgradeTracker>().UpgradePath2();
+                currentChef.GetComponent<UpgradeTracker>().UpgradeAbility();
             }
         }
 

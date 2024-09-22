@@ -33,7 +33,7 @@ namespace Range
 
         public List<GameObject> GetMiceInRange()
         {
-            return GetMiceInRange(radius);
+            return GetMiceInRange(Radius);
         }
         
         /// <returns>
@@ -59,10 +59,8 @@ namespace Range
                     if (gameObject.CompareTag("Mouse"))
                     {
                         miceInRange.Add(gameObject);
-
                     }
                 }
-
             }
             return miceInRange;
 

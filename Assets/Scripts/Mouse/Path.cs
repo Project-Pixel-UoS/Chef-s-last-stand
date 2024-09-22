@@ -28,7 +28,6 @@ namespace Mouse
             {
                 SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
                 IEnumerator c = LevelManager.LM.FadeIn(sprite);
-                print("c: " + c);
                 StartCoroutine(c);
             }
         }

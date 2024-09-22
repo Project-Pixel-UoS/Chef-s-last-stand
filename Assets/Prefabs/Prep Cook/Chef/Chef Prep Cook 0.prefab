@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 3511449751020379562, guid: f6e66ad21050bb143bcc1cc35ca49d79, type: 3}
+    - target: {fileID: -1970727718610732877, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 647212506296903406, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -63,6 +67,18 @@ PrefabInstance:
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: chefCost
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525556148660427000, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c6aa234a8382a941a86ec1e441df20c, type: 3}
+    - target: {fileID: 7525556148660427000, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525556148660427000, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
