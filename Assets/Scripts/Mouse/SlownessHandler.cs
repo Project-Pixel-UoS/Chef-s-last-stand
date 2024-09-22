@@ -58,8 +58,8 @@ namespace Mouse
         {
              GameObject otherGameObject = other.gameObject;
              SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
-             if (slownessProjectile != null)
-             {
+             if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
+            {
                 SlowMouse(slownessProjectile);
                 Debug.Log(otherGameObject.name);
              }
