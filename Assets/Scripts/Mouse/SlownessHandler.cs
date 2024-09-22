@@ -8,11 +8,13 @@ namespace Mouse
         private MouseStats stats;
         private bool isSlowed;
         private Coroutine speedRestoreCoroutine;
+        private float originalSpeed;
 
 
         private void Start()
         {
             stats = gameObject.GetComponent<MouseStats>();
+            originalSpeed = stats.speed;
         }
 
         /// <summary> reduced speed of mouse </summary>
@@ -22,7 +24,10 @@ namespace Mouse
         {
             if (isSlowed) //stop chef being doubly slowed
             {
-                RestartSlownessCoroutine(slownessProjectile);
+                StopCoroutine(speedRestoreCoroutine);
+                stats.speed = originalSpeed;
+                isSlowed = false;
+                SlowMouse(slownessProjectile);
             }
             else
             {
@@ -32,6 +37,7 @@ namespace Mouse
             }
         }
 
+        //deprecated
         private void RestartSlownessCoroutine(SlownessProjectile slownessProjectile)
         {
             StopCoroutine(speedRestoreCoroutine);
@@ -44,7 +50,7 @@ namespace Mouse
         private IEnumerator RestoreSpeed(SlownessProjectile slownessProjectile)
         {
             yield return new WaitForSeconds(slownessProjectile.duration);
-            stats.speed *= slownessProjectile.slownessFactor;
+            stats.speed = originalSpeed;
             isSlowed = false;
         }
 
@@ -52,9 +58,10 @@ namespace Mouse
         {
              GameObject otherGameObject = other.gameObject;
              SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
-             if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
+             if (slownessProjectile != null)
              {
-                 SlowMouse(slownessProjectile);
+                SlowMouse(slownessProjectile);
+                Debug.Log(otherGameObject.name);
              }
 
         }

@@ -45,14 +45,12 @@ namespace Chef.Upgrades
             var chefs = GetChefUpgrades();
             //instantiate new chef
             var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
-            print("chefs: " + chefs);
-            print("chef " + chefs[path2Status]);
             GameObject newChef = Instantiate(chefs[path2Status], transform.position, transform.rotation,
                 chefParent.transform);
+            DuplicateUpgradeStats(newChef);//change new chef stats
             var range = newChef.GetComponent<ChefRange>();
             range.Radius = GetComponent<ChefRange>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active
-            DuplicateUpgradeStats(newChef); //change new chef stats
             RefreshSpecialBar();
             ChefTracker.Instance.CurrentChef = newChef;
             Destroy(gameObject);
