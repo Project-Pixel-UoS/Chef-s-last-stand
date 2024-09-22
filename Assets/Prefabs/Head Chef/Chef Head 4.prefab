@@ -20,6 +20,26 @@ PrefabInstance:
       propertyPath: ATKSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: rangeMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: damageMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5508901516222845255, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: reloadTimeMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 395487858234514934, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 889c327ffc66c924ca6a619404fc073f, type: 3}
+    - target: {fileID: 479805007370221945, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf4d5a620f2c2b14a9b41db7e32ce7d6, type: 2}
     - target: {fileID: 647212506296903406, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -64,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chef Head 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3344661070343554498, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 84cafe0a1a4fd0e4d9e72c448e7457e6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

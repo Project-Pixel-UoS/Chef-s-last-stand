@@ -1,49 +1,36 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Chef.Upgrades;
 using Mouse;
 using Range;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Util;
-
 
 namespace Chef
 {
     public class AbilityProjectile : MonoBehaviour
     {
-        [SerializeField] private GameObject Projectile; // projectile for chef to shoot
+        [SerializeField] private GameObject projectile; // projectile for chef to shoot
         [SerializeField] private float cooldown; // time in between chef shooting (seconds)
         private float cooldownTimer; // timer for cooldown in between shots
-        private float originalSpeed;
         private UpgradeTracker upgradeTracker;
         private int projectilesThrown;
-
+        private Buff buff;
 
         private void Awake()
         {
-            if(Projectile.GetComponent<ProjectileMover>() != null)
-            {
-                originalSpeed = Projectile.GetComponent<ProjectileMover>().projectileSpeed;
-            }
-            else
-            {
-                originalSpeed = Projectile.GetComponent<SlownessProjectile>().projectileSpeed;
-            }
             upgradeTracker = GetComponent<UpgradeTracker>();
+            buff = GetComponent<Buff>();
         }
 
         /// <summary> Update variable if buff added </summary>
         /// <remarks>Maintained by: Lishan Xu</remarks>
         void Update()
         {
-            if (Projectile == null) return;
+            if (projectile == null) return;
             GameObject furthestMouse = GetFurthestMouseInRange();
-            if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
-
+            if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime / buff.ReloadTimeMultiplier);
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
             Shoot();
@@ -59,6 +46,7 @@ namespace Chef
             {
                 return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
             }
+
             return null;
         }
 
@@ -104,29 +92,16 @@ namespace Chef
         /// </summary>
         private void SpawnProjectile()
         {
-            GameObject p = Instantiate(Projectile, transform.position, transform.rotation, transform);
+            GameObject p = Instantiate(projectile, transform.position, transform.rotation, transform);
             DamageFactor df = p.GetComponent<DamageFactor>();
-            Buff buff = GetComponent<Buff>();
-            if (buff != null)
-            {
-                p.GetComponent<DamageFactor>().damage = df.damage * buff.damageIncrease;
-                if(p.GetComponent<ProjectileMover>() != null)
-                {
-                    p.GetComponent<ProjectileMover>().projectileSpeed = originalSpeed * buff.speedIncrease;
-                }
-                else
-                {
-                    p.GetComponent<SlownessProjectile>().projectileSpeed = originalSpeed * buff.speedIncrease;
-                }
-                
-            }
+            p.GetComponent<DamageFactor>().damage = df.damage * buff.DamageMultiplier;
         }
-        
+
         //spawn another knife for the prep cook max upgrade.
         private IEnumerator HandleMaxPrepCook()
         {
-            if(gameObject.tag.Equals("PrepCook") && upgradeTracker.getPath2Status() == 4)
-            { 
+            if (gameObject.tag.Equals("PrepCook") && upgradeTracker.getPath2Status() == 4)
+            {
                 yield return new WaitForSeconds(0.1f);
                 SpawnProjectile();
             }

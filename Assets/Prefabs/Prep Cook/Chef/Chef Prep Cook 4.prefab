@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 5305294536960149643, guid: dd38afae2939e1c4994576e47ea860d0, type: 3}
+    - target: {fileID: -9203637450718709653, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5305294536960149643, guid: dd38afae2939e1c4994576e47ea860d0, type: 3}
     - target: {fileID: 647212506296903406, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -68,6 +72,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1a4de1415fbe3e34dab6d1a04e8758f9, type: 3}
+    - target: {fileID: 5836016623740107159, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: rangeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836016623740107159, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: damageMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836016623740107159, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: reloadTimeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

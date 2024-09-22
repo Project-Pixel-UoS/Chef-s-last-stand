@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Chef;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Buff added
@@ -9,9 +10,9 @@ using UnityEngine;
 /// <remarks>Lishan</remarks>
 public class Buff : MonoBehaviour
 {
-    public float damageIncrease = 0;
-    public float speedIncrease  = 0;
-    public float rangeIncrease = 0;
+    public float DamageMultiplier { get; set; } = 1;
+    public float ReloadTimeMultiplier { get; set; } = 1;
+    public float RangeMultiplier { get; set; } = 1;
 
 
 }
