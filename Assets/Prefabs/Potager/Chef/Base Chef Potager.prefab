@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c6c95ed36def641846b80463322dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 2041573966325760781, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
+  projectile: {fileID: 8992436262982488789, guid: 12cde63f28f284ae8a3c1354fa8789b8, type: 3}
   cooldown: 3
 --- !u!114 &3854765059203472735
 MonoBehaviour:
@@ -210,6 +210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressBars:
+  - {fileID: 21300000, guid: 4a681a56296bade4f981a0b938546032, type: 3}
+  - {fileID: 21300000, guid: d99a57f4187ae7148bb1685478f5a9f5, type: 3}
+  - {fileID: 21300000, guid: edbfd72cb28e0164dbe9bbfb4d22b653, type: 3}
+  - {fileID: 21300000, guid: 72b43c29f63fa6b4fbe33984b5c88d0b, type: 3}
+  - {fileID: 21300000, guid: a438fc32afe3ff5459d7d19470e38f52, type: 3}
 --- !u!114 &8417773937103734731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,9 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd18e99da60ee9a44b50fd34b8b18fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageIncrease: 1
-  speedIncrease: 1
-  rangeIncrease: 1
 --- !u!1 &4054988461792321345
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class SlownessProjectile : MonoBehaviour
 {
-    [SerializeField] public float slownessFactor = 5; //how much the mouse will be slowed down by
+    [SerializeField] public float slownessFactor; //how much the mouse will be slowed down by
     [SerializeField] public float duration = 3; //how long the mouse will be slowed down for
-    public float projectileSpeed; // speed of projectile
-    [SerializeField] private float destroyTime; // time until projectile is destroyed (seconds)
     [SerializeField] private GameObject soup;
 
     // void Update()
@@ -28,9 +26,7 @@ public class SlownessProjectile : MonoBehaviour
         {
             if (transform.name.Equals("Projectile Potager 4(Clone)"))
             {
-                var prevGoop = transform.parent.Find("goop(Clone)");
-                if (prevGoop != null) Destroy(prevGoop.gameObject);
-                GameObject gooper = Instantiate(soup, collision.transform.position, collision.transform.rotation, transform.parent);
+                GameObject gooper = Instantiate(soup, collision.transform.position, collision.transform.rotation);
                 Destroy(gooper, duration);
             }
             Destroy(gameObject);

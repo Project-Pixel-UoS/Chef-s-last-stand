@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 8749922525893273680, guid: 42db4a24eb4004671aebbd28bd149132, type: 3}
+    - target: {fileID: -9203637450718709653, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1000914237040898795, guid: 797a9634b5ac9e14186ce48ebe260feb, type: 3}
     - target: {fileID: 647212506296903406, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0045891404
