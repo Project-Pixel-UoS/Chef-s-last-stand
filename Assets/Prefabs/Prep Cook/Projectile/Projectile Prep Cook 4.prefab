@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: damage
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -8225661181477205927, guid: e2244ea97e5a97e4cb2bf64dd1f8d088, type: 3}
+      propertyPath: damageRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8225661181477205927, guid: e2244ea97e5a97e4cb2bf64dd1f8d088, type: 3}
+      propertyPath: damageDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2041573966325760781, guid: e2244ea97e5a97e4cb2bf64dd1f8d088, type: 3}
       propertyPath: m_Name
       value: Projectile Prep Cook 4

@@ -53,7 +53,7 @@ namespace Chef.Upgrades
                 chefParent.transform);
             DuplicateUpgradeStats(newChef);//change new chef stats
             var range = newChef.GetComponent<ChefRange>();
-            range.RadiusWithoutBuff = GetComponent<ChefRange>().Radius; //copy range upgrade status over
+            range.RadiusWithoutBuff = GetComponent<ChefRange>().RadiusWithoutBuff; //copy range upgrade status over
             range.Radius = GetComponent<ChefRange>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active
             RefreshSpecialBar();
