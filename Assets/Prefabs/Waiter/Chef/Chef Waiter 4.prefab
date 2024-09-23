@@ -28,12 +28,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
+      propertyPath: chefCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4242282074824151463, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: cooldown
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4242282074824151463, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 2868472089455900607, guid: ddfe62d84233f4f89a1c9c5dcedc0a5b, type: 3}
+    - target: {fileID: 4242282074824151463, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
+      propertyPath: projectile
       value: 
       objectReference: {fileID: 2868472089455900607, guid: ddfe62d84233f4f89a1c9c5dcedc0a5b, type: 3}
     - target: {fileID: 7048298147034033586, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}

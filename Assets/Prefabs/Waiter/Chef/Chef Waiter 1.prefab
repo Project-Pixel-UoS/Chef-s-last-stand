@@ -68,8 +68,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chef Waiter 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: chefCost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: rangeCost
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6049553212818791163, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 2450384961366737438, guid: 9625eed48d7ea454b8ce70416e06c834, type: 3}
+    - target: {fileID: 6049553212818791163, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: projectile
       value: 
       objectReference: {fileID: 2450384961366737438, guid: 9625eed48d7ea454b8ce70416e06c834, type: 3}
     - target: {fileID: 7286388429707021186, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}

@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109480781222891229, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: m_Name
-      value: Base Grillardin
+      value: Chef Grillardin 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
+      propertyPath: rangeCost
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,7 +13,7 @@ public class CreditManager : MonoBehaviour
 
     void Start()
     {
-        credits = 4000; // should be 40 in production mode
+        credits = 40; // should be 40 in production mode
         text.text = "Credits: " + credits;
     }
 
