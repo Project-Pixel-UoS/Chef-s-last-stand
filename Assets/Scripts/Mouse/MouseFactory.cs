@@ -37,6 +37,7 @@ namespace Mouse
             var spriteMove = newMouse.GetComponent<MouseMover>();
             spriteMove.SetTargetWayPointIndex(wayPointIndex);
             spriteMove.totalDistanceMoved = pathDistance; // only needs to be modified when 
+            Util.Utils.ResizeSpriteOutsideCanvas(newMouse);
         }
         
         /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
