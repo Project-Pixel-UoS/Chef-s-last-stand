@@ -15,6 +15,7 @@ namespace Chef.Upgrades
 
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
+        [SerializeField] private GameObject sellChefUI;
         [SerializeField] private GameObject[] prepCookUpgrades;
         [SerializeField] private GameObject[] grillardinUpgrades;
         [SerializeField] private GameObject[] headChefUpgrades;
@@ -82,13 +83,17 @@ namespace Chef.Upgrades
             chef.GetComponent<UpgradeTracker>().RefreshRangeBar();
             upgradeSpecialUI.SetActive(true);
             chef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
+            sellChefUI.SetActive(true);
+            chef.GetComponent<UpgradeTracker>().RefreshSellChefBar();
             upgradeManager = chef.GetComponent<ShopSlotManager>();
+            
         }
 
         private void RemoveUpgradeButtons()
         {
             upgradeRangeUI.SetActive(false);
             upgradeSpecialUI.SetActive(false);
+            sellChefUI.SetActive(false);
         }
 
         /// <summary>
@@ -117,6 +122,13 @@ namespace Chef.Upgrades
             }
         }
 
+        public void SellChef()
+        {
+            //var chef = currentChef.GetComponent<UpgradeTracker>();
+            upgradeManager.HandleChefRefund();
+            Destroy(currentChef);
+            CurrentChef = null;
+        }
         /// <summary>
         /// invoked when a chef is pressed
         /// </summary>

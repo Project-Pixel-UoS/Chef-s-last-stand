@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chefCost: 100
   rangeCost: 10
+  sellPrice: 30
 --- !u!114 &829756087365659209
 MonoBehaviour:
   m_ObjectHideFlags: 0
