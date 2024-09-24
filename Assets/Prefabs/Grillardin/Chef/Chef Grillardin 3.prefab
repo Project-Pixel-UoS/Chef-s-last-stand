@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1862279063496394528, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: arcAngle
-      value: 120
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 5205657187040627722, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: m_Sprite

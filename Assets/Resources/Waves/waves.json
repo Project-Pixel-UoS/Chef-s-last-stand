@@ -12,10 +12,16 @@
       ],
       "mouseUnits": [
         {
-          "type": "Trenchcoat",
-          "amount": 1,
+          "type": "Pinkie",
+          "amount": 20,
           "timeOfWave": 1,
           "frequency": 0.1
+        },
+        {
+          "type": "Armoured",
+          "amount": 10,
+          "timeOfWave": 7,
+          "frequency": 1
         }
       ]
     },
