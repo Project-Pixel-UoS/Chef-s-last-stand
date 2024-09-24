@@ -12,10 +12,10 @@
       ],
       "mouseUnits": [
         {
-          "type": "Armoured",
-          "amount": 5,
+          "type": "Pinkie",
+          "amount": 20,
           "timeOfWave": 1,
-          "frequency": 1
+          "frequency": 0.1
         },
         {
           "type": "Armoured",
