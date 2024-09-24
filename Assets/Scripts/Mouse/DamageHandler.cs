@@ -88,6 +88,7 @@ namespace Mouse
                     try
                     {
                         Destroy(gameObject); //check for death
+                        break;
                     }
                     catch
                     {
