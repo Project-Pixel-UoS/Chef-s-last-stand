@@ -35,19 +35,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform = GetComponent<RectTransform>();
         DisplayChefPrice();
 
-
-        RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
-
-
         //if screen is taller than wider, game will expand, so we have to decrease the range size
         //if screen is wider than taller, game will shrink, difference is negligible btw devices.
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-        // if (canvas.rect.height > 1090) 
-        // {
-        //     float ratio = 1080 / (float)canvas.rect.height;
-        //     rangeSize *= ratio;
-        // }
+
         range.enabled = false; //hides the range at the beginning
         range.transform.localScale = rangeSize;
         Utils.ResizeSpriteInsideCanvas(range.gameObject);
