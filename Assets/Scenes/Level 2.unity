@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42b3993d5b64f5c881dfa91dddfa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 1631842699}
+  pauseScreen: {fileID: 0}
 --- !u!1 &122587938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,7 +3247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69d2bb925ca61a4cbced84a792b6b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 1631842699}
+  pauseScreen: {fileID: 0}
 --- !u!114 &516457468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3697,12 +3697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2efb2226c24c739912e6f7de593b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBars:
-  - {fileID: 21300000, guid: 4a681a56296bade4f981a0b938546032, type: 3}
-  - {fileID: 21300000, guid: d99a57f4187ae7148bb1685478f5a9f5, type: 3}
-  - {fileID: 21300000, guid: edbfd72cb28e0164dbe9bbfb4d22b653, type: 3}
-  - {fileID: 21300000, guid: 72b43c29f63fa6b4fbe33984b5c88d0b, type: 3}
-  - {fileID: 21300000, guid: a438fc32afe3ff5459d7d19470e38f52, type: 3}
+  progressBars: []
 --- !u!1 &631968096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,7 +5807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69d2bb925ca61a4cbced84a792b6b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 1631842699}
+  pauseScreen: {fileID: 0}
 --- !u!114 &1026004529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7671,7 +7666,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346171764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -7735,7 +7730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b908eaf097947d0872d6472bc40d2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricksPrefab: {fileID: 617161708783888554, guid: c8765b85e88fce248aa1514d21441486, type: 3}
+  bricksPrefab: {fileID: 0}
 --- !u!4 &1361877162
 Transform:
   m_ObjectHideFlags: 0
@@ -8081,7 +8076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69d2bb925ca61a4cbced84a792b6b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 1631842699}
+  pauseScreen: {fileID: 0}
 --- !u!114 &1425006887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8503,7 +8498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1526072523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8531,7 +8526,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526072522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
