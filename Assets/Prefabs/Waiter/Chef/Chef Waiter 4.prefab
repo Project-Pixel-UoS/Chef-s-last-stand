@@ -33,12 +33,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
-      propertyPath: rangeCost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: specialTotal
-      value: 300
+      value: 810
       objectReference: {fileID: 0}
     - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: abilityDescription

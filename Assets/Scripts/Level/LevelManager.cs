@@ -131,8 +131,6 @@ public class LevelManager : MonoBehaviour
     /// <remarks>maintained by Antosh</remarks>
     private IEnumerator TransitionIntoNextWave()
     {
-        yield return waveTextManager.DisplayFinishedWaveText();
-
         currentWave++;
         if (currentWave == waves.waves.Length) //check that the final wave has just happened
         {

@@ -62,23 +62,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: chefCost
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: rangeCost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
-      propertyPath: sellPrice
-      value: 65
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: specialTotal
-      value: 85
+      value: 355
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: abilityDescription
-      value: Throws 2 knives at once
+      value: Throw 2 knives at once
       objectReference: {fileID: 0}
     - target: {fileID: 3235755696769366089, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Sprite

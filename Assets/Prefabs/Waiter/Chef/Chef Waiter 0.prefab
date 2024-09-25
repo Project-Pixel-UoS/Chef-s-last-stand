@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: chefCost
-      value: 20
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: rangeCost
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: specialTotal

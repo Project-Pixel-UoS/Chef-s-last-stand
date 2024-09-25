@@ -60,21 +60,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 964805554624470497, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 64a7ca1654303e84f82161d195039b3b, type: 3}
     - target: {fileID: 1109480781222891229, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: m_Name
       value: Chef Potager 3
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: chefCost
-      value: 70
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
+      propertyPath: rangeCost
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: specialTotal
-      value: 160
+      value: 470
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: abilityDescription
-      value: Soup keeps mice stuck to the ground
+      value: 'Soup now freezes mice '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

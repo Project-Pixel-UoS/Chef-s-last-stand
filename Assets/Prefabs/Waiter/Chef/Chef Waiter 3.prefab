@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: chefCost
-      value: 70
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: specialTotal
-      value: 230
+      value: 510
       objectReference: {fileID: 0}
     - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: abilityDescription
-      value: Plate will spawn faster
+      value: Drop plates faster
       objectReference: {fileID: 0}
     - target: {fileID: 1447560724057925964, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: Projectile

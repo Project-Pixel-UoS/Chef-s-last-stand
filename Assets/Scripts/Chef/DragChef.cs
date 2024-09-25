@@ -35,19 +35,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform = GetComponent<RectTransform>();
         DisplayChefPrice();
 
-
-        RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
-
-
         //if screen is taller than wider, game will expand, so we have to decrease the range size
         //if screen is wider than taller, game will shrink, difference is negligible btw devices.
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-        // if (canvas.rect.height > 1090) 
-        // {
-        //     float ratio = 1080 / (float)canvas.rect.height;
-        //     rangeSize *= ratio;
-        // }
+
         range.enabled = false; //hides the range at the beginning
         range.transform.localScale = rangeSize;
         Utils.ResizeSpriteInsideCanvas(range.gameObject);
@@ -65,10 +57,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (GameManager.isPaused)
-        {
-            return;
-        }
+        if (GameManager.isPaused) return;
+        if (!shopSlotManager.CheckSufficientChefFunds()) return;
 
         range.enabled = true; // makes the range visible
 
@@ -83,10 +73,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnDrag(PointerEventData eventData)
     {
-        if (GameManager.isPaused)
-        {
-            return;
-        }
+        if (GameManager.isPaused) return;
+        if (!shopSlotManager.CheckSufficientChefFunds()) return;
+
 
         PositionChefOntoCursor();
         if (CheckOutOfBounds())
@@ -187,36 +176,21 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        if (GameManager.isPaused) return;
+        if (GameManager.gameManager.IsGameOver())return;
+        if (!shopSlotManager.CheckSufficientChefFunds()) return;
+        
         ReturnSpriteToSlot();
         range.enabled = false;
 
-        if (GameManager.isPaused)
-        {
-            return;
-        } // Cannot place when game is paused
-
-        if (GameManager.gameManager.IsGameOver())
-        {
-            return;
-        } // Cannot place if game has ended
-
-        if (!shopSlotManager.CheckSufficientChefFunds())
-        {
-            return;
-        } // Cannot place if don't have sufficient funds
-
-        if (CheckOutOfBounds())
-        {
-            return;
-        } // Cannot place if out of bounds
+        if (CheckOutOfBounds()) return;
 
         shopSlotManager.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefInstance = Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         Utils.ResizeSpriteOutsideCanvas(chefInstance);
-
     }
-
 
 
     private void ReturnSpriteToSlot()

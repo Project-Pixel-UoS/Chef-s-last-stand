@@ -66,15 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: rangeCost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
-      propertyPath: sellPrice
-      value: 70
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: specialTotal
-      value: 105
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 3235755696769366089, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Sprite

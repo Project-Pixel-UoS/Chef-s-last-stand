@@ -65,8 +65,8 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
-      propertyPath: chefCost
-      value: 25
+      propertyPath: rangeCost
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: specialTotal
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: abilityDescription
-      value: Fire does more damage
+      value: Flamethrower does more damage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

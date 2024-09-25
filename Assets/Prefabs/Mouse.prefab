@@ -5215,5 +5215,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986cad49066f4864f933f1f2f3bd5d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyAmount: 10
+  currencyAmount: 5
   onFire: {fileID: 8138921289049156857}

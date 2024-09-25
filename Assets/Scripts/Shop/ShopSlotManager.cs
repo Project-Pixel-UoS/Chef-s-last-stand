@@ -13,7 +13,7 @@ namespace Shop
     public class ShopSlotManager : MonoBehaviour
     {
         
-        private Image rangeImage;
+        private SpriteRenderer rangeImage;
         private Image chefImage;
 
         // represent cost of buying the chef if attached to side bar slot, or upgrading path 2 of the chef if attached
@@ -28,7 +28,7 @@ namespace Shop
         private void Start()
         {
             chefImage = transform.GetChild(1).GetComponent<Image>();
-            rangeImage = transform.GetChild(0).GetComponent<Image>();
+            rangeImage = transform.GetChild(0).GetComponent<SpriteRenderer>();
             creditsManager = GameObject.FindGameObjectWithTag("Credits").GetComponent<CreditManager>();
         }
         
