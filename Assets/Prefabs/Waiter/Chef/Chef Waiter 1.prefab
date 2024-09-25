@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: specialTotal
       value: 130
       objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: abilityDescription
+      value: Can place down more plates
+      objectReference: {fileID: 0}
     - target: {fileID: 6049553212818791163, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: Projectile
       value: 

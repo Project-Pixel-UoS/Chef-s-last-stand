@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: specialTotal
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: abilityDescription
+      value: Earn credits every so often
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
