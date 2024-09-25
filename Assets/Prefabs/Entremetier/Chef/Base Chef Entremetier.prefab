@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefCost: 0
-  rangeCost: 5
+  rangeCost: 30
 --- !u!114 &-5866290309611744982
 MonoBehaviour:
   m_ObjectHideFlags: 0
