@@ -10539,7 +10539,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 621719804}
         m_TargetAssemblyTypeName: Chef.Upgrades.ChefTracker, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ToggleInfoWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
