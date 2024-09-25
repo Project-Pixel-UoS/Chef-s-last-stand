@@ -2,6 +2,7 @@ using Range;
 using Shop;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Chef.Upgrades
 {
@@ -88,6 +89,7 @@ namespace Chef.Upgrades
             sellChefUI.SetActive(true);
             chef.GetComponent<UpgradeTracker>().RefreshSellChefBar();
             infoButtonUI.SetActive(true);
+            chef.GetComponent<UpgradeTracker>().RefreshInfoWindow();
             upgradeManager = chef.GetComponent<ShopSlotManager>();
             
         }
@@ -98,12 +100,14 @@ namespace Chef.Upgrades
             upgradeSpecialUI.SetActive(false);
             sellChefUI.SetActive(false);
             infoButtonUI.SetActive(false);
-            infoWindowUI.SetActive(false);
+            infoWindowUI.GetComponent<Image>().enabled = false;
+            infoWindowUI.GetComponentInChildren<Text>().enabled = false;
         }
 
         public void ToggleInfoWindow()
         {
-            infoWindowUI.SetActive(!infoWindowUI.activeInHierarchy);
+            infoWindowUI.GetComponent<Image>().enabled = !infoWindowUI.GetComponent<Image>().enabled;
+            infoWindowUI.GetComponentInChildren<Text>().enabled = !infoWindowUI.GetComponentInChildren<Text>().enabled;
         }
         /// <summary>
         /// Invoked when 'Upgrade Range' button on the bottom bar is clicked
