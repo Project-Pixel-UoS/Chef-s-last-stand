@@ -3923,7 +3923,8 @@ MonoBehaviour:
   upgradeRangeUI: {fileID: 141500186}
   upgradeSpecialUI: {fileID: 1694771708}
   sellChefUI: {fileID: 1860494077}
-  specialInfoUI: {fileID: 1797204274}
+  infoButtonUI: {fileID: 1797204274}
+  infoWindowUI: {fileID: 1526072522}
   prepCookUpgrades:
   - {fileID: 8918619655933509355, guid: e635382ece6ef7a45b5e1c98a6d800ff, type: 3}
   - {fileID: 7368503182685209937, guid: 3386c0d5b44d14294bf608c4cf21597b, type: 3}
@@ -8202,10 +8203,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 39
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -9039,8 +9040,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300.35004, y: 238.91003}
-  m_SizeDelta: {x: 478.61, y: 343.28}
+  m_AnchoredPosition: {x: 244, y: 181.02}
+  m_SizeDelta: {x: 358.01, y: 249.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526072524
 MonoBehaviour:
@@ -11704,7 +11705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.4, y: -50.46}
+  m_AnchoredPosition: {x: -2.85, y: -50.48}
   m_SizeDelta: {x: 500, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007833866
