@@ -45,12 +45,14 @@ namespace GameManagement
             // initialize level music according to the slider
             var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
             levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
+            Time.timeScale = 1; 
+
+
         }
 
         public void GameOver()
         {
             gameOverScreen.SetActive(true);
-            
             onGameOver?.Invoke();
         }
 
