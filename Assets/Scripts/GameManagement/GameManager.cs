@@ -14,12 +14,8 @@ namespace GameManagement
         public static float speedMultiplier = 1;
 
         [SerializeField] private GameObject gameOverScreen;
-
         public static GameManager gameManager;
-
-
         public delegate void OnGameOver();
-
         public OnGameOver onGameOver;
 
         private void Awake()
@@ -36,13 +32,22 @@ namespace GameManagement
 
         private void Start()
         {
+            StopMenuMusic();
+            StartLevelMusic();
+            Time.timeScale = 1; 
+        }
+
+        private static void StopMenuMusic()
+        {
             var menuMusic = GameObject.FindGameObjectWithTag("MenuMusic");
             if (menuMusic != null) // if statement only needed to developer mode, in case start from level scene
             {
                 GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Stop();
             }
+        }
 
-            // initialize level music according to the slider
+        private static void StartLevelMusic()
+        {
             var levelMusic = GameObject.FindGameObjectWithTag("LevelMusic");
             levelMusic.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("levelVolume");
         }

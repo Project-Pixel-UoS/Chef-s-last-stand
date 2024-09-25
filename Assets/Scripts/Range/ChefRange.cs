@@ -15,6 +15,8 @@ namespace Range
             rangeSpriteRenderer.color = Color.Color.rangeColor;
             rangeSpriteRenderer.enabled = false;
             RadiusWithoutBuff = Radius;
+            
+
         }
 
         void Update()

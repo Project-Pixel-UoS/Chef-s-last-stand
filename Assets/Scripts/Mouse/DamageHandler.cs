@@ -75,7 +75,7 @@ namespace Mouse
             float durationRemaining = damageFactor.damageDuration;
             if (IsBurning(damageFactor)) onFire.Play();
             
-            HandleBurnChain(damageFactor);
+            // HandleBurnChain(damageFactor); - functionality temporarily disabled due to bugs
             while (durationRemaining > 0) //take damage until long lasting effect runs out
             {
                 mouseHealthHandler.DecrementHealth(damageFactor.damage);
@@ -83,11 +83,12 @@ namespace Mouse
                 
                 if (mouseHealthHandler.Health <= 0)
                 {
-                    HandleMouseSplit();//mice such as trench coat should split off into multiple mice after death
+                    HandleMouseSplit();
                     creditsManager.IncreaseMoney(currencyAmount); //get money per kill
                     try
                     {
-                        Destroy(gameObject); //check for death
+                        Destroy(gameObject);
+                        break;
                     }
                     catch
                     {

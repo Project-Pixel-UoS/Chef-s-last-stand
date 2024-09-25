@@ -4,9 +4,8 @@ using UnityEngine.UI;
 
 namespace Util
 {
-    public class Utils:MonoBehaviour
+    public class Utils : MonoBehaviour
     {
-  
         /// <returns> False if mouse position is outside of the action zone, where the game is happening.
         /// This includes the bottom and side bar</returns>
         /// <remarks>Author: Antosh</remarks>
@@ -15,19 +14,19 @@ namespace Util
             Image sideBar = GameObject.FindWithTag("SideBar").GetComponent<Image>();
             Image bottomBar = GameObject.FindWithTag("BottomBar").GetComponent<Image>();
 
-            
+
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             float orthographicSize = Camera.main.orthographicSize;
             // Calculate the width using the aspect ratio of the screen
             float aspectRatio = Screen.width / (float)Screen.height;
-        
+
             float cameraUnitWidth = orthographicSize * 2 * aspectRatio;
             float cameraUnitHeight = orthographicSize * 2f;
 
             float sideBarWidth = (cameraUnitWidth * sideBar.rectTransform.rect.width) / Screen.width;
             float sideBarBound = sideBar.transform.position.x - sideBarWidth / 2;
-        
+
             float bottomBarHeight = (cameraUnitHeight * bottomBar.rectTransform.rect.height) / Screen.height;
             float bottomBarBound = bottomBar.transform.position.y + bottomBarHeight / 2;
 
@@ -42,19 +41,18 @@ namespace Util
             }
 
             return false;
-
         }
 
         public static void PlayShootSound(GameObject chef)
         {
             GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Play();
         }
+
         public static void StopShootSound(GameObject chef)
         {
             GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Stop();
-
         }
-        
+
         public static GameObject GetChildWithTag(GameObject parent, string tag)
         {
             foreach (Transform child in parent.transform)
@@ -64,18 +62,41 @@ namespace Util
                     return child.gameObject;
                 }
             }
+
             return null;
         }
-        
+
         public static bool IsScreenToWide()
         {
             float currentAspectRatio = (float)Screen.width / Screen.height;
             float targetAspectRatio = (float)16 / 9;
             return currentAspectRatio >= targetAspectRatio;
         }
-        
 
 
-     
+        public static void ResizeSpriteOutsideCanvas(GameObject sprite)
+        {
+            sprite.transform.localScale *= GetOutsideCanvasResizeMultiplier();
+        }
+
+        public static float ResizeRadiusOutsideCanvas(float radius)
+        {
+            return radius * GetOutsideCanvasResizeMultiplier();
+        }
+
+        private static float GetOutsideCanvasResizeMultiplier()
+        {
+            float aspectRatio = ((float)Screen.width / Screen.height);
+            float targetAspectRatio = 1920 / 1080f;
+            float multiplier = 1f;
+            if (aspectRatio <= targetAspectRatio)
+                multiplier *= aspectRatio / targetAspectRatio;
+            return multiplier;
+        }
+
+        public static void ResizeSpriteInsideCanvas(GameObject sprite)
+        {
+            sprite.transform.localScale *= 1080f / Screen.height;
+        }
     }
 }

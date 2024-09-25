@@ -13,13 +13,13 @@ EditorBuildSettings:
     guid: 527104e559223ea4fb8e705f9eaa065e
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+    guid: b8774df3ec482cb41ab60c8a848f5b87
+  - enabled: 1
     path: Assets/Scenes/Level 2.unity
-    guid: 04dd68f016a393f4da14b401753b7b98
-  - enabled: 0
+    guid: 9819481ae6b2ffd47b1653911821a63a
+  - enabled: 1
     path: Assets/Scenes/Level 3.unity
-    guid: 715d1347ecd8d3340a4a8bd03fb5dbf5
+    guid: f479a0b4028694341a839ad4bd9e289a
   - enabled: 1
     path: Assets/Scenes/Chefs.unity
     guid: 5eef96dec48293e4e9445e07a7b84226
