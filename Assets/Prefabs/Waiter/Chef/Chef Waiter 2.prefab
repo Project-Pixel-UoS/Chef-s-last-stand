@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: specialTotal
       value: 170
       objectReference: {fileID: 0}
+    - target: {fileID: 8139516919449501545, guid: 33cdc388cb4fb431793e3b49e03c6709, type: 3}
+      propertyPath: abilityDescription
+      value: Plates do even more damage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

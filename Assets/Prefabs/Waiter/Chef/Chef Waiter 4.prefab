@@ -34,11 +34,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: rangeCost
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: specialTotal
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
+      propertyPath: abilityDescription
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4242282074824151463, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: cooldown

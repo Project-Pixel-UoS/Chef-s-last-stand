@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: abilityDescription
-      value: Throws 2 Knives at once
+      value: Throws 2 knives at once
       objectReference: {fileID: 0}
     - target: {fileID: 3235755696769366089, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Sprite
