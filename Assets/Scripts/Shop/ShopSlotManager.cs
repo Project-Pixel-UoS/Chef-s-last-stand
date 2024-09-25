@@ -34,7 +34,7 @@ namespace Shop
         
         private void Update()
         {
-            if (rangeImage != null)
+            if (rangeImage != null && chefImage != null)
             {
                 if (chefCost > creditsManager.GetCredits())
                 {
