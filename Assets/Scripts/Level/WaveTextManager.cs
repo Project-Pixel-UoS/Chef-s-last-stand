@@ -39,7 +39,7 @@ namespace Level.WaveData
 
         public IEnumerator DisplayStartingWaveText(int currentWave)
         {
-            text.text = "Wave " + (currentWave + 1) + " Starting";
+            text.text = "wave " + (currentWave + 1);
             waveText.SetActive(true); 
 
             yield return new WaitForSeconds(3);
