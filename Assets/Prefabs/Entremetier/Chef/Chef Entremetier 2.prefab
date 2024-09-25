@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: rangeCost
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: abilityDescription
+      value: Poison does more damage
+      objectReference: {fileID: 0}
     - target: {fileID: 4357221676546473598, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: m_Sprite
       value: 

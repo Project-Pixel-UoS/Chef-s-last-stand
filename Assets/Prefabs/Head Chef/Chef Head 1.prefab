@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 3344661070343554498, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 41b48c9405e205b47bf244790f0feebb, type: 3}
+      objectReference: {fileID: 21300000, guid: 4ac21036d0e9ab640ae9ab5c2b8f9cf9, type: 3}
     - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: chefCost
       value: 100
@@ -87,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: rangeCost
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: abilityDescription
+      value: Reload buff increase
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
