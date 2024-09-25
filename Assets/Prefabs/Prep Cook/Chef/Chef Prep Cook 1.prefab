@@ -73,6 +73,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: specialTotal
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: abilityDescription
       value: Knives penetrate through mice
       objectReference: {fileID: 0}

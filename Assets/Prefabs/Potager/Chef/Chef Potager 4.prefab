@@ -66,11 +66,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: chefCost
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: rangeCost
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
+      propertyPath: specialTotal
+      value: 770
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

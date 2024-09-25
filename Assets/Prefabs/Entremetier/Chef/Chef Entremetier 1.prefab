@@ -69,6 +69,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: specialTotal
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: abilityDescription
       value: Poison does damage quicker
       objectReference: {fileID: 0}

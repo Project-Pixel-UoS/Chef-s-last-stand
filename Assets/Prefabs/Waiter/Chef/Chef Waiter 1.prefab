@@ -77,6 +77,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: specialTotal
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: abilityDescription
       value: Can drop more plates at once
       objectReference: {fileID: 0}

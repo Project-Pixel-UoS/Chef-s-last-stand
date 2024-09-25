@@ -61,6 +61,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: specialTotal
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: abilityDescription
       value: Plates do more damage
       objectReference: {fileID: 0}
