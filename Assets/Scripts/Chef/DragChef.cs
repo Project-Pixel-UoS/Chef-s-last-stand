@@ -65,10 +65,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (GameManager.isPaused)
-        {
-            return;
-        }
+        if (GameManager.isPaused) return;
+        if (!shopSlotManager.CheckSufficientChefFunds()) return;
 
         range.enabled = true; // makes the range visible
 
@@ -83,10 +81,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnDrag(PointerEventData eventData)
     {
-        if (GameManager.isPaused)
-        {
-            return;
-        }
+        if (GameManager.isPaused) return;
+        if (!shopSlotManager.CheckSufficientChefFunds()) return;
+
 
         PositionChefOntoCursor();
         if (CheckOutOfBounds())
@@ -187,36 +184,21 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     /// <remarks>Maintained by: Lishan Xu</remarks>
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        if (GameManager.isPaused) return;
+        if (GameManager.gameManager.IsGameOver())return;
+        if (!shopSlotManager.CheckSufficientChefFunds()) return;
+        
         ReturnSpriteToSlot();
         range.enabled = false;
 
-        if (GameManager.isPaused)
-        {
-            return;
-        } // Cannot place when game is paused
-
-        if (GameManager.gameManager.IsGameOver())
-        {
-            return;
-        } // Cannot place if game has ended
-
-        if (!shopSlotManager.CheckSufficientChefFunds())
-        {
-            return;
-        } // Cannot place if don't have sufficient funds
-
-        if (CheckOutOfBounds())
-        {
-            return;
-        } // Cannot place if out of bounds
+        if (CheckOutOfBounds()) return;
 
         shopSlotManager.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefInstance = Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         Utils.ResizeSpriteOutsideCanvas(chefInstance);
-
     }
-
 
 
     private void ReturnSpriteToSlot()
