@@ -38,7 +38,7 @@ public class CreditManager : MonoBehaviour
         if (credits >= amount)
         {
             credits -= amount;
-            text.text = "Credits: " + credits;
+            text.text = "$" + credits;
             return true;
         }
         else
