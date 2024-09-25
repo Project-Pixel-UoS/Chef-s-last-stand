@@ -37,6 +37,7 @@ namespace Chef.Upgrades
             }
 
             RefreshRangeBar();
+            RefreshSellChefBar();
         }
 
         /// <summary>
@@ -57,6 +58,8 @@ namespace Chef.Upgrades
             range.Radius = GetComponent<ChefRange>().Radius; //copy range upgrade status over
             range.EnableRangeRenderer(); //keep range active
             RefreshSpecialBar();
+            RefreshSellChefBar();
+            RefreshInfoWindow();
             ChefTracker.Instance.CurrentChef = newChef;
             Destroy(gameObject);
         }
@@ -99,7 +102,22 @@ namespace Chef.Upgrades
             upgradeBar2.sprite = progressBars[path2Status];
         }
 
+        public void RefreshSellChefBar()
+        {
+            var sellText = GameObject.FindGameObjectWithTag("SellButtonText").GetComponent<Text>();
+            int price = transform.GetComponent<ShopSlotManager>().specialTotal;
+            price += transform.GetComponent<ShopSlotManager>().rangeCost * path1Status;
+            transform.GetComponent<ShopSlotManager>().SetRefundPrice(price);
+            sellText.text = "Sell Chef: \n" + "$" + transform.GetComponent<ShopSlotManager>().GetRefundPrice();
+        }
 
+        public void RefreshInfoWindow()
+        {
+            String abilityInfo = transform.GetComponent<ShopSlotManager>().abilityDescription;
+            var infoText = GameObject.FindGameObjectWithTag("InfoWindowText").GetComponent<Text>();
+            print(abilityInfo);
+            infoText.text = abilityInfo;
+        }
         /// <returns> an array of selected chef's upgrade prefabs</returns>
         public GameObject[] GetChefUpgrades()
         {

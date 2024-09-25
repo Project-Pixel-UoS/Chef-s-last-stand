@@ -30,6 +30,8 @@ TagManager:
   - Bricks
   - RangeButtonText
   - SpecialButtonText
+  - SellButtonText
+  - InfoWindowText
   layers:
   - Default
   - TransparentFX

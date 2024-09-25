@@ -2,6 +2,7 @@ using Range;
 using Shop;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Chef.Upgrades
 {
@@ -15,6 +16,9 @@ namespace Chef.Upgrades
 
         [SerializeField] private GameObject upgradeRangeUI; // game object containing upgrade button and upgrade bar
         [SerializeField] private GameObject upgradeSpecialUI;
+        [SerializeField] private GameObject sellChefUI;
+        [SerializeField] private GameObject infoButtonUI;
+        [SerializeField] private GameObject infoWindowUI;
         [SerializeField] private GameObject[] prepCookUpgrades;
         [SerializeField] private GameObject[] grillardinUpgrades;
         [SerializeField] private GameObject[] headChefUpgrades;
@@ -82,15 +86,29 @@ namespace Chef.Upgrades
             chef.GetComponent<UpgradeTracker>().RefreshRangeBar();
             upgradeSpecialUI.SetActive(true);
             chef.GetComponent<UpgradeTracker>().RefreshSpecialBar();
+            sellChefUI.SetActive(true);
+            chef.GetComponent<UpgradeTracker>().RefreshSellChefBar();
+            infoButtonUI.SetActive(true);
+            chef.GetComponent<UpgradeTracker>().RefreshInfoWindow();
             upgradeManager = chef.GetComponent<ShopSlotManager>();
+            
         }
 
         private void RemoveUpgradeButtons()
         {
             upgradeRangeUI.SetActive(false);
             upgradeSpecialUI.SetActive(false);
+            sellChefUI.SetActive(false);
+            infoButtonUI.SetActive(false);
+            infoWindowUI.GetComponent<Image>().enabled = false;
+            infoWindowUI.GetComponentInChildren<Text>().enabled = false;
         }
 
+        public void ToggleInfoWindow()
+        {
+            infoWindowUI.GetComponent<Image>().enabled = !infoWindowUI.GetComponent<Image>().enabled;
+            infoWindowUI.GetComponentInChildren<Text>().enabled = !infoWindowUI.GetComponentInChildren<Text>().enabled;
+        }
         /// <summary>
         /// Invoked when 'Upgrade Range' button on the bottom bar is clicked
         /// </summary>
@@ -117,6 +135,13 @@ namespace Chef.Upgrades
             }
         }
 
+        public void SellChef()
+        {
+            //var chef = currentChef.GetComponent<UpgradeTracker>();
+            upgradeManager.HandleChefRefund();
+            Destroy(currentChef);
+            CurrentChef = null;
+        }
         /// <summary>
         /// invoked when a chef is pressed
         /// </summary>

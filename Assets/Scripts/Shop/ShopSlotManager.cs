@@ -1,4 +1,5 @@
 
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,9 @@ namespace Shop
         // to chef game object
         public int chefCost; 
         public int rangeCost;
+        public int specialTotal; // the cumulative cost of special abilities
+        public String abilityDescription;
+        private int totalRefund; //(sellPrice + amount of money spent on range) * a percentage = credits refunded
         private CreditManager creditsManager;
         
         private void Start()
@@ -69,7 +73,21 @@ namespace Shop
             return creditsManager.GetCredits() >= rangeCost;
         }
 
+        public void HandleChefRefund()
+        {
+            print(totalRefund);
+            creditsManager.IncreaseMoney(totalRefund);
+        }
 
+        public void SetRefundPrice(int price)
+        {
+            double percentage = 0.5f;
+            totalRefund = (int)(price*percentage);
+        }
 
+        public int GetRefundPrice()
+        {
+            return totalRefund;
+        }
     }
 }

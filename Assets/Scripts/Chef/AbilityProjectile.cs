@@ -92,7 +92,7 @@ namespace Chef
         /// </summary>
         private void SpawnProjectile()
         {
-            GameObject p = Instantiate(projectile, transform.position, transform.rotation, transform);
+            GameObject p = Instantiate(projectile, transform.position, transform.rotation);
             DamageFactor df = p.GetComponent<DamageFactor>();
             p.GetComponent<DamageFactor>().damage = df.damage * buff.DamageMultiplier;
         }
