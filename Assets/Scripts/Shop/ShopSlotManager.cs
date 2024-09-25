@@ -80,7 +80,7 @@ namespace Shop
 
         public void SetRefundPrice(int price)
         {
-            double percentage = 0.3f;
+            double percentage = 0.5f;
             totalRefund = (int)(price*percentage);
         }
 

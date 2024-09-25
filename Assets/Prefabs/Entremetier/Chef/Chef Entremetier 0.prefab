@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chef Entremetier 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: chefCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: specialTotal
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4357221676546473598, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: m_Sprite
       value: 

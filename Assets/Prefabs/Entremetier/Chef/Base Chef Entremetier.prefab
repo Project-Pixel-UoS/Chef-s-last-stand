@@ -272,9 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f19adc479e4d83862f7a07a130acd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefCost: 0
-  rangeCost: 5
-  sellPrice: 50
+  chefCost: 100
+  rangeCost: 10
+  specialTotal: 0
 --- !u!114 &-5866290309611744982
 MonoBehaviour:
   m_ObjectHideFlags: 0

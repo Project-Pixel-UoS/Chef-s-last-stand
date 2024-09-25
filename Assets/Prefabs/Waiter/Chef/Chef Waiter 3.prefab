@@ -8,8 +8,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
+      propertyPath: chefCost
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
+      propertyPath: specialTotal
+      value: 230
+      objectReference: {fileID: 0}
     - target: {fileID: 1447560724057925964, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 7864049757105532226, guid: 26d598beea7f54d20830cb5047117c70, type: 3}
+    - target: {fileID: 1447560724057925964, guid: a81f9099c4b5842858894914a4771bec, type: 3}
+      propertyPath: projectile
       value: 
       objectReference: {fileID: 7864049757105532226, guid: 26d598beea7f54d20830cb5047117c70, type: 3}
     - target: {fileID: 5226210433837137258, guid: a81f9099c4b5842858894914a4771bec, type: 3}
