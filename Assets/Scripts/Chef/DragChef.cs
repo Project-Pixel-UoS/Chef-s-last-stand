@@ -35,7 +35,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform = GetComponent<RectTransform>();
         DisplayChefPrice();
 
-        
+
         RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
 
 
@@ -48,9 +48,9 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         //     float ratio = 1080 / (float)canvas.rect.height;
         //     rangeSize *= ratio;
         // }
-
         range.enabled = false; //hides the range at the beginning
         range.transform.localScale = rangeSize;
+        Utils.ResizeSpriteInsideCanvas(range.gameObject);
 
         chefCollider2D = GetComponent<Collider2D>();
     }
@@ -212,8 +212,12 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         shopSlotManager.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
-        Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
+        var chefInstance = Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
+        Utils.ResizeSpriteOutsideCanvas(chefInstance);
+
     }
+
+
 
     private void ReturnSpriteToSlot()
     {

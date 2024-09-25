@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseButton : MonoBehaviour
 {
-
-    /// <summary> Toggles time dependent processes (pauses the game) </summary>
-    /// <remarks> Maintained by: Ben Brixton </remarks>
-    public void TogglePause(){
-
-        TMPro.TextMeshProUGUI textObject = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-        if(Mathf.Approximately(Time.timeScale, 0.0f)){
-            textObject.text = "Pause";
-            GameManager.isPaused = false;
-            Time.timeScale = GameManager.speedMultiplier;
-        }
-        else{
-            textObject.text = "Play";
-            GameManager.isPaused = true;
-            Time.timeScale = 0.0f;
-        }
+    [SerializeField] private GameObject pauseScreen;
+    
+    /// <summary>
+    /// Invoked when pause button is pressed
+    /// </summary>
+    public void Pause()
+    {
+        pauseScreen.SetActive(true);
+        // textObject.text = "Play";
+        GameManager.isPaused = true;
+        Time.timeScale = 0.0f;
     }
 
+    
 
 }
