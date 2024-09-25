@@ -15,7 +15,6 @@ public class PauseButton : MonoBehaviour
     public void Pause()
     {
         pauseScreen.SetActive(true);
-        // textObject.text = "Play";
         GameManager.isPaused = true;
         Time.timeScale = 0.0f;
     }

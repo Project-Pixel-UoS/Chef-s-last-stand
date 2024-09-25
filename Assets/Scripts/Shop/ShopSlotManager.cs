@@ -21,6 +21,7 @@ namespace Shop
         public int chefCost; 
         public int rangeCost;
         public int specialTotal; // the cumulative cost of special abilities
+        public String abilityDescription;
         private int totalRefund; //(sellPrice + amount of money spent on range) * a percentage = credits refunded
         private CreditManager creditsManager;
         

@@ -14,7 +14,7 @@ public class CreditManager : MonoBehaviour
     void Start()
     {
         credits = 4000; // should be 40 in production mode
-        text.text = "Credits: " + credits;
+        text.text = "$" + credits;
     }
 
 
@@ -25,7 +25,7 @@ public class CreditManager : MonoBehaviour
     public void IncreaseMoney(int amount)
     {
         credits += amount;
-        text.text = "Credits: " + credits;
+        text.text = "$" + credits;
     }
 
     /// <summary>

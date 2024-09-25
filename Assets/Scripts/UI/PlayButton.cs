@@ -14,7 +14,6 @@ namespace UI
         public void Play()
         {
             pauseScreen.SetActive(false);
-            // textObject.text = "Pause";
             GameManager.isPaused = false;
             Time.timeScale = GameManager.speedMultiplier;
         }
