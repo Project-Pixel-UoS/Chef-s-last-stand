@@ -8394,11 +8394,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
   mouseTypesList:
-  - {fileID: 11400000, guid: 568c1f86006a8bd46b188f1dbb789237, type: 2}
+  - {fileID: 11400000, guid: fb2de84d40a0c054fbdd8dbe0e486f01, type: 2}
   - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
   - {fileID: 11400000, guid: 25af01f4f0b78d9408ac12d7e9ba2ffd, type: 2}
   - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
-  - {fileID: 11400000, guid: 532d65b96bbe93e40a201d2a0a528c2e, type: 2}
+  - {fileID: 11400000, guid: 72390888884d18d44b65f7193183e064, type: 2}
   - {fileID: 11400000, guid: f20d81e1d16219341b43a001ed128b3f, type: 2}
   - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
   - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
