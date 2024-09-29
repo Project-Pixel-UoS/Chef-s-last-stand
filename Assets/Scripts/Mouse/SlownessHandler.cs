@@ -61,7 +61,6 @@ namespace Mouse
              if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
             {
                 SlowMouse(slownessProjectile);
-                Debug.Log(otherGameObject.name);
              }
 
         }

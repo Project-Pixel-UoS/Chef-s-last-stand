@@ -95,7 +95,7 @@ namespace Chef.Upgrades
             }
             else
             {
-                var cost = transform.GetComponent<Shop.PurchasedChef>().abilityUpgradeCost;
+                var cost = transform.GetComponent<PurchasedChef>().abilityUpgradeCost;
                 specialText.text = "Special: \n" + "$" + cost;
             }
             var upgradeBar2 = GameObject.FindGameObjectWithTag("UpgradeBar2").GetComponent<Image>();
