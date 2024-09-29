@@ -105,10 +105,11 @@ namespace Chef.Upgrades
         public void RefreshSellChefBar()
         {
             var sellText = GameObject.FindGameObjectWithTag("SellButtonText").GetComponent<Text>();
-            int price = transform.GetComponent<Shop.PurchasedChef>().specialTotal;
-            price += transform.GetComponent<Shop.PurchasedChef>().rangeUpgradeCost * path1Status;
-            transform.GetComponent<Shop.PurchasedChef>().SetRefundPrice(price);
-            sellText.text = "Sell Chef: \n" + "$" + transform.GetComponent<Shop.PurchasedChef>().GetRefundPrice();
+            var purchasedChef = transform.GetComponent<PurchasedChef>();
+            int price = purchasedChef.specialTotal;
+            price += purchasedChef.rangeUpgradeCost * path1Status;
+            purchasedChef.SetRefundPrice(price);
+            sellText.text = "Sell Chef: \n" + "$" + purchasedChef.GetRefundPrice();
         }
 
         public void RefreshInfoWindow()
