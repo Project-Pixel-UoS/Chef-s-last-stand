@@ -17,8 +17,6 @@ namespace BackgroundManagement
             }
         }
 
- 
-
         private void AddBrickToTheRightOfGameStage(int numOfBricksToPlace)
         {
             for (int counter = 1; counter <= numOfBricksToPlace; counter++)
@@ -57,25 +55,27 @@ namespace BackgroundManagement
             }
         }
 
-
-
         float GetLeftBorderXInScreenUnits()
         {
-            RectTransform rectTransform = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<RectTransform>();
-            Vector3[] worldCorners = new Vector3[4];
-            rectTransform.GetWorldCorners(worldCorners);
-            Vector3 leftMostWorldPoint = worldCorners[0];
-            Vector2 leftMostScreenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, leftMostWorldPoint);
-            return leftMostScreenPoint.x;
-            
+            return GetBottomBarCorner(0).x;
+        }
+        
+        float GetRightBorderXInScreenUnits()
+        {
+            return GetBottomBarCorner(3).x;
         }
 
-        /// <returns>left most x co ord of game stage </returns>
-        private static float GetRightBorderXInScreenUnits()
+        private Vector2 GetBottomBarCorner(int cornerIndex)
         {
-            var widthOfGameStage = CalculateWidthOfGameStage();
-            return (Screen.width + widthOfGameStage) / 2f;
+            var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
+            RectTransform rectTransform = bottomBar.GetComponent<RectTransform>();
+            Vector3[] worldCorners = new Vector3[4];
+            rectTransform.GetWorldCorners(worldCorners);
+            Vector3 corner = worldCorners[cornerIndex];
+            return Camera.main.WorldToScreenPoint(corner);
         }
+
+
 
         /// <summary>
         /// The bottom bar's width property is always fixed at 1920 regardless the screen width, so if we play at
