@@ -43,6 +43,7 @@ namespace BackgroundManagement
             for (int counter = 1; counter <= numOfBricksToPlace; counter++)
             {
                 GameObject bricks = Instantiate(bricksPrefab);
+                bricks.transform.parent = GameObject.FindGameObjectWithTag("Canvas").transform;
 
                 float leftBorderXScreenUnits = GetLeftBorderXInScreenUnits();
                 var positionScreenUnits = new Vector2(leftBorderXScreenUnits, 0);
@@ -57,11 +58,16 @@ namespace BackgroundManagement
         }
 
 
-        /// <returns>left most x co ord of game stage </returns>
-        private static float GetLeftBorderXInScreenUnits()
+
+        float GetLeftBorderXInScreenUnits()
         {
-            var widthOfGameStage = CalculateWidthOfGameStage();
-            return (Screen.width - widthOfGameStage) / 2f;
+            RectTransform rectTransform = GameObject.FindGameObjectWithTag("BottomBar").GetComponent<RectTransform>();
+            Vector3[] worldCorners = new Vector3[4];
+            rectTransform.GetWorldCorners(worldCorners);
+            Vector3 leftMostWorldPoint = worldCorners[0];
+            Vector2 leftMostScreenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, leftMostWorldPoint);
+            return leftMostScreenPoint.x;
+            
         }
 
         /// <returns>left most x co ord of game stage </returns>

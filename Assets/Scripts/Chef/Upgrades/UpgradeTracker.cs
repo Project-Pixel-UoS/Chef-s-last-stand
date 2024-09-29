@@ -116,7 +116,6 @@ namespace Chef.Upgrades
         {
             String abilityInfo = transform.GetComponent<Shop.PurchasedChef>().abilityDescription;
             var infoText = GameObject.FindGameObjectWithTag("InfoWindowText").GetComponent<Text>();
-            print(abilityInfo);
             infoText.text = abilityInfo;
         }
         /// <returns> an array of selected chef's upgrade prefabs</returns>

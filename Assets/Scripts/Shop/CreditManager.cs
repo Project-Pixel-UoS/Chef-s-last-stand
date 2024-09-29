@@ -41,12 +41,8 @@ public class CreditManager : MonoBehaviour
             text.text = "$" + credits;
             return true;
         }
-        else
-        {
-            //console log for now.
-            Debug.Log("no money");
-            return false;
-        }
+        
+        return false;
     }
 
     public int GetCredits()

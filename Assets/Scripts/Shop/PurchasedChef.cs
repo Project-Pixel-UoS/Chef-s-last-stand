@@ -53,7 +53,6 @@ namespace Shop
 
         public void HandleChefRefund()
         {
-            print(totalRefund);
             creditsManager.IncreaseMoney(totalRefund);
         }
 
