@@ -22,14 +22,14 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
-    private ShopSlotManager shopSlotManager;
+    private ChefForSale purchased;
     [SerializeField] private GameObject placeableAreas;
 
     private RectTransform rectTransform;
 
     private void Start()
     {
-        shopSlotManager = GetComponent<ShopSlotManager>();
+        purchased = GetComponent<ChefForSale>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
         range = transform.GetChild(0).GetComponent<SpriteRenderer>();
         rectTransform = GetComponent<RectTransform>();
@@ -49,7 +49,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void DisplayChefPrice()
     {
-        gameObject.transform.parent.GetComponentInChildren<Text>().text = shopSlotManager.chefCost.ToString() + '$';
+        gameObject.transform.parent.GetComponentInChildren<Text>().text = purchased.cost.ToString() + '$';
     }
 
 
@@ -58,7 +58,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.isPaused) return;
-        if (!shopSlotManager.CheckSufficientChefFunds()) return;
+        if (!purchased.CheckSufficientChefFunds()) return;
 
         range.enabled = true; // makes the range visible
 
@@ -74,10 +74,22 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         if (GameManager.isPaused) return;
-        if (!shopSlotManager.CheckSufficientChefFunds()) return;
-
-
+        if (!purchased.CheckSufficientChefFunds()) return;
+        
         PositionChefOntoCursor();
+        SetRangeColour();
+        SetDropPosition();
+    }
+
+    private void SetDropPosition()
+    {
+        // Convert back from viewport to world space
+        dropPosition = transform.position;
+        dropPosition.z = 0;
+    }
+
+    private void SetRangeColour()
+    {
         if (CheckOutOfBounds())
         {
             range.color = new Color32(238, 68, 56, 135);
@@ -86,11 +98,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             range.color = Color.Color.rangeColor;
         }
-
-
-        // Convert back from viewport to world space
-        dropPosition = transform.position;
-        dropPosition.z = 0;
     }
 
     private void PositionChefOntoCursor()
@@ -168,7 +175,6 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 return false;
             }
         }
-
         return true;
     }
 
@@ -179,20 +185,19 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (GameManager.isPaused) return;
         if (GameManager.gameManager.IsGameOver())return;
-        if (!shopSlotManager.CheckSufficientChefFunds()) return;
+        if (!purchased.CheckSufficientChefFunds()) return;
         
         ReturnSpriteToSlot();
         range.enabled = false;
 
         if (CheckOutOfBounds()) return;
 
-        shopSlotManager.HandleChefTransaction();
+        purchased.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefInstance = Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         Utils.ResizeSpriteOutsideCanvas(chefInstance);
     }
-
-
+    
     private void ReturnSpriteToSlot()
     {
         transform.SetParent(parentAfterDrag);

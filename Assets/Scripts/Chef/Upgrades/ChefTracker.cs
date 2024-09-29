@@ -25,7 +25,7 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject[] waiterUpgrades;
         [SerializeField] private GameObject[] potagerUpgrades;
         [SerializeField] private GameObject[] entremetierUpgrades;
-        private ShopSlotManager upgradeManager;
+        private Shop.PurchasedChef upgradeManager;
 
 
         private GameObject currentChef;
@@ -90,7 +90,7 @@ namespace Chef.Upgrades
             chef.GetComponent<UpgradeTracker>().RefreshSellChefBar();
             infoButtonUI.SetActive(true);
             chef.GetComponent<UpgradeTracker>().RefreshInfoWindow();
-            upgradeManager = chef.GetComponent<ShopSlotManager>();
+            upgradeManager = chef.GetComponent<PurchasedChef>();
             
         }
 
