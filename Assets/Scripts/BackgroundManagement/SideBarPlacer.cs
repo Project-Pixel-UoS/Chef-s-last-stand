@@ -11,86 +11,106 @@ namespace BackgroundManagement
         {
             if (Util.Utils.IsScreenToWide())
             {
-                int numOfBricksToPlace = 3;
-                AddBrickToTheLeftOfGameStage(numOfBricksToPlace);
-                AddBrickToTheRightOfGameStage(numOfBricksToPlace);
+                AddTilesToTheLeftOfGameStage(3);
+                AddTilesToTheRightOfGameStage(3);
             }
             else
             {
-                // AddBricksAboveGameStage();
+                AddTilesAboveGameStage(3);
+                AddTilesBelowGameStage(3);
+
                 
             }
         }
-
-        private void AddBrickToTheRightOfGameStage(int numOfBricksToPlace)
+        
+        private void AddTilesAboveGameStage(int numOfBricksToPlace)
         {
-            for (int counter = 1; counter <= numOfBricksToPlace; counter++)
+            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
             {
-                GameObject bricks = Instantiate(bricksPrefab);
-
-                float rightBorderXScreenUnits = GetRightBorderXInScreenUnits();
-                var positionScreenUnits = new Vector2(rightBorderXScreenUnits, 0);
-                Vector2 pos = Camera.main.ScreenToWorldPoint(positionScreenUnits);
-
-                var brickDimensions = bricks.GetComponent<SpriteRenderer>().sprite.bounds.size;
-                pos.x += brickDimensions.x / 2f;
-                pos.y += brickDimensions.y * counter / 2f;
-
-                bricks.transform.position = pos;
+                GameObject tile = Instantiate(bricksPrefab);
+                Vector2 pos = GetTopRightGameStagePos();
+                var brickDimensions = GetTileDimensions(tile);
+                pos.x -= brickDimensions.x * (0.5f + counter); 
+                pos.y += brickDimensions.y / 2f;
+                tile.transform.position = pos;
             }
-        }
-
-        private void AddBrickToTheLeftOfGameStage(int numOfBricksToPlace)
-        {
-            // harde coded number of times to place the bricks - not ideal but ran out of time
-            for (int counter = 1; counter <= numOfBricksToPlace; counter++)
-            {
-                GameObject bricks = Instantiate(bricksPrefab);
-                bricks.transform.parent = GameObject.FindGameObjectWithTag("Canvas").transform;
-
-                float leftBorderXScreenUnits = GetLeftBorderXInScreenUnits();
-                var positionScreenUnits = new Vector2(leftBorderXScreenUnits, 0);
-                Vector2 pos = Camera.main.ScreenToWorldPoint(positionScreenUnits);
-
-                var brickDimensions = bricks.GetComponent<SpriteRenderer>().sprite.bounds.size;
-                pos.x -= brickDimensions.x / 2f + 0.1f; //TODO ask about this little gap
-                pos.y += brickDimensions.y * counter / 2f;
-
-                bricks.transform.position = pos;
-            }
-        }
-
-        float GetLeftBorderXInScreenUnits()
-        {
-            return GetBottomBarCorner(0).x;
         }
         
-        float GetRightBorderXInScreenUnits()
+        private void AddTilesBelowGameStage(int numOfBricksToPlace)
         {
-            return GetBottomBarCorner(3).x;
+            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            {
+                GameObject tile = Instantiate(bricksPrefab);
+                Vector2 pos = GetBottomLeftGameStagePos();
+                var brickDimensions = GetTileDimensions(tile);
+                pos.x += brickDimensions.x * (0.5f + counter); 
+                pos.y -= brickDimensions.y / 2f;
+                tile.transform.position = pos;
+            }
+        }
+
+
+
+        private void AddTilesToTheRightOfGameStage(int numOfBricksToPlace)
+        {
+            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            {
+                GameObject tile = Instantiate(bricksPrefab);
+                Vector2 pos = GetTopRightGameStagePos();
+                var brickDimensions = GetTileDimensions(tile);
+                pos.x += brickDimensions.x / 2f;
+                pos.y -= brickDimensions.y * (0.5f + counter);
+                tile.transform.position = pos;
+            }
+        }
+
+  
+
+        private void AddTilesToTheLeftOfGameStage(int numOfBricksToPlace)
+        {
+            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            {
+                GameObject tile = Instantiate(bricksPrefab);
+                Vector2 pos = GetBottomLeftGameStagePos();
+                var brickDimensions = GetTileDimensions(tile);
+                pos.x -= brickDimensions.x / 2f; 
+                pos.y += brickDimensions.y * (0.5f + counter);
+                tile.transform.position = pos;
+            }
+        }
+
+        Vector2 GetBottomLeftGameStagePos()
+        {
+            return GetBottomBarCorner(0);
+        }
+        
+        Vector2 GetTopRightGameStagePos()
+        {
+            return GetSideBarCorner(2);
         }
 
         private Vector2 GetBottomBarCorner(int cornerIndex)
         {
             var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
+            return GetItemCorner(cornerIndex, bottomBar);
+        }
+        
+        private Vector2 GetSideBarCorner(int cornerIndex)
+        {
+            var sideBar = GameObject.FindGameObjectWithTag("SideBar");
+            return GetItemCorner(cornerIndex, sideBar);
+        }
+
+        private static Vector2 GetItemCorner(int cornerIndex, GameObject bottomBar)
+        {
             RectTransform rectTransform = bottomBar.GetComponent<RectTransform>();
             Vector3[] worldCorners = new Vector3[4];
             rectTransform.GetWorldCorners(worldCorners);
-            Vector3 corner = worldCorners[cornerIndex];
-            return Camera.main.WorldToScreenPoint(corner);
+            return worldCorners[cornerIndex];
         }
-
-
-
-        /// <summary>
-        /// The bottom bar's width property is always fixed at 1920 regardless the screen width, so if we play at
-        /// a screen width smaller than 1920, we dont want to deduct the full bottom bar's width.
-        /// </summary>
-        private static float CalculateWidthOfGameStage()
+        private static Vector3 GetTileDimensions(GameObject tile)
         {
-            var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
-            Rect rect = bottomBar.GetComponent<RectTransform>().rect;
-            return Math.Min(rect.width, Screen.width);
+            return tile.GetComponent<SpriteRenderer>().sprite.bounds.size;
         }
     }
 }
