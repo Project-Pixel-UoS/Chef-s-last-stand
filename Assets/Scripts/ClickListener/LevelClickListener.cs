@@ -15,7 +15,7 @@ namespace ClickListener
         /// <remarks>Maintained by: Emily Johnston </remarks>
         private void ClickManager()
         {
-            if (IsMouseClicked() && !Utils.checkMousePosOutsideMap())
+            if (IsMouseClicked() && Utils.CheckMousePosInsideGameStage())
             {
                 GameObject clickedChef = GetClickedChef();
                 ChefTracker.Instance.OnChefClicked(clickedChef);

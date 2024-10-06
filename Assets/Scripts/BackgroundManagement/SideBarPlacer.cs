@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Util;
 
 namespace BackgroundManagement
 {
@@ -80,21 +81,21 @@ namespace BackgroundManagement
         Vector2 GetBottomLeftGameStagePos()
         {
             var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
-            return GetItemCorner(bottomBar, 0);
+            return Utils.GetItemCorner(bottomBar, 0);
         }
         
         Vector2 GetTopRightGameStagePos()
         {
             var sideBar = GameObject.FindGameObjectWithTag("SideBar");
-            return GetItemCorner(sideBar, 2);
+            return Utils.GetItemCorner(sideBar, 2);
         }
-        private static Vector2 GetItemCorner(GameObject bottomBar, int cornerIndex)
-        {
-            RectTransform rectTransform = bottomBar.GetComponent<RectTransform>();
-            Vector3[] worldCorners = new Vector3[4];
-            rectTransform.GetWorldCorners(worldCorners);
-            return worldCorners[cornerIndex];
-        }
+        // private static Vector2 GetItemCorner(GameObject bottomBar, int cornerIndex)
+        // {
+        //     RectTransform rectTransform = bottomBar.GetComponent<RectTransform>();
+        //     Vector3[] worldCorners = new Vector3[4];
+        //     rectTransform.GetWorldCorners(worldCorners);
+        //     return worldCorners[cornerIndex];
+        // }
         private static Vector3 GetTileDimensions(GameObject tile)
         {
             return tile.GetComponent<SpriteRenderer>().sprite.bounds.size;

@@ -169,7 +169,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         foreach (Transform child in placeableAreas.transform)
         {
-            if (chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<BoxCollider2D>().bounds))
+            if (chefCollider2D.bounds.Intersects(child.gameObject.GetComponent<Collider2D>().bounds))
             {
                 return false;
             }

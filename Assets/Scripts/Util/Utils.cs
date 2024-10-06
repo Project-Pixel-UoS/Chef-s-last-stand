@@ -9,38 +9,15 @@ namespace Util
         /// <returns> False if mouse position is outside of the action zone, where the game is happening.
         /// This includes the bottom and side bar</returns>
         /// <remarks>Author: Antosh</remarks>
-        public static bool checkMousePosOutsideMap()
+        public static bool CheckMousePosInsideGameStage()
         {
-            Image sideBar = GameObject.FindWithTag("SideBar").GetComponent<Image>();
-            Image bottomBar = GameObject.FindWithTag("BottomBar").GetComponent<Image>();
-
-
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            float orthographicSize = Camera.main.orthographicSize;
-            // Calculate the width using the aspect ratio of the screen
-            float aspectRatio = Screen.width / (float)Screen.height;
-
-            float cameraUnitWidth = orthographicSize * 2 * aspectRatio;
-            float cameraUnitHeight = orthographicSize * 2f;
-
-            float sideBarWidth = (cameraUnitWidth * sideBar.rectTransform.rect.width) / Screen.width;
-            float sideBarBound = sideBar.transform.position.x - sideBarWidth / 2;
-
-            float bottomBarHeight = (cameraUnitHeight * bottomBar.rectTransform.rect.height) / Screen.height;
-            float bottomBarBound = bottomBar.transform.position.y + bottomBarHeight / 2;
-
-            if (worldPos.x <= -8 || worldPos.x >= sideBarBound)
-            {
-                return true;
-            }
-
-            if (worldPos.y <= bottomBarBound || worldPos.y >= 4.5)
-            {
-                return true;
-            }
-
-            return false;
+            var gameStage = GameObject.FindGameObjectWithTag("GameStage");
+            Vector3 [] corners = GetItemCorners(gameStage);
+            Vector2 bottomLeft = corners[0];
+            Vector2 topRight = corners[2];
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            return mouseWorldPos.x > bottomLeft.x && mouseWorldPos.y > bottomLeft.y && 
+                   mouseWorldPos.x < topRight.x && mouseWorldPos.y < topRight.y;
         }
 
         public static void PlayShootSound(GameObject chef)
@@ -97,6 +74,19 @@ namespace Util
         public static void ResizeSpriteInsideCanvas(GameObject sprite)
         {
             sprite.transform.localScale *= 1080f / Screen.height;
+        }
+        
+        public static Vector2 GetItemCorner(GameObject gameObject, int cornerIndex)
+        {
+            return GetItemCorners(gameObject)[cornerIndex];
+        }
+        
+        public static Vector3[] GetItemCorners(GameObject bottomBar)
+        {
+            RectTransform rectTransform = bottomBar.GetComponent<RectTransform>();
+            Vector3[] worldCorners = new Vector3[4];
+            rectTransform.GetWorldCorners(worldCorners);
+            return worldCorners;
         }
     }
 }
