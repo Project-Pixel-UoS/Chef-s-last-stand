@@ -78,12 +78,12 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(3);
-        StartCoroutine(FadeOut(sprite));
+        StartCoroutine(FadeOut(sprite, 0));
     }
 
-    public IEnumerator FadeOut(SpriteRenderer sprite)
+    public IEnumerator FadeOut(SpriteRenderer sprite, float targetAlpha)
     {
-        while (GetAlpha(sprite) >= 0.1)
+        while (GetAlpha(sprite) >= targetAlpha)
         {
             ChangeAlpha(sprite, GetAlpha(sprite) - 0.01f);
             yield return new WaitForSeconds(0.01f);
