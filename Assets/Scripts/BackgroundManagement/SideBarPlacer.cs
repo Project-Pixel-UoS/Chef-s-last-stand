@@ -25,7 +25,7 @@ namespace BackgroundManagement
         
         private void AddTilesAboveGameStage(int numOfBricksToPlace)
         {
-            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            for (int counter = 0; counter < numOfBricksToPlace; counter++)
             {
                 GameObject tile = Instantiate(bricksPrefab);
                 Vector2 pos = GetTopRightGameStagePos();
@@ -38,7 +38,7 @@ namespace BackgroundManagement
         
         private void AddTilesBelowGameStage(int numOfBricksToPlace)
         {
-            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            for (int counter = 0; counter < numOfBricksToPlace; counter++)
             {
                 GameObject tile = Instantiate(bricksPrefab);
                 Vector2 pos = GetBottomLeftGameStagePos();
@@ -53,7 +53,7 @@ namespace BackgroundManagement
 
         private void AddTilesToTheRightOfGameStage(int numOfBricksToPlace)
         {
-            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            for (int counter = 0; counter < numOfBricksToPlace; counter++)
             {
                 GameObject tile = Instantiate(bricksPrefab);
                 Vector2 pos = GetTopRightGameStagePos();
@@ -68,7 +68,7 @@ namespace BackgroundManagement
 
         private void AddTilesToTheLeftOfGameStage(int numOfBricksToPlace)
         {
-            for (int counter = 0; counter <= numOfBricksToPlace; counter++)
+            for (int counter = 0; counter < numOfBricksToPlace; counter++)
             {
                 GameObject tile = Instantiate(bricksPrefab);
                 Vector2 pos = GetBottomLeftGameStagePos();
@@ -81,27 +81,16 @@ namespace BackgroundManagement
 
         Vector2 GetBottomLeftGameStagePos()
         {
-            return GetBottomBarCorner(0);
+            var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
+            return GetItemCorner(bottomBar, 2);
         }
         
         Vector2 GetTopRightGameStagePos()
         {
-            return GetSideBarCorner(2);
-        }
-
-        private Vector2 GetBottomBarCorner(int cornerIndex)
-        {
-            var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
-            return GetItemCorner(cornerIndex, bottomBar);
-        }
-        
-        private Vector2 GetSideBarCorner(int cornerIndex)
-        {
             var sideBar = GameObject.FindGameObjectWithTag("SideBar");
-            return GetItemCorner(cornerIndex, sideBar);
+            return GetItemCorner(sideBar, 2);
         }
-
-        private static Vector2 GetItemCorner(int cornerIndex, GameObject bottomBar)
+        private static Vector2 GetItemCorner(GameObject bottomBar, int cornerIndex)
         {
             RectTransform rectTransform = bottomBar.GetComponent<RectTransform>();
             Vector3[] worldCorners = new Vector3[4];
