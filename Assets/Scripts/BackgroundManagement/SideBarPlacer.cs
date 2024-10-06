@@ -46,6 +46,9 @@ namespace BackgroundManagement
                 tile.transform.position = pos;
             }
         }
+
+
+
         private void AddTilesToTheRightOfGameStage(int numOfBricksToPlace)
         {
             for (int counter = 0; counter < numOfBricksToPlace; counter++)
@@ -58,7 +61,9 @@ namespace BackgroundManagement
                 tile.transform.position = pos;
             }
         }
-        
+
+  
+
         private void AddTilesToTheLeftOfGameStage(int numOfBricksToPlace)
         {
             for (int counter = 0; counter < numOfBricksToPlace; counter++)
@@ -75,7 +80,7 @@ namespace BackgroundManagement
         Vector2 GetBottomLeftGameStagePos()
         {
             var bottomBar = GameObject.FindGameObjectWithTag("BottomBar");
-            return GetItemCorner(bottomBar, 2);
+            return GetItemCorner(bottomBar, 0);
         }
         
         Vector2 GetTopRightGameStagePos()
