@@ -35,6 +35,8 @@ namespace GameManagement
             StopMenuMusic();
             StartLevelMusic();
             Time.timeScale = 1; 
+            isPaused = false;
+
         }
 
         private static void StopMenuMusic()

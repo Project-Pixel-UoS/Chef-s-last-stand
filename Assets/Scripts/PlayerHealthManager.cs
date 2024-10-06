@@ -36,8 +36,4 @@ public class PlayerHealthManager : MonoBehaviour
     {
         return 100 * currentHealth / InitialHealth;
     }
-    
-
-
-
 }

@@ -76,7 +76,7 @@ namespace Chef.Upgrades
             }
             else
             {
-                var cost = transform.GetComponent<ShopSlotManager>().rangeCost;
+                var cost = transform.GetComponent<Shop.PurchasedChef>().rangeUpgradeCost;
                 rangeText.text = "Range: \n" + "$" + cost;
             }
             var upgradeBar1 = GameObject.FindGameObjectWithTag("UpgradeBar1").GetComponent<Image>();
@@ -95,7 +95,7 @@ namespace Chef.Upgrades
             }
             else
             {
-                var cost = transform.GetComponent<ShopSlotManager>().chefCost;
+                var cost = transform.GetComponent<PurchasedChef>().abilityUpgradeCost;
                 specialText.text = "Special: \n" + "$" + cost;
             }
             var upgradeBar2 = GameObject.FindGameObjectWithTag("UpgradeBar2").GetComponent<Image>();
@@ -105,17 +105,17 @@ namespace Chef.Upgrades
         public void RefreshSellChefBar()
         {
             var sellText = GameObject.FindGameObjectWithTag("SellButtonText").GetComponent<Text>();
-            int price = transform.GetComponent<ShopSlotManager>().specialTotal;
-            price += transform.GetComponent<ShopSlotManager>().rangeCost * path1Status;
-            transform.GetComponent<ShopSlotManager>().SetRefundPrice(price);
-            sellText.text = "Sell Chef: \n" + "$" + transform.GetComponent<ShopSlotManager>().GetRefundPrice();
+            var purchasedChef = transform.GetComponent<PurchasedChef>();
+            int price = purchasedChef.specialTotal;
+            price += purchasedChef.rangeUpgradeCost * path1Status;
+            purchasedChef.SetRefundPrice(price);
+            sellText.text = "Sell Chef: \n" + "$" + purchasedChef.GetRefundPrice();
         }
 
         public void RefreshInfoWindow()
         {
-            String abilityInfo = transform.GetComponent<ShopSlotManager>().abilityDescription;
+            String abilityInfo = transform.GetComponent<Shop.PurchasedChef>().abilityDescription;
             var infoText = GameObject.FindGameObjectWithTag("InfoWindowText").GetComponent<Text>();
-            print(abilityInfo);
             infoText.text = abilityInfo;
         }
         /// <returns> an array of selected chef's upgrade prefabs</returns>
