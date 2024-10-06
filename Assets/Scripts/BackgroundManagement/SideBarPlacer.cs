@@ -15,6 +15,11 @@ namespace BackgroundManagement
                 AddBrickToTheLeftOfGameStage(numOfBricksToPlace);
                 AddBrickToTheRightOfGameStage(numOfBricksToPlace);
             }
+            else
+            {
+                // AddBricksAboveGameStage();
+                
+            }
         }
 
         private void AddBrickToTheRightOfGameStage(int numOfBricksToPlace)
@@ -48,7 +53,7 @@ namespace BackgroundManagement
                 Vector2 pos = Camera.main.ScreenToWorldPoint(positionScreenUnits);
 
                 var brickDimensions = bricks.GetComponent<SpriteRenderer>().sprite.bounds.size;
-                pos.x -= brickDimensions.x / 2f;
+                pos.x -= brickDimensions.x / 2f + 0.1f; //TODO ask about this little gap
                 pos.y += brickDimensions.y * counter / 2f;
 
                 bricks.transform.position = pos;
