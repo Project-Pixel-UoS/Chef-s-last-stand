@@ -17,39 +17,38 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public GameObject chef;
     private SpriteRenderer range; //range that appears when chef is dragged
 
-
     private Collider2D chefCollider2D;
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 dropPosition;
 
-    private ChefForSale purchased;
+    private ChefForSale chefForSale;
     [SerializeField] private GameObject placeableAreas;
 
     private RectTransform rectTransform;
 
     private void Start()
     {
-        purchased = GetComponent<ChefForSale>();
+        chefForSale = GetComponent<ChefForSale>();
         float rangeRadius = chef.GetComponent<ChefRange>().Radius; //get the radius size from chef prefab
-        range = transform.GetChild(0).GetComponent<SpriteRenderer>();
         rectTransform = GetComponent<RectTransform>();
         DisplayChefPrice();
+        SetupRange(rangeRadius);
+        chefCollider2D = GetComponent<Collider2D>();
+    }
 
-        //if screen is taller than wider, game will expand, so we have to decrease the range size
-        //if screen is wider than taller, game will shrink, difference is negligible btw devices.
+    private void SetupRange(float rangeRadius)
+    {
+        range = transform.GetChild(0).GetComponent<SpriteRenderer>();
         Vector3 rangeSize = (Camera.main.WorldToScreenPoint(new Vector3(rangeRadius, rangeRadius, 0))
                              - Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0))) * 2;
-
         range.enabled = false; //hides the range at the beginning
         range.transform.localScale = rangeSize;
         Utils.ResizeSpriteInsideCanvas(range.gameObject);
-
-        chefCollider2D = GetComponent<Collider2D>();
     }
 
     private void DisplayChefPrice()
     {
-        gameObject.transform.parent.GetComponentInChildren<Text>().text = purchased.cost.ToString() + '$';
+        gameObject.transform.parent.GetComponentInChildren<Text>().text = chefForSale.cost.ToString() + '$';
     }
 
 
@@ -58,7 +57,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.isPaused) return;
-        if (!purchased.CheckSufficientChefFunds()) return;
+        if (!chefForSale.CheckSufficientChefFunds()) return;
 
         range.enabled = true; // makes the range visible
 
@@ -74,7 +73,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         if (GameManager.isPaused) return;
-        if (!purchased.CheckSufficientChefFunds()) return;
+        if (!chefForSale.CheckSufficientChefFunds()) return;
         
         PositionChefOntoCursor();
         SetRangeColour();
@@ -185,14 +184,14 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (GameManager.isPaused) return;
         if (GameManager.gameManager.IsGameOver())return;
-        if (!purchased.CheckSufficientChefFunds()) return;
+        if (!chefForSale.CheckSufficientChefFunds()) return;
         
         ReturnSpriteToSlot();
         range.enabled = false;
 
         if (CheckOutOfBounds()) return;
 
-        purchased.HandleChefTransaction();
+        chefForSale.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefInstance = Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         Utils.ResizeSpriteOutsideCanvas(chefInstance);
