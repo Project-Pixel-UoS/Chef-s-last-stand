@@ -21,7 +21,7 @@ namespace Mouse
         /// <exception cref="ArgumentException"> distanceTravelled input is larger then the maximum</exception>
         private (Vector2, int) ConvertDistanceToPos(float mouseDistanceTravelled)
         {
-            var wayPoints = LevelManager.LM.TurningPoints;
+            var wayPoints = GameObject.FindGameObjectWithTag("Path").GetComponent<Path>().targets;
             for (int i = 1; i < wayPoints.Length; i++)
             {
                 // distance between 2 way points

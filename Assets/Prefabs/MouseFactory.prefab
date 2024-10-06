@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2436795457514184843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8631793990086948979}
+  - component: {fileID: 3559693763783922497}
+  m_Layer: 0
+  m_Name: MouseFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8631793990086948979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2436795457514184843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52689755, y: -0.040203102, z: -0.0437989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3559693763783922497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2436795457514184843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046f8c9599f8406f9aa4f4862691f70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
+  mouseTypesList:
+  - {fileID: 11400000, guid: fb2de84d40a0c054fbdd8dbe0e486f01, type: 2}
+  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
+  - {fileID: 11400000, guid: 25af01f4f0b78d9408ac12d7e9ba2ffd, type: 2}
+  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
+  - {fileID: 11400000, guid: 72390888884d18d44b65f7193183e064, type: 2}
+  - {fileID: 11400000, guid: f20d81e1d16219341b43a001ed128b3f, type: 2}
+  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
+  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}

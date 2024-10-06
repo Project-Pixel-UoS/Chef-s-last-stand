@@ -15,7 +15,6 @@ using Random = UnityEngine.Random;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
-    public Transform[] TurningPoints;
     
     private Waves waves;
     private int currentWave = 0;

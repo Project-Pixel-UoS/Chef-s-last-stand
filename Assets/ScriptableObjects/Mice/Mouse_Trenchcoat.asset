@@ -22,4 +22,4 @@ MonoBehaviour:
   numOfSplitMice: 2
   armoured: 0
   canHeal: 0
-  difficulty: 0
+  difficulty: 1

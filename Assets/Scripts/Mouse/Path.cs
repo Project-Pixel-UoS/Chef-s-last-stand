@@ -11,11 +11,10 @@ namespace Mouse
 {
     public class Path : MonoBehaviour
     {
-        [SerializeField] private Transform[] targets;
+        public Transform[] targets;
 
         private void Start()
         {
-            
             RouteSignal(targets);
         }
         
