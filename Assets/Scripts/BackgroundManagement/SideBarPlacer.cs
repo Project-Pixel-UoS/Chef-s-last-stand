@@ -18,8 +18,6 @@ namespace BackgroundManagement
             {
                 AddTilesAboveGameStage(3);
                 AddTilesBelowGameStage(3);
-
-                
             }
         }
         
@@ -48,9 +46,6 @@ namespace BackgroundManagement
                 tile.transform.position = pos;
             }
         }
-
-
-
         private void AddTilesToTheRightOfGameStage(int numOfBricksToPlace)
         {
             for (int counter = 0; counter < numOfBricksToPlace; counter++)
@@ -63,9 +58,7 @@ namespace BackgroundManagement
                 tile.transform.position = pos;
             }
         }
-
-  
-
+        
         private void AddTilesToTheLeftOfGameStage(int numOfBricksToPlace)
         {
             for (int counter = 0; counter < numOfBricksToPlace; counter++)
