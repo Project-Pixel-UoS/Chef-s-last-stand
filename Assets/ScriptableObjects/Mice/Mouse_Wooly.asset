@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Mouse_Wooly
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
-  mouseName: Wooly
-  speed: 0.75
-  health: 100
-  size: 1.5
-  sprite: {fileID: 21300000, guid: 8df4e962f73e4fd43b38d67f80224087, type: 3}
+  mouseName: 
+  speed: 0
+  health: 0
+  size: 0
+  sprite: {fileID: 0}
   canGhost: 0
   splitMouseType: 
   numOfSplitMice: 0

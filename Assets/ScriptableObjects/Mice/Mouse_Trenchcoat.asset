@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f801903af36977445b855e1772d2fcb4, type: 3}
   m_Name: Mouse_Trenchcoat
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
-  mouseName: Trenchcoat
-  speed: 0.6
-  health: 60
-  size: 1.3
-  sprite: {fileID: 21300000, guid: c3371a82d2a946b41a4973723e606a42, type: 3}
+  mouseName: 
+  speed: 0
+  health: 0
+  size: 0
+  sprite: {fileID: 0}
   canGhost: 0
-  splitMouseType: Woody
-  numOfSplitMice: 2
+  splitMouseType: 
+  numOfSplitMice: 0
   armoured: 0
   canHeal: 0
-  difficulty: 1
+  difficulty: 0
