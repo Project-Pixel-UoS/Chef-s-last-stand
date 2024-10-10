@@ -12,10 +12,19 @@ namespace Mouse
     public class Path : MonoBehaviour
     {
         public Transform[] targets;
+        public Transform[] routeSignals;
 
         private void Start()
         {
-            RouteSignal(targets);
+            if (routeSignals.Length != 0)
+            {
+                RouteSignal(routeSignals);
+            }
+            else
+            {
+                RouteSignal(targets);
+            }
+            
         }
         
         /// <summary>
