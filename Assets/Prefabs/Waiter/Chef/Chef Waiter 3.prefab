@@ -14,11 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: specialTotal
-      value: 510
+      value: 710
       objectReference: {fileID: 0}
     - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: abilityDescription
       value: Drop plates faster
+      objectReference: {fileID: 0}
+    - target: {fileID: 711986688050015544, guid: a81f9099c4b5842858894914a4771bec, type: 3}
+      propertyPath: abilityUpgradeCost
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1447560724057925964, guid: a81f9099c4b5842858894914a4771bec, type: 3}
       propertyPath: Projectile

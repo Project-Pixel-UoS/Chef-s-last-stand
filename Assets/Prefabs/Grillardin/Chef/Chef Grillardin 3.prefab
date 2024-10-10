@@ -82,11 +82,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: specialTotal
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: abilityDescription
       value: Flamethrower does even more damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
+      propertyPath: abilityUpgradeCost
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

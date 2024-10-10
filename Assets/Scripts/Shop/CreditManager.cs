@@ -13,7 +13,7 @@ public class CreditManager : MonoBehaviour
 
     void Start()
     {
-        credits = 100; 
+        credits = 2000; 
         text.text = "$" + credits;
     }
 

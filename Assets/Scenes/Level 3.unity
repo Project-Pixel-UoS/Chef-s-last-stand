@@ -1391,7 +1391,7 @@ GameObject:
   - component: {fileID: 674961752}
   m_Layer: 0
   m_Name: level design_3
-  m_TagString: Untagged
+  m_TagString: GameStage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5086,6 +5086,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 298234098}
   - {fileID: 2142462067}
   - {fileID: 266574282}
   - {fileID: 1050389011}
@@ -5096,4 +5097,3 @@ SceneRoots:
   - {fileID: 786705468}
   - {fileID: 1118665281}
   - {fileID: 1499304866}
-  - {fileID: 298234098}
