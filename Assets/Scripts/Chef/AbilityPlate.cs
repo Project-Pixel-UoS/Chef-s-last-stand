@@ -6,6 +6,7 @@ using System.IO;
 using Range;
 using UnityEngine.Serialization;
 using Util;
+using System.Linq;
 
 public class AbilityPlate : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class AbilityPlate : MonoBehaviour
     [SerializeField] private float maxPlates;
     [SerializeField] private Sprite brokenPlate;
     private Transform[] turningPoints;
+    private Transform[] turningPoints2;
     private float cooldownTimer; // timer for cooldown in between shots
     private float currPlates;
     private ChefRange chefRange;
@@ -23,7 +25,9 @@ public class AbilityPlate : MonoBehaviour
     void Start()
     {
         var path = GameObject.Find("Path");
+        var path2 = GameObject.Find("Path 2");
         turningPoints = path.GetComponentsInChildren<Transform>();
+        if(path2 != null ) turningPoints2 = path2.GetComponentsInChildren<Transform>();
     }
     private void Awake()
     {
@@ -52,7 +56,22 @@ public class AbilityPlate : MonoBehaviour
     private List<Transform> GetTPsInRange()
     {
         var tpsInRange = new List<Transform>();
-        foreach (var turningpoint in turningPoints)
+        AddTPsInRange(tpsInRange, turningPoints);
+        if(turningPoints2 != null)
+        {
+            AddTPsInRange(tpsInRange, turningPoints2);
+        }
+        return tpsInRange;
+    }
+
+    /// <summary>
+    /// Add turningpoints  in range from all paths into a list
+    /// </summary>
+    /// <param name="tpsInRange">list to store turningpoints in range</param>
+    /// <param name="tps">the path containing all turningpoints</param>
+    private void AddTPsInRange(List<Transform> tpsInRange, Transform[] tps)
+    {
+        foreach (var turningpoint in tps)
         {
             float distance = (turningpoint.transform.position - transform.position).magnitude;
             if (distance <= chefRange.Radius)
@@ -60,22 +79,30 @@ public class AbilityPlate : MonoBehaviour
                 tpsInRange.Add(turningpoint);
             }
         }
-        return tpsInRange;
     }
-
     /// <returns>
     /// a possible plate position on the map
     /// </returns>
     /// <remarks> maintained by: Martin </remarks>
     private Vector3 GetPlatePosition()
     {
-        //grab random TP in range
-        var inRangeTPs = GetTPsInRange();
-        if (inRangeTPs.Count == 0) return Vector3.back;
-        int rndIndex = Random.Range(0, inRangeTPs.Count);
+        var inRangeTPs = GetTPsInRange();//grab random TP in range
+        if (inRangeTPs.Count == 0) return Vector3.back; //if no tp in range, return "no tp code" (-1)
+        int rndIndex = Random.Range(0, inRangeTPs.Count); //random tp in range
+        Transform[] onThisPath = turningPoints;
+        int tpIndex = 0; //index of selected tp in path
 
-        int tpIndex = System.Array.IndexOf(turningPoints, inRangeTPs[rndIndex]);
-        var adjTPs = turningPoints[(tpIndex-1)..(tpIndex+2)]; //get prev. and next TPs of random TP
+        if (turningPoints.Contains(inRangeTPs[rndIndex]))
+        {
+            tpIndex = System.Array.IndexOf(turningPoints, inRangeTPs[rndIndex]);
+        }
+        else
+        {
+            onThisPath = turningPoints2;
+            tpIndex = System.Array.IndexOf(turningPoints2, inRangeTPs[rndIndex]);
+        }
+        
+        var adjTPs = onThisPath[(tpIndex-1)..(tpIndex+2)]; //get prev. and next TP of random TP
         rndIndex = Random.Range(0, adjTPs.Length - 1); //select random 2 TPs to place plate btw.
         var restTPs = adjTPs[(rndIndex)..(rndIndex + 2)];
       

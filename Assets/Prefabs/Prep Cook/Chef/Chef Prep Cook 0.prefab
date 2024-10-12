@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: abilityDescription
       value: Knives do more damage
       objectReference: {fileID: 0}
+    - target: {fileID: 2325135678370490676, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
+      propertyPath: abilityUpgradeCost
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7525556148660427000, guid: fa40944707f954b4fa6902c30a96a9c6, type: 3}
       propertyPath: m_Sprite
       value: 
