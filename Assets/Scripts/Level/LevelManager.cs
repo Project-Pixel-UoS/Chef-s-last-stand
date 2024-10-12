@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     private int miceToBeReleased = -1; //set to -1 so that game doesnt automatically transition into next wave
 
     private WaveTextManager waveTextManager;
+    [SerializeField] private GameObject victoryScreen;
 
     private void Awake()
     {
@@ -55,22 +56,9 @@ public class LevelManager : MonoBehaviour
         TextAsset jsonFile = Resources.Load("Waves/waves") as TextAsset;
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
     }
+    
 
-
-    /// <summary>
-    /// Displays level path at the beginning of the level.
-    /// </summary>
-    // private void RouteSignal(Transform[] tps)
-    // {
-    //     foreach (Transform point in tps)
-    //     {
-    //         SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
-    //         IEnumerator c = FadeIn(sprite);
-    //         StartCoroutine(c);
-    //     }
-    // }
-
-    public IEnumerator FadeIn(SpriteRenderer sprite)
+    public IEnumerator FadeInAndOut(SpriteRenderer sprite)
     {
         while (GetAlpha(sprite) < 1)
         {
@@ -81,7 +69,7 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(FadeOut(sprite, 0));
     }
 
-    public IEnumerator FadeOut(SpriteRenderer sprite, float targetAlpha)
+    private IEnumerator FadeOut(SpriteRenderer sprite, float targetAlpha)
     {
         while (GetAlpha(sprite) >= targetAlpha)
         {
@@ -133,7 +121,10 @@ public class LevelManager : MonoBehaviour
         currentWave++;
         if (currentWave == waves.waves.Length) //check that the final wave has just happened
         {
-            yield return waveTextManager.DisplayLevelComplete();
+            yield return new WaitForSeconds(1.5f);
+            GameManager.isPaused = true;
+            Time.timeScale = 0.0f;
+            victoryScreen.SetActive(true);
         }
         else
         {
