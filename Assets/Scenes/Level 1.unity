@@ -2182,10 +2182,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForegroundCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4710413248249829026, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
     - target: {fileID: 4760306449059289675, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 377656078}
+    - target: {fileID: 5132854887325410384, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292900214327069225, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5400113130849714440, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_SizeDelta.x
       value: 664.05
@@ -2225,6 +2237,18 @@ PrefabInstance:
     - target: {fileID: 6143064624353745281, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977537351927346892, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977537351927346892, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977537351927346892, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7411929767698227764, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_AnchoredPosition.y
