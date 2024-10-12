@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f5bc0732e33934080a77260dba56f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoryScreen: {fileID: 5635458686855641061}
 --- !u!114 &266574284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b637e560b164407d82262efd4447d018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveText: {fileID: 1810198746}
+  waveTextBorder: {fileID: 5635458686855641062}
 --- !u!1 &415275474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1216107964464244347, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
@@ -860,11 +861,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3161968753689342793, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
   m_PrefabInstance: {fileID: 5635458686855641060}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1810198746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8254543051564156419, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
-  m_PrefabInstance: {fileID: 5635458686855641060}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1860494077 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1666750282560597194, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
@@ -1419,6 +1415,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+--- !u!1 &5635458686855641061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5292900214327069225, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+  m_PrefabInstance: {fileID: 5635458686855641060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5635458686855641062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4161128884948669472, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+  m_PrefabInstance: {fileID: 5635458686855641060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
