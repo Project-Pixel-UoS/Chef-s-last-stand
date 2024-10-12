@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Mouse
 {
@@ -26,7 +27,7 @@ namespace Mouse
             foreach (Transform point in tps)
             {
                 SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
-                IEnumerator c = LevelManager.LM.FadeIn(sprite);
+                IEnumerator c = LevelManager.LM.FadeInAndOut(sprite);
                 StartCoroutine(c);
             }
         }
