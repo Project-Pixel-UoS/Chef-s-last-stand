@@ -38,7 +38,6 @@ namespace ClickListener
         private GameObject GetClickedChef()
         {
             var clickedItem = CalculateMouseDownRaycast().collider;
-            print(clickedItem);
             return clickedItem != null ? clickedItem.gameObject : null;
         }
     }
