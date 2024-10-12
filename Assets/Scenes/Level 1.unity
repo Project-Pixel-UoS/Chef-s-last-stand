@@ -2755,7 +2755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b908eaf097947d0872d6472bc40d2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricksPrefab: {fileID: 617161708783888554, guid: c8765b85e88fce248aa1514d21441486, type: 3}
+  bricksPrefab: {fileID: 8176698953001335048, guid: 8b4a54507c7d029418357e0903f8f913, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
