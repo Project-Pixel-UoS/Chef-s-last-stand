@@ -31,7 +31,7 @@ namespace Level.WaveData
         {
             text.text = "Wave " + (currentWave + 1);
             waveTextBorder.SetActive(true);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             waveTextBorder.SetActive(false); 
 
             yield return new WaitForSeconds(1);

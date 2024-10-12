@@ -125,7 +125,7 @@ public class LevelManager : MonoBehaviour
             GameManager.isPaused = true;
             Time.timeScale = 0.0f;
             victoryScreen.SetActive(true);
-        }
+        }git 
         else
         {
             yield return StartWaveWithText();
