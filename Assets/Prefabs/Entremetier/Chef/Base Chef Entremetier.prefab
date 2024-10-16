@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48653809b5f441879642bbae15aa0f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
+  radius: 4
   rangeObject: {fileID: 6208724048470825412}
 --- !u!61 &7533226973392138995
 BoxCollider2D:
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityUpgradeCost: 100
-  rangeUpgradeCost: 30
+  rangeUpgradeCost: 15
   abilityDescription: 
   specialTotal: 0
 --- !u!114 &-5866290309611744982

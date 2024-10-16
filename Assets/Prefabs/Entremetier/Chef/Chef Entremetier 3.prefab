@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -9203637450718709653, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: cooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -9203637450718709653, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 4031953048679343747, guid: 79b60743322614038baf8239aabb13e0, type: 3}
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: specialTotal
-      value: 500
+      value: 245
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: abilityDescription
@@ -78,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: abilityUpgradeCost
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4357221676546473598, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: m_Sprite

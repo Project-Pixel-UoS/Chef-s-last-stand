@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityUpgradeCost: 100
-  rangeUpgradeCost: 30
+  rangeUpgradeCost: 15
   abilityDescription: 
   specialTotal: 0
 --- !u!114 &-7586934172698215888

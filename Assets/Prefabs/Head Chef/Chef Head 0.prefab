@@ -86,15 +86,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: specialTotal
-      value: 150
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: rangeUpgradeCost
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
       propertyPath: abilityDescription
       value: Damage buff increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659145071796658612, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: abilityUpgradeCost
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016424228477295924, guid: 2c5d3e2042d499949afcea645bac0ee5, type: 3}
+      propertyPath: radius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

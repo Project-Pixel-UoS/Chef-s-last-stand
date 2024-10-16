@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: chef
       value: 
       objectReference: {fileID: 1411327357221626818, guid: b616bffcb00614dba86127fb52125e1b, type: 3}
+    - target: {fileID: -8225661181477205927, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: slownessFactor
       value: 5

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: chef
       value: 
       objectReference: {fileID: 8161887325091484187, guid: dddef4814ee774756a47344ff008fe12, type: 3}
+    - target: {fileID: -8225661181477205927, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Size.x
       value: 1.21
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2041573966325760781, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Name
-      value: Base Projectile Entremetier 0
+      value: Projectile Entremetier 0
       objectReference: {fileID: 0}
     - target: {fileID: 7989630137209133669, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_LocalPosition.x

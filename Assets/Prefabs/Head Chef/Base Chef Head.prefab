@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48653809b5f441879642bbae15aa0f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
+  radius: 1
   rangeObject: {fileID: 6208724048470825412}
 --- !u!114 &-5073770246374414763
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityUpgradeCost: 100
-  rangeUpgradeCost: 30
+  rangeUpgradeCost: 15
   abilityDescription: 
   specialTotal: 0
 --- !u!114 &8026327480268486096

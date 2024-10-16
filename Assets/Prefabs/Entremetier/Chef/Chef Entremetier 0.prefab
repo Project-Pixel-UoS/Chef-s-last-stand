@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -9203637450718709653, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: cooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -9203637450718709653, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 3041688877791482907, guid: 97911e1f2cb024f708dce45a08076289, type: 3}
@@ -70,11 +74,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: specialTotal
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: abilityDescription
       value: Poison lasts longer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: abilityUpgradeCost
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4357221676546473598, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: m_Sprite

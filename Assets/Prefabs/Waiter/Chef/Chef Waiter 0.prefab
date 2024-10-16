@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chef Waiter 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3854765059203472735, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: radius
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: chefCost
       value: 100
@@ -62,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: specialTotal
-      value: 110
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: rangeUpgradeCost
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: abilityDescription
@@ -74,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: abilityUpgradeCost
-      value: 100
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6049553212818791163, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: Projectile
