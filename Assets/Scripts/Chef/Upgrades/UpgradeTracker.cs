@@ -114,7 +114,7 @@ namespace Chef.Upgrades
 
         public void RefreshInfoWindow()
         {
-            String abilityInfo = transform.GetComponent<Shop.PurchasedChef>().abilityDescription;
+            String abilityInfo = transform.GetComponent<PurchasedChef>().abilityDescription;
             var infoText = GameObject.FindGameObjectWithTag("InfoWindowText").GetComponent<Text>();
             infoText.text = abilityInfo;
         }

@@ -1,5 +1,7 @@
 
 
+using Unity.VisualScripting;
+
 namespace Mouse
 {
     using System.Collections;
@@ -21,6 +23,7 @@ namespace Mouse
         private SpriteRenderer sprite;
         public IEnumerator flashRedCoroutine = null;
         private MouseHealthHandler mouseHealthHandler;
+        private bool isDestroyed = false;
         
 
         private void Start()
@@ -102,6 +105,7 @@ namespace Mouse
                     StartCoroutine(flashRedCoroutine);
                 }
                 yield return new WaitForSeconds(damageFactor.damageRate);
+                if (this == null) yield break; // check object is destroyed
             }
 
             if (onFire != null) onFire.Stop();

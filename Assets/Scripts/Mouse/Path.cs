@@ -6,16 +6,26 @@ using Unity.VisualScripting;
 
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Mouse
 {
     public class Path : MonoBehaviour
     {
         public Transform[] targets;
+        public Transform[] routeSignals;
 
         private void Start()
         {
-            RouteSignal(targets);
+            if (routeSignals.Length != 0)
+            {
+                RouteSignal(routeSignals);
+            }
+            else
+            {
+                RouteSignal(targets);
+            }
+            
         }
         
         /// <summary>
@@ -26,7 +36,7 @@ namespace Mouse
             foreach (Transform point in tps)
             {
                 SpriteRenderer sprite = point.GetComponent<SpriteRenderer>();
-                IEnumerator c = LevelManager.LM.FadeIn(sprite);
+                IEnumerator c = LevelManager.LM.FadeInAndOut(sprite);
                 StartCoroutine(c);
             }
         }

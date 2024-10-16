@@ -1,4 +1,5 @@
 using Chef.Upgrades;
+using GameManagement;
 using UnityEngine;
 using Util;
 
@@ -15,7 +16,7 @@ namespace ClickListener
         /// <remarks>Maintained by: Emily Johnston </remarks>
         private void ClickManager()
         {
-            if (IsMouseClicked() && Utils.CheckMousePosInsideGameStage())
+            if (IsMouseClicked() && Utils.CheckMousePosInsideGameStage() && !GameManager.isPaused)
             {
                 GameObject clickedChef = GetClickedChef();
                 ChefTracker.Instance.OnChefClicked(clickedChef);
