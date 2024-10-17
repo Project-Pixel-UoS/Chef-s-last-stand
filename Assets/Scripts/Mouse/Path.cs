@@ -46,6 +46,11 @@ namespace Mouse
             return targets[0].position;
         }
 
+        /// <summary>
+        /// get waypoint transform from path
+        /// </summary>
+        /// <param name="index">index of waypoint in the path</param>
+        /// <returns>the transform object</returns>
         public Transform GetTarget(int index)
         {
             return targets[index];
