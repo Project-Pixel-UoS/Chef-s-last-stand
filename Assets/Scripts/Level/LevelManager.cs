@@ -148,6 +148,10 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(mouseUnit.timeOfWave);
         for (int i = 0; i < mouseUnit.amount; i++)
         {
+            if(GameObject.Find("Path 2") != null)
+            {
+                MouseFactory2.Instance.SpawnMouse(mouseUnit.type);
+            }
             MouseFactory.Instance.SpawnMouse(mouseUnit.type);
             miceToBeReleased--;
             yield return new WaitForSeconds(mouseUnit.frequency);

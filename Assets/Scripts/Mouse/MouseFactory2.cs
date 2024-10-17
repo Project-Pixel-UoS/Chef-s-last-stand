@@ -10,12 +10,12 @@ namespace Mouse
     /// Responsible for spawning mice, to be attached to the Mouse Factory game object
     /// </summary>
     /// <remarks>Author: Antosh</remarks>
-    public class MouseFactory : MonoBehaviour
+    public class MouseFactory2 : MonoBehaviour
     {
         [SerializeField] private GameObject mousePrefab;
         public MiceScriptableObject[] mouseTypesList;
         
-        public static MouseFactory Instance { get; private set; }
+        public static MouseFactory2 Instance { get; private set; }
 
         private void Awake()
         {
@@ -52,8 +52,8 @@ namespace Mouse
         /// <param name="mouseType"> type of mouse that will be spawned in</param>
         public void SpawnMouse(MiceScriptableObject mouseType)
         {
-            var startPos = GameObject.Find("Path").GetComponent<Path>().GetStartPos();
-            SpawnMouse(mouseType, startPos,1, 0);
+            var startPos2 = GameObject.Find("Path 2");
+            SpawnMouse(mouseType, startPos2.GetComponent<Path>().GetStartPos(), 1, 0);
         }
         
         
