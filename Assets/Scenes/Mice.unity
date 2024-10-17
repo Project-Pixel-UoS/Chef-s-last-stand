@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 311089086}
   - component: {fileID: 311089088}
   - component: {fileID: 311089087}
+  - component: {fileID: 311089089}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -525,6 +526,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311089085}
   m_CullTransparentMesh: 1
+--- !u!114 &311089089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311089085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e874abd9ce1ddc46ab4df2b2363554d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  information: ballasdasdasd
+  textObject: {fileID: 443810918}
 --- !u!1001 &357621158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1702,6 +1717,7 @@ GameObject:
   - component: {fileID: 1474003218}
   - component: {fileID: 1474003220}
   - component: {fileID: 1474003219}
+  - component: {fileID: 1474003221}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -1766,6 +1782,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474003217}
   m_CullTransparentMesh: 1
+--- !u!114 &1474003221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474003217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e874abd9ce1ddc46ab4df2b2363554d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  information: 'WOODY: Inspired by wood mice, a common species in Europe. These will
+    be the most common enemies in the game, and will be the basis for normal speed
+    and health.'
+  textObject: {fileID: 443810918}
 --- !u!1 &1585121767
 GameObject:
   m_ObjectHideFlags: 0
