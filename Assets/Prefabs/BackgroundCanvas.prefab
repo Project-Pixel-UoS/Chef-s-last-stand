@@ -484,6 +484,7 @@ MonoBehaviour:
   - {fileID: 6160881469786011225}
   - {fileID: 405913770391914262}
   - {fileID: 3988025215855993015}
+  routeSignals: []
 --- !u!1 &562565811778625686
 GameObject:
   m_ObjectHideFlags: 0
@@ -5680,7 +5681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4b74eb6d454f07815e13302346d2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 40
+  cost: 50
 --- !u!1 &8891050418548952779
 GameObject:
   m_ObjectHideFlags: 0
