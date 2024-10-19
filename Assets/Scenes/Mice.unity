@@ -2147,8 +2147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e874abd9ce1ddc46ab4df2b2363554d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  information: Woody has been the first every mice to set foot in the kitchen and
-    is most well known among all the chefs!
+  information: 'Pixel is the most common type of mouse, the type of mouse you would
+    find under your floor board. Pixel has a normal amount of health and speed but
+    be careful if your not prepared and too many come at once you could be swamped. '
   textObject: {fileID: 443810918}
 --- !u!114 &1474003222
 MonoBehaviour:
