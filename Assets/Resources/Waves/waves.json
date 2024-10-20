@@ -16,7 +16,7 @@
           "type": "Woody",
           "amount": 3,
           "timeOfWave": 0,
-          "frequency": 2
+          "frequency": 8
         }
       ]
 
@@ -526,9 +526,9 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 0,
+          "amount": 10,
           "timeOfWave": 4,
-          "frequency": 2
+          "frequency": 10
         },
         {
           "difficulty": "medium",
@@ -549,7 +549,7 @@
           "type": "Trojan",
           "amount": 3,
           "timeOfWave": 0,
-          "frequency": 28
+          "frequency": 20
         },
         {
           "type": "Woody",
