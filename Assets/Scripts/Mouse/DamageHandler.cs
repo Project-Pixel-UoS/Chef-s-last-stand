@@ -118,9 +118,9 @@ namespace Mouse
         /// <remarks>Author: Emily</remarks>
         public IEnumerator FlashRed()
         {
-            sprite.color = UnityEngine.Color.red;
+            sprite.color = Color.red;
             yield return new WaitForSeconds(0.1f);
-            sprite.color = UnityEngine.Color.white;
+            sprite.color = Color.white;
             flashRedCoroutine = null;
         }
 

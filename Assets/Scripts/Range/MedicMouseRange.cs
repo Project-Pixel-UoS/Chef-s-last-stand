@@ -42,10 +42,17 @@ namespace Range
         {
             foreach (GameObject mouse in GetMiceInRange(healingRingRadius))
             {
-                if (miceHealedInCurrentPulse.Contains(mouse) || mouse == gameObject) continue;
+                if (miceHealedInCurrentPulse.Contains(mouse) || mouse == gameObject || IsMouseInvisible(mouse)) continue;
                 mouse.GetComponent<MouseHealthHandler>().Heal(healingPower);
                 miceHealedInCurrentPulse.Add(mouse);
             }
+        }
+
+        private bool IsMouseInvisible(GameObject mouse)
+        {
+            var ghostMouse = mouse.GetComponent<GhostMouse>();
+            return ghostMouse != null && !ghostMouse.IsVisible();
+
         }
     }
 }

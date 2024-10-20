@@ -12,16 +12,19 @@
       ],
       "mouseUnits": [
         {
-
-          "type": "Pinkie",
-          "amount": 3,
+          "type": "Ghost",
+          "amount": 1,
+          "timeOfWave": 4,
+          "frequency": 2
+        },
+        {
+          "type": "Medic",
+          "amount": 20,
           "timeOfWave": 0,
           "frequency": 2
         }
       ]
-
     },
-
     {
       "waveId": 2,
       "randomMouseUnits": [
@@ -41,7 +44,6 @@
         }
       ]
     },
-
     {
       "waveId": 3,
       "randomMouseUnits": [
@@ -52,8 +54,6 @@
           "frequency": 0.5
         }
       ],
-      
-      
       "mouseUnits": [
         {
           "type": "Woody",
@@ -61,11 +61,8 @@
           "timeOfWave": 0,
           "frequency": 1
         }
-      
       ]
-
     },
-
     {
       "waveId": 4,
       "randomMouseUnits": [
@@ -90,9 +87,7 @@
           "frequency": 2
         }
       ]
-
     },
-
     {
       "waveId": 5,
       "randomMouseUnits": [
@@ -117,7 +112,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 6,
@@ -149,7 +143,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 7,
@@ -181,7 +174,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 8,
@@ -213,7 +205,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 9,
@@ -245,7 +236,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 10,
@@ -262,7 +252,6 @@
           "timeOfWave": 15,
           "frequency": 3
         }
-
       ],
       "mouseUnits": [
         {
@@ -284,7 +273,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 11,
@@ -301,7 +289,6 @@
           "timeOfWave": 15,
           "frequency": 3
         }
-
       ],
       "mouseUnits": [
         {
@@ -323,7 +310,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 12,
@@ -340,7 +326,6 @@
           "timeOfWave": 15,
           "frequency": 3
         }
-
       ],
       "mouseUnits": [
         {
@@ -362,7 +347,6 @@
           "frequency": 1
         }
       ]
-
     },
     {
       "waveId": 13,
@@ -379,7 +363,6 @@
           "timeOfWave": 15,
           "frequency": 3
         }
-
       ],
       "mouseUnits": [
         {
@@ -401,9 +384,6 @@
           "frequency": 1
         }
       ]
-
     }
-    
-    
   ]
 }
