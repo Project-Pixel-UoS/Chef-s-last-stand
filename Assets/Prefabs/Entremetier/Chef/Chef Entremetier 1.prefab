@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9203637450718709653, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: cooldown
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -9203637450718709653, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: Projectile

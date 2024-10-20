@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
   mouseName: Medic
   speed: 0.3
-  health: 80
+  health: 200
   size: 2
   sprite: {fileID: 21300000, guid: 8a1332ac43f363348b8b96a1baba4f49, type: 3}
   canGhost: 0

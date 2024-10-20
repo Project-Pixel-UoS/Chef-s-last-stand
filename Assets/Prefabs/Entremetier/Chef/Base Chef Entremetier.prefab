@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  cooldown: 5
+  cooldown: 4
 --- !u!114 &7016424228477295924
 MonoBehaviour:
   m_ObjectHideFlags: 0

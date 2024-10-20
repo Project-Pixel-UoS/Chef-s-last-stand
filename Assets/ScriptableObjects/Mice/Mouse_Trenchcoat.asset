@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
   mouseName: Trenchcoat
   speed: 0.6
-  health: 20
+  health: 60
   size: 1
   sprite: {fileID: 21300000, guid: c3371a82d2a946b41a4973723e606a42, type: 3}
   canGhost: 0
