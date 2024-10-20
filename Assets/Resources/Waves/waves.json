@@ -5,7 +5,7 @@
       "randomMouseUnits": [
         {
           "difficulty": "medium",
-          "amount": 3,
+          "amount": 0,
           "timeOfWave": 0,
           "frequency": 3
         }
@@ -14,7 +14,7 @@
         {
 
           "type": "Woody",
-          "amount": 0,
+          "amount": 3,
           "timeOfWave": 0,
           "frequency": 8
         }
@@ -239,10 +239,10 @@
           "frequency": 3
         },
         {
-          "type": "Pinkie",
+          "type": "Armoured",
           "amount": 6,
           "timeOfWave": 5,
-          "frequency": 7
+          "frequency": 11
         }
       ]
 
@@ -317,10 +317,10 @@
           "frequency": 9
         },
         {
-          "type": "Woody",
+          "type": "Armoured",
           "amount": 6,
           "timeOfWave": 20,
-          "frequency": 4
+          "frequency": 5
         }
       ]
 
