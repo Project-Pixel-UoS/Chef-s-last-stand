@@ -12,10 +12,10 @@
       ],
       "mouseUnits": [
         {
-          "type": "Woody",
-          "amount": 5,
-          "timeOfWave": 4,
-          "frequency": 2
+          "type": "Trojan",
+          "amount": 1,
+          "timeOfWave": 1,
+          "frequency": 0.1
         }
       ]
     },
@@ -212,7 +212,7 @@
       ],
       "mouseUnits": [
         {
-          "type": "Trenchcoat",
+          "type": "Armoured",
           "amount": 1,
           "timeOfWave": 5,
           "frequency": 4
@@ -236,117 +236,6 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 10,
-          "timeOfWave": 4,
-          "frequency": 2
-        },
-        {
-          "difficulty": "medium",
-          "amount": 10,
-          "timeOfWave": 15,
-          "frequency": 3
-        }
-      ],
-      "mouseUnits": [
-        {
-          "type": "Armoured",
-          "amount": 5,
-          "timeOfWave": 10,
-          "frequency": 4
-        },
-        {
-          "type": "Medic",
-          "amount": 1,
-          "timeOfWave": 20,
-          "frequency": 3
-        },
-        {
-          "type": "Woody",
-          "amount": 6,
-          "timeOfWave": 0,
-          "frequency": 1
-        }
-      ]
-    },
-    {
-      "waveId": 11,
-      "randomMouseUnits": [
-        {
-          "difficulty": "low",
-          "amount": 10,
-          "timeOfWave": 4,
-          "frequency": 2
-        },
-        {
-          "difficulty": "medium",
-          "amount": 10,
-          "timeOfWave": 15,
-          "frequency": 3
-        }
-      ],
-      "mouseUnits": [
-        {
-          "type": "Armoured",
-          "amount": 0,
-          "timeOfWave": 10,
-          "frequency": 4
-        },
-        {
-          "type": "Medic",
-          "amount": 5,
-          "timeOfWave": 10,
-          "frequency": 3
-        },
-        {
-          "type": "Woody",
-          "amount": 6,
-          "timeOfWave": 0,
-          "frequency": 1
-        }
-      ]
-    },
-    {
-      "waveId": 12,
-      "randomMouseUnits": [
-        {
-          "difficulty": "low",
-          "amount": 10,
-          "timeOfWave": 4,
-          "frequency": 2
-        },
-        {
-          "difficulty": "medium",
-          "amount": 10,
-          "timeOfWave": 15,
-          "frequency": 3
-        }
-      ],
-      "mouseUnits": [
-        {
-          "type": "Armoured",
-          "amount": 5,
-          "timeOfWave": 10,
-          "frequency": 4
-        },
-        {
-          "type": "Trojan",
-          "amount": 1,
-          "timeOfWave": 20,
-          "frequency": 3
-        },
-        {
-          "type": "Woody",
-          "amount": 6,
-          "timeOfWave": 0,
-          "frequency": 1
-        }
-      ]
-    },
-    {
-      "waveId": 13,
-      "randomMouseUnits": [
-        {
-          "difficulty": "low",
           "amount": 40,
           "timeOfWave": 4,
           "frequency": 2
@@ -366,9 +255,9 @@
           "frequency": 4
         },
         {
-          "type": "Trojan",
-          "amount": 1,
-          "timeOfWave": 20,
+          "type": "Wooly",
+          "amount": 0,
+          "timeOfWave": 5,
           "frequency": 3
         },
         {
