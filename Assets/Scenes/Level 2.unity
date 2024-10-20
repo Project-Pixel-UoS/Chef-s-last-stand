@@ -1302,6 +1302,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 996676160103244331, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: credits
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3660628666898628490, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_Pivot.x
       value: 0

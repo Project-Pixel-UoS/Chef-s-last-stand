@@ -8,12 +8,11 @@ using UnityEngine.UI;
 /// </summary>
 public class CreditManager : MonoBehaviour
 {
-    private int credits;
+    [SerializeField] private int credits;
     [SerializeField] private Text text;
 
     void Start()
     {
-        credits = 100; 
         text.text = "$" + credits;
     }
 
