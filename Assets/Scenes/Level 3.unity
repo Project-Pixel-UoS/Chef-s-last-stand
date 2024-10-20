@@ -1525,7 +1525,7 @@ Transform:
   m_GameObject: {fileID: 700975885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -778, y: -177, z: 0}
+  m_LocalPosition: {x: -776, y: -170, z: 0}
   m_LocalScale: {x: 16.46, y: 16.46, z: 0.15240727}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1592,7 +1592,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707814192}
-  - component: {fileID: 707814193}
   m_Layer: 0
   m_Name: MouseFactory2
   m_TagString: Untagged
@@ -1615,28 +1614,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &707814193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707814190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d938b9964d248e4e9acf897806b3d1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mousePrefab: {fileID: 7551363394588081444, guid: 02bf845443d163c4a96ad2e5b23b61b5, type: 3}
-  mouseTypesList:
-  - {fileID: 11400000, guid: fb2de84d40a0c054fbdd8dbe0e486f01, type: 2}
-  - {fileID: 11400000, guid: d13ce1c4b3a5fe549b55ece9b9320b76, type: 2}
-  - {fileID: 11400000, guid: 25af01f4f0b78d9408ac12d7e9ba2ffd, type: 2}
-  - {fileID: 11400000, guid: 8d5e8c0fe72e23048a3e1a3174e9119f, type: 2}
-  - {fileID: 11400000, guid: 72390888884d18d44b65f7193183e064, type: 2}
-  - {fileID: 11400000, guid: f20d81e1d16219341b43a001ed128b3f, type: 2}
-  - {fileID: 11400000, guid: cbb35906b12e5b94e867845960c41a8a, type: 2}
-  - {fileID: 11400000, guid: 633f56cbd8671ce48ac1b259279febc5, type: 2}
 --- !u!1 &725427145
 GameObject:
   m_ObjectHideFlags: 0
@@ -4268,7 +4245,7 @@ Transform:
   m_GameObject: {fileID: 1638463596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -7.71, y: 1.04, z: 0}
+  m_LocalPosition: {x: -7.71, y: 0.98, z: 0}
   m_LocalScale: {x: -0.13, y: -0.13, z: -0.13}
   m_ConstrainProportionsScale: 1
   m_Children: []

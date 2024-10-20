@@ -32,7 +32,18 @@ namespace Mouse
         /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
         public GameObject SpawnMouse(MiceScriptableObject mouseType, Vector3 position, int wayPointIndex, float pathDistance)
         {
-            GameObject newMouse = Instantiate(mousePrefab, position, transform.rotation, transform); // Instantiate mouse prefab
+            GameObject newMouse;
+            var startPos = GameObject.Find("Path").GetComponent<Path>().GetStartPos();
+            if (position == startPos && pathDistance == 0)
+            {
+                newMouse = Instantiate(mousePrefab, position, transform.rotation, transform);
+            }
+            else
+            {
+                GameObject factory = GameObject.Find("MouseFactory2");
+                newMouse = Instantiate(mousePrefab, position, transform.rotation, factory.transform);
+            }
+             // Instantiate mouse prefab
             newMouse.GetComponent<MouseStats>().loadStats(mouseType);
             var spriteMove = newMouse.GetComponent<MouseMover>();
             spriteMove.SetTargetWayPointIndex(wayPointIndex);
@@ -40,8 +51,20 @@ namespace Mouse
             Util.Utils.ResizeSpriteOutsideCanvas(newMouse);
             return newMouse;
         }
-        
-        /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
+
+        //overloaded function for splitting mice
+        public GameObject SpawnMouse(string mouseType, Vector3 position, int wayPointIndex, float pathDistance, GameObject factory)
+        {
+            var newMouse = Instantiate(mousePrefab, position, transform.rotation, factory.transform);
+            newMouse.GetComponent<MouseStats>().loadStats(GetMouseType(mouseType));
+            var spriteMove = newMouse.GetComponent<MouseMover>();
+            spriteMove.SetTargetWayPointIndex(wayPointIndex);
+            spriteMove.totalDistanceMoved = pathDistance; // only needs to be modified when 
+            Util.Utils.ResizeSpriteOutsideCanvas(newMouse);
+            return newMouse;
+        }
+
+            /// <summary>Spawns a mouse of indicated mouse type at specified position.</summary>
         public GameObject SpawnMouse(string mouseType, Vector3 position, int wayPointIndex, float pathDistance)
         {
             return SpawnMouse(GetMouseType(mouseType), position, wayPointIndex, pathDistance);
@@ -54,6 +77,13 @@ namespace Mouse
         {
             var startPos = GameObject.Find("Path").GetComponent<Path>().GetStartPos();
             SpawnMouse(mouseType, startPos,1, 0);
+
+            var startPos2 = GameObject.Find("Path 2");
+            if(startPos2 != null)
+            {
+                SpawnMouse(mouseType, startPos2.GetComponent<Path>().GetStartPos(), 1, 0);
+            }
+            
         }
         
         

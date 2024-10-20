@@ -14,15 +14,18 @@ namespace Mouse
                 float spawnDistance = totalDistanceMoved - i;
                 var wayPoints = GameObject.Find("Path").GetComponent<Path>().targets;
                 var wayPoints2 = GameObject.Find("Path 2");
+                var factory = GameObject.Find("MouseFactory");
+                var factory2 = GameObject.Find("MouseFactory2");
                 //if the parent started at path2
-                if (wayPoints2 != null && wayPoints2.GetComponent<Path>().targets.Contains(parent.startWayPoint)){
+                if (wayPoints2 != null && transform.parent == factory2.transform){
+                    print("spawned path2");
                     (Vector2 spawnPos, int targetWayPointIndex) = ConvertDistanceToPos(spawnDistance, wayPoints2.GetComponent<Path>().targets);
-                    MouseFactory2.Instance.SpawnMouse(mouseType, spawnPos, targetWayPointIndex, spawnDistance);
+                    MouseFactory.Instance.SpawnMouse(mouseType, spawnPos, targetWayPointIndex, spawnDistance, factory2);
                 }
                 else
                 {
                     (Vector2 spawnPos, int targetWayPointIndex) = ConvertDistanceToPos(spawnDistance, wayPoints);
-                    MouseFactory.Instance.SpawnMouse(mouseType, spawnPos, targetWayPointIndex, spawnDistance);
+                    MouseFactory.Instance.SpawnMouse(mouseType, spawnPos, targetWayPointIndex, spawnDistance, factory);
                 }
             }
         }
