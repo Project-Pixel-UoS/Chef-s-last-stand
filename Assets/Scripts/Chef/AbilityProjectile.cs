@@ -29,32 +29,16 @@ namespace Chef
         void Update()
         {
             if (projectile == null) return;
-            GameObject furthestMouse = GetFurthestMouseInRange();
+            GameObject furthestMouse = gameObject.GetComponent<ChefRange>().GetFurthestMouseInRange();
             if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime / buff.ReloadTimeMultiplier);
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
             Shoot();
         }
 
-        /// <returns> find an arbitrary mouse that is in range </returns>
-        /// <remarks>Maintained by: Antosh </remarks>
-        private GameObject GetFurthestMouseInRange()
-        {
-            List<GameObject> mice = gameObject.GetComponent<ChefRange>().GetMiceInRange();
-            mice.RemoveAll(IsInvisibleGhost);
-            if (mice.Count > 0)
-            {
-                return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
-            }
 
-            return null;
-        }
 
-        private bool IsInvisibleGhost(GameObject mouse)
-        {
-            var ghostMouse = mouse.GetComponent<GhostMouse>();
-            return ghostMouse != null && !ghostMouse.IsVisible();
-        }
+
 
         /// <summary> Spins chef so that he is facing the mouse </summary>
         /// <param name = "furthestMouse"> mouse which chef will point towards</param>

@@ -36,10 +36,10 @@ public class AbilityAOE : MonoBehaviour
 
     void Update()
     {
-        GameObject furthestMouse = GetFurthestMouseInRange();
+        GameObject furthestMouse = chefRange.GetFurthestMouseInRange();
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime; // Decrease cooldown
-        AOE(); // Deal AOE damage
         if (furthestMouse == null) return;
+        AOE(); // Deal AOE damage
         Rotate(furthestMouse);
     }
 
@@ -54,21 +54,7 @@ public class AbilityAOE : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
     }
-
-
-    /// <returns> find an arbitrary mouse that is in range </returns>
-    /// <remarks>Maintained by: Antosh </remarks>
-    private GameObject GetFurthestMouseInRange()
-    {
-        List<GameObject> mice = chefRange.GetMiceInRange();
-        if (mice.Count > 0)
-        {
-            return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
-        }
-
-        return null;
-    }
-
+    
 
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
