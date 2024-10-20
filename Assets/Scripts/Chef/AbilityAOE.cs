@@ -36,7 +36,7 @@ public class AbilityAOE : MonoBehaviour
 
     void Update()
     {
-        GameObject furthestMouse = chefRange.GetFurthestMouseInRange();
+        GameObject furthestMouse = chefRange.GetFurthestVisibleMouseInRange();
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime; // Decrease cooldown
         if (furthestMouse == null) return;
         AOE(); // Deal AOE damage
@@ -62,7 +62,7 @@ public class AbilityAOE : MonoBehaviour
     {
         if (cooldownTimer > 0) return;
 
-        List<GameObject> miceInRange = chefRange.GetMiceInRange();
+        List<GameObject> miceInRange = chefRange.GetVisibleMiceInRange();
         StartCoroutine(DealDamage(miceInRange));
         cooldownTimer = cooldown;
     }

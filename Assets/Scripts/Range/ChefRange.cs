@@ -29,7 +29,7 @@ namespace Range
         
         /// <returns> find an arbitrary mouse that is in range </returns>
         /// <remarks>Maintained by: Antosh </remarks>
-        public GameObject GetFurthestMouseInRange()
+        public GameObject GetFurthestVisibleMouseInRange()
         {
             List<GameObject> mice = GetMiceInRange();
             mice.RemoveAll(IsInvisibleGhost);
@@ -38,6 +38,13 @@ namespace Range
                 return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
             }
             return null;
+        }
+        
+        public List<GameObject> GetVisibleMiceInRange()
+        {
+            var mice = GetMiceInRange();
+            mice.RemoveAll(IsInvisibleGhost);
+            return mice;
         }
         
         private bool IsInvisibleGhost(GameObject mouse)
@@ -71,5 +78,7 @@ namespace Range
         {
             rangeSpriteRenderer.enabled = true;
         }
+
+
     }
 }

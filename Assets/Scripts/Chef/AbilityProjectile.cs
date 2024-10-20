@@ -29,7 +29,7 @@ namespace Chef
         void Update()
         {
             if (projectile == null) return;
-            GameObject furthestMouse = gameObject.GetComponent<ChefRange>().GetFurthestMouseInRange();
+            GameObject furthestMouse = gameObject.GetComponent<ChefRange>().GetFurthestVisibleMouseInRange();
             if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime / buff.ReloadTimeMultiplier);
             if (furthestMouse == null) return;
             Rotate(furthestMouse);
