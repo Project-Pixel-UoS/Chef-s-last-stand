@@ -2058,6 +2058,18 @@ PrefabInstance:
       propertyPath: credits
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2382229279132919499, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382229279132919499, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 243809935, guid: de40280b38ab02a40a4a17543b5c78f7, type: 3}
+    - target: {fileID: 2382229279132919499, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3054038930532482650, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_Color.b
       value: 0.23529412
@@ -2185,6 +2197,22 @@ PrefabInstance:
     - target: {fileID: 4287648630208325818, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_Name
       value: ForegroundCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438987497146194122, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 392.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438987497146194122, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438987497146194122, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 53.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438987497146194122, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000022888
       objectReference: {fileID: 0}
     - target: {fileID: 4710413248249829026, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_SizeDelta.x
