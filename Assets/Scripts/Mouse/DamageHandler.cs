@@ -23,7 +23,6 @@ namespace Mouse
         private SpriteRenderer sprite;
         public IEnumerator flashRedCoroutine = null;
         private MouseHealthHandler mouseHealthHandler;
-        private bool isDestroyed = false;
         
 
         private void Start()
@@ -129,7 +128,7 @@ namespace Mouse
         {
             if (stats.CanSplit())
             {
-                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType);
+                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType, transform.GetComponent<MouseMover>());
             }
        
         }
