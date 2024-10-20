@@ -36,10 +36,6 @@ namespace Chef
             Shoot();
         }
 
-
-
-
-
         /// <summary> Spins chef so that he is facing the mouse </summary>
         /// <param name = "furthestMouse"> mouse which chef will point towards</param>
         /// <remarks>Maintained by: Antosh Nikolak</remarks>
