@@ -78,7 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: specialTotal
-      value: 670
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
+      propertyPath: rangeUpgradeCost
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8417773937103734731, guid: e95b3ede7695a8f4d9f0d6694d458ff2, type: 3}
       propertyPath: abilityDescription

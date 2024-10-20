@@ -78,7 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: specialTotal
-      value: 210
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
+      propertyPath: rangeUpgradeCost
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: abilityDescription
@@ -86,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621596560810024591, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: abilityUpgradeCost
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6049553212818791163, guid: 6f2ef906379b7d44e8001adc578cacd2, type: 3}
       propertyPath: Projectile

@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 623850372103920980, guid: 5c96c8ad76f0c4ae8922980094768e09, type: 3}
     - target: {fileID: -8225661181477205927, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: damage
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8225661181477205927, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: damageRate
@@ -35,14 +35,14 @@ PrefabInstance:
     - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dff9d8b11afbc60459b5b4abaa59cc16, type: 3}
+      objectReference: {fileID: 21300000, guid: 574d9a7ea8e9fb84e9dc1f70f5602d13, type: 3}
     - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2041573966325760781, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Name
-      value: Base Projectile Entremetier 2
+      value: Projectile Entremetier 2
       objectReference: {fileID: 0}
     - target: {fileID: 7989630137209133669, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_LocalPosition.x

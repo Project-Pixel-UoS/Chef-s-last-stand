@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6877617645787020287, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 647212506296903406, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -70,7 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: specialTotal
-      value: 100
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
+      propertyPath: rangeUpgradeCost
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: abilityDescription
@@ -78,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854314696486517693, guid: e2709bb6ed470f24d995ce550dda7671, type: 3}
       propertyPath: abilityUpgradeCost
-      value: 100
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
