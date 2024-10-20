@@ -14,7 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 8161887325091484187, guid: dddef4814ee774756a47344ff008fe12, type: 3}
     - target: {fileID: -8225661181477205927, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: damage
-      value: 5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8225661181477205927, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: damageRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1419975945382885, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Size.x
@@ -35,6 +39,10 @@ PrefabInstance:
     - target: {fileID: 2041573966325760781, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_Name
       value: Projectile Entremetier 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733890637323858978, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
+      propertyPath: projectileSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7989630137209133669, guid: 02ce9472c94dbe34291c6a463c84e498, type: 3}
       propertyPath: m_LocalPosition.x
