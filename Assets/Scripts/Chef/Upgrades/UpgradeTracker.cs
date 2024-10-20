@@ -27,14 +27,17 @@ namespace Chef.Upgrades
             path1Status++;
             GetComponent<ChefRange>().Radius *= 1.1f;
             GetComponent<ChefRange>().RadiusWithoutBuff *= 1.1f;
-
-            if (gameObject.CompareTag("Grillardin"))
-            {
-                var main = GetComponentInChildren<ParticleSystem>().main;
-                var emission = GetComponentInChildren<ParticleSystem>().emission;
-                main.startSpeed = 1.23f * main.startSpeed.constant;
-                emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
-            }
+            
+            // var abilityAoe = gameObject.GetComponent<AbilityAOE>();
+            // if (abilityAoe != null) abilityAoe.IncreaseFireDistance(1.1f);
+            
+            // if (gameObject.CompareTag("Grillardin"))
+            // {
+            //     var main = GetComponentInChildren<ParticleSystem>().main;
+            //     var emission = GetComponentInChildren<ParticleSystem>().emission;
+            //     main.startSpeed = 1.23f * main.startSpeed.constant;
+            //     emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
+            // }
 
             RefreshRangeBar();
             RefreshSellChefBar();

@@ -2056,7 +2056,7 @@ PrefabInstance:
       objectReference: {fileID: 1085662041}
     - target: {fileID: 996676160103244331, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: credits
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2382229279132919499, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_Type

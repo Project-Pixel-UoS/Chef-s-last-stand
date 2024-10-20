@@ -38,7 +38,11 @@ public class AbilityAOE : MonoBehaviour
     {
         GameObject furthestMouse = chefRange.GetFurthestVisibleMouseInRange();
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime; // Decrease cooldown
-        if (furthestMouse == null) return;
+        if (furthestMouse == null)
+        {
+            StartCoroutine(StopParticles());
+            return;
+        }
         AOE(); // Deal AOE damage
         Rotate(furthestMouse);
     }
@@ -61,7 +65,6 @@ public class AbilityAOE : MonoBehaviour
     private void AOE()
     {
         if (cooldownTimer > 0) return;
-
         List<GameObject> miceInRange = chefRange.GetVisibleMiceInRange();
         StartCoroutine(DealDamage(miceInRange));
         cooldownTimer = cooldown;
@@ -80,9 +83,7 @@ public class AbilityAOE : MonoBehaviour
         {
             if (mouse != null)
             {
-                Vector3 spriteDirection = transform.up; //  forward vector of the sprite
-                Vector3 distance = (mouse.transform.position - transform.position);
-                double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+                var mouseAngle = CalculateMouseAngle(mouse);
                 float upperBound = arcAngle / 2f + 5f;
                 if (mouseAngle < upperBound) // check is angled within half the arc length from where chef is facing
                 {
@@ -91,6 +92,14 @@ public class AbilityAOE : MonoBehaviour
                 }
             }
         }
+    }
+
+    private double CalculateMouseAngle(GameObject mouse)
+    {
+        Vector3 spriteDirection = transform.up; //  forward vector of the sprite
+        Vector3 distance = (mouse.transform.position - transform.position);
+        double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+        return mouseAngle;
     }
 
     private IEnumerator ManageParticles(List<GameObject> miceInRange)
@@ -104,9 +113,23 @@ public class AbilityAOE : MonoBehaviour
         }
         else
         {
-            fireParticles.Stop();
-            yield return new WaitForSeconds(0.7f); //because fire particle system takes a while to fully disappear
-            Utils.StopShootSound(gameObject);
+            yield return StopParticles();
         }
+    }
+
+    private IEnumerator StopParticles()
+    {
+        fireParticles.Stop();
+        yield return new WaitForSeconds(0.7f);
+        Utils.StopShootSound(gameObject);
+    }
+
+    public void SetFireDistance(float radius)
+    {
+        var main = GetComponentInChildren<ParticleSystem>().main;
+        var emission = GetComponentInChildren<ParticleSystem>().emission;
+        
+        main.startSpeed =  (radius - 1) * 5;
+        emission.rateOverTime = (radius - 1) * 200;
     }
 }

@@ -12,15 +12,9 @@
       ],
       "mouseUnits": [
         {
-          "type": "Ghost",
-          "amount": 1,
+          "type": "Woody",
+          "amount": 5,
           "timeOfWave": 4,
-          "frequency": 2
-        },
-        {
-          "type": "Medic",
-          "amount": 20,
-          "timeOfWave": 0,
           "frequency": 2
         }
       ]
