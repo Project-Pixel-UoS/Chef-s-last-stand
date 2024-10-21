@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Level.WaveData.WaveData;
+using ScriptableObjects.Mice;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
