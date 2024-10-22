@@ -1,4 +1,5 @@
 using Range;
+using ScriptableObjects.Mice;
 using UnityEngine;
 
 namespace Mouse

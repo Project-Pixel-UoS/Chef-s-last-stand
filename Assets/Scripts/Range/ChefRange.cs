@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using Mouse;
 using UnityEngine;
 namespace Range
 {
@@ -22,6 +25,32 @@ namespace Range
         void Update()
         {
             HandleRangeBuff();
+        }
+        
+        /// <returns> find an arbitrary mouse that is in range </returns>
+        /// <remarks>Maintained by: Antosh </remarks>
+        public GameObject GetFurthestVisibleMouseInRange()
+        {
+            List<GameObject> mice = GetMiceInRange();
+            mice.RemoveAll(IsInvisibleGhost);
+            if (mice.Count > 0)
+            {
+                return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
+            }
+            return null;
+        }
+        
+        public List<GameObject> GetVisibleMiceInRange()
+        {
+            var mice = GetMiceInRange();
+            mice.RemoveAll(IsInvisibleGhost);
+            return mice;
+        }
+        
+        private bool IsInvisibleGhost(GameObject mouse)
+        {
+            var ghostMouse = mouse.GetComponent<GhostMouse>();
+            return ghostMouse != null && !ghostMouse.IsVisible();
         }
         
         private void HandleRangeBuff()
@@ -49,5 +78,7 @@ namespace Range
         {
             rangeSpriteRenderer.enabled = true;
         }
+
+
     }
 }

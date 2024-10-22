@@ -70,7 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: specialTotal
-      value: 200
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
+      propertyPath: rangeUpgradeCost
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: abilityDescription
@@ -78,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214436624015060238, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: abilityUpgradeCost
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4357221676546473598, guid: 0be27e5903c0f784094374504c9e4056, type: 3}
       propertyPath: m_Sprite

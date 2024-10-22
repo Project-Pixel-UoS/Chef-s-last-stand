@@ -16,18 +16,18 @@ namespace Mouse
         private float mouseDamage = 10; //The amount of damage that particular mouse causes to the player
         private PlayerHealthManager playerHealth;
         private Cheese cheese;
-
+        public Transform startWayPoint;
 
         void Awake()
         {
-       
             playerHealth = GameObject.FindGameObjectWithTag("Health").GetComponent<PlayerHealthManager>();
             path = GameObject.Find("Path").GetComponent<Path>();
             path2 = GameObject.Find("Path 2");
-            if (path2 != null && Vector3.Distance(transform.position, path2.GetComponent<Path>().GetStartPos()) <= 0.1)
+            if (transform.parent.name.Equals("MouseFactory2"))
             {
                 path = path2.GetComponent<Path>();
             }
+            startWayPoint = path.GetTarget(0);
             target = path.GetTarget(targetWayPointIndex);
             stats = gameObject.GetComponent<MouseStats>();
             if (IsCheeseExistent())
@@ -102,6 +102,15 @@ namespace Mouse
             targetWayPointIndex = i;
             target = path.GetTarget(targetWayPointIndex);
             MouseRotate(target);
+        }
+
+        /// <summary>
+        /// get the next waypoint the mouse is moving to
+        /// </summary>
+        /// <returns>the waypoint to move to next</returns>
+        public Transform GetTargetWayPoint()
+        {
+            return target;
         }
     }
 }

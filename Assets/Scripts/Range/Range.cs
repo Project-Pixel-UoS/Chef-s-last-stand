@@ -19,6 +19,8 @@ namespace Range
         protected virtual void SetRadius(float radius)
         {
             this.radius = radius;
+            var abilityAoe = gameObject.GetComponent<AbilityAOE>();
+            if (abilityAoe != null) abilityAoe.SetFireDistance(radius);
         }
         
         public bool IsMouseInRange(GameObject mouse)

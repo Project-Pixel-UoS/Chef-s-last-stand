@@ -23,7 +23,6 @@ namespace Mouse
         private SpriteRenderer sprite;
         public IEnumerator flashRedCoroutine = null;
         private MouseHealthHandler mouseHealthHandler;
-        private bool isDestroyed = false;
         
 
         private void Start()
@@ -118,9 +117,9 @@ namespace Mouse
         /// <remarks>Author: Emily</remarks>
         public IEnumerator FlashRed()
         {
-            sprite.color = UnityEngine.Color.red;
+            sprite.color = Color.red;
             yield return new WaitForSeconds(0.1f);
-            sprite.color = UnityEngine.Color.white;
+            sprite.color = Color.white;
             flashRedCoroutine = null;
         }
 
@@ -129,7 +128,7 @@ namespace Mouse
         {
             if (stats.CanSplit())
             {
-                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType);
+                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType, transform.GetComponent<MouseMover>());
             }
        
         }

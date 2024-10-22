@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: chef
       value: 
       objectReference: {fileID: 1860389874518480346, guid: 457046fd49b124c5ab48fccea91aa41c, type: 3}
+    - target: {fileID: -8225661181477205927, guid: d098e47773abb9e4398621ec7cd55f7c, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2041573966325760781, guid: d098e47773abb9e4398621ec7cd55f7c, type: 3}
       propertyPath: m_Name
       value: Projectile Waiter 0

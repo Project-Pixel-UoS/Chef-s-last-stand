@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Chef;
@@ -58,6 +59,29 @@ public class AbilityBuff : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        OnSellChef();
+    }
+
+    private void OnSellChef()
+    {
+        colliders = Physics2D.OverlapCircleAll(transform.position, range); // Get all objects within range
+        foreach (Collider2D collider in colliders)
+        {
+            Buff buff = collider.gameObject.GetComponent<Buff>();
+            if (buff != null) // If it has no "buff" object, it isn't a chef
+
+            {
+                buff.DamageMultiplier = 1;
+                buff.ReloadTimeMultiplier = 1;
+                buff.RangeMultiplier = 1;
+            }
+        }
+    }
+
+    
 
     /// <summary>
     /// checks if head chef is level 3/4, then generate passive income.

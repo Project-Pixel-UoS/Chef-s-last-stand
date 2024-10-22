@@ -1,3 +1,4 @@
+using System;
 using Range;
 using Shop;
 using Unity.VisualScripting;
@@ -26,7 +27,10 @@ namespace Chef.Upgrades
         [SerializeField] private GameObject[] potagerUpgrades;
         [SerializeField] private GameObject[] entremetierUpgrades;
         private Shop.PurchasedChef upgradeManager;
-
+        
+        // public delegate void OnSellChef();
+        // public OnSellChef onSellChef;
+        
 
         private GameObject currentChef;
 
@@ -47,6 +51,7 @@ namespace Chef.Upgrades
                 Instance = this;
             }
         }
+
 
         /// <summary>
         /// Method invoked each the currentChef field is updated

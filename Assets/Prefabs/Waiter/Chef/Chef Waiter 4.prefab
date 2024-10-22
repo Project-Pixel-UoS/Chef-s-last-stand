@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: specialTotal
-      value: 1210
+      value: 880
       objectReference: {fileID: 0}
     - target: {fileID: 2821546689429902803, guid: 885c47ceeb7b14d029129a0f5271c270, type: 3}
       propertyPath: abilityDescription

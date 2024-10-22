@@ -11,7 +11,7 @@ namespace Level.WaveData
 {
     public class WaveTextManager : MonoBehaviour
     {
-        [SerializeField] private GameObject waveTextBorder;
+        [SerializeField] public GameObject waveTextBorder;
         private Text text;
 
         private void Awake()

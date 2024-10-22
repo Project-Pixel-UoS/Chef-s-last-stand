@@ -36,10 +36,14 @@ public class AbilityAOE : MonoBehaviour
 
     void Update()
     {
-        GameObject furthestMouse = GetFurthestMouseInRange();
+        GameObject furthestMouse = chefRange.GetFurthestVisibleMouseInRange();
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime; // Decrease cooldown
+        if (furthestMouse == null)
+        {
+            StartCoroutine(StopParticles());
+            return;
+        }
         AOE(); // Deal AOE damage
-        if (furthestMouse == null) return;
         Rotate(furthestMouse);
     }
 
@@ -54,29 +58,14 @@ public class AbilityAOE : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, 0, degrees);
         transform.rotation = target;
     }
-
-
-    /// <returns> find an arbitrary mouse that is in range </returns>
-    /// <remarks>Maintained by: Antosh </remarks>
-    private GameObject GetFurthestMouseInRange()
-    {
-        List<GameObject> mice = chefRange.GetMiceInRange();
-        if (mice.Count > 0)
-        {
-            return mice.OrderByDescending(mouse => mouse.GetComponent<MouseMover>().totalDistanceMoved).First();
-        }
-
-        return null;
-    }
-
+    
 
     /// <summary> Hits all mice in range, using DamageFactor component </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
     private void AOE()
     {
         if (cooldownTimer > 0) return;
-
-        List<GameObject> miceInRange = chefRange.GetMiceInRange();
+        List<GameObject> miceInRange = chefRange.GetVisibleMiceInRange();
         StartCoroutine(DealDamage(miceInRange));
         cooldownTimer = cooldown;
     }
@@ -94,9 +83,7 @@ public class AbilityAOE : MonoBehaviour
         {
             if (mouse != null)
             {
-                Vector3 spriteDirection = transform.up; //  forward vector of the sprite
-                Vector3 distance = (mouse.transform.position - transform.position);
-                double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+                var mouseAngle = CalculateMouseAngle(mouse);
                 float upperBound = arcAngle / 2f + 5f;
                 if (mouseAngle < upperBound) // check is angled within half the arc length from where chef is facing
                 {
@@ -105,6 +92,14 @@ public class AbilityAOE : MonoBehaviour
                 }
             }
         }
+    }
+
+    private double CalculateMouseAngle(GameObject mouse)
+    {
+        Vector3 spriteDirection = transform.up; //  forward vector of the sprite
+        Vector3 distance = (mouse.transform.position - transform.position);
+        double mouseAngle = Vector3.Angle(spriteDirection, distance); // angle between mouse and chef
+        return mouseAngle;
     }
 
     private IEnumerator ManageParticles(List<GameObject> miceInRange)
@@ -118,9 +113,23 @@ public class AbilityAOE : MonoBehaviour
         }
         else
         {
-            fireParticles.Stop();
-            yield return new WaitForSeconds(0.7f); //because fire particle system takes a while to fully disappear
-            Utils.StopShootSound(gameObject);
+            yield return StopParticles();
         }
+    }
+
+    private IEnumerator StopParticles()
+    {
+        fireParticles.Stop();
+        yield return new WaitForSeconds(0.7f);
+        Utils.StopShootSound(gameObject);
+    }
+
+    public void SetFireDistance(float radius)
+    {
+        var main = GetComponentInChildren<ParticleSystem>().main;
+        var emission = GetComponentInChildren<ParticleSystem>().emission;
+        
+        main.startSpeed =  (radius - 1) * 5;
+        emission.rateOverTime = (radius - 1) * 200;
     }
 }
