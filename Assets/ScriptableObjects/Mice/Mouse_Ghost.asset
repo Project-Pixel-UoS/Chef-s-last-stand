@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
   mouseName: Ghost
   speed: 0.5
-  health: 20
+  health: 70
   size: 1
   sprite: {fileID: 21300000, guid: 8b188865aefbb874e92e0f23ad22ea11, type: 3}
   canGhost: 1

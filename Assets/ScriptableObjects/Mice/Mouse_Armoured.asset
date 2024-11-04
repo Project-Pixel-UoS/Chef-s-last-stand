@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f801903af36977445b855e1772d2fcb4, type: 3}
   m_Name: Mouse_Armoured
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
-  mouseName: 1.2
-  speed: 80
-  health: 1.2
-  size: 1
+  mouseName: Armoured
+  speed: 1
+  health: 60
+  size: 1.2
   sprite: {fileID: 21300000, guid: 05f71643aa91fc040a9b91b9e5528d12, type: 3}
   canGhost: 0
   splitMouseType: 
   numOfSplitMice: 0
-  armoured: 0
+  armoured: 1
   canHeal: 0
   difficulty: 1
