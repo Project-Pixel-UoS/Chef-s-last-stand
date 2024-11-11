@@ -80,7 +80,7 @@ namespace Chef.Upgrades
             else
             {
                 var cost = transform.GetComponent<Shop.PurchasedChef>().rangeUpgradeCost;
-                rangeText.text = "Range: \n" + "$" + cost;
+                rangeText.text = "Range \n" + "$" + cost;
             }
             var upgradeBar1 = GameObject.FindGameObjectWithTag("UpgradeBar1").GetComponent<Image>();
             upgradeBar1.sprite = progressBars[path1Status];
@@ -99,7 +99,7 @@ namespace Chef.Upgrades
             else
             {
                 var cost = transform.GetComponent<PurchasedChef>().abilityUpgradeCost;
-                specialText.text = "Special: \n" + "$" + cost;
+                specialText.text = "Promote \n" + "$" + cost;
             }
             var upgradeBar2 = GameObject.FindGameObjectWithTag("UpgradeBar2").GetComponent<Image>();
             upgradeBar2.sprite = progressBars[path2Status];

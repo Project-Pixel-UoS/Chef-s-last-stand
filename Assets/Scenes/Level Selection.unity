@@ -1597,7 +1597,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1801024247}
   m_HandleRect: {fileID: 1801024246}
   m_Direction: 0
-  m_Value: 0
+  m_Value: -0.00000008645206
   m_Size: 0.45941806
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1811,7 +1811,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.94509804, g: 0.6666667, b: 0.49411765, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
