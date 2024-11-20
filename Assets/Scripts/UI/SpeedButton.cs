@@ -17,12 +17,10 @@ public class SpeedButton : MonoBehaviour
         
         if (currentButtonState == ButtonState.DecreaseSpeed)
         {
-            print("DECREASING SPEED");
             DecreaseSpeed();
         }
         else
         {
-            print("INCREASING SPEED");
             IncreaseSpeed();
         }
     }
