@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +12,17 @@ public class SceneLoader : MonoBehaviour
     /// <param name="sceneName"></param>
     public void LoadScene(string sceneName)
     {
+        string previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
+        
+        if (CheckPreviousSceneWasLevel(previousScene))
+        {
+            GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().Play();
+        }
+    }
+
+    private bool CheckPreviousSceneWasLevel(string previousScene)
+    {
+        return previousScene.ContainsInsensitive("Level") && char.IsDigit(previousScene[^1]);
     }
 }
