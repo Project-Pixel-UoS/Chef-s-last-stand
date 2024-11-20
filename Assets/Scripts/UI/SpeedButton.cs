@@ -1,30 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
+using Level.WaveData;
 using UnityEngine;
 
 public class SpeedButton : MonoBehaviour
 {
 
-    [SerializeField] float multiplier;
+    private ButtonState currentButtonState = ButtonState.IncreaseSpeed;
 
     /// <summary> Toggles time dependent processes' speeds </summary>
     /// <remarks> Maintained by: Ben Brixton </remarks>
     public void ToggleSpeed(){
 
-        if(GameManager.isPaused){ return; }
-
-        TMPro.TextMeshProUGUI textObject = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-        if(Mathf.Approximately(Time.timeScale, 1.0f)){
-            GameManager.speedMultiplier = multiplier;
-            textObject.text = "Speed: " + multiplier + "x";
-            Time.timeScale = GameManager.speedMultiplier;
+        if(GameManager.isPaused) return;
+        
+        if (currentButtonState == ButtonState.DecreaseSpeed)
+        {
+            print("DECREASING SPEED");
+            DecreaseSpeed();
         }
-        else{
-            GameManager.speedMultiplier = 1.0f;
-            textObject.text = "Speed: 1x";
-            Time.timeScale = GameManager.speedMultiplier;
+        else
+        {
+            print("INCREASING SPEED");
+            IncreaseSpeed();
         }
     }
+
+    private void IncreaseSpeed()
+    {
+        TimeScaleManager.SpeedMultiplier++;
+        if (TimeScaleManager.SpeedMultiplier == 3)
+        {
+            currentButtonState = ButtonState.DecreaseSpeed;
+            ReverseButtonArrows();
+        }
+    }
+
+    private void DecreaseSpeed()
+    {
+        TimeScaleManager.SpeedMultiplier--;
+        if (TimeScaleManager.SpeedMultiplier == 1)
+        {
+            currentButtonState = ButtonState.IncreaseSpeed;
+            ReverseButtonArrows();
+        }
+    }
+
+    private void ReverseButtonArrows()
+    {
+        transform.rotation = 
+            Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
+    }
+}
+    
+public enum ButtonState
+{
+    IncreaseSpeed,
+    DecreaseSpeed
 }

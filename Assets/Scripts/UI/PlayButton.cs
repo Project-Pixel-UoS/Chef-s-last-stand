@@ -1,4 +1,5 @@
 using GameManagement;
+using Level.WaveData;
 using UnityEngine;
 
 namespace UI
@@ -15,7 +16,7 @@ namespace UI
         {
             pauseScreen.SetActive(false);
             GameManager.isPaused = false;
-            Time.timeScale = GameManager.speedMultiplier;
+            Time.timeScale = TimeScaleManager.SpeedMultiplier;
         }
 
     }

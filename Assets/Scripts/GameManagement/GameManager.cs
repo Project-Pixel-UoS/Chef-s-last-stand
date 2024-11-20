@@ -11,7 +11,8 @@ namespace GameManagement
     public class GameManager : MonoBehaviour
     {
         public static bool isPaused;
-        public static float speedMultiplier = 1;
+
+
 
         [SerializeField] private GameObject gameOverScreen;
         public static GameManager gameManager;
