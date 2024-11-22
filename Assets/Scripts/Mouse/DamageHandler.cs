@@ -48,6 +48,9 @@ namespace Mouse
 
         private void HandleCollision(GameObject weapon)
         {
+            var ghostMouse = GetComponent<GhostMouse>();
+            if (ghostMouse != null && !ghostMouse.IsVisible()) return;
+         
             StopPoisonousDamage();
             StartDamageCoroutine(weapon);
         }
