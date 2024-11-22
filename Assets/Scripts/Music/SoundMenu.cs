@@ -53,7 +53,7 @@ namespace Music
 
         private void SetVolumeSliders()
         {
-            if (!PlayerPrefs.HasKey("backgroundMusicVolume"))
+            if (!PlayerPrefs.HasKey("backgroundMusicVolume")){
                 PlayerPrefs.SetFloat("backgroundMusicVolume", 1);
 
             if (!PlayerPrefs.HasKey("soundEffectVolume"))
