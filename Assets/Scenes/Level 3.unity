@@ -693,6 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 33278353}
+  level: 3
 --- !u!114 &266574284
 MonoBehaviour:
   m_ObjectHideFlags: 0

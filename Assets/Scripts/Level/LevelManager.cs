@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
     private WaveTextManager waveTextManager;
     [SerializeField] private GameObject victoryScreen;
 
+    [SerializeField] private int level;
+
     private void Awake()
     {
         LM = this;
@@ -43,7 +45,6 @@ public class LevelManager : MonoBehaviour
             miceToBeReleased--; //decrement mice to be released so that OnWaveFinished() is not triggered again
             if (!GameManager.gameManager.IsGameOver()) // when game over, the wave continues instead of freezing 
             {
-
                 StartCoroutine(TransitionIntoNextWave());
             }
         }
@@ -53,7 +54,7 @@ public class LevelManager : MonoBehaviour
     /// <remarks>Maintained by: Antosh</remarks>
     private void LoadLevel()
     {
-        TextAsset jsonFile = Resources.Load("Waves/waves") as TextAsset;
+        TextAsset jsonFile = Resources.Load("Waves/level" + level) as TextAsset;
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
     }
     

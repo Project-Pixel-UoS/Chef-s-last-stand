@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 5635458686855641061}
+  level: 2
 --- !u!114 &266574284
 MonoBehaviour:
   m_ObjectHideFlags: 0

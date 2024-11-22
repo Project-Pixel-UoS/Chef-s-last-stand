@@ -1762,6 +1762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 1135740888}
+  level: 1
 --- !u!1 &596409997
 GameObject:
   m_ObjectHideFlags: 0

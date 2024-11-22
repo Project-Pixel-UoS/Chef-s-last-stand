@@ -1,0 +1,26 @@
+{
+  "waves": [
+    {
+      "waveId": 1,
+      "randomMouseUnits": [
+        {
+          "difficulty": "medium",
+          "amount": 0,
+          "timeOfWave": 0,
+          "frequency": 3
+        }
+      ],
+      "mouseUnits": [
+        {
+
+          "type": "Ghost",
+          "amount": 3,
+          "timeOfWave": 0,
+          "frequency": 8
+        }
+      ]
+    }
+
+
+  ]
+}
