@@ -53,14 +53,14 @@ namespace Music
 
         private void SetVolumeSliders()
         {
-            if (!PlayerPrefs.HasKey("backgroundMusicVolume")){
-                PlayerPrefs.SetFloat("backgroundMusicVolume", 1);
+            if (!PlayerPrefs.HasKey("backgroundMusicVolume"))
+                PlayerPrefs.SetFloat("backgroundMusicVolume", 0.5f);
 
             if (!PlayerPrefs.HasKey("soundEffectVolume"))
-                PlayerPrefs.SetFloat("soundEffectVolume", 1);
+                PlayerPrefs.SetFloat("soundEffectVolume", 0.5f);
 
             if (!PlayerPrefs.HasKey("menuVolume"))
-                PlayerPrefs.SetFloat("menuVolume", 1);
+                PlayerPrefs.SetFloat("menuVolume", 0.5f);
 
 
             LoadLevelVolume();
@@ -68,16 +68,7 @@ namespace Music
             LoadSoundFXVolume();
         }
 
-
-        // public void ChangeSoundFXVolume()
-        // {
-        //     SaveSoundFXVolume();
-        // }
-        //
-        // public void ChangeLevelMusicVolume()
-        // {
-        //     SaveLevelVolume();
-        // }
+        
 
         public void ChangeMenuMusicVolume()
         {
@@ -86,7 +77,6 @@ namespace Music
         }
 
 
-        //Loading and saving functions
         private void LoadLevelVolume()
         {
             levelVolumeSlider.value = GetLevelVolume();
@@ -117,22 +107,22 @@ namespace Music
             PlayerPrefs.SetFloat("menuVolume", menuVolumeSlider.value);
         }
 
-        public float GetLevelVolume()
+        private float GetLevelVolume()
         {
             return PlayerPrefs.GetFloat("levelVolume");
         }
 
-        public float GetMenuVolume()
+        private float GetMenuVolume()
         {
             return PlayerPrefs.GetFloat("menuVolume");
         }
 
-        public float GetSoundFXVolume()
+        private float GetSoundFXVolume()
         {
             return PlayerPrefs.GetFloat("soundFXVolume");
         }
 
-        public void SetMenuMusicVolume()
+        private void SetMenuMusicVolume()
         {
             menuMusic.volume = GetMenuVolume();
         }
