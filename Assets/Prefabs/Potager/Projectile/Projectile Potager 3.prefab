@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: duration
-      value: 5
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: slownessFactor

@@ -17,6 +17,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
+      propertyPath: duration
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: slownessFactor
       value: 5
       objectReference: {fileID: 0}
