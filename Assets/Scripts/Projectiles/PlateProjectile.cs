@@ -11,12 +11,6 @@ public class PlateProjectile : MonoBehaviour
         parentChef = GetComponentInParent<AbilityPlate>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {   
-        
-    }
-
     // if projectile collides with game object, it is destroyed
     void OnCollisionEnter2D(Collision2D collision)
     {

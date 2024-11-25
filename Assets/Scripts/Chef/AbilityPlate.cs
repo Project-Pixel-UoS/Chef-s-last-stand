@@ -7,6 +7,7 @@ using Range;
 using UnityEngine.Serialization;
 using Util;
 using System.Linq;
+using Level.WaveData;
 
 public class AbilityPlate : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class AbilityPlate : MonoBehaviour
     void Update()
     {
         if (projectile == null) return;
-        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime / buff.ReloadTimeMultiplier ;
+        if (cooldownTimer > 0) cooldownTimer -= (Time.deltaTime) / buff.ReloadTimeMultiplier ;
         if (currPlates != maxPlates)
         {
             var targetPos = GetPlatePosition();

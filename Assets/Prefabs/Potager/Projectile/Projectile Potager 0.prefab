@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 6606718523713685315, guid: e6515802b955e44e2a6e62c5fe83cc48, type: 3}
     - target: {fileID: -8225661181477205927, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: damage
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: slownessFactor
