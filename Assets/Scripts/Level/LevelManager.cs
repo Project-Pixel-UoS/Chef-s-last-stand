@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     private WaveTextManager waveTextManager;
     [SerializeField] private GameObject victoryScreen;
 
-    [SerializeField] private int level;
+    [FormerlySerializedAs("level")] [SerializeField] public int currentLevel;
 
     private void Awake()
     {
@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
     /// <remarks>Maintained by: Antosh</remarks>
     private void LoadLevel()
     {
-        TextAsset jsonFile = Resources.Load("Waves/level" + level) as TextAsset;
+        TextAsset jsonFile = Resources.Load("Waves/level" + currentLevel) as TextAsset;
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
     }
 

@@ -11,6 +11,7 @@ namespace Mouse
     /// <remarks>Author: Antosh</remarks>
     public class GhostMouse : MonoBehaviour
     {
+
         private enum State
         {
             Visible,
@@ -66,9 +67,9 @@ namespace Mouse
         private IEnumerator FadeIn()
         {
             currentState = State.FadeIn;
-            while (GetAlpha() < 1)
+            while (GetCurrentAlpha() < 1)
             {
-                ChangeAlpha(GetAlpha() + 0.01f);
+                ChangeAlpha(GetCurrentAlpha() + 0.01f);
                 yield return new WaitForSeconds(0.01f);
             }
             fadeCoroutine = null;
@@ -78,9 +79,9 @@ namespace Mouse
         private IEnumerator FadeOut()
         {
             currentState = State.FadeOut;
-            while (GetAlpha() >= 0.1)
+            while (GetCurrentAlpha() >= GetMinimumAlpha())
             {
-                ChangeAlpha(GetAlpha() - 0.01f);
+                ChangeAlpha(GetCurrentAlpha() - 0.01f);
                 yield return new WaitForSeconds(0.01f);
             }
             fadeCoroutine = null;
@@ -106,9 +107,20 @@ namespace Mouse
             spriteRenderer.color = color;
         }
 
-        private float GetAlpha()
+        private float GetCurrentAlpha()
         {
             return spriteRenderer.color.a;
+        }
+
+        private float GetMinimumAlpha()
+        {
+            return LevelManager.LM.currentLevel switch
+            {
+                1 => 0.1f,
+                2 => 0.4f,
+                3 => 0.1f,
+                _ => 0.3f
+            };
         }
 
         private IEnumerator StartCoroutineWithDelay(float delay, IEnumerator targetCoroutine)
