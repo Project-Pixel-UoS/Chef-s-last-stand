@@ -5,9 +5,15 @@
       "mouseUnits": [
         {
           "type": "Woody",
-          "amount": 3,
-          "timeOfWave": 0,
-          "frequency": 3
+          "amount": 20,
+          "timeOfWave": 0.1,
+          "frequency": 2
+        },
+        {
+          "type": "Ghost",
+          "amount": 1,
+          "timeOfWave": 0.1,
+          "frequency": 0
         }
       ]
     },

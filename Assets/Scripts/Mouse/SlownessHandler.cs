@@ -54,15 +54,14 @@ namespace Mouse
             isSlowed = false;
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        public void HandleSlownessProjectile(Collision2D other)
         {
-             GameObject otherGameObject = other.gameObject;
-             SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
-             if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
+            GameObject otherGameObject = other.gameObject;
+            SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
+            if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
             {
                 SlowMouse(slownessProjectile);
-             }
-
+            }
         }
     }
 }

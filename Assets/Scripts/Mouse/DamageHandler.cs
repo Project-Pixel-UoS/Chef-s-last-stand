@@ -34,23 +34,8 @@ namespace Mouse
             mouseHealthHandler = gameObject.GetComponent<MouseHealthHandler>();
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        public void HandleCollision(GameObject weapon)
         {
-            HandleCollision(other.gameObject);
-        }
-
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            HandleCollision(other.gameObject);
-        }
-
-
-        private void HandleCollision(GameObject weapon)
-        {
-            var ghostMouse = GetComponent<GhostMouse>();
-            if (ghostMouse != null && !ghostMouse.IsVisible()) return;
-         
             StopPoisonousDamage();
             StartDamageCoroutine(weapon);
         }

@@ -5072,6 +5072,7 @@ GameObject:
   - component: {fileID: 2440930490204156044}
   - component: {fileID: 4509810684329549782}
   - component: {fileID: 6723593674555535761}
+  - component: {fileID: -4391430349680665861}
   m_Layer: 6
   m_Name: Mouse
   m_TagString: Mouse
@@ -5110,6 +5111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDistanceMoved: 0
+  startWayPoint: {fileID: 0}
 --- !u!114 &5508047057535583039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5217,3 +5219,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currencyAmount: 5
   onFire: {fileID: 8138921289049156857}
+--- !u!114 &-4391430349680665861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551363394588081444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fbbd062e024950a4bf6566f6490659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

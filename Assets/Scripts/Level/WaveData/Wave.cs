@@ -15,5 +15,10 @@ public class Wave
     public MouseUnit[] mouseUnits;
     public RandomMouseUnit [] randomMouseUnits;
 
-
+    public Wave(int waveId, MouseUnit[] mouseUnits, RandomMouseUnit[] randomMouseUnits)
+    {
+        this.waveId = waveId;
+        this.mouseUnits = mouseUnits;
+        this.randomMouseUnits = randomMouseUnits ?? Array.Empty<RandomMouseUnit>();
+    }
 }

@@ -15,9 +15,9 @@ using Random = UnityEngine.Random;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager LM;
-    
+
     private Waves waves;
-    private int currentWave = 0;
+    private int currentWaveNum = 0;
     private int miceToBeReleased = -1; //set to -1 so that game doesnt automatically transition into next wave
 
     private WaveTextManager waveTextManager;
@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
         TextAsset jsonFile = Resources.Load("Waves/level" + level) as TextAsset;
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
     }
-    
+
 
     public IEnumerator FadeInAndOut(SpriteRenderer sprite)
     {
@@ -66,6 +66,7 @@ public class LevelManager : MonoBehaviour
             ChangeAlpha(sprite, GetAlpha(sprite) + 0.01f);
             yield return new WaitForSeconds(0.01f);
         }
+
         yield return new WaitForSeconds(3);
         StartCoroutine(FadeOut(sprite, 0));
     }
@@ -95,32 +96,35 @@ public class LevelManager : MonoBehaviour
     /// <remarks>Maintained by: Emily</remarks>
     private void StartWave()
     {
-
+        var currentWaveObj = waves.waves[currentWaveNum];
         miceToBeReleased = 0;
 
         //prepare deployment of standard mouse units
-        foreach (var mouseUnit in waves.waves[currentWave].mouseUnits)
+        foreach (var mouseUnit in currentWaveObj.mouseUnits)
         {
             StartCoroutine(SpawnMouseUnitWithDelay(mouseUnit));
             miceToBeReleased += mouseUnit.amount;
         }
 
         //prepare deployment of random mouse units with variation of mice in them
-        foreach (var randomMouseUnit in waves.waves[currentWave].randomMouseUnits)
+        if (currentWaveObj.randomMouseUnits != null)
         {
-            StartCoroutine(SpawnRandomMouseUnitWithDelay(randomMouseUnit));
-            miceToBeReleased += randomMouseUnit.amount;
+            foreach (var randomMouseUnit in currentWaveObj.randomMouseUnits)
+            {
+                StartCoroutine(SpawnRandomMouseUnitWithDelay(randomMouseUnit));
+                miceToBeReleased += randomMouseUnit.amount;
+            }
         }
     }
-    
+
     /// <summary>
     /// Displays necessary text and then starts next wave
     /// </summary>
     /// <remarks>maintained by Antosh</remarks>
     private IEnumerator TransitionIntoNextWave()
     {
-        currentWave++;
-        if (currentWave == waves.waves.Length) //check that the final wave has just happened
+        currentWaveNum++;
+        if (currentWaveNum == waves.waves.Length) //check that the final wave has just happened
         {
             yield return new WaitForSeconds(1.5f);
             GameManager.isPaused = true;
@@ -136,10 +140,9 @@ public class LevelManager : MonoBehaviour
     private IEnumerator StartWaveWithText()
     {
         yield return new WaitForSeconds(1.5f);
-        yield return waveTextManager.DisplayStartingWaveText(currentWave);
+        yield return waveTextManager.DisplayStartingWaveText(currentWaveNum);
         StartWave();
     }
-    
 
 
     /// <summary>Spawning one type of mouse, uses the Json to know the spaces between each mouse</summary>
@@ -167,6 +170,4 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(mouseUnit.frequency);
         }
     }
-
-
 }
