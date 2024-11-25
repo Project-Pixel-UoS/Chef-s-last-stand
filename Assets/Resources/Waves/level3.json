@@ -17,12 +17,6 @@
           "amount": 3,
           "timeOfWave": 0,
           "frequency": 8
-        },
-        {
-          "type": "Ghost",
-          "amount": 1,
-          "timeOfWave": 0.1,
-          "frequency": 0
         }
       ]
     },
