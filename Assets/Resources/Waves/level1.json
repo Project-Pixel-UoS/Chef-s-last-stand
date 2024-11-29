@@ -178,7 +178,7 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 15,
+          "amount": 8,
           "timeOfWave": 9,
           "frequency": 8
         }
@@ -198,7 +198,7 @@
         },
         {
           "type": "Armoured",
-          "amount": 6,
+          "amount": 2,
           "timeOfWave": 9,
           "frequency": 11
         }
@@ -210,17 +210,10 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 10,
+          "amount": 5,
           "timeOfWave": 12,
           "frequency": 9
-        },
-        {
-          "difficulty": "medium",
-          "amount": 0,
-          "timeOfWave": 15,
-          "frequency": 3
         }
-
       ],
       "mouseUnits": [
         {
@@ -231,13 +224,13 @@
         },
         {
           "type": "Trenchcoat",
-          "amount": 5,
+          "amount": 3,
           "timeOfWave": 10,
           "frequency": 9
         },
         {
           "type": "Armoured",
-          "amount": 6,
+          "amount": 2,
           "timeOfWave": 20,
           "frequency": 5
         }
@@ -249,7 +242,7 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 30,
+          "amount": 15,
           "timeOfWave": 4,
           "frequency": 2
         },
@@ -264,19 +257,13 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 10,
+          "amount": 5,
           "timeOfWave": 0,
           "frequency": 9
         },
         {
-          "type": "Trojan",
-          "amount": 0,
-          "timeOfWave": 20,
-          "frequency": 3
-        },
-        {
           "type": "Woody",
-          "amount": 0,
+          "amount": 10,
           "timeOfWave": 0,
           "frequency": 1
         }
@@ -288,7 +275,7 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 10,
+          "amount": 5,
           "timeOfWave": 10,
           "frequency": 2
         },
@@ -303,13 +290,13 @@
       "mouseUnits": [
         {
           "type": "Ghost",
-          "amount": 5,
+          "amount": 3,
           "timeOfWave": 0,
           "frequency": 5
         },
         {
           "type": "Trenchcoat",
-          "amount": 7,
+          "amount": 3,
           "timeOfWave": 5,
 
           "frequency": 12
@@ -328,7 +315,7 @@
       "randomMouseUnits": [
         {
           "difficulty": "low",
-          "amount": 40,
+          "amount": 20,
           "timeOfWave": 0,
           "frequency": 1
         },
