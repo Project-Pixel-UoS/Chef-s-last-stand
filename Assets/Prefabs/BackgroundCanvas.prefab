@@ -1183,9 +1183,9 @@ RectTransform:
   m_Children:
   - {fileID: 6974162214815077173}
   - {fileID: 6977188588252407334}
-  - {fileID: 1976366528236836609}
   - {fileID: 8566495412425348677}
   - {fileID: 1709085020637372430}
+  - {fileID: 1976366528236836609}
   - {fileID: 9215426466836030889}
   m_Father: {fileID: 7763224685917772014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4b74eb6d454f07815e13302346d2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 80
+  cost: 100
 --- !u!1 &4380635640141671088
 GameObject:
   m_ObjectHideFlags: 0
@@ -5377,7 +5377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4b74eb6d454f07815e13302346d2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 90
+  cost: 80
 --- !u!1 &8888194624456504754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5490,7 +5490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4b74eb6d454f07815e13302346d2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 120
+  cost: 90
 --- !u!1 &8891050418548952779
 GameObject:
   m_ObjectHideFlags: 0

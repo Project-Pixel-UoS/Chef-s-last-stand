@@ -1581,6 +1581,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -2.600071
       objectReference: {fileID: 0}
+    - target: {fileID: 8494401439783137312, guid: c95d80c83e261bb4fbb554a30ee01f4f, type: 3}
+      propertyPath: cost
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8566495412425348677, guid: c95d80c83e261bb4fbb554a30ee01f4f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1762,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 1135740888}
-  level: 1
+  currentLevel: 1
 --- !u!1 &596409997
 GameObject:
   m_ObjectHideFlags: 0
