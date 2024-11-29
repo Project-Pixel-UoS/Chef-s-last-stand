@@ -13,7 +13,7 @@ namespace Range
         private Transform ring;
         private float healingRingRadius;
         private List<GameObject> miceHealedInCurrentPulse = new ();
-        private const int healingPower = 10;
+        private const int healingPower = 25;
 
         private void Awake()
         {

@@ -217,12 +217,6 @@
       ],
       "mouseUnits": [
         {
-          "type": "Ghost",
-          "amount": 1,
-          "timeOfWave": 0,
-          "frequency": 4
-        },
-        {
           "type": "Trenchcoat",
           "amount": 3,
           "timeOfWave": 10,
@@ -289,12 +283,6 @@
       ],
       "mouseUnits": [
         {
-          "type": "Ghost",
-          "amount": 3,
-          "timeOfWave": 0,
-          "frequency": 5
-        },
-        {
           "type": "Trenchcoat",
           "amount": 3,
           "timeOfWave": 5,
@@ -330,21 +318,27 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 0,
+          "amount": 35,
           "timeOfWave": 10,
-          "frequency": 4
-        },
-        {
-          "type": "Ghost",
-          "amount": 0,
-          "timeOfWave": 6,
-          "frequency": 8
+          "frequency": 5
         },
         {
           "type": "Medic",
           "amount": 9,
           "timeOfWave": 0,
           "frequency": 17
+        },
+        {
+          "type": "Wooly",
+          "amount": 35,
+          "timeOfWave": 0,
+          "frequency": 4
+        },
+        {
+          "type": "Woody",
+          "amount": 35,
+          "timeOfWave": 2,
+          "frequency": 4
         }
       ]
     }
