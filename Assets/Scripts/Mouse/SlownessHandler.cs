@@ -9,6 +9,9 @@ namespace Mouse
         private bool isSlowed;
         private Coroutine speedRestoreCoroutine;
         private float originalSpeed;
+        
+        public GameObject gooper;
+
 
 
         private void Start()
@@ -56,11 +59,34 @@ namespace Mouse
 
         public void HandleSlownessProjectile(Collision2D other)
         {
-            GameObject otherGameObject = other.gameObject;
-            SlownessProjectile slownessProjectile = otherGameObject.GetComponent<SlownessProjectile>();
-            if (slownessProjectile != null && (!isSlowed || !otherGameObject.name.Equals("Potager Projectile 4(Clone)")))
+            GameObject projectile = other.gameObject;
+            SlownessProjectile slownessProjectile = projectile.GetComponent<SlownessProjectile>();
+            if (slownessProjectile != null)
             {
                 SlowMouse(slownessProjectile);
+                if (CheckChefProducesGooper(slownessProjectile) && gooper == null)
+                {
+                    CreateGooper(slownessProjectile.gooper, slownessProjectile.duration);
+                }
+            }
+        }
+
+        private static bool CheckChefProducesGooper(SlownessProjectile projectile)
+        {
+            return projectile.gooper != null;
+        }
+
+        public void CreateGooper(GameObject gooperPrefab, float destroyDuration)
+        {
+            gooper = Instantiate(gooperPrefab, transform.position, transform.rotation);
+            Destroy(gooper, destroyDuration);
+        }
+
+        public void DestroyGooperIfExists()
+        {
+            if (gooper != null)
+            {
+                Destroy(gooper);
             }
         }
     }

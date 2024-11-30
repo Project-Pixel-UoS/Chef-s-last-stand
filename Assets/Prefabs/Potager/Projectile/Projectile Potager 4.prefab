@@ -21,6 +21,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
+      propertyPath: gooper
+      value: 
+      objectReference: {fileID: 7145465551852298663, guid: 1a85fe221315b4722905cf91f2be916a, type: 3}
+    - target: {fileID: -11078296931815846, guid: 23d8b4afdcf357746a1093882b8a1fb5, type: 3}
       propertyPath: duration
       value: 5.3
       objectReference: {fileID: 0}

@@ -1,5 +1,3 @@
-
-
 using Unity.VisualScripting;
 
 namespace Mouse
@@ -23,7 +21,7 @@ namespace Mouse
         private SpriteRenderer sprite;
         public IEnumerator flashRedCoroutine = null;
         private MouseHealthHandler mouseHealthHandler;
-        
+
 
         private void Start()
         {
@@ -34,7 +32,7 @@ namespace Mouse
             mouseHealthHandler = gameObject.GetComponent<MouseHealthHandler>();
         }
 
-        public void HandleCollision(GameObject weapon)
+        public void HandleProjectile(GameObject weapon)
         {
             StopPoisonousDamage();
             StartDamageCoroutine(weapon);
@@ -64,19 +62,19 @@ namespace Mouse
         {
             float durationRemaining = damageFactor.damageDuration;
             if (IsBurning(damageFactor)) onFire.Play();
-            
-            // HandleBurnChain(damageFactor); - functionality temporarily disabled due to bugs
+
             while (durationRemaining > 0) //take damage until long lasting effect runs out
             {
                 mouseHealthHandler.DecrementHealth(damageFactor.damage);
                 durationRemaining -= damageFactor.damageRate;
-                
+
                 if (mouseHealthHandler.Health <= 0)
                 {
                     HandleMouseSplit();
                     creditsManager.IncreaseMoney(currencyAmount); //get money per kill
                     try
                     {
+                        GetComponent<SlownessHandler>().DestroyGooperIfExists();
                         Destroy(gameObject);
                         break;
                     }
@@ -91,13 +89,15 @@ namespace Mouse
                     flashRedCoroutine = FlashRed();
                     StartCoroutine(flashRedCoroutine);
                 }
+
                 yield return new WaitForSeconds(damageFactor.damageRate);
                 if (this == null) yield break; // check object is destroyed
             }
 
             if (onFire != null) onFire.Stop();
-            
         }
+
+
 
         /// <summary>
         /// Make mouse flash red when damage is delt.
@@ -116,9 +116,9 @@ namespace Mouse
         {
             if (stats.CanSplit())
             {
-                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType, transform.GetComponent<MouseMover>());
+                GetComponent<MouseSplitter>().Split(stats.numOfSplitMice, stats.splitMouseType,
+                    transform.GetComponent<MouseMover>());
             }
-       
         }
 
         /// <summary>
@@ -136,6 +136,7 @@ namespace Mouse
                 damageFactor.damageRate = 1;
                 damageFactor.damageDuration = 1;
             }
+
             return damageFactor;
         }
 

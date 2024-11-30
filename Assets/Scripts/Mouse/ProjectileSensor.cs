@@ -13,7 +13,7 @@ namespace Mouse
             if (IsGhostMouse()) return;
 
             GetComponent<SlownessHandler>().HandleSlownessProjectile(other);
-            GetComponent<DamageHandler>().HandleCollision(other.gameObject);
+            GetComponent<DamageHandler>().HandleProjectile(other.gameObject);
         }
 
         private bool IsGhostMouse()
@@ -25,7 +25,7 @@ namespace Mouse
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (IsGhostMouse()) return;
-            GetComponent<DamageHandler>().HandleCollision(other.gameObject);
+            GetComponent<DamageHandler>().HandleProjectile(other.gameObject);
         }
 
 
