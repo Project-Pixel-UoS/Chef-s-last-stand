@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiceScriptableObject
   mouseName: Trojan
   speed: 0.4
-  health: 1000
+  health: 1500
   size: 1
   sprite: {fileID: 21300000, guid: 285daf9777c8971409b7e1066425dc1a, type: 3}
   canGhost: 0
   splitMouseType: Armoured
-  numOfSplitMice: 6
+  numOfSplitMice: 20
   armoured: 0
   canHeal: 0
   difficulty: 2

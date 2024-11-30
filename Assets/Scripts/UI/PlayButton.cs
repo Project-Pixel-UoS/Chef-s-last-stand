@@ -16,7 +16,7 @@ namespace UI
         {
             pauseScreen.SetActive(false);
             GameManager.isPaused = false;
-            Time.timeScale = TimeScaleManager.SpeedMultiplier;
+            Time.timeScale = TimeScaleManager.instance.SpeedMultiplier;
         }
 
     }

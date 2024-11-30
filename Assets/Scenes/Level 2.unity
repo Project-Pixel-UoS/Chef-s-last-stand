@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 5635458686855641061}
-  level: 2
+  currentLevel: 2
 --- !u!114 &266574284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,6 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1189845459}
   - component: {fileID: 1189845460}
+  - component: {fileID: 1189845461}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -684,6 +685,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 415275474}
+--- !u!114 &1189845461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189845456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9555e725515c452493f3f9228f90f626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1311076895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,7 +1329,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 996676160103244331, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: credits
-      value: 600
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3660628666898628490, guid: c94096af30275174dbfc5432ed5c0a90, type: 3}
       propertyPath: m_Pivot.x

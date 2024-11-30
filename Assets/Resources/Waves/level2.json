@@ -200,19 +200,19 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 3,
+          "amount": 5,
           "timeOfWave": 5,
-          "frequency": 4
+          "frequency": 2
         },
         {
           "type": "Pinkie",
-          "amount": 15,
+          "amount": 25,
           "timeOfWave": 7,
-          "frequency": 3
+          "frequency": 1.5
         },
         {
           "type": "Woody",
-          "amount": 0,
+          "amount": 15,
           "timeOfWave": 0,
           "frequency": 1
         }
@@ -232,19 +232,19 @@
       "mouseUnits": [
         {
           "type": "Trenchcoat",
-          "amount": 1,
+          "amount": 4,
           "timeOfWave": 0,
           "frequency": 4
         },
         {
           "type": "Wooly",
-          "amount": 3,
+          "amount": 20,
           "timeOfWave": 9,
           "frequency": 3
         },
         {
           "type": "Armoured",
-          "amount": 6,
+          "amount": 8,
           "timeOfWave": 9,
           "frequency": 11
         }
@@ -271,21 +271,27 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 5,
+          "amount": 8,
           "timeOfWave": 10,
-          "frequency": 9
+          "frequency": 12
         },
         {
           "type": "Medic",
-          "amount": 1,
+          "amount": 2,
           "timeOfWave": 20,
           "frequency": 12
         },
         {
           "type": "Woody",
-          "amount": 6,
+          "amount": 20,
           "timeOfWave": 0,
-          "frequency": 8
+          "frequency": 5
+        },
+        {
+          "type": "Wooly",
+          "amount": 20,
+          "timeOfWave": 0,
+          "frequency": 4
         }
       ]
 
@@ -426,22 +432,27 @@
       "mouseUnits": [
         {
           "type": "Ghost",
-          "amount": 5,
+          "amount": 15,
           "timeOfWave": 0,
           "frequency": 5
         },
         {
           "type": "Trenchcoat",
-          "amount": 7,
+          "amount": 14,
           "timeOfWave": 5,
-
-          "frequency": 12
+          "frequency": 6
         },
         {
           "type": "Woody",
-          "amount": 0,
+          "amount": 20,
           "timeOfWave": 0,
-          "frequency": 1
+          "frequency": 2
+        },
+        {
+          "type": "Wooly",
+          "amount": 20,
+          "timeOfWave": 1,
+          "frequency": 2
         }
       ]
 
@@ -466,21 +477,27 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 5,
+          "amount": 50,
           "timeOfWave": 10,
-          "frequency": 7
+          "frequency": 2
         },
         {
           "type": "Trenchcoat",
-          "amount": 2,
-          "timeOfWave": 5,
-          "frequency": 12
+          "amount": 50,
+          "timeOfWave": 50,
+          "frequency": 1
         },
         {
           "type": "Medic",
           "amount": 6,
           "timeOfWave": 0,
           "frequency": 11
+        },
+        {
+          "type": "Pinkie",
+          "amount": 50,
+          "timeOfWave": 0,
+          "frequency": 2
         }
       ]
 
@@ -505,21 +522,33 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 0,
+          "amount": 50,
           "timeOfWave": 10,
-          "frequency": 4
+          "frequency": 2
         },
         {
           "type": "Ghost",
-          "amount": 0,
+          "amount": 50,
           "timeOfWave": 6,
-          "frequency": 8
+          "frequency": 2
         },
         {
           "type": "Medic",
           "amount": 9,
           "timeOfWave": 0,
           "frequency": 17
+        },
+        {
+          "type": "Pinkie",
+          "amount": 100,
+          "timeOfWave": 0,
+          "frequency": 1
+        },
+        {
+          "type": "Wooly",
+          "amount": 60,
+          "timeOfWave": 0,
+          "frequency": 1.7
         }
       ]
 
@@ -545,21 +574,27 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 0,
-          "timeOfWave": 10,
-          "frequency": 4
+          "amount": 60,
+          "timeOfWave": 0,
+          "frequency": 2
         },
         {
           "type": "Trojan",
-          "amount": 3,
+          "amount": 12,
           "timeOfWave": 0,
-          "frequency": 20
+          "frequency": 10
         },
         {
-          "type": "Woody",
+          "type": "Wooly",
           "amount": 0,
           "timeOfWave": 0,
           "frequency": 1
+        },
+        {
+          "type": "Ghost",
+          "amount": 80,
+          "timeOfWave": 50,
+          "frequency": 0.5
         }
       ]
 

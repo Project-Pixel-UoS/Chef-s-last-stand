@@ -27,8 +27,8 @@ public class SpeedButton : MonoBehaviour
 
     private void IncreaseSpeed()
     {
-        TimeScaleManager.SpeedMultiplier++;
-        if (TimeScaleManager.SpeedMultiplier == 3)
+        TimeScaleManager.instance.SpeedMultiplier++;
+        if (TimeScaleManager.instance.SpeedMultiplier == 3)
         {
             currentButtonState = ButtonState.DecreaseSpeed;
             ReverseButtonArrows();
@@ -37,8 +37,8 @@ public class SpeedButton : MonoBehaviour
 
     private void DecreaseSpeed()
     {
-        TimeScaleManager.SpeedMultiplier--;
-        if (TimeScaleManager.SpeedMultiplier == 1)
+        TimeScaleManager.instance.SpeedMultiplier--;
+        if (TimeScaleManager.instance.SpeedMultiplier == 1)
         {
             currentButtonState = ButtonState.IncreaseSpeed;
             ReverseButtonArrows();
