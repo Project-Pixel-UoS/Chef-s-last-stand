@@ -318,9 +318,9 @@
       "mouseUnits": [
         {
           "type": "Armoured",
-          "amount": 35,
+          "amount": 25,
           "timeOfWave": 10,
-          "frequency": 5
+          "frequency": 8
         },
         {
           "type": "Medic",
@@ -330,15 +330,15 @@
         },
         {
           "type": "Wooly",
-          "amount": 35,
+          "amount": 25,
           "timeOfWave": 0,
-          "frequency": 4
+          "frequency": 6
         },
         {
           "type": "Woody",
-          "amount": 35,
+          "amount": 25,
           "timeOfWave": 2,
-          "frequency": 4
+          "frequency": 6
         }
       ]
     }

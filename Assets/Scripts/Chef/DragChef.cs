@@ -57,7 +57,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.isPaused) return;
-        if (!chefForSale.CheckSufficientChefFunds()) return;
+        if (!chefForSale.CheckSufficientChefFunds())
+        {
+            Utils.PlayInvalidTransactionSound(gameObject);
+            return;
+        }
 
         range.enabled = true; // makes the range visible
 
@@ -73,7 +77,11 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         if (GameManager.isPaused) return;
-        if (!chefForSale.CheckSufficientChefFunds()) return;
+        if (!chefForSale.CheckSufficientChefFunds())
+        {
+            Utils.PlayInvalidTransactionSound(gameObject);
+            return;
+        }
         
         PositionChefOntoCursor();
         SetRangeColour();
@@ -184,12 +192,20 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (GameManager.isPaused) return;
         if (GameManager.gameManager.IsGameOver())return;
-        if (!chefForSale.CheckSufficientChefFunds()) return;
+        if (!chefForSale.CheckSufficientChefFunds())
+        {
+            Utils.PlayInvalidTransactionSound(gameObject);
+            return;
+        }
         
         ReturnSpriteToSlot();
         range.enabled = false;
 
-        if (CheckOutOfBounds()) return;
+        if (CheckOutOfBounds())
+        {
+            Utils.PlayInvalidTransactionSound(gameObject);
+            return;
+        }
 
         chefForSale.HandleChefTransaction();
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");

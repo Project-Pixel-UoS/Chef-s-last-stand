@@ -19,6 +19,12 @@ namespace Util
             return mouseWorldPos.x > bottomLeft.x && mouseWorldPos.y > bottomLeft.y && 
                    mouseWorldPos.x < topRight.x && mouseWorldPos.y < topRight.y;
         }
+        
+        public static void PlayInvalidTransactionSound(GameObject gameObject)
+        {
+            GetChildWithTag(gameObject, "FailedTransactionFX").GetComponent<AudioSource>().Play();
+        }
+        
 
         public static void PlayShootSound(GameObject chef)
         {

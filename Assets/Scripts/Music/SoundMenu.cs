@@ -17,40 +17,15 @@ namespace Music
         [SerializeField] private Slider soundFXVolumeSlider;
         [SerializeField] private Slider menuVolumeSlider;
 
-        public static SoundMenu Instance { get; private set; }
 
 
         void Awake()
         {
-            SetupSingletonField();
             menuMusic = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>();
             SetVolumeSliders();
         }
 
-        private void SetupSingletonField()
-        {
-            // // If there is an instance, and it's not me, delete myself.
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
-
-        private List<AudioSource> GetSoundEffects()
-        {
-            List<AudioSource> audioSources = new List<AudioSource>();
-            foreach (var soundEffect in GameObject.FindGameObjectsWithTag("SoundFX"))
-            {
-                audioSources.Add(soundEffect.GetComponent<AudioSource>());
-            }
-
-            return audioSources;
-        }
-
+        
         private void SetVolumeSliders()
         {
             if (!PlayerPrefs.HasKey("backgroundMusicVolume"))
