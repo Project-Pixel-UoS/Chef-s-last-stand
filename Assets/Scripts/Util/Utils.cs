@@ -25,7 +25,11 @@ namespace Util
             GetChildWithTag(gameObject, "FailedTransactionFX").GetComponent<AudioSource>().Play();
         }
         
-
+        public static void PlayMoneyGainedFX(GameObject gameObject)
+        {
+            GetChildWithTag(gameObject, "MoneyGainedFX").GetComponent<AudioSource>().Play();
+        }
+        
         public static void PlayShootSound(GameObject chef)
         {
             GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Play();
@@ -94,5 +98,7 @@ namespace Util
             rectTransform.GetWorldCorners(worldCorners);
             return worldCorners;
         }
+
+   
     }
 }

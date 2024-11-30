@@ -7,6 +7,7 @@ using Range;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Util;
 
 /// <summary>
 /// Component should be attatched to the head chef who has the ability to buff other chefs
@@ -94,6 +95,7 @@ public class AbilityBuff : MonoBehaviour
             creditsManager.IncreaseMoney(income);
             passiveIncomeCDTimer = cooldown;
             money.Play();
+            Utils.PlayMoneyGainedFX(gameObject);
         }
     }
 }
