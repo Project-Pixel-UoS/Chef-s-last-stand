@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameManagement;
 using Chef;
 using Chef.Upgrades;
+using Music;
 using Range;
 using Shop;
 using UnityEngine;
@@ -211,6 +212,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         var chefParent = GameObject.FindGameObjectWithTag("ChefContainer");
         var chefInstance = Instantiate(chef, dropPosition, chef.transform.rotation, chefParent.transform);
         Utils.ResizeSpriteOutsideCanvas(chefInstance);
+        SoundPlayer.instance.PlayPurchaseFX();
     }
     
     private void ReturnSpriteToSlot()

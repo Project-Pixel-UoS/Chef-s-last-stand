@@ -6,6 +6,7 @@ using GameManagement;
 using Level.WaveData;
 using Level.WaveData.WaveData;
 using Mouse;
+using Music;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -129,6 +130,7 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             GameManager.isPaused = true;
             Time.timeScale = 0.0f;
+            SoundPlayer.instance.PlayVictoryFX();
             victoryScreen.SetActive(true);
         }
         else

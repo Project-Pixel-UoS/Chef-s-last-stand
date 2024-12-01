@@ -1,4 +1,5 @@
 using System;
+using Music;
 using Range;
 using Shop;
 using Unity.VisualScripting;
@@ -24,21 +25,11 @@ namespace Chef.Upgrades
         public void UpgradeRange()
         {
             if (path1Status == maxLevel1) return; // if path is upgraded to the max we can not upgrade it again
+            SoundPlayer.instance.PlayUpgradeFX();
             path1Status++;
             GetComponent<ChefRange>().Radius *= 1.1f;
             GetComponent<ChefRange>().RadiusWithoutBuff *= 1.1f;
             
-            // var abilityAoe = gameObject.GetComponent<AbilityAOE>();
-            // if (abilityAoe != null) abilityAoe.IncreaseFireDistance(1.1f);
-            
-            // if (gameObject.CompareTag("Grillardin"))
-            // {
-            //     var main = GetComponentInChildren<ParticleSystem>().main;
-            //     var emission = GetComponentInChildren<ParticleSystem>().emission;
-            //     main.startSpeed = 1.23f * main.startSpeed.constant;
-            //     emission.rateOverTime = 1.2f * emission.rateOverTime.constant;
-            // }
-
             RefreshRangeBar();
             RefreshSellChefBar();
         }
@@ -49,6 +40,7 @@ namespace Chef.Upgrades
         public void UpgradeAbility()
         {
             if (path2Status == maxLevel2) return;
+            SoundPlayer.instance.PlayUpgradeFX();
             path2Status++;
             var chefs = GetChefUpgrades();
             //instantiate new chef

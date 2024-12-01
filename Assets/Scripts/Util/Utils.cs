@@ -39,6 +39,13 @@ namespace Util
         {
             GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Stop();
         }
+        
+        public static void PlayMousePassesFX(GameObject gameObject)
+        {
+            print("PLAYING MOUSE PASSED FX");
+            GetChildWithTag(gameObject, "MousePassedFX").GetComponent<AudioSource>().Play();
+
+        }
 
         public static GameObject GetChildWithTag(GameObject parent, string tag)
         {
@@ -99,6 +106,7 @@ namespace Util
             return worldCorners;
         }
 
-   
+
+
     }
 }

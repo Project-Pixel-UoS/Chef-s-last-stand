@@ -1,4 +1,5 @@
 using GameManagement;
+using Util;
 
 namespace Mouse
 {
@@ -57,6 +58,7 @@ namespace Mouse
 
         private void ProcessMouseFinish()
         {
+            Utils.PlayMousePassesFX(gameObject);
             Destroy(gameObject);
             if (!GameManager.gameManager.IsGameOver())
             {
