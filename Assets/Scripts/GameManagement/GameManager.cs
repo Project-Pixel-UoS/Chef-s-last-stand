@@ -73,6 +73,7 @@ namespace GameManagement
         /// </summary>
         public void RestartLevel()
         {
+            SoundPlayer.instance.PlayButtonClickFX();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

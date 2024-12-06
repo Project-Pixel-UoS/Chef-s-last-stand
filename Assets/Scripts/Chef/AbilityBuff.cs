@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Chef;
 using Mouse;
+using Music;
 using Range;
 using Unity.Collections;
 using UnityEngine;
@@ -68,12 +69,12 @@ public class AbilityBuff : MonoBehaviour
 
     private void OnSellChef()
     {
+        SoundPlayer.instance.PlayButtonClickFX();
         colliders = Physics2D.OverlapCircleAll(transform.position, range); // Get all objects within range
         foreach (Collider2D collider in colliders)
         {
             Buff buff = collider.gameObject.GetComponent<Buff>();
             if (buff != null) // If it has no "buff" object, it isn't a chef
-
             {
                 buff.DamageMultiplier = 1;
                 buff.ReloadTimeMultiplier = 1;

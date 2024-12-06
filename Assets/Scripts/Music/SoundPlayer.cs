@@ -48,7 +48,21 @@ namespace Music
         public void PlayVictoryFX()
         {
             GetChildWithName("VictoryFX").GetComponent<AudioSource>().Play();
+        }
+        
+        public void PlayButtonClickFX()
+        {
+            GetChildWithName("ButtonClickFX").GetComponent<AudioSource>().Play();
+        }
+        
+        public void PlayFailedTransactionFX()
+        {
+            GetChildWithName("FailedTransactionFX").GetComponent<AudioSource>().Play();
+        }
 
+        public void PlayMousePassedFX()
+        {
+            GetChildWithName("MousePassedFX").GetComponent<AudioSource>().Play();
         }
     }
 }

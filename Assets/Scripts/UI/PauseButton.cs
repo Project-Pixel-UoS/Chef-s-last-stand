@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
+using Music;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class PauseButton : MonoBehaviour
     /// </summary>
     public void Pause()
     {
+        SoundPlayer.instance.PlayButtonClickFX();
         pauseScreen.SetActive(true);
         GameManager.isPaused = true;
         Time.timeScale = 0.0f;

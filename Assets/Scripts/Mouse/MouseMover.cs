@@ -1,5 +1,5 @@
 using GameManagement;
-using Util;
+using Music;
 
 namespace Mouse
 {
@@ -58,8 +58,8 @@ namespace Mouse
 
         private void ProcessMouseFinish()
         {
-            Utils.PlayMousePassesFX(gameObject);
             Destroy(gameObject);
+            SoundPlayer.instance.PlayMousePassedFX();
             if (!GameManager.gameManager.IsGameOver())
             {
                 DamagePlayer();

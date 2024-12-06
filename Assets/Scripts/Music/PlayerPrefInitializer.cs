@@ -35,7 +35,6 @@ namespace Music
                 PlayerPrefs.SetFloat(SoundFXVolume, 0.5f);
             }
         }
-        
-        
+
     }
 }

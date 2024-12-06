@@ -60,7 +60,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (GameManager.isPaused) return;
         if (!chefForSale.CheckSufficientChefFunds())
         {
-            Utils.PlayInvalidTransactionSound(gameObject);
+            SoundPlayer.instance.PlayFailedTransactionFX();
             return;
         }
 
@@ -80,7 +80,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (GameManager.isPaused) return;
         if (!chefForSale.CheckSufficientChefFunds())
         {
-            Utils.PlayInvalidTransactionSound(gameObject);
+            SoundPlayer.instance.PlayFailedTransactionFX();
             return;
         }
         
@@ -195,7 +195,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (GameManager.gameManager.IsGameOver())return;
         if (!chefForSale.CheckSufficientChefFunds())
         {
-            Utils.PlayInvalidTransactionSound(gameObject);
+            SoundPlayer.instance.PlayFailedTransactionFX();
             return;
         }
         
@@ -204,7 +204,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (CheckOutOfBounds())
         {
-            Utils.PlayInvalidTransactionSound(gameObject);
+            SoundPlayer.instance.PlayFailedTransactionFX();
             return;
         }
 

@@ -1,5 +1,6 @@
 using GameManagement;
 using Level.WaveData;
+using Music;
 using UnityEngine;
 
 namespace UI
@@ -14,6 +15,7 @@ namespace UI
         /// </summary>
         public void Play()
         {
+            SoundPlayer.instance.PlayButtonClickFX();
             pauseScreen.SetActive(false);
             GameManager.isPaused = false;
             Time.timeScale = TimeScaleManager.instance.SpeedMultiplier;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
 using Level.WaveData;
+using Music;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,8 @@ public class SpeedButton : MonoBehaviour
     public void ToggleSpeed(){
 
         if(GameManager.isPaused) return;
-        
+        SoundPlayer.instance.PlayButtonClickFX();
+
         if (currentButtonState == ButtonState.DecreaseSpeed)
         {
             DecreaseSpeed();
@@ -24,8 +26,7 @@ public class SpeedButton : MonoBehaviour
         {
             IncreaseSpeed();
         }
-        print("Speed multiplier: " + TimeScaleManager.instance.SpeedMultiplier);
-
+        
         gameObject.GetComponentInChildren<Text>().text = "Speed: " + TimeScaleManager.instance.SpeedMultiplier + "x";
 
     }

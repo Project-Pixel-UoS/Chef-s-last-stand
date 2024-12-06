@@ -1,4 +1,5 @@
 using System;
+using Music;
 using Range;
 using Shop;
 using Unity.VisualScripting;
@@ -111,6 +112,7 @@ namespace Chef.Upgrades
 
         public void ToggleInfoWindow()
         {
+            SoundPlayer.instance.PlayButtonClickFX();
             infoWindowUI.GetComponent<Image>().enabled = !infoWindowUI.GetComponent<Image>().enabled;
             infoWindowUI.GetComponentInChildren<Text>().enabled = !infoWindowUI.GetComponentInChildren<Text>().enabled;
         }

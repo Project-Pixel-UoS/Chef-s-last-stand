@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using Music;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class SceneLoader : MonoBehaviour
     /// <param name="sceneName"></param>
     public void LoadScene(string sceneName)
     {
+        SoundPlayer.instance.PlayButtonClickFX();
         string previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
         

@@ -14,7 +14,7 @@ namespace Music
         {
             foreach (var audioSource in GetComponentsInChildren<AudioSource>())
             {
-                audioSource.volume = PlayerPrefs.GetFloat("soundFXVolume");
+                audioSource.volume = PlayerPrefs.GetFloat(SoundMenu.SoundFXVolume);
             }
         }
     }

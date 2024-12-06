@@ -20,10 +20,7 @@ namespace Util
                    mouseWorldPos.x < topRight.x && mouseWorldPos.y < topRight.y;
         }
         
-        public static void PlayInvalidTransactionSound(GameObject gameObject)
-        {
-            GetChildWithTag(gameObject, "FailedTransactionFX").GetComponent<AudioSource>().Play();
-        }
+
         
         public static void PlayMoneyGainedFX(GameObject gameObject)
         {
@@ -40,12 +37,8 @@ namespace Util
             GetChildWithTag(chef, "ProjectileThrowFX").GetComponent<AudioSource>().Stop();
         }
         
-        public static void PlayMousePassesFX(GameObject gameObject)
-        {
-            print("PLAYING MOUSE PASSED FX");
-            GetChildWithTag(gameObject, "MousePassedFX").GetComponent<AudioSource>().Play();
 
-        }
+        
 
         public static GameObject GetChildWithTag(GameObject parent, string tag)
         {
