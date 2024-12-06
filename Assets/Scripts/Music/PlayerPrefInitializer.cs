@@ -33,7 +33,7 @@ namespace Music
 
             if (!PlayerPrefs.HasKey(SoundFXVolume))
             {
-                PlayerPrefs.SetFloat(SoundFXVolume, 0.65f);
+                PlayerPrefs.SetFloat(SoundFXVolume, 0.2f);
             }
         }
 
