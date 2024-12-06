@@ -18,8 +18,7 @@ namespace Music
             HandleMultipleMenuMusics();
             DontDestroyOnLoad(gameObject); // game object will be permanent across different scenes
 
-            audioSource = GetComponent<AudioSource>();
-            audioSource.volume = PlayerPrefs.GetFloat("menuVolume");
+
         }
 
 

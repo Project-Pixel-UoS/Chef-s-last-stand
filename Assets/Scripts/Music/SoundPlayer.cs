@@ -27,9 +27,7 @@ namespace Music
             GetChildWithName("PurchaseFX").GetComponent<AudioSource>().Play();
         }
         
-        
-        
-        public GameObject GetChildWithName(string name)
+        private GameObject GetChildWithName(string name)
         {
             foreach (Transform child in transform)
             {

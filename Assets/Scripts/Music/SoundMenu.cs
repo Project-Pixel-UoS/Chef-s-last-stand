@@ -18,6 +18,10 @@ namespace Music
         [SerializeField] private Slider menuVolumeSlider;
 
 
+        public static readonly string LevelVolume = "levelVolume";
+        public static readonly string MenuVolume = "menuVolume";
+        public static readonly string SoundFXVolume = "soundFXVolume";
+        
 
         void Awake()
         {
@@ -28,78 +32,29 @@ namespace Music
         
         private void SetVolumeSliders()
         {
-            if (!PlayerPrefs.HasKey("backgroundMusicVolume"))
-                PlayerPrefs.SetFloat("backgroundMusicVolume", 0.5f);
-
-            if (!PlayerPrefs.HasKey("soundEffectVolume"))
-                PlayerPrefs.SetFloat("soundEffectVolume", 0.5f);
-
-            if (!PlayerPrefs.HasKey("menuVolume"))
-                PlayerPrefs.SetFloat("menuVolume", 0.5f);
-
-
-            LoadLevelVolume();
-            LoadMenuVolume();
-            LoadSoundFXVolume();
-        }
-
-        
-
-        public void ChangeMenuMusicVolume()
-        {
-            SaveMenuVolume();
-            SetMenuMusicVolume();
-        }
-
-
-        private void LoadLevelVolume()
-        {
-            levelVolumeSlider.value = GetLevelVolume();
+            levelVolumeSlider.value = PlayerPrefs.GetFloat(LevelVolume);;
+            menuVolumeSlider.value = PlayerPrefs.GetFloat(MenuVolume);
+            soundFXVolumeSlider.value = PlayerPrefs.GetFloat(SoundFXVolume);
         }
 
         public void SaveLevelVolume()
         {
-            PlayerPrefs.SetFloat("levelVolume", levelVolumeSlider.value);
+            PlayerPrefs.SetFloat(LevelVolume, levelVolumeSlider.value);
         }
-
-        private void LoadSoundFXVolume()
-        {
-            soundFXVolumeSlider.value = GetSoundFXVolume();
-        }
-
+        
         public void SaveSoundFXVolume()
         {
-            PlayerPrefs.SetFloat("soundFXVolume", soundFXVolumeSlider.value);
+            PlayerPrefs.SetFloat(SoundFXVolume, soundFXVolumeSlider.value);
         }
 
-        private void LoadMenuVolume()
+
+        public void SaveMenuVolume()
         {
-            menuVolumeSlider.value = GetMenuVolume();
+            PlayerPrefs.SetFloat(MenuVolume, menuVolumeSlider.value);
+            menuMusic.volume = PlayerPrefs.GetFloat(MenuVolume);
         }
 
-        private void SaveMenuVolume()
-        {
-            PlayerPrefs.SetFloat("menuVolume", menuVolumeSlider.value);
-        }
-
-        private float GetLevelVolume()
-        {
-            return PlayerPrefs.GetFloat("levelVolume");
-        }
-
-        private float GetMenuVolume()
-        {
-            return PlayerPrefs.GetFloat("menuVolume");
-        }
-
-        private float GetSoundFXVolume()
-        {
-            return PlayerPrefs.GetFloat("soundFXVolume");
-        }
-
-        private void SetMenuMusicVolume()
-        {
-            menuMusic.volume = GetMenuVolume();
-        }
+   
+ 
     }
 }
