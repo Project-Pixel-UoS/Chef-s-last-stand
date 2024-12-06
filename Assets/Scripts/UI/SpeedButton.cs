@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameManagement;
 using Level.WaveData;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpeedButton : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class SpeedButton : MonoBehaviour
         {
             IncreaseSpeed();
         }
+        print("Speed multiplier: " + TimeScaleManager.instance.SpeedMultiplier);
+
+        gameObject.GetComponentInChildren<Text>().text = "Speed: " + TimeScaleManager.instance.SpeedMultiplier + "x";
+
     }
 
     private void IncreaseSpeed()
@@ -31,7 +36,6 @@ public class SpeedButton : MonoBehaviour
         if (TimeScaleManager.instance.SpeedMultiplier == 3)
         {
             currentButtonState = ButtonState.DecreaseSpeed;
-            ReverseButtonArrows();
         }
     }
 
@@ -41,15 +45,9 @@ public class SpeedButton : MonoBehaviour
         if (TimeScaleManager.instance.SpeedMultiplier == 1)
         {
             currentButtonState = ButtonState.IncreaseSpeed;
-            ReverseButtonArrows();
         }
     }
-
-    private void ReverseButtonArrows()
-    {
-        transform.rotation = 
-            Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
-    }
+    
 }
     
 public enum ButtonState
