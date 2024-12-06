@@ -96,7 +96,7 @@ public class AbilityBuff : MonoBehaviour
             creditsManager.IncreaseMoney(income);
             passiveIncomeCDTimer = cooldown;
             money.Play();
-            Utils.PlayMoneyGainedFX(gameObject);
+            SoundPlayer.instance.PlayMoneyGainedFX();
         }
     }
 }

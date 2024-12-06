@@ -144,7 +144,7 @@ namespace Chef.Upgrades
 
         public void SellChef()
         {
-            //var chef = currentChef.GetComponent<UpgradeTracker>();
+            SoundPlayer.instance.PlayMoneyGainedFX();
             upgradeManager.HandleChefRefund();
             Destroy(currentChef);
             CurrentChef = null;

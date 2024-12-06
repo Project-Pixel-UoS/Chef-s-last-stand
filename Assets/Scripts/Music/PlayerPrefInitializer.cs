@@ -12,27 +12,28 @@ namespace Music
         
         private void Awake()
         {
-            menuMusic = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>();
             InitPlayerPrefs();
+            menuMusic = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>();
+            menuMusic.volume = PlayerPrefs.GetFloat(MenuVolume);
+
         }
         
         private static void InitPlayerPrefs()
         {
             if (!PlayerPrefs.HasKey(LevelVolume))
             {
-                PlayerPrefs.SetFloat(LevelVolume, 0.5f);
+                PlayerPrefs.SetFloat(LevelVolume, 0.2f);
             } 
-
+            
             if (!PlayerPrefs.HasKey(MenuVolume))
             {
                 PlayerPrefs.SetFloat(MenuVolume, 0.5f);
-                menuMusic.volume = PlayerPrefs.GetFloat(MenuVolume);
             }
 
 
             if (!PlayerPrefs.HasKey(SoundFXVolume))
             {
-                PlayerPrefs.SetFloat(SoundFXVolume, 0.5f);
+                PlayerPrefs.SetFloat(SoundFXVolume, 0.65f);
             }
         }
 

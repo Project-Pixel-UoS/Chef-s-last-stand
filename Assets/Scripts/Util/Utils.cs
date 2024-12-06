@@ -22,10 +22,7 @@ namespace Util
         
 
         
-        public static void PlayMoneyGainedFX(GameObject gameObject)
-        {
-            GetChildWithTag(gameObject, "MoneyGainedFX").GetComponent<AudioSource>().Play();
-        }
+
         
         public static void PlayShootSound(GameObject chef)
         {

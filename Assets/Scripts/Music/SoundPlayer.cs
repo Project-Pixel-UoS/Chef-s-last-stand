@@ -64,5 +64,10 @@ namespace Music
         {
             GetChildWithName("MousePassedFX").GetComponent<AudioSource>().Play();
         }
+        
+        public void PlayMoneyGainedFX()
+        {
+            GetChildWithName("MoneyGainedFX").GetComponent<AudioSource>().Play();
+        }
     }
 }

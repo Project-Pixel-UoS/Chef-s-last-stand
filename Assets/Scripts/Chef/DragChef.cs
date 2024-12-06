@@ -27,6 +27,8 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private RectTransform rectTransform;
 
+    private bool isChefFollowingFinger = false;
+
     private void Start()
     {
         chefForSale = GetComponent<ChefForSale>();
@@ -60,10 +62,15 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (GameManager.isPaused) return;
         if (!chefForSale.CheckSufficientChefFunds())
         {
-            SoundPlayer.instance.PlayFailedTransactionFX();
+            //dont play again until drag has ended
+            if (!isChefFollowingFinger)
+            {
+                SoundPlayer.instance.PlayFailedTransactionFX();
+            }
             return;
         }
 
+        isChefFollowingFinger = true;
         range.enabled = true; // makes the range visible
 
         parentAfterDrag = transform.parent;
@@ -80,7 +87,7 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (GameManager.isPaused) return;
         if (!chefForSale.CheckSufficientChefFunds())
         {
-            SoundPlayer.instance.PlayFailedTransactionFX();
+            // SoundPlayer.instance.PlayFailedTransactionFX();
             return;
         }
         
@@ -195,7 +202,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (GameManager.gameManager.IsGameOver())return;
         if (!chefForSale.CheckSufficientChefFunds())
         {
-            SoundPlayer.instance.PlayFailedTransactionFX();
+            if (isChefFollowingFinger)
+            {
+                SoundPlayer.instance.PlayFailedTransactionFX();
+            }
             return;
         }
         
@@ -204,7 +214,10 @@ public class DragChef : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (CheckOutOfBounds())
         {
-            SoundPlayer.instance.PlayFailedTransactionFX();
+            if (isChefFollowingFinger)
+            {
+                SoundPlayer.instance.PlayFailedTransactionFX();
+            }
             return;
         }
 
